@@ -29,6 +29,9 @@ No one publishes exact departure times for these routes — only headways
 scripts/fetch_alimentadoras.py   ArcGIS item -> FeatureServer -> GeoJSON
                                   (routes + stops, fully automated)
 
+scripts/inspect_fields.py        Prints both layers' schema (for CI logs
+                                  and for catching future schema drift)
+
 scripts/scrape_sotrames.py       Sotrames' static HTML -> raw route/table
                                   dump for manual reconciliation
                                   (SAO6 + MDO are JS SPAs - see below)
@@ -47,20 +50,30 @@ scripts/build_gtfs.py            Joins geometry + operators.yml ->
                                   Metro pipeline's validate-gtfs.yml
 ```
 
-## What's automated vs. what needs a human right now
+## What's automated vs. what needs a human pass
 
 **Automated:**
-- Pulling route/stop geometry from ArcGIS (`fetch_alimentadoras.py`).
+- Pulling route/stop geometry from ArcGIS (`fetch_alimentadoras.py`). Confirmed
+  live schema: routes have `ruta` (directional itinerary id, e.g. `C3-004P`),
+  `linea` (bidirectional route name), `cuenca` (basin), `SHAPE__Length`.
+  Stops have `ruta` (join key), `globalid` (unique id), `parada`/`label`
+  (name). `build_gtfs.py` is wired to these real field names already.
+- `scripts/inspect_fields.py` runs in CI right after the fetch step and
+  prints both layers' schema into the Action log, so future schema drift
+  shows up immediately instead of as a silent join failure.
 - Scraping Sotrames' frequency tables as raw text (`scrape_sotrames.py`).
-- Assembling GTFS + running it through `gtfs-validator-cli` + publishing a
-  release, once `data/operators.yml` is filled in.
+- Assembling a structurally valid GTFS (`agency/routes/stops/shapes/trips/
+  stop_times/frequencies/calendar.txt`) + running it through
+  `gtfs-validator-cli` + publishing a release, once `data/operators.yml` is
+  filled in.
 
 **Needs a human pass before this is trustworthy:**
-1. **Field names.** I don't have live access to the actual ArcGIS attribute
-   schema (`ROUTE_ID_FIELD`, `STOP_ID_FIELD`, etc. in `build_gtfs.py` are
-   best-guess placeholders based on common Colombian open-data
-   conventions). Run `fetch_alimentadoras.py` once, inspect
-   `raw/rutas_alimentadoras.geojson`'s `properties`, and fix those constants.
+1. **Stop order along a route is a guess.** The ArcGIS stops layer has no
+   explicit sequence field, so `build_gtfs.py` sorts by `objectid` as a
+   proxy. Spot-check a route's stop order in the validator's map view after
+   your first real build — if it looks scrambled, this is the thing to fix
+   (e.g. by projecting each stop onto the route's shape and sorting by
+   distance-along-line instead).
 2. **SAO6 and MDO are JavaScript single-page apps** — their route/timetable
    pages don't return usable HTML to a plain HTTP fetch, unlike Sotrames.
    To get their headway data you'll need one of:
@@ -74,14 +87,20 @@ scripts/build_gtfs.py            Joins geometry + operators.yml ->
    `scrape_sotrames.py` dumps both lists in document order for a human to
    match up by eye against the live page, then transcribe into
    `data/operators.yml`.
-4. **Running-time placeholder.** `build_gtfs.py` currently derives each
-   trip's total running time from route length ÷ an assumed 18 km/h, since
-   we don't have real timing data between stops. This is fine for headway
-   correctness but the intermediate stop-time estimates will be rough.
-   Consider running the same `pfaedle` map-matching step the Metro pipeline
-   uses if you want geometry cleaned up against OSM roads too — the
-   `medellin.osm.pbf` release from `gtfs-medellin`'s `update-medellin-osm.yml`
-   can be reused directly instead of duplicating that workflow here.
+4. **Running-time placeholder.** Stops within a trip are spaced evenly across
+   a placeholder total running time (route length ÷ an assumed 18 km/h),
+   since we don't have real timing data between stops. This is fine for
+   headway correctness (that's what `frequencies.txt` controls) but the
+   individual `stop_times.txt` clock times are rough. Consider running the
+   same `pfaedle` map-matching step the Metro pipeline uses if you want
+   geometry cleaned up against OSM roads too — the `medellin.osm.pbf`
+   release from `gtfs-medellin`'s `update-medellin-osm.yml` can be reused
+   directly instead of duplicating that workflow here.
+5. **Two directions per route ≠ one config entry.** `ruta` values like
+   `C3-004P` and `C3-004B` are separate directional itineraries of the same
+   logical line — each needs its own `data/operators.yml` entry (they'll
+   usually share the same headway/hours, just different `route_id`s and
+   shapes).
 
 ## Setup
 
