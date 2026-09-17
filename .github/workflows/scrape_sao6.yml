@@ -11,6 +11,7 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,18 +19,18 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"      
+          python-version: "3.12"
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Scrape MDO route images + OCR
+      - name: Scrape SAO6 routes
         run: python scripts/scrape_sao6.py
 
-      - name: Upload results for review
+      - name: Upload SAO6 results for debugging
         uses: actions/upload-artifact@v4
         with:
-          name: mdo-schedule-scrape
+          name: sao6-scrape-debug
           path: |
-            sao6_rutas.json
+            sao6_data/
           retention-days: 30
