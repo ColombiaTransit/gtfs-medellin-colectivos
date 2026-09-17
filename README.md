@@ -68,12 +68,17 @@ scripts/build_gtfs.py            Joins geometry + operators.yml ->
   filled in.
 
 **Needs a human pass before this is trustworthy:**
-1. **Stop order along a route is a guess.** The ArcGIS stops layer has no
-   explicit sequence field, so `build_gtfs.py` sorts by `objectid` as a
-   proxy. Spot-check a route's stop order in the validator's map view after
-   your first real build — if it looks scrambled, this is the thing to fix
-   (e.g. by projecting each stop onto the route's shape and sorting by
-   distance-along-line instead).
+1. **Stop order along a route is now computed from geometry, not
+   guessed.** Each stop is snapped onto its route's own line (nearest
+   point on the polyline) and ordered by distance travelled along that
+   line — replacing the earlier `objectid` proxy, which had no real basis
+   (ArcGIS doesn't expose a sequence field at all). Stops landing more
+   than `SUSPICIOUS_SNAP_DIST_M` (150 m) from their route's line are
+   flagged in the build log rather than silently trusted — useful for
+   catching a bad `ruta` join or a genuinely mislabeled stop. Verified
+   against both a straight-line and a curved synthetic route with
+   deliberately scrambled `objectid` values; the geometric order came out
+   correct in both cases.
 2. **SAO6 and MDO are JavaScript single-page apps** — their route/timetable
    pages don't return usable HTML to a plain HTTP fetch, unlike Sotrames.
    To get their headway data you'll need one of:

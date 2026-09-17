@@ -30,11 +30,13 @@ live layers on 2026-09-17):
     ruta        - same itinerary id, links a stop back to its route
     globalid    - unique id (safe to use as stop_id)
     parada/label - stop name (identical in both fields)
-    objectid    - used here as a best-effort proxy for stop ORDER along
-                  the route, since ArcGIS doesn't expose an explicit
-                  sequence field. This is an assumption - if actual stop
-                  order looks wrong in the validator's map view, this is
-                  the first thing to revisit.
+
+  Stop ORDER along a route is not read from any ArcGIS field (there
+  isn't one) - each stop is snapped onto its route's own line geometry
+  and ordered by distance travelled along that line
+  (order_stops_along_line). Stops landing implausibly far from their
+  route's line (SUSPICIOUS_SNAP_DIST_M) are flagged in the build log as
+  a possible bad 'ruta' join rather than silently trusted.
 """
 
 import csv
@@ -56,9 +58,9 @@ ROUTE_LENGTH_FIELD = "SHAPE__Length"  # meters, already computed by ArcGIS
 STOP_ID_FIELD = "globalid"
 STOP_NAME_FIELD = "parada"
 STOP_ROUTE_FIELD = "ruta"
-STOP_ORDER_FIELD = "objectid"  # best-effort; see module docstring
 
 AVERAGE_SPEED_KMH = 18  # rough urban feeder-bus speed, for placeholder timing
+SUSPICIOUS_SNAP_DIST_M = 150  # flag stops further than this from their route's line
 
 DAY_TYPE_SERVICE_IDS = {
     "laborable": "Laborable",
@@ -99,6 +101,69 @@ def line_length_km(coords):
     for (lon1, lat1), (lon2, lat2) in zip(coords, coords[1:]):
         total += haversine_km(lon1, lat1, lon2, lat2)
     return total
+
+
+def _to_local_xy(lon, lat, lat0):
+    """Flat-earth approximation (equirectangular) centered at lat0, in
+    meters. Fine for city-scale distances (a few km); not for anything
+    long enough that Earth's curvature matters."""
+    meters_per_deg_lat = 111_320.0
+    meters_per_deg_lon = 111_320.0 * cos(radians(lat0))
+    x = lon * meters_per_deg_lon
+    y = lat * meters_per_deg_lat
+    return x, y
+
+
+def order_stops_along_line(stops, line_coords):
+    """Snap each stop onto the route's line geometry (nearest point on
+    the polyline) and return stops sorted by distance travelled along
+    that line to reach the snap point. Each returned stop dict gets an
+    extra '_snap_dist_m' (perpendicular distance from the stop to the
+    line, in meters) so obviously mismatched stops can be flagged.
+
+    This replaces sorting by 'objectid', which was only ever a guess -
+    ArcGIS doesn't expose a real stop-sequence field.
+    """
+    if len(line_coords) < 2 or not stops:
+        return stops
+
+    lat0 = sum(lat for _, lat in line_coords) / len(line_coords)
+    line_xy = [_to_local_xy(lon, lat, lat0) for lon, lat in line_coords]
+
+    # Cumulative distance to the START of each segment.
+    seg_cum = [0.0]
+    for (x1, y1), (x2, y2) in zip(line_xy, line_xy[1:]):
+        seg_cum.append(seg_cum[-1] + sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2))
+
+    def project(stop):
+        px, py = _to_local_xy(stop["stop_lon"], stop["stop_lat"], lat0)
+        best_dist_along = 0.0
+        best_perp_dist = float("inf")
+
+        for i, ((x1, y1), (x2, y2)) in enumerate(zip(line_xy, line_xy[1:])):
+            dx, dy = x2 - x1, y2 - y1
+            seg_len_sq = dx * dx + dy * dy
+            if seg_len_sq == 0:
+                t = 0.0
+            else:
+                t = ((px - x1) * dx + (py - y1) * dy) / seg_len_sq
+                t = max(0.0, min(1.0, t))
+            proj_x, proj_y = x1 + t * dx, y1 + t * dy
+            perp_dist = sqrt((px - proj_x) ** 2 + (py - proj_y) ** 2)
+
+            if perp_dist < best_perp_dist:
+                best_perp_dist = perp_dist
+                seg_len = sqrt(seg_len_sq) if seg_len_sq else 0.0
+                best_dist_along = seg_cum[i] + t * seg_len
+
+        return best_dist_along, best_perp_dist
+
+    for stop in stops:
+        dist_along, perp_dist = project(stop)
+        stop["_dist_along_m"] = dist_along
+        stop["_snap_dist_m"] = perp_dist
+
+    return sorted(stops, key=lambda s: s["_dist_along_m"])
 
 
 def write_csv(path: Path, fieldnames, rows):
@@ -150,7 +215,10 @@ def main():
     config_routes = {r["route_id"]: r for r in config["routes"]}
     operators = config["operators"]
 
-    # --- group stops by route (ruta), ordered by objectid -----------------
+    # --- group stops by route (ruta) - NOT sorted here; real stop order
+    # is computed per-route further down, once each route's shape
+    # geometry is known, by snapping stops onto that geometry (see
+    # order_stops_along_line). --------------------------------------------
     stops_by_route = {}
     all_stops_by_id = {}
     for feature in stops_gj["features"]:
@@ -164,13 +232,9 @@ def main():
             "stop_name": props.get(STOP_NAME_FIELD, ""),
             "stop_lat": lat,
             "stop_lon": lon,
-            "_order": props.get(STOP_ORDER_FIELD, 0),
         }
         stops_by_route.setdefault(route_key, []).append(stop_record)
         all_stops_by_id[stop_id] = stop_record
-
-    for route_key, stop_list in stops_by_route.items():
-        stop_list.sort(key=lambda s: s["_order"])
 
     # --- agency.txt ---------------------------------------------------------
     agency_rows = [
@@ -210,6 +274,7 @@ def main():
 
     skipped_no_config = []
     skipped_no_stops = []
+    suspicious_stops = []  # (route_id, stop_id, snap_distance_m) - stop far from its route's line
 
     # --- group route features by ruta, since ~most routes have MORE THAN
     # ONE feature row (confirmed via inspect_fields.py: 102 rows / 46
@@ -260,6 +325,14 @@ def main():
                 else geom["coordinates"][0]  # first part of a MultiLineString
             )
             coords.extend(seg_coords)
+
+        # Order stops by snapping each onto this route's own geometry and
+        # sorting by distance travelled along the line - not by
+        # 'objectid', which was only ever a guess.
+        route_stops = order_stops_along_line(route_stops, coords)
+        for stop in route_stops:
+            if stop.get("_snap_dist_m", 0) > SUSPICIOUS_SNAP_DIST_M:
+                suspicious_stops.append((route_id, stop["stop_id"], stop["_snap_dist_m"]))
 
         operator = cfg["operator"]
 
@@ -369,6 +442,15 @@ def main():
             f"WARNING: {len(skipped_no_stops)} configured route(s) have fewer "
             f"than 2 matching stops in the stops layer and were skipped "
             f"(check the 'ruta' join key matches): {sorted(set(skipped_no_stops))}"
+        )
+    if suspicious_stops:
+        print(
+            f"WARNING: {len(suspicious_stops)} stop(s) are more than "
+            f"{SUSPICIOUS_SNAP_DIST_M}m from their route's own geometry after "
+            f"snapping - possible bad 'ruta' join or a genuinely offset stop. "
+            f"Worth checking on a map: "
+            f"{[(r, s, round(d)) for r, s, d in suspicious_stops[:10]]}"
+            f"{'...' if len(suspicious_stops) > 10 else ''}"
         )
 
     if not route_rows:
