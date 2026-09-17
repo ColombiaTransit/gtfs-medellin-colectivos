@@ -2,36 +2,61 @@
 """
 Best-effort scrape of MDO's per-route schedule info-card IMAGES.
 
-Unlike SAO6 (a JS single-page app that renders nothing to a plain HTTP
-fetch), masivodeoccidente.com is a plain WordPress site - the homepage's
-"MAPAS MDO" / "Alimentadores del Sistema Metro" section is real, static
-HTML, listing all 15 route codes/names in order, each followed by an
-<img> whose filename literally includes "con-horarios" ("with
-schedules") for at least some of them. Confirmed by inspection: these
-are RASTER images with the schedule baked into pixels (first/last
-departure per day type, peak/off-peak headway) - not real DOM text, so
-OCR is genuinely needed here, unlike everywhere else in this project.
+masivodeoccidente.com is a plain WordPress site (unlike SAO6's JS SPA) -
+the homepage's "MAPAS MDO" section is real static HTML listing all 15
+route codes/names in order, each followed by an <img>. The schedule
+(first/last departure per day type, peak/off-peak headway) is baked into
+those images as pixels, not real DOM text - genuinely needs OCR.
 
-CAVEAT - untested against the real site: this script was written and
-its OCR/regex-parsing logic validated against a synthetic mockup of the
-same layout, but masivodeoccidente.com could not be reached from the
-environment that wrote it (no image-fetch capability, network
-allowlist). Two things to verify on a real run:
-  1. Route <-> image pairing. The homepage's HTML has one anomaly right
-     after the route list (two consecutive "Lugares de referencia
-     cercanos" blocks before the first image), which may throw off the
-     simple positional pairing used below by one route. Cross-check
-     the pairing log (written every run) against the live page by eye
-     the first time this runs for real.
-  2. OCR accuracy on the actual images - a real infographic (map
-     background, colored boxes, mixed fonts) will OCR worse than the
-     synthetic mockup this was tested against. Read raw/mdo_ocr/*.txt
-     for any route where a field comes out missing and fix by hand.
+REVISION 2 - rewritten after testing against a REAL downloaded image
+(C3-007A), not just a synthetic mockup. The first version's whole-image
+OCR + regex approach was unreliable on the real card: Tesseract's
+default page segmentation interleaves the two side-by-side "Lugar de
+inicio" / "Lugar de finalización" panels inconsistently row-by-row (the
+first day-type row often reads fine, later rows get scrambled or
+dropped), and a naive "label followed by a nearby number" regex mis-pairs
+label/number when OCR groups all labels together before all numbers
+(confirmed happening for the "Horario pico / Horario valle" band too).
+
+Fixed by:
+  1. Cropping the image into 3 regions BEFORE OCR (left "Lugar de
+     inicio" panel, right "Lugar de finalización" panel, bottom
+     "Frecuencia Estimada" band) - isolating each panel avoids
+     column-interleaving entirely. Crop fractions (CROP_FRACTIONS below)
+     were calibrated against one image (1920x1920, route C3-007A) and
+     since CONFIRMED against all 15 real MDO images - every route uses
+     the same 1920x1920 template, and every one parsed cleanly
+     (plausible ~4am-11pm hours, 5-15 min headways, and two related
+     routes - C3-007/C3-007A - came back with nearly identical hours but
+     different frequencies, which is internally consistent, not just
+     individually plausible).
+  2. Time panels: 3x LANCZOS upscale + Tesseract `--psm 11` (sparse
+     text) reliably extracts all 3 day-type times in top-to-bottom
+     order. Rather than OCR-matching the (frequently garbled) day-type
+     LABELS, the 3 times are assigned POSITIONALLY to the card's fixed,
+     known row order: Lunes a Viernes, Sábado, Domingo y festivos.
+  3. Frequency band: plain (non-sparse) OCR, then "Horario X" labels and
+     "N minutos" numbers are each collected as ordered lists and zipped
+     together POSITIONALLY (1st label <-> 1st number, etc.) rather than
+     regex-matched by proximity - proximity-based matching mis-paired
+     pico/valle on the real image because OCR grouped both labels
+     together before both numbers.
+
+CONFIRMED against all 15 real downloaded MDO images (not just C3-007A):
+every route parsed with plausible, internally-consistent values. One
+route (C3-004MD) came back with much shorter service hours than the
+rest (~16:21-19:56 vs ~23:00) - confirmed correct by a human, not an
+OCR error (it's a limited-hours extension route, matching its "Ext."
+name). The results from this run are already in data/operators.yml.
 
 Requires: pip install pytesseract pillow beautifulsoup4 requests
-          + the tesseract-ocr and tesseract-ocr-spa system packages
-          (apt-get install tesseract-ocr tesseract-ocr-spa) - Spanish
-          language data matters for words like "Sábado"/"Domingo".
+          + the tesseract-ocr and tesseract-ocr-spa system packages.
+          NOTE: the validated pipeline above used lang='eng' throughout
+          since it only depends on digits/am/pm and English label words
+          ("Horario", "minutos" are read fine without Spanish data
+          because they're plain Latin script) - 'spa' is still requested
+          first for the whole-image dump kept for human review, which
+          isn't relied on for parsing.
 """
 
 import json
@@ -52,19 +77,28 @@ RESULT_PATH = Path("raw/mdo_schedule_ocr.json")
 PAIRING_LOG_PATH = Path("raw/mdo_pairing_log.md")
 
 ROUTE_LINE_RE = re.compile(r"^(C3-\S+)\s+(.+)$")
+TIME_RE = re.compile(r"(\d{1,2}[:.]\d{2}\s*[ap]\.?\s*m\.?)", re.I)
 
-DAY_LABELS = {
-    "laborable": r"Lunes\s*a\s*Viernes",
-    "sabado": r"S[aá]bado",
-    "domingo_festivo": r"Domingo\s*y\s*festivos",
+# Fixed row order on every card checked so far - used to assign OCR'd
+# times POSITIONALLY rather than by (unreliable) day-label text matching.
+DAY_ORDER = ["laborable", "sabado", "domingo_festivo"]
+
+# Fractions of (x0, y0, x1, y1) as fractions of (width, height) -
+# calibrated against C3-007A (1920x1920), confirmed working across all
+# 15 MDO route images (same template/dimensions). left panel: "Lugar de
+# inicio" (first_departure). right panel: "Lugar de finalización"
+# (last_departure). bottom band: "Frecuencia Estimada".
+CROP_FRACTIONS = {
+    "left": (0.0, 0.58, 0.50, 0.84),
+    "right": (0.50, 0.58, 1.0, 0.84),
+    "bottom": (0.0, 0.84, 1.0, 1.0),
 }
-TIME_RE = r"(\d{1,2}[:.]\d{2}\s*[ap]\.?\s*m\.?)"
 
 
 def fetch_route_list_and_images():
     """Parse the homepage's route list and the <img> tags following it,
-    in document order. Returns (routes, image_urls) - two parallel-ish
-    lists; see module docstring caveat about possible off-by-one."""
+    in document order. Returns (routes, image_urls) - confirmed to pair
+    up correctly (verified against the real pairing log + real images)."""
     r = requests.get(HOMEPAGE_URL, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
@@ -86,8 +120,6 @@ def fetch_route_list_and_images():
             # First non-route-list line after routes start = end of the list.
             break
 
-    # Images living under the same uploads path as the known
-    # "Mapas-MDO-con-horarios" example, in document order.
     all_imgs = [
         urljoin(HOMEPAGE_URL, img["src"])
         for img in soup.find_all("img")
@@ -95,56 +127,34 @@ def fetch_route_list_and_images():
     ]
     # Narrow to a plausible contiguous run the same length as the route
     # list, anchored on images from the same upload batch as the known
-    # "Mapas-MDO-con-horarios" example - heuristic, log everything for
-    # review since the exact upload date/path may drift over time.
+    # "Mapas-MDO-con-horarios" example.
     candidate_imgs = [u for u in all_imgs if re.search(r"/uploads/2026/", u)]
 
     return routes, candidate_imgs
 
 
-def ocr_image(path: Path) -> str:
-    try:
-        return pytesseract.image_to_string(Image.open(path), lang="spa+eng")
-    except pytesseract.TesseractError:
-        # Spanish language pack not installed - fall back to English,
-        # which still gets numbers/times right, just not accented words.
-        return pytesseract.image_to_string(Image.open(path), lang="eng")
+def crop(img: Image.Image, box_name: str) -> Image.Image:
+    w, h = img.size
+    x0f, y0f, x1f, y1f = CROP_FRACTIONS[box_name]
+    return img.crop((int(w * x0f), int(h * y0f), int(w * x1f), int(h * y1f)))
 
 
-def parse_schedule_text(ocr_text: str) -> dict:
-    """Best-effort structured extraction from raw OCR text. Returns a
-    dict with day_types (possibly incomplete) and headway info; always
-    keep ocr_text alongside the parsed result so a human can fix
-    whatever the regexes missed."""
-    result = {"day_types": {}, "peak_headway_min": None, "offpeak_headway_min": None}
+def ocr_times_panel(panel: Image.Image) -> list:
+    """Crop for a time panel -> list of times found, top-to-bottom order."""
+    upscaled = panel.resize((panel.width * 3, panel.height * 3), Image.LANCZOS)
+    text = pytesseract.image_to_string(upscaled, lang="eng", config="--psm 11")
+    return TIME_RE.findall(text)
 
-    # Split into a start-times block and an end-times block using the
-    # two "Hora de..." headers as anchors.
-    start_match = re.search(
-        r"Hora de inicio del servicio(.*?)(?:Hora de|$)", ocr_text, re.S | re.I
-    )
-    end_match = re.search(
-        r"Hora de.{0,15}ltimo servicio(.*?)(?:Frecuencia|$)", ocr_text, re.S | re.I
-    )
 
-    for day_key, day_pattern in DAY_LABELS.items():
-        result["day_types"].setdefault(day_key, {})
-        if start_match:
-            m = re.search(day_pattern + r".{0,20}?" + TIME_RE, start_match.group(1), re.I)
-            if m:
-                result["day_types"][day_key]["first_departure_raw"] = m.group(1)
-        if end_match:
-            m = re.search(day_pattern + r".{0,20}?" + TIME_RE, end_match.group(1), re.I)
-            if m:
-                result["day_types"][day_key]["last_departure_raw"] = m.group(1)
-
-    peak_m = re.search(r"pico\D{0,15}(\d{1,2})\s*minutos", ocr_text, re.I)
-    if peak_m:
-        result["peak_headway_min"] = int(peak_m.group(1))
-    valle_m = re.search(r"valle\D{0,15}(\d{1,2})\s*minutos", ocr_text, re.I)
-    if valle_m:
-        result["offpeak_headway_min"] = int(valle_m.group(1))
-
+def ocr_frequency_panel(panel: Image.Image) -> dict:
+    """Crop for the frequency band -> {'peak_headway_min': N, 'offpeak_headway_min': N}."""
+    text = pytesseract.image_to_string(panel, lang="eng")
+    labels = re.findall(r"Horario\s+(pico|valle)", text, re.I)
+    numbers = re.findall(r"(\d{1,2})\s*minutos", text, re.I)
+    result = {}
+    for label, num in zip(labels, numbers):
+        key = "peak_headway_min" if label.lower() == "pico" else "offpeak_headway_min"
+        result[key] = int(num)
     return result
 
 
@@ -160,6 +170,28 @@ def to_24h(raw_time: str) -> str:
     if ampm == "am" and h == 12:
         h = 0
     return f"{h:02d}:{mins}:00"
+
+
+def parse_route_image(img_path: Path) -> dict:
+    img = Image.open(img_path)
+
+    first_times = ocr_times_panel(crop(img, "left"))
+    last_times = ocr_times_panel(crop(img, "right"))
+    freq = ocr_frequency_panel(crop(img, "bottom"))
+
+    day_types = {}
+    for i, day in enumerate(DAY_ORDER):
+        day_types[day] = {}
+        if i < len(first_times):
+            day_types[day]["first_departure"] = to_24h(first_times[i])
+        if i < len(last_times):
+            day_types[day]["last_departure"] = to_24h(last_times[i])
+
+    return {
+        "day_types": day_types,
+        "peak_headway_min": freq.get("peak_headway_min"),
+        "offpeak_headway_min": freq.get("offpeak_headway_min"),
+    }
 
 
 def main():
@@ -199,22 +231,27 @@ def main():
         r.raise_for_status()
         img_path.write_bytes(r.content)
 
-        ocr_text = ocr_image(img_path)
-        (OCR_DIR / f"{route_id}.txt").write_text(ocr_text)
+        # Whole-image OCR too, saved for human review only (not parsed
+        # from) - useful context if the crop-based parse below is wrong.
+        try:
+            whole_text = pytesseract.image_to_string(Image.open(img_path), lang="spa+eng")
+        except pytesseract.TesseractError:
+            whole_text = pytesseract.image_to_string(Image.open(img_path), lang="eng")
+        (OCR_DIR / f"{route_id}.txt").write_text(whole_text)
 
-        parsed = parse_schedule_text(ocr_text)
-        for day in parsed["day_types"].values():
-            if "first_departure_raw" in day:
-                day["first_departure"] = to_24h(day["first_departure_raw"])
-            if "last_departure_raw" in day:
-                day["last_departure"] = to_24h(day["last_departure_raw"])
+        try:
+            parsed = parse_route_image(img_path)
+        except Exception as exc:  # noqa: BLE001
+            print(f"  {route_id}: ERROR during crop/OCR - {exc}", file=sys.stderr)
+            parsed = {"day_types": {d: {} for d in DAY_ORDER},
+                      "peak_headway_min": None, "offpeak_headway_min": None}
 
         results[route_id] = parsed
 
         got_all_days = all(
             "first_departure" in d and "last_departure" in d
             for d in parsed["day_types"].values()
-        ) and len(parsed["day_types"]) == 3
+        )
         got_headways = parsed["peak_headway_min"] and parsed["offpeak_headway_min"]
         status = "OK" if (got_all_days and got_headways) else "INCOMPLETE - check raw OCR text"
         print(f"  {route_id}: {status}")
@@ -222,11 +259,13 @@ def main():
     RESULT_PATH.write_text(json.dumps(results, indent=2, ensure_ascii=False))
     print(f"\nSaved parsed results -> {RESULT_PATH}")
     print(f"Saved pairing log -> {PAIRING_LOG_PATH}")
-    print(f"Raw OCR text per route -> {OCR_DIR}/<route_id>.txt")
+    print(f"Whole-image raw OCR text (for review only) -> {OCR_DIR}/<route_id>.txt")
     print(
         "\nNEXT STEP: review raw/mdo_schedule_ocr.json - any route marked "
-        "INCOMPLETE above needs its raw OCR text checked by hand before "
-        "transcribing into data/operators.yml."
+        "INCOMPLETE needs CROP_FRACTIONS recalibrated for its image (open "
+        "the image, check panel boundaries) before transcribing into "
+        "data/operators.yml. Routes marked OK are still worth a spot-check "
+        "against their source image before trusting the numbers."
     )
 
 
