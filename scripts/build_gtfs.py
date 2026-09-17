@@ -114,56 +114,93 @@ def _to_local_xy(lon, lat, lat0):
     return x, y
 
 
-def order_stops_along_line(stops, line_coords):
-    """Snap each stop onto the route's line geometry (nearest point on
-    the polyline) and return stops sorted by distance travelled along
-    that line to reach the snap point. Each returned stop dict gets an
-    extra '_snap_dist_m' (perpendicular distance from the stop to the
-    line, in meters) so obviously mismatched stops can be flagged.
-
-    This replaces sorting by 'objectid', which was only ever a guess -
-    ArcGIS doesn't expose a real stop-sequence field.
-    """
-    if len(line_coords) < 2 or not stops:
-        return stops
-
+def _prepare_line(line_coords):
+    """Precompute local-xy coordinates and cumulative segment-start
+    distances for a line, for reuse across many point projections."""
     lat0 = sum(lat for _, lat in line_coords) / len(line_coords)
     line_xy = [_to_local_xy(lon, lat, lat0) for lon, lat in line_coords]
-
-    # Cumulative distance to the START of each segment.
     seg_cum = [0.0]
     for (x1, y1), (x2, y2) in zip(line_xy, line_xy[1:]):
         seg_cum.append(seg_cum[-1] + sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2))
+    return line_xy, seg_cum, lat0
 
-    def project(stop):
-        px, py = _to_local_xy(stop["stop_lon"], stop["stop_lat"], lat0)
-        best_dist_along = 0.0
-        best_perp_dist = float("inf")
 
-        for i, ((x1, y1), (x2, y2)) in enumerate(zip(line_xy, line_xy[1:])):
-            dx, dy = x2 - x1, y2 - y1
-            seg_len_sq = dx * dx + dy * dy
-            if seg_len_sq == 0:
-                t = 0.0
-            else:
-                t = ((px - x1) * dx + (py - y1) * dy) / seg_len_sq
-                t = max(0.0, min(1.0, t))
-            proj_x, proj_y = x1 + t * dx, y1 + t * dy
-            perp_dist = sqrt((px - proj_x) ** 2 + (py - proj_y) ** 2)
+def _project_point(lon, lat, line_xy, seg_cum, lat0):
+    """Snap one point onto a prepared line. Returns (dist_along_m,
+    perp_dist_m): distance travelled along the line to the nearest
+    point, and the point's perpendicular distance off the line."""
+    if len(line_xy) < 2:
+        return 0.0, float("inf")
 
-            if perp_dist < best_perp_dist:
-                best_perp_dist = perp_dist
-                seg_len = sqrt(seg_len_sq) if seg_len_sq else 0.0
-                best_dist_along = seg_cum[i] + t * seg_len
+    px, py = _to_local_xy(lon, lat, lat0)
+    best_dist_along = 0.0
+    best_perp_dist = float("inf")
 
-        return best_dist_along, best_perp_dist
+    for i, ((x1, y1), (x2, y2)) in enumerate(zip(line_xy, line_xy[1:])):
+        dx, dy = x2 - x1, y2 - y1
+        seg_len_sq = dx * dx + dy * dy
+        if seg_len_sq == 0:
+            t = 0.0
+        else:
+            t = ((px - x1) * dx + (py - y1) * dy) / seg_len_sq
+            t = max(0.0, min(1.0, t))
+        proj_x, proj_y = x1 + t * dx, y1 + t * dy
+        perp_dist = sqrt((px - proj_x) ** 2 + (py - proj_y) ** 2)
+
+        if perp_dist < best_perp_dist:
+            best_perp_dist = perp_dist
+            seg_len = sqrt(seg_len_sq) if seg_len_sq else 0.0
+            best_dist_along = seg_cum[i] + t * seg_len
+
+    return best_dist_along, best_perp_dist
+
+
+def assign_stops_to_directions(stops, direction_coords):
+    """direction_coords: {sentido_value: line_coords} - one entry per
+    direction a route actually has (usually 1 or 2).
+
+    The 'paradas' layer has no 'sentido' field, so every stop tagged
+    with a given 'ruta' is a candidate for EVERY direction that route
+    has - we can't tell from the data alone which direction a stop
+    belongs to. Instead of assuming they all belong to whichever
+    direction we happened to pick a shape from (which produced dozens of
+    false "stop far from route" flags when outbound/return use different
+    streets), each stop is snapped against ALL of the route's directions
+    and assigned to whichever one it's actually closest to.
+
+    Returns {sentido_value: [stops ordered by distance along that
+    direction's line]}. Each stop dict gains '_dist_along_m' (for its
+    assigned direction) and '_snap_dist_m' (perpendicular distance to
+    that direction's line - still a real distance to check, just no
+    longer inflated by comparing against the wrong direction).
+    """
+    prepared = {
+        sentido: _prepare_line(coords)
+        for sentido, coords in direction_coords.items()
+        if len(coords) >= 2
+    }
+
+    by_sentido = {sentido: [] for sentido in prepared}
 
     for stop in stops:
-        dist_along, perp_dist = project(stop)
-        stop["_dist_along_m"] = dist_along
-        stop["_snap_dist_m"] = perp_dist
+        best_sentido, best_dist_along, best_perp = None, 0.0, float("inf")
+        for sentido, (line_xy, seg_cum, lat0) in prepared.items():
+            dist_along, perp = _project_point(
+                stop["stop_lon"], stop["stop_lat"], line_xy, seg_cum, lat0
+            )
+            if perp < best_perp:
+                best_sentido, best_dist_along, best_perp = sentido, dist_along, perp
 
-    return sorted(stops, key=lambda s: s["_dist_along_m"])
+        if best_sentido is None:
+            continue
+        stop["_dist_along_m"] = best_dist_along
+        stop["_snap_dist_m"] = best_perp
+        by_sentido[best_sentido].append(stop)
+
+    for stop_list in by_sentido.values():
+        stop_list.sort(key=lambda s: s["_dist_along_m"])
+
+    return by_sentido
 
 
 def write_csv(path: Path, fieldnames, rows):
@@ -274,7 +311,8 @@ def main():
 
     skipped_no_config = []
     skipped_no_stops = []
-    suspicious_stops = []  # (route_id, stop_id, snap_distance_m) - stop far from its route's line
+    skipped_direction_no_stops = []  # (route_id, sentido) - direction had <2 stops assigned
+    suspicious_stops = []  # (route_id, stop_id, snap_distance_m) - stop far from BOTH its route's directions
 
     # --- group route features by ruta, since ~most routes have MORE THAN
     # ONE feature row (confirmed via inspect_fields.py: 102 rows / 46
@@ -283,11 +321,8 @@ def main():
     # shape_pt_sequence numbers for every such route - fixed by grouping
     # first. Within a ruta, rows can differ by 'sentido' (a real
     # direction pair) or share the same 'sentido' (split line segments of
-    # one direction, meant to be concatenated). Since this feed models
-    # one shape per route_id (direction_id is always 0 - seven "two
-    # directions" is not modeled as separate GTFS directions yet), we
-    # pick ONE sentido group per ruta (the smallest sentido value seen,
-    # for determinism) and concatenate its segments in objectid order.
+    # one direction, meant to be concatenated) - segments sharing a
+    # sentido are concatenated in objectid order below.
     features_by_route = {}
     for feature in routes_gj["features"]:
         route_id = str(feature["properties"].get(ROUTE_ID_FIELD))
@@ -304,35 +339,55 @@ def main():
             skipped_no_stops.append(route_id)
             continue
 
-        # Pick one sentido group; concatenate its segments in objectid order.
-        by_sentido = {}
+        # Build ONE set of coords per sentido this route actually has
+        # (usually 1 or 2), concatenating same-sentido segments in
+        # objectid order.
+        features_by_sentido = {}
         for f in route_features:
-            by_sentido.setdefault(f["properties"].get("sentido"), []).append(f)
-        chosen_sentido = sorted(by_sentido.keys(), key=lambda s: (s is None, s))[0]
-        segments = sorted(
-            by_sentido[chosen_sentido],
-            key=lambda f: f["properties"].get("objectid", 0),
-        )
+            features_by_sentido.setdefault(f["properties"].get("sentido"), []).append(f)
 
-        props = segments[0]["properties"]  # for route-level metadata (linea, etc.)
+        direction_coords = {}
+        direction_length_km = {}
+        for sentido, segs in features_by_sentido.items():
+            segs = sorted(segs, key=lambda f: f["properties"].get("objectid", 0))
+            coords = []
+            for seg in segs:
+                geom = seg["geometry"]
+                seg_coords = (
+                    geom["coordinates"]
+                    if geom["type"] == "LineString"
+                    else geom["coordinates"][0]  # first part of a MultiLineString
+                )
+                coords.extend(seg_coords)
+            direction_coords[sentido] = coords
 
-        coords = []
-        for seg in segments:
-            geom = seg["geometry"]
-            seg_coords = (
-                geom["coordinates"]
-                if geom["type"] == "LineString"
-                else geom["coordinates"][0]  # first part of a MultiLineString
+            seg_lengths = [s["properties"].get(ROUTE_LENGTH_FIELD) for s in segs]
+            direction_length_km[sentido] = (
+                sum(seg_lengths) / 1000 if all(seg_lengths) else line_length_km(coords)
             )
-            coords.extend(seg_coords)
 
-        # Order stops by snapping each onto this route's own geometry and
-        # sorting by distance travelled along the line - not by
-        # 'objectid', which was only ever a guess.
-        route_stops = order_stops_along_line(route_stops, coords)
-        for stop in route_stops:
-            if stop.get("_snap_dist_m", 0) > SUSPICIOUS_SNAP_DIST_M:
-                suspicious_stops.append((route_id, stop["stop_id"], stop["_snap_dist_m"]))
+        # route-level metadata (linea, etc.) from whichever direction has
+        # the smallest sentido value, just for a consistent, deterministic
+        # choice - doesn't affect either direction's geometry or stops.
+        primary_sentido = sorted(direction_coords.keys(), key=lambda s: (s is None, s))[0]
+        primary_props = sorted(
+            features_by_sentido[primary_sentido],
+            key=lambda f: f["properties"].get("objectid", 0),
+        )[0]["properties"]
+
+        # Stops have no 'sentido' field at all - every stop tagged with
+        # this 'ruta' is a candidate for EVERY direction the route has.
+        # Snap each stop against all of them and keep whichever is
+        # actually closest, instead of assuming they all belong to one
+        # arbitrarily chosen direction (which produced dozens of false
+        # "stop far from route" flags on routes whose outbound/return
+        # legs use different streets).
+        stops_by_sentido = assign_stops_to_directions(route_stops, direction_coords)
+
+        for sentido, stop_list in stops_by_sentido.items():
+            for stop in stop_list:
+                if stop.get("_snap_dist_m", 0) > SUSPICIOUS_SNAP_DIST_M:
+                    suspicious_stops.append((route_id, stop["stop_id"], stop["_snap_dist_m"]))
 
         operator = cfg["operator"]
 
@@ -341,87 +396,100 @@ def main():
             "agency_id": operator,
             "route_short_name": cfg.get("route_short_name", route_id),
             "route_long_name": cfg.get(
-                "route_long_name", props.get(ROUTE_NAME_FIELD, "")
+                "route_long_name", primary_props.get(ROUTE_NAME_FIELD, "")
             ),
             "route_type": 3,  # bus
         })
 
-        for seq, (lon, lat) in enumerate(coords):
-            shape_rows.append({
-                "shape_id": route_id,
-                "shape_pt_lat": lat,
-                "shape_pt_lon": lon,
-                "shape_pt_sequence": seq,
-            })
+        # direction_id: smallest sentido -> 0, next -> 1, etc. (only
+        # matters for internal consistency between shapes/trips - GTFS
+        # doesn't care which physical direction is "0").
+        sentido_to_direction_id = {
+            sentido: i
+            for i, sentido in enumerate(
+                sorted(direction_coords.keys(), key=lambda s: (s is None, s))
+            )
+        }
 
-        # Sum SHAPE__Length across the chosen sentido's segments if every
-        # segment has it; otherwise recompute from the concatenated coords.
-        seg_lengths = [s["properties"].get(ROUTE_LENGTH_FIELD) for s in segments]
-        if all(seg_lengths):
-            length_km = sum(seg_lengths) / 1000
-        else:
-            length_km = line_length_km(coords)
-        running_time_min = max(1, round(length_km / AVERAGE_SPEED_KMH * 60))
+        for sentido, coords in direction_coords.items():
+            direction_id = sentido_to_direction_id[sentido]
+            shape_id = f"{route_id}_{direction_id}"
 
-        n_stops = len(route_stops)
-        for day_type, sched in cfg["day_types"].items():
-            service_id = DAY_TYPE_SERVICE_IDS.get(day_type, day_type)
-            trip_id = f"{route_id}_{service_id}"
+            direction_stops = stops_by_sentido.get(sentido, [])
+            if len(direction_stops) < 2:
+                skipped_direction_no_stops.append((route_id, sentido))
+                continue
 
-            trip_rows.append({
-                "route_id": route_id,
-                "service_id": service_id,
-                "trip_id": trip_id,
-                "shape_id": route_id,
-                "direction_id": 0,
-            })
-
-            # Space stops evenly across the placeholder running time.
-            # Real per-segment timings would replace this if ever available.
-            for i, stop in enumerate(route_stops):
-                offset_min = running_time_min * i / (n_stops - 1)
-                t = _add_minutes(sched["first_departure"], offset_min)
-                stop_time_rows.append({
-                    "trip_id": trip_id,
-                    "stop_id": stop["stop_id"],
-                    "stop_sequence": i,
-                    "arrival_time": t,
-                    "departure_time": t,
+            for seq, (lon, lat) in enumerate(coords):
+                shape_rows.append({
+                    "shape_id": shape_id,
+                    "shape_pt_lat": lat,
+                    "shape_pt_lon": lon,
+                    "shape_pt_sequence": seq,
                 })
-                used_stop_ids.add(stop["stop_id"])
 
-            windows = sched.get("peak_windows") or []
-            if not windows:
-                freq_rows.append({
+            length_km = direction_length_km[sentido]
+            running_time_min = max(1, round(length_km / AVERAGE_SPEED_KMH * 60))
+            n_stops = len(direction_stops)
+
+            for day_type, sched in cfg["day_types"].items():
+                service_id = DAY_TYPE_SERVICE_IDS.get(day_type, day_type)
+                trip_id = f"{route_id}_{direction_id}_{service_id}"
+
+                trip_rows.append({
+                    "route_id": route_id,
+                    "service_id": service_id,
                     "trip_id": trip_id,
-                    "start_time": sched["first_departure"],
-                    "end_time": sched["last_departure"],
-                    "headway_secs": int(sched["offpeak_headway_min"] * 60),
-                    "exact_times": 0,
+                    "shape_id": shape_id,
+                    "direction_id": direction_id,
                 })
-            else:
-                bounds = sorted(windows, key=lambda w: w[0])
-                cursor = sched["first_departure"]
-                for start, end in bounds:
-                    if cursor < start:
-                        freq_rows.append({
-                            "trip_id": trip_id, "start_time": cursor, "end_time": start,
-                            "headway_secs": int(sched["offpeak_headway_min"] * 60),
-                            "exact_times": 0,
-                        })
-                    freq_rows.append({
-                        "trip_id": trip_id, "start_time": start, "end_time": end,
-                        "headway_secs": int(sched["peak_headway_min"] * 60),
-                        "exact_times": 0,
+
+                # Space stops evenly across the placeholder running time.
+                # Real per-segment timings would replace this if ever available.
+                for i, stop in enumerate(direction_stops):
+                    offset_min = running_time_min * i / (n_stops - 1)
+                    t = _add_minutes(sched["first_departure"], offset_min)
+                    stop_time_rows.append({
+                        "trip_id": trip_id,
+                        "stop_id": stop["stop_id"],
+                        "stop_sequence": i,
+                        "arrival_time": t,
+                        "departure_time": t,
                     })
-                    cursor = end
-                if cursor < sched["last_departure"]:
+                    used_stop_ids.add(stop["stop_id"])
+
+                windows = sched.get("peak_windows") or []
+                if not windows:
                     freq_rows.append({
-                        "trip_id": trip_id, "start_time": cursor,
+                        "trip_id": trip_id,
+                        "start_time": sched["first_departure"],
                         "end_time": sched["last_departure"],
                         "headway_secs": int(sched["offpeak_headway_min"] * 60),
                         "exact_times": 0,
                     })
+                else:
+                    bounds = sorted(windows, key=lambda w: w[0])
+                    cursor = sched["first_departure"]
+                    for start, end in bounds:
+                        if cursor < start:
+                            freq_rows.append({
+                                "trip_id": trip_id, "start_time": cursor, "end_time": start,
+                                "headway_secs": int(sched["offpeak_headway_min"] * 60),
+                                "exact_times": 0,
+                            })
+                        freq_rows.append({
+                            "trip_id": trip_id, "start_time": start, "end_time": end,
+                            "headway_secs": int(sched["peak_headway_min"] * 60),
+                            "exact_times": 0,
+                        })
+                        cursor = end
+                    if cursor < sched["last_departure"]:
+                        freq_rows.append({
+                            "trip_id": trip_id, "start_time": cursor,
+                            "end_time": sched["last_departure"],
+                            "headway_secs": int(sched["offpeak_headway_min"] * 60),
+                            "exact_times": 0,
+                        })
 
     # Only emit stops actually referenced by a built trip.
     stop_rows = [
@@ -443,11 +511,21 @@ def main():
             f"than 2 matching stops in the stops layer and were skipped "
             f"(check the 'ruta' join key matches): {sorted(set(skipped_no_stops))}"
         )
+    if skipped_direction_no_stops:
+        print(
+            f"NOTE: {len(skipped_direction_no_stops)} direction(s) had fewer "
+            f"than 2 stops assigned to them (out of all directions their route "
+            f"has) and were skipped - normal for a route where one direction "
+            f"genuinely has few/no ArcGIS-mapped stops: "
+            f"{skipped_direction_no_stops[:10]}"
+            f"{'...' if len(skipped_direction_no_stops) > 10 else ''}"
+        )
     if suspicious_stops:
         print(
             f"WARNING: {len(suspicious_stops)} stop(s) are more than "
-            f"{SUSPICIOUS_SNAP_DIST_M}m from their route's own geometry after "
-            f"snapping - possible bad 'ruta' join or a genuinely offset stop. "
+            f"{SUSPICIOUS_SNAP_DIST_M}m from BOTH of their route's directions "
+            f"(after checking each direction and keeping the closer one) - "
+            f"possible bad 'ruta' join or a genuinely offset stop. "
             f"Worth checking on a map: "
             f"{[(r, s, round(d)) for r, s, d in suspicious_stops[:10]]}"
             f"{'...' if len(suspicious_stops) > 10 else ''}"

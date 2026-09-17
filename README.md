@@ -68,17 +68,32 @@ scripts/build_gtfs.py            Joins geometry + operators.yml ->
   filled in.
 
 **Needs a human pass before this is trustworthy:**
-1. **Stop order along a route is now computed from geometry, not
-   guessed.** Each stop is snapped onto its route's own line (nearest
-   point on the polyline) and ordered by distance travelled along that
-   line — replacing the earlier `objectid` proxy, which had no real basis
-   (ArcGIS doesn't expose a sequence field at all). Stops landing more
-   than `SUSPICIOUS_SNAP_DIST_M` (150 m) from their route's line are
-   flagged in the build log rather than silently trusted — useful for
-   catching a bad `ruta` join or a genuinely mislabeled stop. Verified
-   against both a straight-line and a curved synthetic route with
-   deliberately scrambled `objectid` values; the geometric order came out
-   correct in both cases.
+1. **Stop order is geometric, and both directions are now modeled
+   separately when a route actually has two.** The first real CI run
+   using the geometric ordering flagged 93 stops (up to 671 m off) as
+   "far from their route" — the cause was structural, not noise: `ruta`
+   codes like `C3-007` have a genuine outbound/return direction pair
+   (`sentido` 1 and 2), but the `paradas` layer has no `sentido` field at
+   all, so every stop tagged with that `ruta` was a candidate for
+   *either* direction, and the pipeline was only ever building a shape
+   for one of them. Routes whose outbound and return legs use different
+   streets had a real chunk of their stops sitting nowhere near the one
+   direction that got built.
+
+   Fixed by building a separate shape per `sentido` a route has (usually
+   1 or 2, `direction_id 0`/`1`, `shape_id` `{route_id}_{direction_id}`),
+   and snapping each stop against *all* of a route's directions,
+   assigning it to whichever it's actually closest to
+   (`assign_stops_to_directions`) — rather than assuming every stop
+   belongs to one pre-chosen direction. Verified against both a
+   synthetic route with genuinely different outbound/return streets
+   (stops correctly split, zero false flags) and the full 46-route set
+   with both directions sharing one street (the common feeder-bus case —
+   stops cluster to one direction, the other is skipped for having too
+   few stops, gracefully degrading to the old single-direction
+   behavior rather than erroring). `SUSPICIOUS_SNAP_DIST_M` (150 m) now
+   flags only stops far from *both* of their route's directions — a much
+   stronger signal of an actual bad join or offset stop than before.
 2. **SAO6 and MDO are JavaScript single-page apps** — their route/timetable
    pages don't return usable HTML to a plain HTTP fetch, unlike Sotrames.
    To get their headway data you'll need one of:
