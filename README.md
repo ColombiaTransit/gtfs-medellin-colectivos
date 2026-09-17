@@ -34,7 +34,16 @@ scripts/inspect_fields.py        Prints both layers' schema (for CI logs
 
 scripts/scrape_sotrames.py       Sotrames' static HTML -> raw route/table
                                   dump for manual reconciliation
-                                  (SAO6 + MDO are JS SPAs - see below)
+                                  (SAO6 is a JS SPA - see below; MDO
+                                  turned out to be plain WordPress, see
+                                  scrape_mdo.py instead)
+
+scripts/scrape_mdo.py            MDO's per-route schedule IMAGES ->
+                                  OCR'd + regex-parsed schedule data
+                                  (manual workflow: .github/workflows/
+                                  scrape-mdo.yml - uploads results as an
+                                  artifact for human review, does NOT
+                                  touch data/operators.yml automatically)
 
 data/operators.yml                Human-curated: route_id -> operator,
                                   headways, first/last departure per
@@ -144,21 +153,53 @@ scripts/build_gtfs.py            Joins geometry + operators.yml ->
    No headway/timetable data. Getting SAO6's actual schedule will need a
    different source (direct contact, printed stop schedules, Metro de
    Medellín's own documentation, etc.) — there's no more of SAO6's own
-   website left to check for this. MDO's individual route pages haven't
-   been checked yet.
+   website left to check for this.
+   **MDO does publish schedule data — confirmed.** Unlike SAO6, MDO's
+   site is plain WordPress (not a JS SPA) — its per-route info is baked
+   as a raster image per route (filenames literally include
+   "con-horarios", "with schedules") rather than real DOM text, so
+   getting it out means OCR, not HTML scraping. `scripts/scrape_mdo.py`
+   does this: fetches the route list + image URLs from the homepage,
+   downloads each route's image, runs `pytesseract`, and regex-parses
+   the result into first/last departure per day type + peak/off-peak
+   headway. Run manually via the `Scrape MDO Schedule Images` GitHub
+   Action (`.github/workflows/scrape-mdo.yml`) — it uploads images +
+   raw OCR text + parsed JSON as a downloadable artifact rather than
+   touching `data/operators.yml` automatically, since OCR output needs a
+   human sanity-check before being trusted.
+   **Caveat: this scraper is untested against the real site.** The
+   sandbox that wrote it can't fetch remote images or reach
+   masivodeoccidente.com, so its OCR/regex-parsing logic was validated
+   only against a synthetic mockup built to match the known layout (two
+   side-by-side panels + a frequency band) — confirmed to correctly
+   extract all of `C3-007A`'s already-known-correct data from that
+   mockup, including the AM/PM→24h conversion. Two things to check on
+   the first real run: (1) route↔image pairing — the homepage HTML has
+   an anomaly right after the route list (two consecutive "Lugares de
+   referencia cercanos" blocks before the first image) that could throw
+   the simple positional pairing off by one route; `mdo_pairing_log.md`
+   in the artifact lists every pairing for a by-eye check. (2) OCR
+   accuracy on the real images, which have a map background and colored
+   boxes a synthetic mockup doesn't — check `raw/mdo_ocr/<route>.txt`
+   for any route the script logs as `INCOMPLETE`.
+   `C3-007A`'s schedule (the one route already confirmed by hand) is
+   filled into `data/operators.yml`, including `peak_windows` using a
+   general Medellín pico/valle/noche schedule (06:00–08:30 /
+   16:30–19:30 pico, 09:00–16:00 valle, 19:30–23:00 noche) — not
+   MDO-specific, flagged inline as an assumption pending a
+   route-specific figure.
 9. **Fixed a real bug: most routes have more than one ArcGIS feature row**
    (102 rows / 46 distinct routes), and `build_gtfs.py` used to process
    each row independently — silently emitting duplicate `route_id` rows
    in `routes.txt` and colliding `shape_pt_sequence` numbers in
    `shapes.txt` for every affected route. Fixed by grouping features by
-   `ruta` first: rows sharing the same `sentido` are treated as split line
-   segments and concatenated (ordered by `objectid`); rows with different
-   `sentido` values are a genuine direction pair, and only one (the
-   smallest `sentido`) is currently used, since this feed models one
-   shape per `route_id` with no separate reverse-direction trip yet.
-   `inspect_fields.py` now also prints, per route, how many feature rows
-   it has and whether their `sentido` values repeat or differ — useful
-   for spot-checking this assumption once real data is flowing.
+   `ruta` first: rows sharing the same `sentido` are treated as split
+   line segments and concatenated (ordered by `objectid`); rows with
+   different `sentido` values are a genuine direction pair. (This part
+   was later superseded — see item 1 above: both directions are now
+   built as separate shapes/trips, not just one.) `inspect_fields.py`
+   also prints, per route, how many feature rows it has and whether
+   their `sentido` values repeat or differ.
 7. `build_gtfs.py` used to infer each output file's CSV header from
    `rows[0]`, which crashed (`IndexError`) whenever a route's `day_types`
    was empty (as it now legitimately is for the MDO placeholders above,
