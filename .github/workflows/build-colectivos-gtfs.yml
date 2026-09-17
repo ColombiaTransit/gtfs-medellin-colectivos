@@ -30,16 +30,32 @@ jobs:
       - name: Fetch alimentadoras geometry + stops
         run: python scripts/fetch_alimentadoras.py
 
+      - name: Inspect ArcGIS field schema
+        run: python scripts/inspect_fields.py
+
+      - name: Check operators.yml is configured
+        id: config_check
+        run: |
+          if [ ! -f data/operators.yml ] || grep -q "REPLACE_ME" data/operators.yml; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::data/operators.yml is missing or still a placeholder - see the 'Inspect ArcGIS field schema' step above for real field names, then fill in data/operators.yml per README.md. Skipping build/validate/release until then."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build GTFS from geometry + operators.yml
+        if: steps.config_check.outputs.configured == 'true'
         run: python scripts/build_gtfs.py
 
       - name: Setup Java
+        if: steps.config_check.outputs.configured == 'true'
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
 
       - name: Resolve gtfs-validator-cli download URL
+        if: steps.config_check.outputs.configured == 'true'
         id: resolve_validator
         run: |
           URL=$(curl -sSL https://api.github.com/repos/MobilityData/gtfs-validator/releases/latest \
@@ -47,9 +63,11 @@ jobs:
           echo "url=${URL}" >> "$GITHUB_OUTPUT"
 
       - name: Download gtfs-validator-cli.jar
+        if: steps.config_check.outputs.configured == 'true'
         run: curl -L -o gtfs-validator-cli.jar "${{ steps.resolve_validator.outputs.url }}"
 
       - name: Validate
+        if: steps.config_check.outputs.configured == 'true'
         run: |
           mkdir -p validation-report
           java -Xmx4G -jar gtfs-validator-cli.jar \
@@ -57,6 +75,7 @@ jobs:
             -o validation-report
 
       - name: Refresh latest release
+        if: steps.config_check.outputs.configured == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
