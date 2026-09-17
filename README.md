@@ -101,6 +101,35 @@ scripts/build_gtfs.py            Joins geometry + operators.yml ->
    logical line — each needs its own `data/operators.yml` entry (they'll
    usually share the same headway/hours, just different `route_id`s and
    shapes).
+6. **Operator attribution, confirmed for both cuencas:** cuenca-3 routes
+   are operated by **MDO** (15 routes) and cuenca-6 routes by **SAO6**
+   (31 routes) — each confirmed independently via that operator's own
+   site listing the exact same route codes as the ArcGIS `ruta` field.
+   This matches the ArcGIS layer's own description ("...operan en las
+   cuencas 3 y 6") exactly. An earlier version of this file guessed
+   Sotrames for cuenca 3, which was wrong. **Sotrames' own cuenca is
+   still unconfirmed** — its scraped headway tables
+   (Itagüí/Envigado/Sabaneta) remain unattached in
+   `raw/sotrames_scrape.json`; it may not be part of this ArcGIS layer at
+   all.
+   `data/operators.yml.example` has all 46 confirmed route codes/names
+   (15 MDO + 31 SAO6), each with an empty `day_types` — names/codes only.
+7. **SAO6 does not publish schedule data anywhere found so far.** Checked
+   an individual route page (`sao6.com.co/rutas/santa-rita-estacion-
+   acevedo`) expecting it might carry per-route headways the listing page
+   didn't — it only has a "Mapa del Recorrido" tab (a Google MyMaps
+   embed) and a "Video del Trayecto" tab, plus a one-sentence description.
+   No first/last departure, no headway, no timetable. Getting SAO6's
+   actual schedule will need a different source entirely (contacting them
+   directly, a printed schedule at stops, Metro de Medellín's own fare/
+   schedule documentation, or similar) — there's no more of their own
+   website left to check for this.
+7. `build_gtfs.py` used to infer each output file's CSV header from
+   `rows[0]`, which crashed (`IndexError`) whenever a route's `day_types`
+   was empty (as it now legitimately is for the MDO placeholders above,
+   since no trips/stops get referenced). Fixed by using an explicit
+   `FIELDNAMES` map per GTFS file instead — worth knowing if you extend
+   the script and hit the same pattern elsewhere.
 
 ## Setup
 
