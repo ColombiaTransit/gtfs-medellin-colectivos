@@ -23,6 +23,7 @@ correct these constants before trusting the output.
 
 import csv
 import json
+import sys
 import zipfile
 from pathlib import Path
 
@@ -80,7 +81,32 @@ def write_csv(path: Path, fieldnames, rows):
 def main():
     routes_gj = load_geojson(RAW_DIR / "rutas_alimentadoras.geojson")
     stops_gj = load_geojson(RAW_DIR / "paradas_alimentadoras.geojson")
-    config = yaml.safe_load(Path("data/operators.yml").read_text())
+
+    operators_path = Path("data/operators.yml")
+    if not operators_path.exists():
+        print(
+            "data/operators.yml not found.\n"
+            "This file is human-curated (route schedules aren't published "
+            "as structured data anywhere) and isn't generated automatically.\n"
+            "  1. Run scripts/inspect_fields.py to see the real ArcGIS field "
+            "names and fix ROUTE_ID_FIELD/STOP_ID_FIELD/etc. below.\n"
+            "  2. Copy data/operators.yml.example -> data/operators.yml and "
+            "fill in real routes (see scripts/scrape_sotrames.py for "
+            "Sotrames' headways).\n"
+            "See README.md for the full setup steps.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    config = yaml.safe_load(operators_path.read_text())
+
+    if any(r["route_id"] == "REPLACE_ME" for r in config.get("routes", [])):
+        print(
+            "data/operators.yml still contains the REPLACE_ME placeholder "
+            "route. Fill in real route_ids before running this in CI.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
     config_routes = {r["route_id"]: r for r in config["routes"]}
     operators = config["operators"]
