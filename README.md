@@ -154,40 +154,34 @@ scripts/build_gtfs.py            Joins geometry + operators.yml ->
    different source (direct contact, printed stop schedules, Metro de
    Medellín's own documentation, etc.) — there's no more of SAO6's own
    website left to check for this.
-   **MDO does publish schedule data — confirmed.** Unlike SAO6, MDO's
-   site is plain WordPress (not a JS SPA) — its per-route info is baked
-   as a raster image per route (filenames literally include
-   "con-horarios", "with schedules") rather than real DOM text, so
-   getting it out means OCR, not HTML scraping. `scripts/scrape_mdo.py`
-   does this: fetches the route list + image URLs from the homepage,
-   downloads each route's image, runs `pytesseract`, and regex-parses
-   the result into first/last departure per day type + peak/off-peak
-   headway. Run manually via the `Scrape MDO Schedule Images` GitHub
-   Action (`.github/workflows/scrape-mdo.yml`) — it uploads images +
-   raw OCR text + parsed JSON as a downloadable artifact rather than
-   touching `data/operators.yml` automatically, since OCR output needs a
-   human sanity-check before being trusted.
-   **Caveat: this scraper is untested against the real site.** The
-   sandbox that wrote it can't fetch remote images or reach
-   masivodeoccidente.com, so its OCR/regex-parsing logic was validated
-   only against a synthetic mockup built to match the known layout (two
-   side-by-side panels + a frequency band) — confirmed to correctly
-   extract all of `C3-007A`'s already-known-correct data from that
-   mockup, including the AM/PM→24h conversion. Two things to check on
-   the first real run: (1) route↔image pairing — the homepage HTML has
-   an anomaly right after the route list (two consecutive "Lugares de
-   referencia cercanos" blocks before the first image) that could throw
-   the simple positional pairing off by one route; `mdo_pairing_log.md`
-   in the artifact lists every pairing for a by-eye check. (2) OCR
-   accuracy on the real images, which have a map background and colored
-   boxes a synthetic mockup doesn't — check `raw/mdo_ocr/<route>.txt`
-   for any route the script logs as `INCOMPLETE`.
-   `C3-007A`'s schedule (the one route already confirmed by hand) is
-   filled into `data/operators.yml`, including `peak_windows` using a
-   general Medellín pico/valle/noche schedule (06:00–08:30 /
-   16:30–19:30 pico, 09:00–16:00 valle, 19:30–23:00 noche) — not
-   MDO-specific, flagged inline as an assumption pending a
-   route-specific figure.
+   **MDO's schedule gap is closed — all 15 routes have real data.** MDO's
+   site is plain WordPress (not a JS SPA like SAO6), but its per-route
+   info is a raster image per route rather than real DOM text, so
+   getting the schedule out meant OCR, not HTML scraping.
+   `scripts/scrape_mdo.py` fetches the route list + image URLs from the
+   homepage, downloads each route's image, and OCRs it. The first
+   version (whole-image OCR + regex) failed on every route in a real CI
+   run — Tesseract's default reading order interleaves the two
+   side-by-side "Lugar de inicio"/"Lugar de finalización" panels
+   inconsistently, scrambling which time belongs to which day type. Fixed
+   by cropping each image into three regions BEFORE OCR (left panel,
+   right panel, bottom frequency band — fractions calibrated against
+   `C3-007A`'s 1920×1920 image and confirmed to be the same template
+   across all 15), which sidesteps the interleaving entirely. Verified
+   against all 15 actual downloaded images (not just a mockup): every
+   route parsed cleanly, headways in a plausible 5–15 min range, and
+   `C3-007`/`C3-007A` (related routes) came back with nearly identical
+   hours but different frequencies — internally consistent, not just
+   plausible-looking. `data/operators.yml` now has real `day_types` for
+   all 15 MDO routes, each with `peak_windows` using a general Medellín
+   pico/valle/noche schedule (06:00–08:30 / 16:30–19:30 pico, 09:00–
+   16:00 valle, 19:30–23:00 noche) — not MDO-specific, flagged inline as
+   an assumption pending a route-specific figure.
+   One route this was worth double-checking on:
+   `C3-004MD` ("Ext. Los Alpes - Mano de Dios") has `last_departure`
+   times of ~16:21–19:56, much earlier than every other route's ~23:00 —
+   **confirmed correct**, not an OCR error: a limited-hours extension
+   route, matching the "Ext." in its name.
 9. **Fixed a real bug: most routes have more than one ArcGIS feature row**
    (102 rows / 46 distinct routes), and `build_gtfs.py` used to process
    each row independently — silently emitting duplicate `route_id` rows
