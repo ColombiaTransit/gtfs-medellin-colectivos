@@ -31,5 +31,5 @@ jobs:
         with:
           name: mdo-schedule-scrape
           path: |
-            sao6_rutas.html
+            sao6_rutas.json
           retention-days: 30
