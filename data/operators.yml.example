@@ -17,17 +17,22 @@
 # under either cuenca until its own route codes are found and checked
 # against ArcGIS the same way MDO and SAO6 were.
 #
-# STATUS as of the last update:
-#   - MDO: 15 "C3-xxx" route codes + names confirmed (own site's tab
-#     list). No schedule tables captured yet - day_types empty.
-#   - SAO6: 31 "C6-xxx" route codes + names confirmed (own site's route
-#     card grid, which also gives a per-route URL like
-#     /rutas/santa-rita-estacion-acevedo - worth fetching individually
-#     later, each may have its own schedule/frequency info on that page).
-#     No schedule tables captured yet either - day_types empty.
-#   - Sotrames: three scraped zone tables (Itagüí/Envigado/Sabaneta) still
-#     sitting unattached in raw/sotrames_scrape.json - no confirmed route
-#     codes to attach them to.
+# STATUS as of the last update (full ArcGIS route dump via
+# inspect_fields.py's coverage-diff feature):
+#   - CONFIRMED: exactly 46 distinct routes exist in this ArcGIS layer
+#     total, split 15 (cuenca 3) + 31 (cuenca 6) - matching MDO+SAO6's
+#     counts exactly. Operator coverage is essentially complete; Sotrames
+#     genuinely isn't part of this layer.
+#   - ONE unresolved naming mismatch: SAO6's site lists "C6-014A" and
+#     "C6-015", but ArcGIS instead has "C6-015A" and "C6-016A" - these
+#     don't overlap. Flagged inline below on the affected routes; needs
+#     checking against ArcGIS's own 'linea'/'itinerario' text before
+#     trusting either name.
+#   - No schedule tables captured for MDO or SAO6 yet - all day_types
+#     are empty (names/codes only).
+#   - Sotrames' three scraped zone tables (Itagüí/Envigado/Sabaneta)
+#     still have no confirmed route codes to attach to (they're outside
+#     this ArcGIS layer entirely, as far as confirmed).
 #
 # Workflow:
 #   1. scripts/fetch_alimentadoras.py  -> raw geometry/stops (automated)
@@ -107,9 +112,17 @@ routes:
   - {route_id: "C6-012A",  operator: sao6, route_short_name: "012A",  route_long_name: "Andalucía - Estación Acevedo",                     day_types: {}}
   - {route_id: "C6-013",   operator: sao6, route_short_name: "013",   route_long_name: "Popular 1 - Estación Tricentenario",               day_types: {}}
   - {route_id: "C6-014",   operator: sao6, route_short_name: "014",   route_long_name: "La Ladera - Estación Prado",                       day_types: {}}
-  - {route_id: "C6-014A",  operator: sao6, route_short_name: "014A",  route_long_name: "Villa Hermosa - Estación Prado",                   day_types: {}}
-  - {route_id: "C6-015",   operator: sao6, route_short_name: "015",   route_long_name: "Villa de Guadalupe - Estación Hospital",           day_types: {}}
+  # C6-015A and C6-016A below are CONFIRMED to exist in the ArcGIS layer
+  # (from inspect_fields.py's full route dump) but do NOT match anything
+  # on SAO6's own /rutas listing, which instead had "C6-014A Villa
+  # Hermosa - Estación Prado" and "C6-015 Villa de Guadalupe - Estación
+  # Hospital" - codes that ArcGIS does NOT have. Names below are
+  # guesses carried over from the site listing in case they turn out to
+  # be the same routes under different codes; VERIFY before trusting -
+  # pull each route's 'linea'/'itinerario' field from ArcGIS to check.
+  - {route_id: "C6-015A",  operator: sao6, route_short_name: "015A",  route_long_name: "UNVERIFIED - possibly 'Villa Hermosa - Estación Prado' (SAO6 site calls this C6-014A)", day_types: {}}
   - {route_id: "C6-016",   operator: sao6, route_short_name: "016",   route_long_name: "Nuevo Horizonte - Estación Hospital",              day_types: {}}
+  - {route_id: "C6-016A",  operator: sao6, route_short_name: "016A",  route_long_name: "UNVERIFIED - possibly 'Villa de Guadalupe - Estación Hospital' (SAO6 site calls this C6-015)", day_types: {}}
   - {route_id: "C6-018",   operator: sao6, route_short_name: "018",   route_long_name: "Santa Cecilia - Estación Tricentenario",           day_types: {}}
   - {route_id: "C6-019",   operator: sao6, route_short_name: "019",   route_long_name: "El Raizal - Estación Universidad",                 day_types: {}}
   - {route_id: "C6-019A",  operator: sao6, route_short_name: "019A",  route_long_name: "El Jardín - Estación Gardel",                      day_types: {}}

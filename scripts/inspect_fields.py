@@ -53,9 +53,11 @@ def main():
 
 def _dump_route_coverage(routes_path: Path):
     data = json.loads(routes_path.read_text())
+    features = data.get("features", [])
+
     all_routes = sorted({
         (f["properties"].get("ruta"), f["properties"].get("cuenca"))
-        for f in data.get("features", [])
+        for f in features
     })
 
     print(f"\n=== Full route list ({len(all_routes)} distinct 'ruta' values) ===")
@@ -66,6 +68,33 @@ def _dump_route_coverage(routes_path: Path):
     for _, cuenca in all_routes:
         cuenca_counts[cuenca] = cuenca_counts.get(cuenca, 0) + 1
     print(f"\n  Cuenca distribution: {cuenca_counts}")
+
+    # 102 features but only 46 distinct 'ruta' values means most routes
+    # have more than one feature row - characterize why (multiple
+    # 'sentido' values? multiple rows with the SAME sentido, i.e. split
+    # line segments?) before build_gtfs.py's shape-building logic, which
+    # currently assumes one feature per 'ruta' and will silently emit
+    # duplicate route_id rows / colliding shape_pt_sequence numbers
+    # otherwise.
+    per_ruta = {}
+    for f in features:
+        props = f["properties"]
+        ruta = props.get("ruta")
+        per_ruta.setdefault(ruta, []).append(props.get("sentido"))
+
+    multi = {r: sentidos for r, sentidos in per_ruta.items() if len(sentidos) > 1}
+    print(f"\n=== Feature count per route ({len(features)} features / "
+          f"{len(per_ruta)} distinct routes) ===")
+    print(f"  Routes with >1 feature row: {len(multi)} of {len(per_ruta)}")
+    if multi:
+        sample = dict(list(multi.items())[:10])
+        print(f"  Sample (route -> list of 'sentido' values across its rows):")
+        for r, sentidos in sample.items():
+            same_sentido = len(set(sentidos)) < len(sentidos)
+            flag = " <- SAME sentido repeated (likely split line segments, not direction pairs)" if same_sentido else ""
+            print(f"    {r}: {sentidos}{flag}")
+        if len(multi) > 10:
+            print(f"    ... and {len(multi) - 10} more")
 
     operators_path = Path("data/operators.yml")
     if not operators_path.exists():

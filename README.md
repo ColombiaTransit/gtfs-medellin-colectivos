@@ -101,29 +101,44 @@ scripts/build_gtfs.py            Joins geometry + operators.yml ->
    logical line — each needs its own `data/operators.yml` entry (they'll
    usually share the same headway/hours, just different `route_id`s and
    shapes).
-6. **Operator attribution, confirmed for both cuencas:** cuenca-3 routes
-   are operated by **MDO** (15 routes) and cuenca-6 routes by **SAO6**
-   (31 routes) — each confirmed independently via that operator's own
-   site listing the exact same route codes as the ArcGIS `ruta` field.
-   This matches the ArcGIS layer's own description ("...operan en las
-   cuencas 3 y 6") exactly. An earlier version of this file guessed
-   Sotrames for cuenca 3, which was wrong. **Sotrames' own cuenca is
-   still unconfirmed** — its scraped headway tables
-   (Itagüí/Envigado/Sabaneta) remain unattached in
-   `raw/sotrames_scrape.json`; it may not be part of this ArcGIS layer at
-   all.
-   `data/operators.yml.example` has all 46 confirmed route codes/names
-   (15 MDO + 31 SAO6), each with an empty `day_types` — names/codes only.
-7. **SAO6 does not publish schedule data anywhere found so far.** Checked
+6. **Operator attribution, fully confirmed and now measured against the
+   complete route list.** `inspect_fields.py` dumps every distinct `ruta`
+   value from the full ArcGIS pull (not just samples) and diffs it
+   against `data/operators.yml`. Result: there are exactly **46 distinct
+   routes total** (15 cuenca-3, 31 cuenca-6) — matching MDO and SAO6's own
+   published route counts exactly. Sotrames genuinely isn't part of this
+   layer. `data/operators.yml.example` now has all 46, correctly
+   attributed, with empty `day_types` (no schedule data captured for
+   either operator yet).
+7. **One route-code mismatch, unresolved.** SAO6's own `/rutas` page lists
+   `C6-014A` and `C6-015`; the ArcGIS layer instead has `C6-015A` and
+   `C6-016A` for that same numeric neighborhood — these don't overlap.
+   Flagged inline in `data/operators.yml.example` with a guess at which
+   might correspond to which (based on numbering proximity), but not
+   verified. Confirm by pulling `C6-015A`/`C6-016A`'s `linea`/`itinerario`
+   text from the ArcGIS layer and comparing to SAO6's stated names.
+8. **SAO6 does not publish schedule data anywhere found so far.** Checked
    an individual route page (`sao6.com.co/rutas/santa-rita-estacion-
-   acevedo`) expecting it might carry per-route headways the listing page
-   didn't — it only has a "Mapa del Recorrido" tab (a Google MyMaps
+   acevedo`) — it only has a "Mapa del Recorrido" tab (Google MyMaps
    embed) and a "Video del Trayecto" tab, plus a one-sentence description.
-   No first/last departure, no headway, no timetable. Getting SAO6's
-   actual schedule will need a different source entirely (contacting them
-   directly, a printed schedule at stops, Metro de Medellín's own fare/
-   schedule documentation, or similar) — there's no more of their own
-   website left to check for this.
+   No headway/timetable data. Getting SAO6's actual schedule will need a
+   different source (direct contact, printed stop schedules, Metro de
+   Medellín's own documentation, etc.) — there's no more of SAO6's own
+   website left to check for this. MDO's individual route pages haven't
+   been checked yet.
+9. **Fixed a real bug: most routes have more than one ArcGIS feature row**
+   (102 rows / 46 distinct routes), and `build_gtfs.py` used to process
+   each row independently — silently emitting duplicate `route_id` rows
+   in `routes.txt` and colliding `shape_pt_sequence` numbers in
+   `shapes.txt` for every affected route. Fixed by grouping features by
+   `ruta` first: rows sharing the same `sentido` are treated as split line
+   segments and concatenated (ordered by `objectid`); rows with different
+   `sentido` values are a genuine direction pair, and only one (the
+   smallest `sentido`) is currently used, since this feed models one
+   shape per `route_id` with no separate reverse-direction trip yet.
+   `inspect_fields.py` now also prints, per route, how many feature rows
+   it has and whether their `sentido` values repeat or differ — useful
+   for spot-checking this assumption once real data is flowing.
 7. `build_gtfs.py` used to infer each output file's CSV header from
    `rows[0]`, which crashed (`IndexError`) whenever a route's `day_types`
    was empty (as it now legitimately is for the MDO placeholders above,

@@ -66,6 +66,21 @@ DAY_TYPE_SERVICE_IDS = {
     "domingo_festivo": "Domingo-Festivo",
 }
 
+# Explicit GTFS column order per file - not inferred from row 0, since
+# routes with an empty day_types (no trips yet) legitimately produce zero
+# rows for stops/shapes/trips/stop_times/frequencies.
+FIELDNAMES = {
+    "agency.txt": ["agency_id", "agency_name", "agency_url", "agency_timezone", "agency_lang"],
+    "routes.txt": ["route_id", "agency_id", "route_short_name", "route_long_name", "route_type"],
+    "stops.txt": ["stop_id", "stop_name", "stop_lat", "stop_lon"],
+    "shapes.txt": ["shape_id", "shape_pt_lat", "shape_pt_lon", "shape_pt_sequence"],
+    "trips.txt": ["route_id", "service_id", "trip_id", "shape_id", "direction_id"],
+    "stop_times.txt": ["trip_id", "stop_id", "stop_sequence", "arrival_time", "departure_time"],
+    "frequencies.txt": ["trip_id", "start_time", "end_time", "headway_secs", "exact_times"],
+    "calendar.txt": ["service_id", "monday", "tuesday", "wednesday", "thursday",
+                      "friday", "saturday", "sunday", "start_date", "end_date"],
+}
+
 
 def load_geojson(path: Path) -> dict:
     return json.loads(path.read_text())
@@ -87,6 +102,10 @@ def line_length_km(coords):
 
 
 def write_csv(path: Path, fieldnames, rows):
+    """fieldnames is always an explicit list now (not inferred from
+    rows[0]) - with placeholder routes that have empty day_types (no
+    trips), several of these lists can legitimately be empty, and
+    inferring fieldnames from a nonexistent rows[0] used to crash."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=fieldnames)
@@ -192,10 +211,24 @@ def main():
     skipped_no_config = []
     skipped_no_stops = []
 
+    # --- group route features by ruta, since ~most routes have MORE THAN
+    # ONE feature row (confirmed via inspect_fields.py: 102 rows / 46
+    # distinct 'ruta' values). Processing rows independently used to
+    # silently produce duplicate route_id rows and colliding
+    # shape_pt_sequence numbers for every such route - fixed by grouping
+    # first. Within a ruta, rows can differ by 'sentido' (a real
+    # direction pair) or share the same 'sentido' (split line segments of
+    # one direction, meant to be concatenated). Since this feed models
+    # one shape per route_id (direction_id is always 0 - seven "two
+    # directions" is not modeled as separate GTFS directions yet), we
+    # pick ONE sentido group per ruta (the smallest sentido value seen,
+    # for determinism) and concatenate its segments in objectid order.
+    features_by_route = {}
     for feature in routes_gj["features"]:
-        props = feature["properties"]
-        route_id = str(props.get(ROUTE_ID_FIELD))
+        route_id = str(feature["properties"].get(ROUTE_ID_FIELD))
+        features_by_route.setdefault(route_id, []).append(feature)
 
+    for route_id, route_features in features_by_route.items():
         cfg = config_routes.get(route_id)
         if cfg is None:
             skipped_no_config.append(route_id)
@@ -205,6 +238,28 @@ def main():
         if len(route_stops) < 2:
             skipped_no_stops.append(route_id)
             continue
+
+        # Pick one sentido group; concatenate its segments in objectid order.
+        by_sentido = {}
+        for f in route_features:
+            by_sentido.setdefault(f["properties"].get("sentido"), []).append(f)
+        chosen_sentido = sorted(by_sentido.keys(), key=lambda s: (s is None, s))[0]
+        segments = sorted(
+            by_sentido[chosen_sentido],
+            key=lambda f: f["properties"].get("objectid", 0),
+        )
+
+        props = segments[0]["properties"]  # for route-level metadata (linea, etc.)
+
+        coords = []
+        for seg in segments:
+            geom = seg["geometry"]
+            seg_coords = (
+                geom["coordinates"]
+                if geom["type"] == "LineString"
+                else geom["coordinates"][0]  # first part of a MultiLineString
+            )
+            coords.extend(seg_coords)
 
         operator = cfg["operator"]
 
@@ -218,13 +273,6 @@ def main():
             "route_type": 3,  # bus
         })
 
-        geom = feature["geometry"]
-        coords = (
-            geom["coordinates"]
-            if geom["type"] == "LineString"
-            else geom["coordinates"][0]  # first part of a MultiLineString
-        )
-
         for seq, (lon, lat) in enumerate(coords):
             shape_rows.append({
                 "shape_id": route_id,
@@ -233,8 +281,13 @@ def main():
                 "shape_pt_sequence": seq,
             })
 
-        length_m = props.get(ROUTE_LENGTH_FIELD)
-        length_km = (length_m / 1000) if length_m else line_length_km(coords)
+        # Sum SHAPE__Length across the chosen sentido's segments if every
+        # segment has it; otherwise recompute from the concatenated coords.
+        seg_lengths = [s["properties"].get(ROUTE_LENGTH_FIELD) for s in segments]
+        if all(seg_lengths):
+            length_km = sum(seg_lengths) / 1000
+        else:
+            length_km = line_length_km(coords)
         running_time_min = max(1, round(length_km / AVERAGE_SPEED_KMH * 60))
 
         n_stops = len(route_stops)
@@ -324,15 +377,27 @@ def main():
               "'ruta' field exactly (case-sensitive).", file=sys.stderr)
         sys.exit(1)
 
+    routes_with_no_trips = sorted(
+        {r["route_id"] for r in route_rows}
+        - {t["route_id"] for t in trip_rows}
+    )
+    if routes_with_no_trips:
+        print(
+            f"NOTE: {len(routes_with_no_trips)} route(s) were built with no "
+            f"trips (empty day_types in data/operators.yml - expected for "
+            f"placeholder routes waiting on real schedule data): "
+            f"{routes_with_no_trips}"
+        )
+
     OUT_DIR.mkdir(exist_ok=True)
-    write_csv(OUT_DIR / "agency.txt", agency_rows[0].keys(), agency_rows)
-    write_csv(OUT_DIR / "routes.txt", route_rows[0].keys(), route_rows)
-    write_csv(OUT_DIR / "stops.txt", stop_rows[0].keys(), stop_rows)
-    write_csv(OUT_DIR / "shapes.txt", shape_rows[0].keys(), shape_rows)
-    write_csv(OUT_DIR / "trips.txt", trip_rows[0].keys(), trip_rows)
-    write_csv(OUT_DIR / "stop_times.txt", stop_time_rows[0].keys(), stop_time_rows)
-    write_csv(OUT_DIR / "frequencies.txt", freq_rows[0].keys(), freq_rows)
-    write_csv(OUT_DIR / "calendar.txt", calendar_rows[0].keys(), calendar_rows)
+    write_csv(OUT_DIR / "agency.txt", FIELDNAMES["agency.txt"], agency_rows)
+    write_csv(OUT_DIR / "routes.txt", FIELDNAMES["routes.txt"], route_rows)
+    write_csv(OUT_DIR / "stops.txt", FIELDNAMES["stops.txt"], stop_rows)
+    write_csv(OUT_DIR / "shapes.txt", FIELDNAMES["shapes.txt"], shape_rows)
+    write_csv(OUT_DIR / "trips.txt", FIELDNAMES["trips.txt"], trip_rows)
+    write_csv(OUT_DIR / "stop_times.txt", FIELDNAMES["stop_times.txt"], stop_time_rows)
+    write_csv(OUT_DIR / "frequencies.txt", FIELDNAMES["frequencies.txt"], freq_rows)
+    write_csv(OUT_DIR / "calendar.txt", FIELDNAMES["calendar.txt"], calendar_rows)
 
     with (OUT_DIR / "feed_info.txt").open("w", newline="") as fh:
         fh.write("feed_publisher_name,feed_publisher_url,feed_lang\n")
