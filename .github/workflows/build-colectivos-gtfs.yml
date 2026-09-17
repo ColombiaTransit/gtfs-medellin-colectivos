@@ -1,0 +1,71 @@
+name: Build Colectivos GTFS
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # Weekly, not daily: unlike the Metro's own feed, source geometry and
+    # data/operators.yml change rarely (only when an operator changes a
+    # route or headway).
+    - cron: "0 6 * * 1"
+
+env:
+  GTFS_VALIDATOR_VERSION: latest
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch alimentadoras geometry + stops
+        run: python scripts/fetch_alimentadoras.py
+
+      - name: Build GTFS from geometry + operators.yml
+        run: python scripts/build_gtfs.py
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Resolve gtfs-validator-cli download URL
+        id: resolve_validator
+        run: |
+          URL=$(curl -sSL https://api.github.com/repos/MobilityData/gtfs-validator/releases/latest \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print(next(a['browser_download_url'] for a in d['assets'] if a['name'].endswith('-cli.jar')))")
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+
+      - name: Download gtfs-validator-cli.jar
+        run: curl -L -o gtfs-validator-cli.jar "${{ steps.resolve_validator.outputs.url }}"
+
+      - name: Validate
+        run: |
+          mkdir -p validation-report
+          java -Xmx4G -jar gtfs-validator-cli.jar \
+            -i gtfs-medellin-colectivos.zip \
+            -o validation-report
+
+      - name: Refresh latest release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete latest -y --cleanup-tag || true
+          gh release create latest \
+            --title "Latest Colectivos GTFS" \
+            --notes "Automated build from ArcGIS alimentadoras geometry + curated operator schedules"
+          gh release upload latest \
+            gtfs-medellin-colectivos.zip \
+            validation-report/report.html \
+            validation-report/report.json \
+            --clobber
