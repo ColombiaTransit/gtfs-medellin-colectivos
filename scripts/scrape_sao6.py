@@ -1,401 +1,518 @@
 #!/usr/bin/env python3
 
+"""
+SAO6 route scraper
+
+Downloads the SAO6 route page and extracts the static route catalogue
+from the JavaScript bundle.
+
+Output:
+    sao6_data/rutas.html
+    sao6_data/index-*.js
+    sao6_data/rutas-*.js
+    sao6_data/sao6_rutas.json
+
+The scraper deliberately stops at extracting the route catalogue.
+Google Maps / KML processing is handled separately in a later step.
+"""
+
+from __future__ import annotations
+
 import json
 import re
+import sys
 from pathlib import Path
 from urllib.parse import urljoin
 
 import requests
+from bs4 import BeautifulSoup
 
 
-# ============================================================================
+# ---------------------------------------------------------------------------
 # Configuration
-# ============================================================================
+# ---------------------------------------------------------------------------
 
 BASE_URL = "https://www.sao6.com.co"
 ROUTES_URL = f"{BASE_URL}/rutas"
 
 OUTPUT_DIR = Path("sao6_data")
-OUTPUT_JSON = OUTPUT_DIR / "sao6_rutas.json"
 
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/139.0 Safari/537.36"
-    ),
-    "Accept": (
-        "text/html,application/xhtml+xml,application/xml;"
-        "q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8"
-    ),
-    "Accept-Language": "es-CO,es;q=0.9,en;q=0.8",
-}
+HTML_FILE = OUTPUT_DIR / "rutas.html"
+ROUTES_JSON_FILE = OUTPUT_DIR / "sao6_rutas.json"
+
+REQUEST_TIMEOUT = 30
+
+USER_AGENT = (
+    "Mozilla/5.0 (X11; Linux x86_64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/131.0 Safari/537.36"
+)
 
 
-# ============================================================================
+# ---------------------------------------------------------------------------
 # HTTP
-# ============================================================================
+# ---------------------------------------------------------------------------
 
-def download(url: str) -> str:
-    """
-    Download a URL and return its content as text.
-    """
+def create_session() -> requests.Session:
+    """Create an HTTP session with a browser-like User-Agent."""
+
+    session = requests.Session()
+
+    session.headers.update(
+        {
+            "User-Agent": USER_AGENT,
+            "Accept": "*/*",
+        }
+    )
+
+    return session
+
+
+def download(
+    session: requests.Session,
+    url: str,
+) -> str:
+    """Download a text resource."""
 
     print(f"Downloading: {url}")
 
-    response = requests.get(
+    response = session.get(
         url,
-        headers=HEADERS,
-        timeout=30,
+        timeout=REQUEST_TIMEOUT,
     )
 
     response.raise_for_status()
 
+    text = response.text
+
     print(
-        f"Downloaded {len(response.text):,} bytes "
-        f"from {url}"
+        f"Downloaded {len(text):,} bytes from {url}"
     )
 
-    return response.text
+    return text
 
 
-# ============================================================================
-# HTML parsing
-# ============================================================================
+# ---------------------------------------------------------------------------
+# JavaScript bundle discovery
+# ---------------------------------------------------------------------------
 
-def find_main_js(html: str) -> str:
+def find_main_javascript(
+    html: str,
+    base_url: str,
+) -> str:
     """
-    Find the main Vite JavaScript bundle.
+    Find the main JavaScript bundle from the HTML page.
 
-    Normally the page contains something like:
+    Vite applications normally contain something like:
 
         <script type="module" src="/assets/index-XXXX.js">
     """
 
-    patterns = [
-        # Normal Vite layout
-        r'<script[^>]+type=["\']module["\'][^>]+src=["\']([^"\']+\.js)["\']',
+    soup = BeautifulSoup(html, "html.parser")
 
-        # Attribute order reversed
-        r'<script[^>]+src=["\']([^"\']+\.js)["\'][^>]+type=["\']module["\']',
-    ]
+    candidates: list[str] = []
 
-    for pattern in patterns:
+    for script in soup.find_all("script"):
+        src = script.get("src")
 
-        match = re.search(
-            pattern,
-            html,
-            flags=re.IGNORECASE,
+        if not src:
+            continue
+
+        full_url = urljoin(base_url, src)
+
+        if full_url.endswith(".js"):
+            candidates.append(full_url)
+
+    if not candidates:
+        raise RuntimeError(
+            "Could not find a JavaScript bundle in the HTML."
         )
 
-        if match:
+    # Prefer an index bundle.
+    index_candidates = [
+        url
+        for url in candidates
+        if re.search(r"/index-[^/]+\.js$", url)
+    ]
 
-            js_url = urljoin(
-                BASE_URL,
-                match.group(1),
-            )
+    if index_candidates:
+        selected = index_candidates[0]
+    else:
+        selected = candidates[0]
 
-            print(
-                f"Found main JavaScript bundle: {js_url}"
-            )
-
-            return js_url
-
-    raise RuntimeError(
-        "Could not find the main JavaScript bundle "
-        "in /rutas HTML."
+    print(
+        f"Found main JavaScript bundle: {selected}"
     )
 
+    return selected
 
-# ============================================================================
-# JavaScript chunk discovery
-# ============================================================================
 
-def find_routes_chunk(main_js: str) -> str:
+def find_route_javascript(
+    main_js: str,
+    base_url: str,
+) -> list[str]:
     """
-    Find the JavaScript chunk containing the route definitions.
+    Find JavaScript chunks related to routes.
 
-    Example:
+    Current SAO6 bundles contain references such as:
 
         rutas-B3K6DTqs.js
-
-    Vite changes the hash when the website is rebuilt, so we only
-    look for the logical 'rutas' part.
+        RutasView-TSg5kUWX.js
     """
 
-    print(
-        "Searching main JS for route JavaScript chunk..."
-    )
-
     patterns = [
-        r'(rutas-[A-Za-z0-9_-]+\.js)',
-        r'([A-Za-z0-9_-]*rutas[A-Za-z0-9_-]*\.js)',
+        r'["\']([^"\']*rutas-[^"\']+\.js)["\']',
+        r'["\']([^"\']*RutasView-[^"\']+\.js)["\']',
+        r'["\']([^"\']*DetalleRutaView-[^"\']+\.js)["\']',
     ]
 
-    found = []
+    found: list[str] = []
 
     for pattern in patterns:
+        for match in re.finditer(pattern, main_js):
+            filename = match.group(1)
 
-        matches = re.findall(
-            pattern,
-            main_js,
-            flags=re.IGNORECASE,
-        )
-
-        for filename in matches:
-
-            if filename not in found:
-                found.append(filename)
-
-    if not found:
-
-        print(
-            "Could not find a rutas JavaScript chunk."
-        )
-
-        print(
-            "Debug: searching for 'rutas' occurrences..."
-        )
-
-        debug_matches = list(
-            re.finditer(
-                r".{0,150}rutas.{0,300}",
-                main_js,
-                flags=re.IGNORECASE,
-            )
-        )
-
-        for index, match in enumerate(
-            debug_matches[:20],
-            start=1,
-        ):
-
-            print(
-                f"\n--- rutas occurrence {index} ---"
+            url = urljoin(
+                base_url + "/assets/",
+                filename.split("/")[-1],
             )
 
-            print(
-                match.group(0)
-            )
+            if url not in found:
+                found.append(url)
 
+    return found
+
+
+def select_route_chunk(
+    route_chunks: list[str],
+) -> str:
+    """
+    Select the JavaScript chunk containing the static route data.
+
+    Prefer rutas-*.js because that is where the route array currently lives.
+    """
+
+    if not route_chunks:
         raise RuntimeError(
-            "Could not find a rutas JavaScript chunk "
-            "in the main JavaScript bundle."
+            "Could not find any route JavaScript chunks."
         )
 
-    print(
-        "Found possible route JavaScript chunk(s):"
-    )
+    print("Found possible route JavaScript chunk(s):")
 
-    for filename in found:
-        print(
-            f"  {filename}"
-        )
+    for url in route_chunks:
+        print(f"  {url.rsplit('/', 1)[-1]}")
 
-    # Prefer the actual rutas-xxxxx.js file over something
-    # like RutasView-xxxxx.js.
-    preferred = [
-        filename
-        for filename in found
-        if re.match(
-            r"^rutas-",
-            filename,
-            flags=re.IGNORECASE,
-        )
+    rutas_chunks = [
+        url
+        for url in route_chunks
+        if re.search(r"/rutas-[^/]+\.js$", url)
     ]
 
-    if preferred:
-        filename = preferred[0]
+    if rutas_chunks:
+        selected = rutas_chunks[0]
     else:
-        filename = found[0]
-
-    routes_url = urljoin(
-        BASE_URL,
-        f"/assets/{filename}",
-    )
+        selected = route_chunks[0]
 
     print(
-        f"Selected route chunk: {routes_url}"
+        f"Selected route chunk: {selected}"
     )
 
-    return routes_url
+    return selected
 
 
-# ============================================================================
-# JavaScript bracket handling
-# ============================================================================
+# ---------------------------------------------------------------------------
+# JavaScript parsing
+# ---------------------------------------------------------------------------
 
 def find_matching_bracket(
     text: str,
     start: int,
 ) -> int:
     """
-    Find the closing ']' belonging to the '[' at start.
+    Find the closing bracket matching the opening bracket at `start`.
 
     Handles:
-
-    - nested arrays
-    - strings
-    - escaped quotes
-    - template strings
-
-    This prevents a ']' inside a description or URL from
-    prematurely terminating the array.
+        [...]
+        {...}
+        (...)
+    
+    while correctly ignoring brackets inside quoted strings.
     """
 
-    if start < 0 or start >= len(text):
+    opening = text[start]
+
+    matching = {
+        "[": "]",
+        "{": "}",
+        "(": ")",
+    }
+
+    if opening not in matching:
         raise ValueError(
-            "Invalid start position."
+            f"Expected opening bracket at position {start}, "
+            f"got {opening!r}"
         )
 
-    if text[start] != "[":
-        raise ValueError(
-            "find_matching_bracket() must start at '['."
-        )
+    closing = matching[opening]
 
     depth = 0
 
     in_string = False
-    quote = None
+    string_quote: str | None = None
     escaped = False
 
-    for index in range(
-        start,
-        len(text),
-    ):
+    i = start
 
-        char = text[index]
-
-        # ---------------------------------------------------------------
-        # Inside string
-        # ---------------------------------------------------------------
+    while i < len(text):
+        ch = text[i]
 
         if in_string:
-
             if escaped:
-
                 escaped = False
 
-            elif char == "\\":
+            elif ch == "\\":
                 escaped = True
 
-            elif char == quote:
-
+            elif ch == string_quote:
                 in_string = False
-                quote = None
+                string_quote = None
 
+            i += 1
             continue
 
-        # ---------------------------------------------------------------
-        # Start of string
-        # ---------------------------------------------------------------
-
-        if char in (
-            '"',
-            "'",
-            "`",
-        ):
-
+        if ch in ("'", '"', "`"):
             in_string = True
-            quote = char
-
+            string_quote = ch
+            i += 1
             continue
 
-        # ---------------------------------------------------------------
-        # Array nesting
-        # ---------------------------------------------------------------
-
-        if char == "[":
-
+        if ch == opening:
             depth += 1
 
-        elif char == "]":
-
+        elif ch == closing:
             depth -= 1
 
             if depth == 0:
-                return index
+                return i
 
-    raise RuntimeError(
-        "Could not find matching closing ']' "
-        "for JavaScript array."
+        i += 1
+
+    raise ValueError(
+        f"Could not find matching {closing!r} for "
+        f"{opening!r} at position {start}"
     )
 
 
-# ============================================================================
-# Route array discovery
-# ============================================================================
-
-def find_array_assignments(js: str):
+def find_array_assignments(
+    js_text: str,
+) -> list[dict[str, str]]:
     """
-    Find JavaScript arrays assigned to variables.
+    Find JavaScript variable assignments containing arrays.
 
-    This specifically handles minified JavaScript such as:
+    Handles both:
 
-        const a="something",e=[...]
+        const e=[...]
 
-    The old implementation searched for:
+    and:
 
-        const e=[
+        const a="...",e=[...]
 
-    which fails in this situation.
-
-    We instead look for any variable assignment of the form:
-
-        ,e=[
-        ;e=[
-        const e=[
-        let e=[
-        var e=[
-
-    and return the array start positions.
+    The second form is what the SAO6 route bundle currently uses.
     """
 
+    assignments: list[dict[str, str]] = []
+
+    # We intentionally allow either:
+    #
+    #   const e=[
+    #
+    # or:
+    #
+    #   ,e=[
+    #
+    # or:
+    #
+    #   ;e=[
+    #
     pattern = re.compile(
-        r"""
-        (?:
-            ^|
-            [;,]
-        )
-        \s*
-        (?P<variable>
-            [$A-Za-z_][$A-Za-z0-9_]*
-        )
-        \s*=\s*
-        \[
-        """,
-        flags=re.VERBOSE,
+        r"(?:^|[,;])\s*"
+        r"(?P<variable>[A-Za-z_$][A-Za-z0-9_$]*)"
+        r"\s*=\s*\[",
+        re.MULTILINE,
     )
 
-    assignments = []
+    for match in pattern.finditer(js_text):
+        variable = match.group("variable")
 
-    for match in pattern.finditer(js):
+        # Locate the actual opening [
+        array_start = js_text.find(
+            "[",
+            match.start(),
+            match.end(),
+        )
 
-        array_start = match.end() - 1
+        if array_start < 0:
+            continue
+
+        try:
+            array_end = find_matching_bracket(
+                js_text,
+                array_start,
+            )
+        except ValueError as exc:
+            print(
+                f"Warning: could not parse array assigned to "
+                f"{variable}: {exc}"
+            )
+            continue
+
+        array_text = js_text[
+            array_start:array_end + 1
+        ]
 
         assignments.append(
             {
-                "variable": match.group("variable"),
-                "start": array_start,
+                "variable": variable,
+                "array": array_text,
             }
         )
 
     return assignments
 
 
-def extract_routes(js: str) -> list[dict]:
+def js_object_to_json(
+    text: str,
+) -> str:
     """
-    Extract the route array from rutas-*.js.
+    Convert the limited JavaScript object-literal syntax used by SAO6
+    into valid JSON.
 
-    We do NOT assume that the route array is named 'e'.
+    Example:
 
-    Instead we:
+        {codigo:"C6-001",nombre:"Santa Rita",slug:"santa-rita"}
 
-    1. Find all variable -> array assignments.
-    2. Extract each array.
-    3. Attempt JSON parsing.
-    4. Look for objects containing 'codigo'.
-    5. Select the array containing the SAO6 routes.
+    becomes:
+
+        {"codigo":"C6-001","nombre":"Santa Rita","slug":"santa-rita"}
+
+    Only bare property names outside strings are changed.
+
+    This avoids modifying URLs, descriptions, or other string values
+    that may contain ':' or JavaScript-looking text.
+    """
+
+    result: list[str] = []
+
+    i = 0
+    n = len(text)
+
+    in_string = False
+    string_quote: str | None = None
+    escaped = False
+
+    while i < n:
+        ch = text[i]
+
+        # ---------------------------------------------------------------
+        # Inside a quoted string
+        # ---------------------------------------------------------------
+
+        if in_string:
+            result.append(ch)
+
+            if escaped:
+                escaped = False
+
+            elif ch == "\\":
+                escaped = True
+
+            elif ch == string_quote:
+                in_string = False
+                string_quote = None
+
+            i += 1
+            continue
+
+        # ---------------------------------------------------------------
+        # Start of string
+        # ---------------------------------------------------------------
+
+        if ch in ('"', "'"):
+            in_string = True
+            string_quote = ch
+
+            result.append(ch)
+
+            i += 1
+            continue
+
+        # ---------------------------------------------------------------
+        # JavaScript identifier
+        # ---------------------------------------------------------------
+
+        if ch.isalpha() or ch in "_$":
+            start = i
+
+            i += 1
+
+            while i < n and (
+                text[i].isalnum()
+                or text[i] in "_$"
+            ):
+                i += 1
+
+            word = text[start:i]
+
+            # Look past whitespace.
+            j = i
+
+            while j < n and text[j].isspace():
+                j += 1
+
+            # If followed by ':', this is an object property.
+            if j < n and text[j] == ":":
+                result.append(
+                    json.dumps(word)
+                )
+
+                result.append(
+                    text[i:j]
+                )
+
+                result.append(":")
+
+                i = j + 1
+
+                continue
+
+            result.append(word)
+
+            continue
+
+        result.append(ch)
+
+        i += 1
+
+    return "".join(result)
+
+
+def extract_routes(
+    js_text: str,
+) -> list[dict]:
+    """
+    Extract the static SAO6 route array.
+
+    The current SAO6 bundle contains something similar to:
+
+        const a="/assets/...",e=[{codigo:"C6-001",...},...]
+
+    The route array is JavaScript, not strict JSON.
+
+    Therefore we:
+      1. locate the array;
+      2. convert its object-literal syntax;
+      3. parse it as JSON;
+      4. validate the resulting route records.
     """
 
     print(
@@ -403,311 +520,331 @@ def extract_routes(js: str) -> list[dict]:
     )
 
     assignments = find_array_assignments(
-        js
+        js_text
     )
 
     print(
         f"Found {len(assignments)} array assignment(s)."
     )
 
-    candidates = []
+    candidates: list[str] = []
 
-    for number, assignment in enumerate(
+    for idx, assignment in enumerate(
         assignments,
         start=1,
     ):
-
         variable = assignment["variable"]
-        start = assignment["start"]
-
-        try:
-
-            end = find_matching_bracket(
-                js,
-                start,
-            )
-
-        except RuntimeError:
-
-            continue
-
-        array_text = js[
-            start:end + 1
-        ]
-
-        # We only care about arrays that appear to contain
-        # route information.
-        if "codigo" not in array_text:
-            continue
+        array_text = assignment["array"]
 
         print(
-            f"Candidate array #{number}: "
+            f"Candidate array #{idx}: "
             f"variable={variable}, "
             f"size={len(array_text):,} characters"
         )
 
-        candidates.append(
-            {
-                "variable": variable,
-                "start": start,
-                "end": end,
-                "text": array_text,
-            }
-        )
+        # The SAO6 route objects contain the field "codigo".
+        if (
+            '"codigo"' not in array_text
+            and "codigo" not in array_text
+        ):
+            continue
+
+        candidates.append(array_text)
 
     if not candidates:
-
-        print(
-            "No array containing 'codigo' was found."
-        )
-
-        # Additional debugging
-        codigo_matches = list(
-            re.finditer(
-                r"codigo\s*:",
-                js,
-                flags=re.IGNORECASE,
-            )
-        )
-
-        print(
-            f"Found {len(codigo_matches)} occurrence(s) "
-            "of 'codigo:' in the JavaScript."
-        )
-
-        for index, match in enumerate(
-            codigo_matches[:10],
-            start=1,
-        ):
-
-            start = max(
-                0,
-                match.start() - 200,
-            )
-
-            end = min(
-                len(js),
-                match.end() + 500,
-            )
-
-            print(
-                f"\n--- codigo occurrence {index} ---"
-            )
-
-            print(
-                js[start:end]
-            )
-
         raise RuntimeError(
-            "Could not find route array in "
-            "rutas JavaScript."
+            "Could not find a candidate route array "
+            "containing 'codigo'."
         )
 
-    # -----------------------------------------------------------------------
-    # Try parsing the candidates.
-    # -----------------------------------------------------------------------
-
-    for candidate in candidates:
-
-        variable = candidate["variable"]
-        array_text = candidate["text"]
+    for idx, array_text in enumerate(
+        candidates,
+        start=1,
+    ):
+        json_text = ""
 
         try:
+            print(
+                f"Converting candidate route array #{idx} "
+                "from JavaScript syntax to JSON..."
+            )
 
-            data = json.loads(
+            json_text = js_object_to_json(
                 array_text
             )
 
-        except json.JSONDecodeError as exc:
+            routes = json.loads(
+                json_text
+            )
+
+            if not isinstance(routes, list):
+                print(
+                    "Candidate did not produce a JSON list."
+                )
+                continue
+
+            valid_routes: list[dict] = []
+
+            for route in routes:
+                if not isinstance(route, dict):
+                    continue
+
+                if "codigo" not in route:
+                    continue
+
+                valid_routes.append(route)
+
+            if not valid_routes:
+                print(
+                    "Candidate contained no valid route objects."
+                )
+                continue
 
             print(
-                f"Candidate variable '{variable}' "
-                "contains 'codigo' but is not valid JSON."
+                f"Successfully parsed "
+                f"{len(valid_routes)} SAO6 routes."
+            )
+
+            return valid_routes
+
+        except json.JSONDecodeError as exc:
+            print(
+                f"Candidate #{idx} still could not "
+                "be parsed as JSON."
             )
 
             print(
                 f"JSON error: {exc}"
             )
 
-            continue
+            if json_text:
+                print(
+                    "Converted array beginning:"
+                )
 
-        if not isinstance(
-            data,
-            list,
-        ):
-            continue
+                print(
+                    json_text[:1500]
+                )
 
-        # -------------------------------------------------------------------
-        # Validate route objects
-        # -------------------------------------------------------------------
-
-        routes = []
-
-        for item in data:
-
-            if not isinstance(
-                item,
-                dict,
-            ):
-                continue
-
-            if "codigo" not in item:
-                continue
-
-            routes.append(
-                item
+        except Exception as exc:
+            print(
+                f"Unexpected error parsing "
+                f"candidate #{idx}: "
+                f"{type(exc).__name__}: {exc}"
             )
 
-        if not routes:
-            continue
-
-        # -------------------------------------------------------------------
-        # We found the route array.
-        # -------------------------------------------------------------------
-
-        print(
-            f"Selected route array: "
-            f"variable={variable}"
-        )
-
-        print(
-            f"Successfully extracted "
-            f"{len(routes)} route(s)."
-        )
-
-        return routes
-
     raise RuntimeError(
-        "Found candidate route arrays, but could not "
-        "parse any of them as JSON."
+        "Found candidate route arrays, "
+        "but could not parse any of them."
     )
 
 
-# ============================================================================
+# ---------------------------------------------------------------------------
 # Validation
-# ============================================================================
+# ---------------------------------------------------------------------------
 
-def validate_routes(routes: list[dict]) -> None:
+def validate_routes(
+    routes: list[dict],
+) -> None:
     """
-    Perform basic validation of extracted route records.
+    Validate the minimum fields needed for the SAO6 route catalogue.
     """
 
-    print()
-    print(
-        "Validating extracted routes..."
-    )
+    if not routes:
+        raise RuntimeError(
+            "Route list is empty."
+        )
 
-    required_fields = [
+    required_fields = (
         "codigo",
         "nombre",
         "slug",
-    ]
+    )
 
-    problems = 0
+    errors: list[str] = []
 
     for index, route in enumerate(
         routes,
         start=1,
     ):
+        for field in required_fields:
+            if field not in route:
+                errors.append(
+                    f"Route #{index} missing field '{field}'"
+                )
 
-        missing = [
-            field
-            for field in required_fields
-            if not route.get(field)
-        ]
-
-        if missing:
-
-            problems += 1
-
-            print(
-                f"Warning: route #{index} "
-                f"missing fields: {missing}"
+        if not route.get("codigo"):
+            errors.append(
+                f"Route #{index} has empty codigo"
             )
 
-    if problems:
+        if not route.get("nombre"):
+            errors.append(
+                f"Route #{index} has empty nombre"
+            )
 
-        print(
-            f"Validation completed with "
-            f"{problems} warning(s)."
+        if not route.get("slug"):
+            errors.append(
+                f"Route #{index} has empty slug"
+            )
+
+    if errors:
+        for error in errors[:20]:
+            print(
+                f"Validation error: {error}"
+            )
+
+        if len(errors) > 20:
+            print(
+                f"... and {len(errors) - 20} more errors."
+            )
+
+        raise RuntimeError(
+            f"Route validation failed with "
+            f"{len(errors)} error(s)."
         )
 
-    else:
 
-        print(
-            "Validation successful."
+# ---------------------------------------------------------------------------
+# Output
+# ---------------------------------------------------------------------------
+
+def save_json(
+    routes: list[dict],
+    path: Path,
+) -> None:
+    """Save routes as formatted JSON."""
+
+    path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    with path.open(
+        "w",
+        encoding="utf-8",
+    ) as handle:
+        json.dump(
+            routes,
+            handle,
+            ensure_ascii=False,
+            indent=2,
         )
 
+        handle.write("\n")
 
-# ============================================================================
+    print(
+        f"Saved route JSON: {path}"
+    )
+
+
+def print_route_summary(
+    routes: list[dict],
+) -> None:
+    """Print a short route summary."""
+
+    print()
+    print("=" * 70)
+    print(
+        f"SAO6 routes extracted: {len(routes)}"
+    )
+    print("=" * 70)
+
+    for route in routes[:10]:
+        codigo = route.get(
+            "codigo",
+            "",
+        )
+
+        nombre = route.get(
+            "nombre",
+            "",
+        )
+
+        slug = route.get(
+            "slug",
+            "",
+        )
+
+        print(
+            f"{codigo:10} | "
+            f"{nombre} | "
+            f"{slug}"
+        )
+
+    if len(routes) > 10:
+        print(
+            f"... {len(routes) - 10} more routes"
+        )
+
+    print("=" * 70)
+
+
+# ---------------------------------------------------------------------------
 # Main
-# ============================================================================
+# ---------------------------------------------------------------------------
 
 def main() -> None:
-    """
-    Main scraper workflow:
+    """Main scraper entry point."""
 
-        /rutas
-           |
-           v
-        index-XXXX.js
-           |
-           v
-        rutas-XXXX.js
-           |
-           v
-        route array
-           |
-           v
-        sao6_rutas.json
-    """
+    print(
+        "=" * 70
+    )
 
-    print("=" * 70)
-    print("SAO6 route scraper")
-    print("=" * 70)
+    print(
+        "SAO6 route scraper"
+    )
+
+    print(
+        "=" * 70
+    )
 
     OUTPUT_DIR.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    # -----------------------------------------------------------------------
-    # 1. Download /rutas
-    # -----------------------------------------------------------------------
+    session = create_session()
+
+    # ------------------------------------------------------------------
+    # 1. Download route page
+    # ------------------------------------------------------------------
 
     html = download(
-        ROUTES_URL
+        session,
+        ROUTES_URL,
     )
 
-    html_file = (
-        OUTPUT_DIR /
-        "rutas.html"
-    )
-
-    html_file.write_text(
+    HTML_FILE.write_text(
         html,
         encoding="utf-8",
     )
 
     print(
-        f"Saved HTML: {html_file}"
+        f"Saved HTML: {HTML_FILE}"
     )
 
-    # -----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # 2. Find main JavaScript bundle
-    # -----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
-    main_js_url = find_main_js(
-        html
+    main_js_url = find_main_javascript(
+        html,
+        BASE_URL,
     )
 
     main_js = download(
-        main_js_url
+        session,
+        main_js_url,
     )
 
+    main_js_filename = Path(
+        main_js_url
+    ).name
+
     main_js_file = (
-        OUTPUT_DIR /
-        Path(main_js_url).name
+        OUTPUT_DIR
+        / main_js_filename
     )
 
     main_js_file.write_text(
@@ -719,126 +856,115 @@ def main() -> None:
         f"Saved main JS: {main_js_file}"
     )
 
-    # -----------------------------------------------------------------------
-    # 3. Find rutas JavaScript chunk
-    # -----------------------------------------------------------------------
+    # ------------------------------------------------------------------
+    # 3. Find route JavaScript chunk
+    # ------------------------------------------------------------------
 
-    routes_js_url = find_routes_chunk(
-        main_js
+    print(
+        "Searching main JS for route "
+        "JavaScript chunk..."
     )
 
-    # -----------------------------------------------------------------------
-    # 4. Download rutas JavaScript chunk
-    # -----------------------------------------------------------------------
-
-    routes_js = download(
-        routes_js_url
+    route_chunks = find_route_javascript(
+        main_js,
+        BASE_URL,
     )
 
-    routes_js_file = (
-        OUTPUT_DIR /
-        Path(routes_js_url).name
+    if not route_chunks:
+        raise RuntimeError(
+            "Could not find route JavaScript chunk."
+        )
+
+    route_js_url = select_route_chunk(
+        route_chunks
     )
 
-    routes_js_file.write_text(
-        routes_js,
+    route_js = download(
+        session,
+        route_js_url,
+    )
+
+    route_js_filename = Path(
+        route_js_url
+    ).name
+
+    route_js_file = (
+        OUTPUT_DIR
+        / route_js_filename
+    )
+
+    route_js_file.write_text(
+        route_js,
         encoding="utf-8",
     )
 
     print(
-        f"Saved route JS: {routes_js_file}"
+        f"Saved route JS: {route_js_file}"
     )
 
-    # -----------------------------------------------------------------------
-    # 5. Extract routes
-    # -----------------------------------------------------------------------
+    # ------------------------------------------------------------------
+    # 4. Extract routes
+    # ------------------------------------------------------------------
 
     routes = extract_routes(
-        routes_js
+        route_js
     )
 
-    # -----------------------------------------------------------------------
-    # 6. Validate
-    # -----------------------------------------------------------------------
+    # ------------------------------------------------------------------
+    # 5. Validate
+    # ------------------------------------------------------------------
 
     validate_routes(
         routes
     )
 
-    # -----------------------------------------------------------------------
-    # 7. Write JSON
-    # -----------------------------------------------------------------------
+    # ------------------------------------------------------------------
+    # 6. Save JSON
+    # ------------------------------------------------------------------
 
-    output = {
-        "source": ROUTES_URL,
-        "route_count": len(routes),
-        "routes": routes,
-    }
+    save_json(
+        routes,
+        ROUTES_JSON_FILE,
+    )
 
-    OUTPUT_JSON.write_text(
-        json.dumps(
-            output,
-            ensure_ascii=False,
-            indent=2,
-        ),
-        encoding="utf-8",
+    # ------------------------------------------------------------------
+    # 7. Show result
+    # ------------------------------------------------------------------
+
+    print_route_summary(
+        routes
     )
 
     print()
     print(
-        f"Saved route data: {OUTPUT_JSON}"
+        "SAO6 scraping completed successfully."
     )
 
-    # -----------------------------------------------------------------------
-    # 8. Show sample
-    # -----------------------------------------------------------------------
 
-    print()
-    print("=" * 70)
-    print(
-        f"SUCCESS: {len(routes)} route(s) extracted"
-    )
-    print("=" * 70)
-
-    for route in routes[:10]:
-
-        codigo = str(
-            route.get(
-                "codigo",
-                "?",
-            )
-        )
-
-        nombre = str(
-            route.get(
-                "nombre",
-                "?",
-            )
-        )
-
-        slug = str(
-            route.get(
-                "slug",
-                "?",
-            )
-        )
-
-        print(
-            f"{codigo:10} | "
-            f"{nombre} | "
-            f"{slug}"
-        )
-
-    if len(routes) > 10:
-
-        print(
-            f"... and {len(routes) - 10} more route(s)"
-        )
-
-
-# ============================================================================
+# ---------------------------------------------------------------------------
 # Entry point
-# ============================================================================
+# ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+
+    except KeyboardInterrupt:
+        print(
+            "\nInterrupted.",
+            file=sys.stderr,
+        )
+
+        sys.exit(130)
+
+    except Exception as exc:
+        print(
+            file=sys.stderr,
+        )
+
+        print(
+            f"ERROR: {exc}",
+            file=sys.stderr,
+        )
+
+        sys.exit(1)
