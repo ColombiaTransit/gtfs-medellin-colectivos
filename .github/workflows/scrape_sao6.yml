@@ -18,12 +18,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-
-      - name: Install Tesseract OCR (with Spanish language data)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y tesseract-ocr tesseract-ocr-spa
+          python-version: "3.12"      
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
@@ -36,8 +31,5 @@ jobs:
         with:
           name: mdo-schedule-scrape
           path: |
-            raw/mdo_images/
-            raw/mdo_ocr/
-            raw/mdo_schedule_ocr.json
-            raw/mdo_pairing_log.md
+            sao6_rutas.html
           retention-days: 30
