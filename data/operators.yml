@@ -53,21 +53,455 @@ routes:
   # =====================================================================
   # MDO (cuenca 3) - 15/15 routes, names confirmed, schedules NOT captured
   # =====================================================================
-  - {route_id: "C3-001",    operator: mdo, route_short_name: "001",    route_long_name: "Aguacatala - Santa Gema",                day_types: {}}
-  - {route_id: "C3-001A",   operator: mdo, route_short_name: "001A",   route_long_name: "Aguacatala - Los Cabos",                 day_types: {}}
-  - {route_id: "C3-002",    operator: mdo, route_short_name: "002",    route_long_name: "Aguacatala - Unicentro",                 day_types: {}}
-  - {route_id: "C3-003M",   operator: mdo, route_short_name: "003M",   route_long_name: "Belén - Manzanillo",                     day_types: {}}
-  - {route_id: "C3-003P",   operator: mdo, route_short_name: "003P",   route_long_name: "Belén - Piscina",                        day_types: {}}
-  - {route_id: "C3-003RA",  operator: mdo, route_short_name: "003RA",  route_long_name: "Belén - Rodeo Alto",                     day_types: {}}
-  - {route_id: "C3-003RLC", operator: mdo, route_short_name: "003RLC", route_long_name: "Belén - Los Cabos",                      day_types: {}}
-  - {route_id: "C3-003RV",  operator: mdo, route_short_name: "003RV",  route_long_name: "Belén - Rodeo Verde",                    day_types: {}}
-  - {route_id: "C3-004B",   operator: mdo, route_short_name: "004B",   route_long_name: "Los Alpes - Buga",                       day_types: {}}
-  - {route_id: "C3-004MD",  operator: mdo, route_short_name: "004MD",  route_long_name: "Ext. Los Alpes - Mano de Dios",          day_types: {}}
-  - {route_id: "C3-004P",   operator: mdo, route_short_name: "004P",   route_long_name: "Belén - Perla",                          day_types: {}}
-  - {route_id: "C3-005",    operator: mdo, route_short_name: "005",    route_long_name: "UDM - Aguas Frías",                      day_types: {}}
-  - {route_id: "C3-006",    operator: mdo, route_short_name: "006",    route_long_name: "UDM - Las Violetas - Villacafé",         day_types: {}}
-  - {route_id: "C3-007",    operator: mdo, route_short_name: "007",    route_long_name: "La Palma - Loma de Los Bernal",          day_types: {}}
-  - {route_id: "C3-007A",   operator: mdo, route_short_name: "007A",   route_long_name: "La Palma - Aliadas",                     day_types: {}}
+  - route_id: "C3-001"
+    operator: mdo
+    route_short_name: "001"
+    route_long_name: "Aguacatala - Santa Gema"
+    day_types:
+      laborable:
+        first_departure: "04:04:00"
+        last_departure: "23:20:00"
+        peak_headway_min: 6
+        offpeak_headway_min: 10
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "04:00:00"
+        last_departure: "23:20:00"
+        peak_headway_min: 6
+        offpeak_headway_min: 10
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:35:00"
+        last_departure: "22:40:00"
+        peak_headway_min: 6
+        offpeak_headway_min: 10
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-001A"
+    operator: mdo
+    route_short_name: "001A"
+    route_long_name: "Aguacatala - Los Cabos"
+    day_types:
+      laborable:
+        first_departure: "04:15:00"
+        last_departure: "23:20:00"
+        peak_headway_min: 11
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "04:13:00"
+        last_departure: "23:20:00"
+        peak_headway_min: 11
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:48:00"
+        last_departure: "22:40:00"
+        peak_headway_min: 11
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-002"
+    operator: mdo
+    route_short_name: "002"
+    route_long_name: "Aguacatala - Unicentro"
+    day_types:
+      laborable:
+        first_departure: "04:00:00"
+        last_departure: "23:20:00"
+        peak_headway_min: 5
+        offpeak_headway_min: 10
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "04:00:00"
+        last_departure: "23:20:00"
+        peak_headway_min: 5
+        offpeak_headway_min: 10
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:38:00"
+        last_departure: "22:40:00"
+        peak_headway_min: 5
+        offpeak_headway_min: 10
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-003M"
+    operator: mdo
+    route_short_name: "003M"
+    route_long_name: "Belén - Manzanillo"
+    day_types:
+      laborable:
+        first_departure: "03:49:00"
+        last_departure: "23:30:00"
+        peak_headway_min: 7
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:49:00"
+        last_departure: "23:35:00"
+        peak_headway_min: 7
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:23:00"
+        last_departure: "22:45:00"
+        peak_headway_min: 7
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-003P"
+    operator: mdo
+    route_short_name: "003P"
+    route_long_name: "Belén - Piscina"
+    day_types:
+      laborable:
+        first_departure: "03:48:00"
+        last_departure: "23:32:00"
+        peak_headway_min: 8
+        offpeak_headway_min: 12
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:52:00"
+        last_departure: "23:35:00"
+        peak_headway_min: 8
+        offpeak_headway_min: 12
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:21:00"
+        last_departure: "22:45:00"
+        peak_headway_min: 8
+        offpeak_headway_min: 12
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-003RA"
+    operator: mdo
+    route_short_name: "003RA"
+    route_long_name: "Belén - Rodeo Alto"
+    day_types:
+      laborable:
+        first_departure: "03:56:00"
+        last_departure: "23:32:00"
+        peak_headway_min: 15
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:55:00"
+        last_departure: "23:35:00"
+        peak_headway_min: 15
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:28:00"
+        last_departure: "22:45:00"
+        peak_headway_min: 15
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-003RLC"
+    operator: mdo
+    route_short_name: "003RLC"
+    route_long_name: "Belén - Los Cabos"
+    day_types:
+      laborable:
+        first_departure: "03:55:00"
+        last_departure: "23:32:00"
+        peak_headway_min: 13
+        offpeak_headway_min: 13
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:51:00"
+        last_departure: "23:35:00"
+        peak_headway_min: 13
+        offpeak_headway_min: 13
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:29:00"
+        last_departure: "22:45:00"
+        peak_headway_min: 13
+        offpeak_headway_min: 13
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-003RV"
+    operator: mdo
+    route_short_name: "003RV"
+    route_long_name: "Belén - Rodeo Verde"
+    day_types:
+      laborable:
+        first_departure: "03:54:00"
+        last_departure: "23:33:00"
+        peak_headway_min: 15
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:55:00"
+        last_departure: "23:33:00"
+        peak_headway_min: 15
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:26:00"
+        last_departure: "22:45:00"
+        peak_headway_min: 15
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-004B"
+    operator: mdo
+    route_short_name: "004B"
+    route_long_name: "Los Alpes - Buga"
+    day_types:
+      laborable:
+        first_departure: "03:49:00"
+        last_departure: "23:35:00"
+        peak_headway_min: 9
+        offpeak_headway_min: 13
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:48:00"
+        last_departure: "23:32:00"
+        peak_headway_min: 9
+        offpeak_headway_min: 13
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:22:00"
+        last_departure: "22:48:00"
+        peak_headway_min: 9
+        offpeak_headway_min: 13
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-004MD"
+    operator: mdo
+    route_short_name: "004MD"
+    route_long_name: "Ext. Los Alpes - Mano de Dios"
+    day_types:
+      laborable:
+        first_departure: "04:08:00"
+        last_departure: "19:56:00"
+        peak_headway_min: 8
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "04:30:00"
+        last_departure: "16:21:00"
+        peak_headway_min: 8
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "06:01:00"
+        last_departure: "18:21:00"
+        peak_headway_min: 8
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-004P"
+    operator: mdo
+    route_short_name: "004P"
+    route_long_name: "Belén - Perla"
+    day_types:
+      laborable:
+        first_departure: "03:49:00"
+        last_departure: "23:35:00"
+        peak_headway_min: 7
+        offpeak_headway_min: 10
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:47:00"
+        last_departure: "23:32:00"
+        peak_headway_min: 7
+        offpeak_headway_min: 10
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:20:00"
+        last_departure: "22:48:00"
+        peak_headway_min: 7
+        offpeak_headway_min: 10
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-005"
+    operator: mdo
+    route_short_name: "005"
+    route_long_name: "UDM - Aguas Frías"
+    day_types:
+      laborable:
+        first_departure: "03:45:00"
+        last_departure: "23:39:00"
+        peak_headway_min: 8
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:47:00"
+        last_departure: "23:39:00"
+        peak_headway_min: 8
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:17:00"
+        last_departure: "22:47:00"
+        peak_headway_min: 8
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-006"
+    operator: mdo
+    route_short_name: "006"
+    route_long_name: "UDM - Las Violetas - Villacafé"
+    day_types:
+      laborable:
+        first_departure: "03:46:00"
+        last_departure: "23:39:00"
+        peak_headway_min: 11
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:41:00"
+        last_departure: "23:39:00"
+        peak_headway_min: 11
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:16:00"
+        last_departure: "22:47:00"
+        peak_headway_min: 11
+        offpeak_headway_min: 11
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  - route_id: "C3-007"
+    operator: mdo
+    route_short_name: "007"
+    route_long_name: "La Palma - Loma de Los Bernal"
+    day_types:
+      laborable:
+        first_departure: "03:58:00"
+        last_departure: "23:33:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 13
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:58:00"
+        last_departure: "23:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 13
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:29:00"
+        last_departure: "22:47:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 13
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+  # All 15 MDO routes below now have REAL schedules, from scripts/
+  # scrape_mdo.py's OCR of each route's info card image, run against the
+  # actual downloaded images (not just a synthetic mockup this time -
+  # see the script's own docstring for what changed to get this
+  # working). peak_windows use a general Medellín-transit pico/valle/
+  # noche schedule for ALL 15 (not per-route - MDO's cards give headway
+  # VALUES per route but not per-route peak-hour WINDOWS):
+  #   pico: 06:00-08:30 and 16:30-19:30 / valle: 09:00-16:00 / noche: 19:30-23:00
+  # noche + the small transition gaps fall back to offpeak_headway_min,
+  # since there's no distinct "noche" headway on any MDO card, only
+  # pico/valle.
+  # C3-004MD's last_departure times (~16:21-19:56) are much earlier than
+  # every other route's (~23:00) - CONFIRMED correct (limited-hours
+  # extension route, matches its "Ext." name), not an OCR error.
+  - route_id: "C3-007A"
+    operator: mdo
+    route_short_name: "007A"
+    route_long_name: "La Palma - Aliadas"
+    day_types:
+      laborable:
+        first_departure: "03:58:00"
+        last_departure: "23:33:00"
+        peak_headway_min: 9
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      sabado:
+        first_departure: "03:58:00"
+        last_departure: "23:30:00"
+        peak_headway_min: 9
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+      domingo_festivo:
+        first_departure: "04:29:00"
+        last_departure: "22:47:00"
+        peak_headway_min: 9
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
 
   # =====================================================================
   # SAO6 (cuenca 6) - 31/31 routes, names confirmed, schedules NOT captured
