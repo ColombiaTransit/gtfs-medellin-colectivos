@@ -1,0 +1,43 @@
+name: Scrape MDO Schedule Images (manual)
+
+# Manual-only: OCR results need a human to check raw/mdo_schedule_ocr.json
+# and raw/mdo_ocr/*.txt against the actual images before anything from
+# here gets transcribed into data/operators.yml - this does NOT touch
+# operators.yml or the main build automatically, unlike build-colectivos-gtfs.yml.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Tesseract OCR (with Spanish language data)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-spa
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Scrape MDO route images + OCR
+        run: python scripts/scrape_mdo.py
+
+      - name: Upload results for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdo-schedule-scrape
+          path: |
+            raw/mdo_images/
+            raw/mdo_ocr/
+            raw/mdo_schedule_ocr.json
+            raw/mdo_pairing_log.md
+          retention-days: 30
