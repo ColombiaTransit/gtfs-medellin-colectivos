@@ -313,6 +313,7 @@ def main():
     skipped_no_stops = []
     skipped_direction_no_stops = []  # (route_id, sentido) - direction had <2 stops assigned
     suspicious_stops = []  # (route_id, stop_id, snap_distance_m) - stop far from BOTH its route's directions
+    provisional_trip_ids = []  # trip_ids built from a day_type marked provisional: true (fake/placeholder data)
 
     # --- group route features by ruta, since ~most routes have MORE THAN
     # ONE feature row (confirmed via inspect_fields.py: 102 rows / 46
@@ -436,6 +437,9 @@ def main():
                 service_id = DAY_TYPE_SERVICE_IDS.get(day_type, day_type)
                 trip_id = f"{route_id}_{direction_id}_{service_id}"
 
+                if sched.get("provisional"):
+                    provisional_trip_ids.append(trip_id)
+
                 trip_rows.append({
                     "route_id": route_id,
                     "service_id": service_id,
@@ -531,6 +535,18 @@ def main():
             f"{'...' if len(suspicious_stops) > 10 else ''}"
         )
 
+    if provisional_trip_ids:
+        print(
+            f"\n{'!' * 70}\n"
+            f"WARNING: THIS BUILD CONTAINS {len(provisional_trip_ids)} TRIP(S) "
+            f"BUILT FROM FAKE/PLACEHOLDER SCHEDULE DATA\n"
+            f"(day_types marked 'provisional: true' in data/operators.yml).\n"
+            f"DO NOT publish or treat this feed's frequencies/times as real "
+            f"for those routes until real data replaces the placeholders.\n"
+            f"{'!' * 70}\n",
+            file=sys.stderr,
+        )
+
     if not route_rows:
         print("No routes were built - nothing in data/operators.yml matched "
               "the ArcGIS routes layer. Check that route_id values match the "
@@ -568,8 +584,26 @@ def main():
         for f in OUT_DIR.glob("*.txt"):
             zf.write(f, f.name)
 
+    if provisional_trip_ids:
+        warning_path = Path("PROVISIONAL_DATA_WARNING.txt")
+        warning_path.write_text(
+            "THIS BUILD CONTAINS FAKE/PLACEHOLDER SCHEDULE DATA.\n\n"
+            f"{len(provisional_trip_ids)} trip(s) were built from day_types "
+            "marked 'provisional: true' in data/operators.yml - these are "
+            "invented round numbers (e.g. 05:00 start, 10/15 min headways), "
+            "NOT real schedules, used only so the pipeline has something to "
+            "build and validate against while real data is gathered.\n\n"
+            "DO NOT publish this feed's frequencies/times for these routes "
+            "as real. Affected trip_ids:\n"
+            + "\n".join(f"  {t}" for t in provisional_trip_ids)
+        )
+        print(f"Wrote {warning_path} - see it for the full list of affected trips.")
+
     print(f"Built {zip_path} with {len(route_rows)} routes, "
-          f"{len(stop_rows)} stops, {len(trip_rows)} trips.")
+          f"{len(stop_rows)} stops, {len(trip_rows)} trips"
+          + (f" ({len(provisional_trip_ids)} from FAKE placeholder data - "
+             f"see PROVISIONAL_DATA_WARNING.txt)" if provisional_trip_ids else "")
+          + ".")
 
 
 if __name__ == "__main__":
