@@ -194,6 +194,23 @@ scripts/build_gtfs.py            Joins geometry + operators.yml ->
    built as separate shapes/trips, not just one.) `inspect_fields.py`
    also prints, per route, how many feature rows it has and whether
    their `sentido` values repeat or differ.
+10. **`stop_times.txt` clock times are now distance-proportional, not
+    evenly spaced by stop count.** Previously every gap between
+    consecutive stops got an equal `running_time_min / (n_stops - 1)`
+    slice, regardless of how far apart those stops actually were — a
+    route with several stops clustered within a few hundred meters and
+    one far-off final stop would show unrealistically large gaps for the
+    close stops and an unrealistically small one for the distant stop.
+    Fixed to use `_dist_along_m` (already computed for stop ordering) so
+    each stop's time offset is proportional to its real distance along
+    the route. Verified against a fixture with stops clustered in the
+    first 300 m of a ~10 km route plus one stop 9.5 km out: the clustered
+    stops now get ~1-minute gaps and the distant stop gets a
+    proportionally large ~32-minute jump, instead of every gap being
+    forced to the same size. Still a placeholder in one sense — running
+    time is still derived from an assumed 18 km/h average speed, not
+    real timing data — but the relative spacing between stops along a
+    route is now geometrically honest.
 7. `build_gtfs.py` used to infer each output file's CSV header from
    `rows[0]`, which crashed (`IndexError`) whenever a route's `day_types`
    was empty (as it now legitimately is for the MDO placeholders above,
