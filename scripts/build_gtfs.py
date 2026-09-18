@@ -448,10 +448,22 @@ def main():
                     "direction_id": direction_id,
                 })
 
-                # Space stops evenly across the placeholder running time.
-                # Real per-segment timings would replace this if ever available.
+                # Space stops proportionally to their REAL distance along
+                # the route (using the same _dist_along_m computed for
+                # stop ordering), not evenly by stop count - a route with
+                # stops bunched together early and a long final stretch
+                # now gets correspondingly small/large time gaps, instead
+                # of every gap being running_time_min/(n_stops-1)
+                # regardless of actual spacing. Falls back to even
+                # spacing only in the degenerate case where every stop
+                # snapped to distance 0 (shouldn't happen in practice).
+                total_dist_m = direction_stops[-1].get("_dist_along_m", 0)
                 for i, stop in enumerate(direction_stops):
-                    offset_min = running_time_min * i / (n_stops - 1)
+                    if total_dist_m > 0:
+                        fraction = stop.get("_dist_along_m", 0) / total_dist_m
+                    else:
+                        fraction = i / (n_stops - 1) if n_stops > 1 else 0
+                    offset_min = running_time_min * fraction
                     t = _add_minutes(sched["first_departure"], offset_min)
                     stop_time_rows.append({
                         "trip_id": trip_id,
