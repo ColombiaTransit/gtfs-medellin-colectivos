@@ -1,0 +1,112 @@
+# Sotrames route -> zone assignment, and per-zone REPRESENTATIVE schedule
+# data. This is NOT per-route data - see the note on each zone below for
+# exactly why, and treat every schedule figure here as a zone-level
+# approximation, not a confirmed number for any specific route.
+#
+# WHY ZONE-LEVEL, NOT PER-ROUTE:
+# sotrames.com.co/rutas/ publishes frequency tables grouped under three
+# zone headings (Itagüí, Envigado, Sabaneta), but the number of tables
+# per zone does NOT match the number of routes in that zone 1:1 (e.g.
+# Envigado has 12 routes but 6 non-special frequency tables), and
+# nothing on the page visually or structurally pairs a specific table to
+# a specific route name. Guessing a 1:1 pairing risks presenting
+# fabricated precision as real. Using one zone-representative table
+# instead is less precise but honestly labeled as such.
+#
+# Each zone's number below is ONE real table actually published on the
+# page (not an invented average) - picked as roughly representative of
+# that zone's range. The comment on each zone shows the FULL set of
+# real numbers seen, so you can judge the representative choice
+# yourself and swap it for route-specific data as soon as it's found.
+#
+# route_id below = the KML filename (also used as location_id in
+# locations.geojson and as the GTFS route_id).
+
+zones:
+  itagui:
+    agency_name: "Sotrames S.A.S (Itagüí)"
+    # All real Itagüí SEMANA tables seen (excluding the one-off "SEMANA
+    # SAN JUAN SAN ANTONIO" table, which reads as a special/holiday
+    # schedule for a specific corridor, not a general weekday pattern):
+    #   4:40am-23:20  pico 4-5 min  valle 6 min
+    #   5:00am-21:00  pico 10 min   valle 15 min
+    # Using the first (higher-frequency, wider-hours) table as
+    # representative - the Veredales routes specifically are plausibly
+    # closer to the second, lower-frequency table instead (rural/feeder
+    # routes usually run less often), worth revisiting per-route.
+    first_departure: "04:40:00"
+    last_departure: "23:20:00"
+    peak_headway_min: 4.5
+    offpeak_headway_min: 6
+
+  envigado:
+    agency_name: "Sotrames S.A.S (Envigado)"
+    # All real Envigado SEMANA tables seen (excluding the San Juan San
+    # Antonio special): pico values 3, 2.5, 4, 30, 30 min; valle 4.5, 4,
+    # 5, 30 min - genuinely WIDE range (2-30 min), much wider than the
+    # other two zones. The 30-min tables are visibly outliers (likely a
+    # single low-demand route, not representative of the zone overall).
+    # Using a middling table as representative - treat this zone's
+    # number as especially unreliable given the spread; a specific
+    # route could plausibly be anywhere from 2 to 30 minutes.
+    first_departure: "04:00:00"
+    last_departure: "22:30:00"
+    peak_headway_min: 3
+    offpeak_headway_min: 4.5
+
+  sabaneta:
+    agency_name: "Sotrames S.A.S (Sabaneta)"
+    # All real Sabaneta SEMANA tables seen: pico 2.5, 3, 10, 10, 10, 8
+    # min; valle 4.5, 4.5, 12, 12, 12, 11 min. Using the pico-8/valle-11
+    # table as a middling representative.
+    first_departure: "04:40:00"
+    last_departure: "22:30:00"
+    peak_headway_min: 8
+    offpeak_headway_min: 11
+
+# route_id -> zone. Order and grouping matches the page's own zone
+# sections (confirmed via scripts/fetch_sotrames_kml.py's ROUTES list,
+# built in the same top-to-bottom document order).
+route_zones:
+  Itaguí-Veredales_San_Jose: itagui
+  Itaguí-Veredales_Pan_de_Azucar: itagui
+  Itagui-Senorial: itagui
+  Ruta_1: itagui
+  Ruta_2: itagui
+
+  Rosellon_Flores_Modelo_2008_Superior_Junin: envigado
+  Dorada_La_Paz_Vegas_San_Juan: envigado
+  Maria_Auxiliadora: envigado
+  Estacion_Envigado-Chingui_2: envigado
+  Estacion_Envigado-San_Arenales: envigado
+  Estacion_Envigado-San_Rafael_a: envigado
+  Estacion_Envigado-Barrio_Nuevo: envigado
+  Estacion_Envigado-El_Salado: envigado
+  Estacion_Envigado-Gualandayes: envigado
+  Estacion_Envigado-Catedral: envigado
+  Estacion_Envigado-La_Mina: envigado
+  Estacion_Envigado-San_Rafael_b: envigado
+
+  Sabaneta_Vegas-Poblado_San_Juan: sabaneta
+  Sabaneta_Vegas_Derecho_a: sabaneta
+  Sabaneta_Poblado_Vegas-Ejecutiva_a: sabaneta
+  Rosellon_Derecho_R_Vehiculos_2008_Junin: sabaneta
+  Rosellon_Derecho_R_San_Juan: sabaneta
+  Dorado_La_Paz_Vegas: sabaneta
+  La_Estrella_Sabaneta: sabaneta
+  La_Doctora_Ceramica: sabaneta
+  La_Doctora_San_Isidro: sabaneta
+  La_Doctora_Inmaculada: sabaneta
+  Veredales_Sabaneta_Aves_Maria_Monte_Carmelo: sabaneta
+  Veredales_Sabaneta_San_Jose: sabaneta
+  Sabaneta_Poblado_Vegas_Buses_a: sabaneta
+  Sabaneta_Vegas_Poblado_Buses: sabaneta
+  Dorado_La_Paz_Poblado_Cuenca: sabaneta
+  Dorado_La_Paz_Poblado_Buses_Junin: sabaneta
+
+  # Circular_Sur_303 deliberately NOT listed here: no frequency table was
+  # found anywhere on the page for this route, unlike every other one.
+  # Real geometry exists for it (see raw/sotrames_kml/Circular_Sur_303.kml)
+  # but scripts/build_gtfs_flex_sotrames.py will build NO trips for it
+  # (route + shape only) rather than borrow another zone's numbers for a
+  # route with literally zero schedule signal.
