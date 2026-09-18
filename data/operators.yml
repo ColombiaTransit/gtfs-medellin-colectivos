@@ -504,40 +504,888 @@ routes:
           - ["16:30:00", "19:30:00"]
 
   # =====================================================================
-  # SAO6 (cuenca 6) - 31/31 routes, names confirmed, schedules NOT captured
+  # SAO6 (cuenca 6) - 31/31 route names confirmed. Schedules below are
+  # FAKE / PLACEHOLDER DATA, not real - deliberately identical, round
+  # numbers (05:00-22:00 weekday, 10/15 min pico/valle) across every
+  # route, so the pipeline has something to build/validate against while
+  # real SAO6 data is searched for. Every entry is marked
+  # `provisional: true`, which build_gtfs.py actively warns about at
+  # build time (stderr + a PROVISIONAL_DATA_WARNING.txt file alongside
+  # the output) and which the release workflow reflects in the GitHub
+  # release title/notes - this can't silently ship as if it were real.
+  # REPLACE these blocks (not just tweak the numbers) as real SAO6 data
+  # is found - remove `provisional: true` once a route's numbers are
+  # real, or the warnings will keep firing for it.
   # =====================================================================
-  - {route_id: "C6-001",   operator: sao6, route_short_name: "001",   route_long_name: "Santa Rita - Estación Acevedo",                    day_types: {}}
-  - {route_id: "C6-002",   operator: sao6, route_short_name: "002",   route_long_name: "Versalles - Punto Cero - Estación Hospital",       day_types: {}}
-  - {route_id: "C6-002A",  operator: sao6, route_short_name: "002A",  route_long_name: "Versalles - Estación Hospital",                    day_types: {}}
-  - {route_id: "C6-003",   operator: sao6, route_short_name: "003",   route_long_name: "Campo Valdés - Estación Hospital",                 day_types: {}}
-  - {route_id: "C6-004",   operator: sao6, route_short_name: "004",   route_long_name: "Reservas del Seminario - Estación Exposiciones",   day_types: {}}
-  - {route_id: "C6-004A",  operator: sao6, route_short_name: "004A",  route_long_name: "Quinta Linda - Estación Exposiciones",             day_types: {}}
-  - {route_id: "C6-005",   operator: sao6, route_short_name: "005",   route_long_name: "Vergel - Estación San Antonio",                    day_types: {}}
-  - {route_id: "C6-006",   operator: sao6, route_short_name: "006",   route_long_name: "Villa Liliam - Estación Alejandro Echavarría",     day_types: {}}
-  - {route_id: "C6-007",   operator: sao6, route_short_name: "007",   route_long_name: "Cataluña - Estación Alpujarra",                    day_types: {}}
-  - {route_id: "C6-008",   operator: sao6, route_short_name: "008",   route_long_name: "La Libertad - Estación Prado",                     day_types: {}}
-  - {route_id: "C6-009",   operator: sao6, route_short_name: "009",   route_long_name: "Enciso - Estación Prado",                           day_types: {}}
-  - {route_id: "C6-010",   operator: sao6, route_short_name: "010",   route_long_name: "Villatina - ITM - Estación Prado",                 day_types: {}}
-  - {route_id: "C6-011",   operator: sao6, route_short_name: "011",   route_long_name: "El Playón - Popular 2 - Estación Acevedo",         day_types: {}}
-  - {route_id: "C6-012",   operator: sao6, route_short_name: "012",   route_long_name: "La Francia - Aranjuez - Estación Acevedo",         day_types: {}}
-  - {route_id: "C6-012A",  operator: sao6, route_short_name: "012A",  route_long_name: "Andalucía - Estación Acevedo",                     day_types: {}}
-  - {route_id: "C6-013",   operator: sao6, route_short_name: "013",   route_long_name: "Popular 1 - Estación Tricentenario",               day_types: {}}
-  - {route_id: "C6-014",   operator: sao6, route_short_name: "014",   route_long_name: "La Ladera - Estación Prado",                       day_types: {}}
+  - route_id: "C6-001"
+    operator: sao6
+    route_short_name: "001"
+    route_long_name: "Santa Rita - Estación Acevedo"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-002"
+    operator: sao6
+    route_short_name: "002"
+    route_long_name: "Versalles - Punto Cero - Estación Hospital"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-002A"
+    operator: sao6
+    route_short_name: "002A"
+    route_long_name: "Versalles - Estación Hospital"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-003"
+    operator: sao6
+    route_short_name: "003"
+    route_long_name: "Campo Valdés - Estación Hospital"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-004"
+    operator: sao6
+    route_short_name: "004"
+    route_long_name: "Reservas del Seminario - Estación Exposiciones"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-004A"
+    operator: sao6
+    route_short_name: "004A"
+    route_long_name: "Quinta Linda - Estación Exposiciones"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-005"
+    operator: sao6
+    route_short_name: "005"
+    route_long_name: "Vergel - Estación San Antonio"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-006"
+    operator: sao6
+    route_short_name: "006"
+    route_long_name: "Villa Liliam - Estación Alejandro Echavarría"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-007"
+    operator: sao6
+    route_short_name: "007"
+    route_long_name: "Cataluña - Estación Alpujarra"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-008"
+    operator: sao6
+    route_short_name: "008"
+    route_long_name: "La Libertad - Estación Prado"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-009"
+    operator: sao6
+    route_short_name: "009"
+    route_long_name: "Enciso - Estación Prado"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-010"
+    operator: sao6
+    route_short_name: "010"
+    route_long_name: "Villatina - ITM - Estación Prado"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-011"
+    operator: sao6
+    route_short_name: "011"
+    route_long_name: "El Playón - Popular 2 - Estación Acevedo"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-012"
+    operator: sao6
+    route_short_name: "012"
+    route_long_name: "La Francia - Aranjuez - Estación Acevedo"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-012A"
+    operator: sao6
+    route_short_name: "012A"
+    route_long_name: "Andalucía - Estación Acevedo"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-013"
+    operator: sao6
+    route_short_name: "013"
+    route_long_name: "Popular 1 - Estación Tricentenario"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-014"
+    operator: sao6
+    route_short_name: "014"
+    route_long_name: "La Ladera - Estación Prado"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
   # C6-015A / C6-016A: confirmed to exist in ArcGIS but don't match SAO6's
   # site (which instead lists "C6-014A"/"C6-015" - codes ArcGIS doesn't
   # have). Names below are UNVERIFIED guesses; check ArcGIS's own
   # 'linea'/'itinerario' text for these two codes before trusting.
-  - {route_id: "C6-015A",  operator: sao6, route_short_name: "015A",  route_long_name: "UNVERIFIED - possibly 'Villa Hermosa - Estación Prado' (SAO6 site calls this C6-014A)", day_types: {}}
-  - {route_id: "C6-016",   operator: sao6, route_short_name: "016",   route_long_name: "Nuevo Horizonte - Estación Hospital",              day_types: {}}
-  - {route_id: "C6-016A",  operator: sao6, route_short_name: "016A",  route_long_name: "UNVERIFIED - possibly 'Villa de Guadalupe - Estación Hospital' (SAO6 site calls this C6-015)", day_types: {}}
-  - {route_id: "C6-018",   operator: sao6, route_short_name: "018",   route_long_name: "Santa Cecilia - Estación Tricentenario",           day_types: {}}
-  - {route_id: "C6-019",   operator: sao6, route_short_name: "019",   route_long_name: "El Raizal - Estación Universidad",                 day_types: {}}
-  - {route_id: "C6-019A",  operator: sao6, route_short_name: "019A",  route_long_name: "El Jardín - Estación Gardel",                      day_types: {}}
-  - {route_id: "C6-020",   operator: sao6, route_short_name: "020",   route_long_name: "San José La Cima - Estación Universidad",         day_types: {}}
-  - {route_id: "C6-021",   operator: sao6, route_short_name: "021",   route_long_name: "Granizal - Estación Tricentenario",                day_types: {}}
-  - {route_id: "C6-022",   operator: sao6, route_short_name: "022",   route_long_name: "La Cruz - Estación Prado",                         day_types: {}}
-  - {route_id: "C6-022A",  operator: sao6, route_short_name: "022A",  route_long_name: "Las Partidas - Estación Prado",                    day_types: {}}
-  - {route_id: "C6-023",   operator: sao6, route_short_name: "023",   route_long_name: "Santa Lucía - Estación Alejandro Echavarría",      day_types: {}}
-  - {route_id: "C6-024",   operator: sao6, route_short_name: "024",   route_long_name: "8 de Marzo - Estación Alejandro Echavarría",       day_types: {}}
-  - {route_id: "C6-025",   operator: sao6, route_short_name: "025",   route_long_name: "La Espadera - Estación Oriente",                   day_types: {}}
-  - {route_id: "C6-025B",  operator: sao6, route_short_name: "025B",  route_long_name: "Bosque Verde - Estación Oriente",                  day_types: {}}
+  - route_id: "C6-015A"
+    operator: sao6
+    route_short_name: "015A"
+    route_long_name: "UNVERIFIED - possibly 'Villa Hermosa - Estación Prado' (SAO6 site calls this C6-014A)"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-016"
+    operator: sao6
+    route_short_name: "016"
+    route_long_name: "Nuevo Horizonte - Estación Hospital"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-016A"
+    operator: sao6
+    route_short_name: "016A"
+    route_long_name: "UNVERIFIED - possibly 'Villa de Guadalupe - Estación Hospital' (SAO6 site calls this C6-015)"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-018"
+    operator: sao6
+    route_short_name: "018"
+    route_long_name: "Santa Cecilia - Estación Tricentenario"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-019"
+    operator: sao6
+    route_short_name: "019"
+    route_long_name: "El Raizal - Estación Universidad"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-019A"
+    operator: sao6
+    route_short_name: "019A"
+    route_long_name: "El Jardín - Estación Gardel"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-020"
+    operator: sao6
+    route_short_name: "020"
+    route_long_name: "San José La Cima - Estación Universidad"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-021"
+    operator: sao6
+    route_short_name: "021"
+    route_long_name: "Granizal - Estación Tricentenario"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-022"
+    operator: sao6
+    route_short_name: "022"
+    route_long_name: "La Cruz - Estación Prado"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-022A"
+    operator: sao6
+    route_short_name: "022A"
+    route_long_name: "Las Partidas - Estación Prado"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-023"
+    operator: sao6
+    route_short_name: "023"
+    route_long_name: "Santa Lucía - Estación Alejandro Echavarría"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-024"
+    operator: sao6
+    route_short_name: "024"
+    route_long_name: "8 de Marzo - Estación Alejandro Echavarría"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-025"
+    operator: sao6
+    route_short_name: "025"
+    route_long_name: "La Espadera - Estación Oriente"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+  - route_id: "C6-025B"
+    operator: sao6
+    route_short_name: "025B"
+    route_long_name: "Bosque Verde - Estación Oriente"
+    day_types:
+      laborable:
+        first_departure: "05:00:00"
+        last_departure: "22:00:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows:
+          - ["06:00:00", "08:30:00"]
+          - ["16:30:00", "19:30:00"]
+        provisional: true
+      sabado:
+        first_departure: "05:00:00"
+        last_departure: "21:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
+      domingo_festivo:
+        first_departure: "05:30:00"
+        last_departure: "20:30:00"
+        peak_headway_min: 10
+        offpeak_headway_min: 15
+        peak_windows: []
+        provisional: true
