@@ -79,12 +79,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          if [ -f PROVISIONAL_DATA_WARNING.txt ]; then
+            TITLE="Latest Colectivos GTFS (CONTAINS PLACEHOLDER DATA - see PROVISIONAL_DATA_WARNING.txt)"
+            NOTES="Automated build from ArcGIS alimentadoras geometry + curated operator schedules. WARNING: some trips use fake/placeholder schedule data (data/operators.yml entries marked provisional: true) - see the attached PROVISIONAL_DATA_WARNING.txt for the full list. Do not treat those routes' times/frequencies as real."
+          else
+            TITLE="Latest Colectivos GTFS"
+            NOTES="Automated build from ArcGIS alimentadoras geometry + curated operator schedules"
+          fi
+
           gh release delete latest -y --cleanup-tag || true
-          gh release create latest \
-            --title "Latest Colectivos GTFS" \
-            --notes "Automated build from ArcGIS alimentadoras geometry + curated operator schedules"
-          gh release upload latest \
-            gtfs-medellin-colectivos.zip \
-            validation-report/report.html \
-            validation-report/report.json \
-            --clobber
+          gh release create latest --title "$TITLE" --notes "$NOTES"
+
+          ASSETS="gtfs-medellin-colectivos.zip validation-report/report.html validation-report/report.json"
+          if [ -f PROVISIONAL_DATA_WARNING.txt ]; then
+            ASSETS="$ASSETS PROVISIONAL_DATA_WARNING.txt"
+          fi
+          gh release upload latest $ASSETS --clobber
