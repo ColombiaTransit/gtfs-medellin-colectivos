@@ -1,0 +1,38 @@
+name: Fetch Sotrames Route KML (manual)
+
+# Manual-only: downloads every Sotrames route's Google My Maps as KML and
+# checks each for real stop-point markers vs. line-only geometry. Purely
+# a data-gathering/inspection step - does NOT touch data/operators.yml
+# or anything else automatically. Needs real internet access to
+# google.com, which this Action has (unlike some sandboxed dev
+# environments).
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch and inspect Sotrames route KML files
+        run: python scripts/fetch_sotrames_kml.py
+
+      - name: Upload results for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: sotrames-kml
+          path: |
+            raw/sotrames_kml/
+            raw/sotrames_kml_summary.json
+          retention-days: 30
