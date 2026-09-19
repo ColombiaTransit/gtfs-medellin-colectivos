@@ -39,6 +39,7 @@ list, breaking Calasanz-Boston's otherwise-clean match) - fixed and
 reconfirmed.
 """
 
+import copy
 import json
 import re
 import sys
@@ -74,6 +75,27 @@ SCHEDULE_RE = re.compile(
 )
 MAPS_RE = re.compile(r"https://www\.google\.com/maps/d/(?:u/0/)?embed\?mid=([\w-]+)")
 HEADING_ONLY_RE = re.compile(r"^#+$")
+
+
+def get_content_soup(soup):
+    """Scope to <main> if present. CONFIRMED NECESSARY against real CI
+    output: on 3 of 4 real Coonatra pages, the page's real content
+    heading (e.g. "Calasanz-Boston") is ALSO the exact text of an
+    earlier nav-menu link on the same page. text.find(heading_text) on
+    the whole page's text always finds the nav link first, not the real
+    heading - which wrongly anchored names-block extraction at the nav
+    menu and swallowed the entire header+footer navigation into
+    "names". Scoping to <main> (where nav/header/footer normally don't
+    live) sidesteps this entirely. Falls back to a copy of the whole
+    soup with <nav>/<header>/<footer> tags removed if no <main> exists.
+    """
+    main = soup.find("main")
+    if main:
+        return main
+    scoped = copy.copy(soup)
+    for tag in scoped.find_all(["nav", "header", "footer"]):
+        tag.decompose()
+    return scoped
 
 
 def to_24h(t: str) -> str:
@@ -139,25 +161,22 @@ def scrape_route_group(url: str) -> dict:
     print(f"  GET {url} -> HTTP {r.status_code}, {len(r.text)} bytes")
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
-    text = soup.get_text("\n")
+    content = get_content_soup(soup)
+    text = content.get_text("\n")
 
     first_inicia = text.find("Inicia:")
     if first_inicia == -1:
-        print(f"  WARNING: no 'Inicia:' found anywhere on this page at all - "
+        print(f"  WARNING: no 'Inicia:' found anywhere in the scoped content - "
               f"the schedule format may differ from what this script expects, "
-              f"or the page structure has changed.", file=sys.stderr)
+              f"or <main> scoping excluded the real content by mistake.",
+              file=sys.stderr)
 
     # Names: short lines between the LAST heading (h1-h6) appearing
-    # BEFORE the first "Inicia:" and that "Inicia:" itself. Using the
-    # LAST such heading (not soup.find(["h1","h2"])'s FIRST match
-    # anywhere on the page) avoids accidentally anchoring on a
-    # site-wide logo/nav heading that has nothing to do with this
-    # page's actual route content - a real risk this script was never
-    # tested against (only the /rutas/ listing page's URL-discovery
-    # step has been confirmed against real CI output so far; this
-    # per-page extraction logic has NOT yet been verified against real
-    # bytes - review the diagnostics below carefully on the next run).
-    headings = soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6"])
+    # BEFORE the first "Inicia:" and that "Inicia:" itself, searched
+    # within the CONTENT-SCOPED text only (see get_content_soup - this
+    # is what fixes the real nav-menu-swallowing bug confirmed on 3 of
+    # 4 real pages).
+    headings = content.find_all(["h1", "h2", "h3", "h4", "h5", "h6"])
     title, title_end_idx = "", 0
     for h in headings:
         h_text = h.get_text(strip=True)
@@ -174,7 +193,12 @@ def scrape_route_group(url: str) -> dict:
     ]
 
     schedule_matches = SCHEDULE_RE.findall(text)
-    mids = MAPS_RE.findall(text)
+    # Maps URLs are inside <iframe src="..."> attributes, CONFIRMED via
+    # real CI output to be invisible to soup.get_text() (which only
+    # returns rendered text nodes, never attribute values) - every page
+    # came back with mids=0 until this was changed to search the RAW
+    # HTML response text instead of the flattened text stream.
+    mids = MAPS_RE.findall(r.text)
 
     print(f"  title_anchor={title!r} names_block_len={len(names_block)} "
           f"names={len(names)} schedules={len(schedule_matches)} mids={len(mids)}")
