@@ -56,4 +56,3 @@ jobs:
             git commit -m "Update Medellín public transport routes"
             git push
           fi
-```
