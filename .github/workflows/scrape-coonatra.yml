@@ -1,0 +1,66 @@
+name: Scrape Coonatra Routes + Frequency PDFs
+
+# One workflow: scrapes all 4 Coonatra route-group pages (branch names,
+# schedule text, Google My Maps IDs), then automatically finds and
+# parses every frequency-timetable PDF linked from any of those pages
+# (currently just Calasanz-Boston's, but this discovers new ones
+# automatically rather than hardcoding that one URL). Purely a
+# data-gathering step - does NOT build a GTFS feed yet. Manual trigger
+# only, since the PDF column-mapping needs a human to verify the
+# printed diagnostic output before anything downstream trusts it (see
+# scripts/parse_coonatra_pdf.py's docstring).
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Scrape Coonatra route-group pages
+        run: python scripts/scrape_coonatra.py
+
+      - name: Parse every discovered frequency PDF
+        run: |
+          python3 -c "
+          import json, subprocess, sys
+          from pathlib import Path
+
+          data = json.loads(Path('raw/coonatra_routes.json').read_text())
+          pdf_urls = []
+          for page in data:
+              for url in page.get('frequency_pdf_urls', []):
+                  if url not in pdf_urls:
+                      pdf_urls.append(url)
+
+          if not pdf_urls:
+              print('No frequency PDF links found on any page.')
+              sys.exit(0)
+
+          print(f'Found {len(pdf_urls)} frequency PDF(s): {pdf_urls}')
+          for url in pdf_urls:
+              print(f'\n{\"=\"*70}\nParsing {url}\n{\"=\"*70}')
+              subprocess.run(['python', 'scripts/parse_coonatra_pdf.py', url], check=True)
+          "
+
+      - name: Upload scraped data + PDFs + extracted tables
+        uses: actions/upload-artifact@v4
+        with:
+          name: coonatra-scrape
+          path: |
+            raw/coonatra_routes.json
+            raw/coonatra_pdf_*.json
+            raw/*.pdf
+          retention-days: 30
+          if-no-files-found: warn
