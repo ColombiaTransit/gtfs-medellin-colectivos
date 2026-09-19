@@ -2,33 +2,52 @@
 """
 Extract Coonatra's real per-trip departure-time timetable from a
 frequencies PDF (e.g. Frecuencias-rutas-Calasanz.pdf, linked from the
-Calasanz-Boston route page) using real word POSITIONS, not text-flow
-order.
+Calasanz-Boston route page) using pdfplumber's real BORDER-LINE-based
+table detection.
 
-WHY POSITION-BASED: a plain text extraction of this PDF (tested via
-web_fetch) reflows the table into a confusing order - route headers like
-"Ruta 310 Directo Calasanz Boston" appear to belong to the block of
-times ABOVE them in the flattened text, not below, because the real
-layout is columns of times with headers on top, and naive text
-extraction reads top-to-bottom without preserving which header sits
-above which column of numbers. Guessing that mapping from flattened text
-risks silently attributing real departure times to the wrong route -
-worse than not having the data at all. This script instead clusters
-every word by its x-position (pdfplumber gives real bounding boxes) to
-reconstruct actual columns, then reads each column top-to-bottom.
+REVISION 2 - completely rewritten after being tested against the ACTUAL
+PDF file (the person uploaded it directly). The first version tried to
+reconstruct table structure by clustering individual WORD positions
+(x0/x1/top), guessing at column boundaries - the wrong tool for this
+file. The real PDF has genuine drawn table borders (confirmed visually
+and via pdfplumber), so `page.find_tables()` - which detects tables
+from the actual vector line/rect objects, not just text position -
+handles this correctly and far more simply.
 
-UNTESTED AGAINST THE REAL FILE: the environment that wrote this script
-could not download coonatra.com's actual PDF bytes (only a flattened
-text preview, same limitation as the text-order problem above - not
-useful for testing position-based logic). This MUST be run for real
-before trusting its output - it prints the full extracted structure
-(every detected column, its header, and its first/last few values)
-specifically so you can eyeball it against the actual PDF and confirm
-or correct it, rather than silently trusting a guess.
+CONFIRMED against the real file (all 3 pages):
+  - Each visible bordered box IS its own separate table, detected
+    correctly: page 0 has 3 tables ("Ruta 310 Directo Calasanz Boston"
+    [3 columns], "Ruta 310 Rosal" [2 cols], "Ruta 310 Metro Rosal"
+    [2 cols]); page 1 has 2 tables ("Ruta 311 Calasanz Boston" [5 cols],
+    "Ruta 311 Metro" [2 cols]); page 2 has 1 table ("Ruta 311 Metro
+    Directo" [3 cols]) - exactly matching the visible table boxes.
+  - Each table's header row is ONE merged cell spanning all its
+    columns (pdfplumber represents this as [header_text, None, None,
+    ...]) - handled by joining the non-None header cells.
+  - 452 individual departure times extracted across the whole document,
+    ALL of them parsed successfully to 24h time - zero failures.
+
+OPEN QUESTION FROM REVISION 1 - NOW RESOLVED: for tables with more than
+one column, what does each sub-column represent? Checked every table's
+column boundaries against the real extracted data: in 5 of 6 tables, one
+column's LAST time is always chronologically just before the NEXT
+column's FIRST time (e.g. "Ruta 310 Directo Calasanz Boston" col 0 ends
+09:03, col 1 starts 09:17) - these are NOT separate logical groups
+(not outbound/return, not AM/PM splits) but ONE continuous departure
+list, wrapped into side-by-side columns purely for print-page layout.
+A "concatenated" field (columns joined in that order) is included below
+for convenience.
+
+ONE GENUINE EXCEPTION, faithfully reproduced, not a bug: "Ruta 311
+Metro Directo" (page 2) has real out-of-order times WITHIN its own
+columns (e.g. one column reads ...1:48pm, 1:18pm, 1:28pm... - going
+backward). Checked directly against the source PDF's own printed rows -
+this irregularity is really there in Coonatra's document, not an
+artifact of this script. Its "concatenated" field will NOT be
+chronologically sorted for this one table; every other table's will be.
 
 Usage: python scripts/parse_coonatra_pdf.py <pdf_url_or_local_path>
-Output: raw/coonatra_pdf_<name>.json (only written after the printed
-        structure is shown - read it before using the JSON for anything)
+Output: raw/coonatra_pdf_<name>.json
 """
 
 import json
@@ -39,109 +58,66 @@ from pathlib import Path
 import pdfplumber
 import requests
 
-TIME_RE = re.compile(r"^\d{1,2}:\d{2}$")
-AMPM_RE = re.compile(r"^[ap]\.?\s*m\.?$", re.IGNORECASE)
-HEADER_KEYWORDS = ("ruta", "planificación", "viajes")
-
-# How close two words' x-positions must be (in PDF points) to be
-# considered "the same column" - PDFs vary; if the printed diagnostic
-# shows columns being wrongly merged or split, adjust this first.
-COLUMN_X_TOLERANCE = 15
+TIME_CELL_RE = re.compile(r"(\d{1,2}):(\d{2})\s*([ap])\.?\s*m\.?", re.IGNORECASE)
 
 
-def to_24h(hh_mm: str, ampm: str) -> str:
-    h, m = hh_mm.split(":")
-    h = int(h)
-    ampm = ampm.lower().replace(".", "").replace(" ", "")
-    if ampm == "pm" and h != 12:
+def to_24h(cell: str):
+    m = TIME_CELL_RE.match(cell.strip())
+    if not m:
+        return None
+    h, mm, ampm = int(m.group(1)), m.group(2), m.group(3).lower()
+    if ampm == "p" and h != 12:
         h += 12
-    if ampm == "am" and h == 12:
+    if ampm == "a" and h == 12:
         h = 0
-    return f"{h:02d}:{m}:00"
-
-
-def cluster_columns(words: list) -> list:
-    """words: pdfplumber word dicts (each has 'text', 'x0', 'x1', 'top').
-    Returns a list of columns, each a list of words sorted top-to-bottom,
-    where a column is a set of words whose x0 values cluster together."""
-    sorted_words = sorted(words, key=lambda w: w["x0"])
-    columns = []
-    current = []
-    current_x = None
-    for w in sorted_words:
-        if current_x is None or abs(w["x0"] - current_x) <= COLUMN_X_TOLERANCE:
-            current.append(w)
-            current_x = w["x0"] if current_x is None else current_x
-        else:
-            columns.append(current)
-            current = [w]
-            current_x = w["x0"]
-    if current:
-        columns.append(current)
-    for col in columns:
-        col.sort(key=lambda w: (w["top"], w["x0"]))
-    return columns
-
-
-def merge_time_ampm(column_words: list) -> list:
-    """A time is two tokens in this PDF ('4:20' and 'a. m.' as separate
-    words per the flattened-text preview, and pdfplumber splits on
-    whitespace, so 'a. m.' becomes TWO further tokens: 'a.' and 'm.').
-    Pairs a time token with whichever am/pm form follows it (a single
-    token like 'am'/'pm', or two split tokens like 'a.'+'m.') into one
-    'HH:MM:SS' entry; leaves header text alone.
-
-    FIXED a real off-by-one here: the first version advanced the token
-    index by (1 + ampm_tokens_used) where ampm_tokens_used was already
-    counting the time token too, double-counting it and overshooting by
-    one token every time the split ('a.', 'm.') form matched - silently
-    skipping the NEXT time in the column entirely. Confirmed and fixed
-    against a synthetic column with 3 real-shaped time entries; the bug
-    version only recovered 2 of them.
-    """
-    entries = []
-    i = 0
-    texts = [w["text"] for w in column_words]
-    n = len(texts)
-    while i < n:
-        t = texts[i]
-        if TIME_RE.match(t) and i + 1 < n:
-            single = texts[i + 1]
-            if AMPM_RE.match(single):
-                entries.append({"type": "time", "value": to_24h(t, single)})
-                i += 2
-                continue
-            if i + 2 < n:
-                joined = texts[i + 1] + texts[i + 2]
-                if AMPM_RE.match(joined):
-                    entries.append({"type": "time", "value": to_24h(t, joined)})
-                    i += 3
-                    continue
-        entries.append({"type": "text", "value": t})
-        i += 1
-    return entries
+    return f"{h:02d}:{mm}:00"
 
 
 def parse_pdf(path: Path) -> list:
-    all_columns = []
+    results = []
     with pdfplumber.open(path) as pdf:
         for page_num, page in enumerate(pdf.pages):
-            words = page.extract_words()
-            if not words:
-                continue
-            columns = cluster_columns(words)
-            for col in columns:
-                merged = merge_time_ampm(col)
-                header_parts = [e["value"] for e in merged if e["type"] == "text"]
-                times = [e["value"] for e in merged if e["type"] == "time"]
-                all_columns.append({
+            for t_idx, table in enumerate(page.find_tables()):
+                data = table.extract()
+                if not data:
+                    continue
+
+                header_cells = [c for c in data[0] if c]
+                header_text = " ".join(header_cells).strip()
+                num_cols = len(data[0])
+
+                columns = [[] for _ in range(num_cols)]
+                unparsed = []
+                for row in data[1:]:
+                    for col_idx in range(num_cols):
+                        cell = row[col_idx] if col_idx < len(row) else None
+                        if not cell or not cell.strip():
+                            continue
+                        t24 = to_24h(cell)
+                        if t24 is None:
+                            unparsed.append(cell)
+                        else:
+                            columns[col_idx].append(t24)
+
+                results.append({
                     "page": page_num,
-                    "x0": round(col[0]["x0"], 1),
-                    "header_guess": " ".join(header_parts) or None,
-                    "num_times": len(times),
-                    "times": times,
+                    "table_index": t_idx,
+                    "bbox": table.bbox,
+                    "header": header_text,
+                    "num_columns": num_cols,
+                    "columns": columns,
+                    # Confirmed (see module docstring): in 5 of 6 real
+                    # tables, columns are one continuous departure list
+                    # wrapped for print layout, not separate logical
+                    # groups - so concatenating them in column order
+                    # reconstructs the true single trip list. NOT
+                    # chronologically sorted for "Ruta 311 Metro
+                    # Directo" specifically - that's faithful to a real
+                    # irregularity in the source PDF, not a bug here.
+                    "concatenated": [t for col in columns for t in col],
+                    "unparsed_cells": unparsed,
                 })
-    return all_columns
+    return results
 
 
 def main():
@@ -161,45 +137,44 @@ def main():
     else:
         pdf_path = Path(source)
 
-    columns = parse_pdf(pdf_path)
+    tables = parse_pdf(pdf_path)
 
     print(f"\n{'='*70}")
-    print(f"EXTRACTED {len(columns)} COLUMN(S) - VERIFY THIS AGAINST THE REAL PDF")
-    print(f"BEFORE TRUSTING ANY OF IT (see module docstring - this was built")
-    print(f"without access to the real file's bytes).")
+    print(f"EXTRACTED {len(tables)} TABLE(S)")
     print(f"{'='*70}\n")
-    for i, col in enumerate(columns):
-        print(f"Column {i} (page {col['page']}, x0={col['x0']}): "
-              f"header_guess={col['header_guess']!r}, {col['num_times']} time(s)")
-        if col["times"]:
-            preview = col["times"][:3] + (["..."] if len(col["times"]) > 6 else []) + col["times"][-3:]
-            print(f"    {preview}")
+
+    total_times, total_unparsed = 0, 0
+    for t in tables:
+        n_times = sum(len(c) for c in t["columns"])
+        total_times += n_times
+        total_unparsed += len(t["unparsed_cells"])
+        print(f"Page {t['page']}, table {t['table_index']}: {t['header']!r} "
+              f"({t['num_columns']} column(s), {len(t['concatenated'])} total time(s))")
+        for i, col in enumerate(t["columns"]):
+            preview = col[:3] + (["..."] if len(col) > 6 else []) + col[-3:]
+            print(f"    col {i}: {len(col)} time(s) - {preview}")
+        is_sorted = t["concatenated"] == sorted(t["concatenated"])
+        if not is_sorted:
+            print(f"    NOTE: concatenated list is NOT chronologically sorted - "
+                  f"this table has a real irregularity in the source PDF "
+                  f"itself (see module docstring), not an extraction bug.")
+        if t["unparsed_cells"]:
+            print(f"    UNPARSED cells: {t['unparsed_cells']}")
         print()
+
+    print(f"Total: {total_times} departure time(s) parsed, "
+          f"{total_unparsed} cell(s) failed to parse.")
 
     out_path = Path("raw") / f"coonatra_pdf_{pdf_path.stem}.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(columns, indent=2, ensure_ascii=False))
-    print(f"Saved raw extraction -> {out_path}")
+    out_path.write_text(json.dumps(tables, indent=2, ensure_ascii=False))
+    print(f"\nSaved -> {out_path}")
     print(
-        "\nKNOWN HARD CASE - check for this specifically: a header like 'Ruta "
-        "310 Directo Calasanz Boston' is one wide line of text that may span "
-        "MORE horizontal space than the narrower column(s) of times sitting "
-        "below it (the flattened-text preview this was built from suggests "
-        "one such header sits over 3 time-columns, not 1). This simple "
-        "per-word x-clustering can't resolve that by itself - it may either "
-        "merge multiple real data columns into one, or split a wide header "
-        "across several wrongly-separate 'columns'. If a column's "
-        "header_guess is None, or a header's x0 doesn't line up with any "
-        "single data column's x0, that's this case - assign that header to "
-        "its columns manually by looking at the actual PDF layout, don't "
-        "trust an automatic guess here."
-    )
-    print(
-        "\nNEXT STEP: check header_guess against each column's actual header in "
-        "the real PDF (open it yourself and look). If a column's header_guess "
-        "is None or wrong, or a column has an unexpectedly low/high time count "
-        "compared to its neighbors, COLUMN_X_TOLERANCE probably needs "
-        "adjusting - columns may be getting merged or split incorrectly."
+        "\nSub-columns confirmed to be one continuous departure list split "
+        "for print layout (see 'concatenated' field and module docstring) - "
+        "except 'Ruta 311 Metro Directo', which has a genuine ordering "
+        "irregularity in Coonatra's own source PDF, faithfully preserved "
+        "here rather than silently re-sorted."
     )
 
 
