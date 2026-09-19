@@ -173,23 +173,41 @@ def scrape_route_group(url: str) -> dict:
 
     # Names: short lines between the LAST heading (h1-h6) appearing
     # BEFORE the first "Inicia:" and that "Inicia:" itself, searched
-    # within the CONTENT-SCOPED text only (see get_content_soup - this
-    # is what fixes the real nav-menu-swallowing bug confirmed on 3 of
-    # 4 real pages).
+    # within the CONTENT-SCOPED text only (see get_content_soup).
+    #
+    # Uses rfind (LAST occurrence of the heading's text before
+    # first_inicia), not find (FIRST occurrence anywhere) - CONFIRMED
+    # NECESSARY against real CI output: even after <main>-scoping fixed
+    # the nav-menu-duplicate bug, 3 pages still leaked junk into
+    # "names" ('- Coonatra', 'Saltar al contenido', and the heading's
+    # OWN text) because a breadcrumb inside <main> repeats the same
+    # text as the real h2, BEFORE it. find() always returns that
+    # earlier breadcrumb position; rfind() (searching only up to
+    # first_inicia) correctly lands on the real heading, which - given
+    # the observed page structure - is always the occurrence closest
+    # to the content that follows it.
     headings = content.find_all(["h1", "h2", "h3", "h4", "h5", "h6"])
     title, title_end_idx = "", 0
     for h in headings:
         h_text = h.get_text(strip=True)
         if not h_text:
             continue
-        pos = text.find(h_text)
-        if pos != -1 and (first_inicia == -1 or pos < first_inicia):
+        pos = text.rfind(h_text, 0, first_inicia) if first_inicia != -1 else text.rfind(h_text)
+        if pos != -1:
             title, title_end_idx = h_text, pos + len(h_text)
 
     names_block = text[title_end_idx:first_inicia] if first_inicia != -1 else ""
+    # Defense-in-depth denylist for known boilerplate that could still
+    # leak in (e.g. from a container this heuristic doesn't anchor
+    # past) - a real skip-navigation link text confirmed leaking in
+    # real CI output before the rfind fix above. No genuine branch name
+    # observed anywhere starts with "-", so that's a safe general filter too.
+    BOILERPLATE = {"saltar al contenido"}
     names = [
         l.strip() for l in names_block.splitlines()
         if l.strip() and "http" not in l and not HEADING_ONLY_RE.match(l.strip())
+        and l.strip().lower() not in BOILERPLATE
+        and not l.strip().startswith("-")
     ]
 
     schedule_matches = SCHEDULE_RE.findall(text)
