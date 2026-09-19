@@ -51,6 +51,22 @@ from bs4 import BeautifulSoup
 RUTAS_URL = "https://coonatra.com/rutas/"
 OUT_PATH = Path("raw/coonatra_routes.json")
 
+# Confirmed real URLs (fetched directly and inspected by eye - see the
+# conversation this script came from) - used ONLY as a last-resort
+# fallback if BOTH dynamic detection methods below find nothing, so a
+# CI-environment quirk (bot-blocking, different response to a plain
+# `requests` user-agent than a browser gets, etc.) can't silently
+# produce zero results the way it did on the first real run. If this
+# fallback ever actually triggers, it prints a loud warning - a 5th
+# route added later wouldn't be caught by it, so treat that warning as
+# a signal to fix the dynamic detection, not to keep relying on this.
+FALLBACK_ROUTE_GROUP_URLS = [
+    "https://coonatra.com/floresta-san-juan/",
+    "https://coonatra.com/calasanz-boston/",
+    "https://coonatra.com/copacabana/",
+    "https://coonatra.com/circular-coonatra/",
+]
+
 SCHEDULE_RE = re.compile(
     r"Inicia:\s*(\d{1,2}:\d{2}\s*[AaPp]\.?\s*[Mm]\.?)\s*[-–]\s*"
     r"(?:Ultima|Última)\s+salida:\s*(\d{1,2}:\d{2}\s*[AaPp]\.?\s*[Mm]\.?)"
@@ -75,34 +91,83 @@ def to_24h(t: str) -> str:
 
 def fetch_route_group_urls() -> list:
     r = requests.get(RUTAS_URL, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
+    print(f"  GET {RUTAS_URL} -> HTTP {r.status_code}, {len(r.text)} bytes")
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
+
+    # Strategy 1: exact "Ver ruta" button text (confirmed to match the
+    # real page's HTML when checked by hand - see module docstring).
     urls = []
     for a in soup.select("a"):
-        text = a.get_text(strip=True)
-        href = a.get("href", "")
-        if text == "Ver ruta" and href:
-            full = urljoin(RUTAS_URL, href)
+        if a.get_text(strip=True) == "Ver ruta" and a.get("href"):
+            full = urljoin(RUTAS_URL, a["href"])
             if full not in urls:
                 urls.append(full)
+
+    # Strategy 2 (fallback): links inside h3/h4 headings under the
+    # "rutas" section - the real page also links each route's NAME as a
+    # heading to the same URL as its "Ver ruta" button, a redundant and
+    # possibly more robust signal if strategy 1 fails for some reason.
+    if not urls:
+        print("  Strategy 1 ('Ver ruta' text match) found 0 links - trying "
+              "heading-link fallback...")
+        for tag in soup.select("h3 a, h4 a"):
+            href = tag.get("href")
+            if href and "coonatra.com" in urljoin(RUTAS_URL, href):
+                full = urljoin(RUTAS_URL, href)
+                if full not in urls and full != RUTAS_URL:
+                    urls.append(full)
+
+    if not urls:
+        print("  Both dynamic detection strategies found 0 links. Dumping "
+              "diagnostics:", file=sys.stderr)
+        print(f"    Total <a> tags on page: {len(soup.select('a'))}", file=sys.stderr)
+        sample_texts = [a.get_text(strip=True) for a in soup.select("a")][:30]
+        print(f"    First 30 link texts: {sample_texts}", file=sys.stderr)
+        print("  Falling back to hardcoded, previously-confirmed URLs - "
+              "if this triggers, the site or its response has changed; "
+              "fix the detection above rather than relying on this "
+              "long-term (a 5th route added later wouldn't be caught).",
+              file=sys.stderr)
+        urls = list(FALLBACK_ROUTE_GROUP_URLS)
+
     return urls
 
 
 def scrape_route_group(url: str) -> dict:
     r = requests.get(url, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
+    print(f"  GET {url} -> HTTP {r.status_code}, {len(r.text)} bytes")
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
     text = soup.get_text("\n")
 
-    # Names: short lines between the page's main heading and the first
-    # "Inicia:" occurrence - see module docstring for why this heuristic
-    # (and not a specific CSS selector, which would need real HTML tag
-    # names this was built without seeing directly).
-    h1 = soup.find(["h1", "h2"])
-    title = h1.get_text(strip=True) if h1 else ""
-    title_idx = text.find(title) if title else 0
-    first_inicia = text.find("Inicia:", title_idx if title_idx >= 0 else 0)
-    names_block = text[(title_idx + len(title)) if title_idx >= 0 else 0 : first_inicia]
+    first_inicia = text.find("Inicia:")
+    if first_inicia == -1:
+        print(f"  WARNING: no 'Inicia:' found anywhere on this page at all - "
+              f"the schedule format may differ from what this script expects, "
+              f"or the page structure has changed.", file=sys.stderr)
+
+    # Names: short lines between the LAST heading (h1-h6) appearing
+    # BEFORE the first "Inicia:" and that "Inicia:" itself. Using the
+    # LAST such heading (not soup.find(["h1","h2"])'s FIRST match
+    # anywhere on the page) avoids accidentally anchoring on a
+    # site-wide logo/nav heading that has nothing to do with this
+    # page's actual route content - a real risk this script was never
+    # tested against (only the /rutas/ listing page's URL-discovery
+    # step has been confirmed against real CI output so far; this
+    # per-page extraction logic has NOT yet been verified against real
+    # bytes - review the diagnostics below carefully on the next run).
+    headings = soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6"])
+    title, title_end_idx = "", 0
+    for h in headings:
+        h_text = h.get_text(strip=True)
+        if not h_text:
+            continue
+        pos = text.find(h_text)
+        if pos != -1 and (first_inicia == -1 or pos < first_inicia):
+            title, title_end_idx = h_text, pos + len(h_text)
+
+    names_block = text[title_end_idx:first_inicia] if first_inicia != -1 else ""
     names = [
         l.strip() for l in names_block.splitlines()
         if l.strip() and "http" not in l and not HEADING_ONLY_RE.match(l.strip())
@@ -110,6 +175,11 @@ def scrape_route_group(url: str) -> dict:
 
     schedule_matches = SCHEDULE_RE.findall(text)
     mids = MAPS_RE.findall(text)
+
+    print(f"  title_anchor={title!r} names_block_len={len(names_block)} "
+          f"names={len(names)} schedules={len(schedule_matches)} mids={len(mids)}")
+    if not (len(names) == len(schedule_matches) == len(mids)) and names_block:
+        print(f"  names found: {names}", file=sys.stderr)
 
     schedules = []
     for start, end, place, place_time in schedule_matches:
