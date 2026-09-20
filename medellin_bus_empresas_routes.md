@@ -18,7 +18,7 @@ Source: https://www.medellin.gov.co/es/secretaria-de-movilidad/transporte-public
 | Cootrabel | 170, 171, 172, 176, 178 | San Javier San Mitchell; Altavista; Vaso de Leche; Belén Rincón | No verified official website found |
 | Flota La Milagrosa | 110, 111, 112, 114 | Loreto | No verified official website found |
 | Cootranspinal | 087, 088 | Barrio El Pinal | No verified official website found |
-| Tax Maya | C23 Micros | Tax Maya La Palma | No verified official website found |
+| Tax Maya | C23 Micros | Tax Maya La Palma | https://www.taxmaya.com/ruta-c23-san-cristobal-san-javier-centro and https://www.taxmaya.com/Mapas-rutas-y-horarios |
 | Conducciones América S.A. | 200, 201, 202, 203, 204 | Belencito | http://www.conduccionesamerica.com/Home/ |
 | Santra | 179 | Aguas Frías | No verified official website found |
 | Cootrasana | Not specified on source page | San Antonio de Prado | https://cootrasana.com.co/ |
