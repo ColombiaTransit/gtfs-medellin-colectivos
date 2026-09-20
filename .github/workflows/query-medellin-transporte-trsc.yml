@@ -1,0 +1,44 @@
+name: Query Medellín ArcGIS for TRSC
+
+# Queries two of Medellín's official government ArcGIS layers (Rutas de
+# transporte publico, and Parada) for Transportes Rapido San Cristobal /
+# route "255" data, and cross-references them. Manual trigger only.
+#
+# UNTESTED AGAINST REAL RESULTS as of when this workflow was written -
+# every attempt to query these layers from the environment that built
+# this hit the same wall (query-string parameters seemingly stripped
+# for this domain by the fetching tool available there). This is the
+# first real end-to-end run against live data.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  query:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Query Rutas + Parada layers and join
+        run: python scripts/query_medellin_transporte_trsc.py
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: medellin-transporte-trsc
+          path: |
+            raw/medellin_rutas_trsc.json
+            raw/medellin_paradas_trsc.json
+            raw/medellin_transporte_trsc_joined.json
+            raw/medellin_*_empresa_values.json
+          retention-days: 30
+          if-no-files-found: warn
