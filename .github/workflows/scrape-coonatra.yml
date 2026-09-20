@@ -1,14 +1,18 @@
-name: Scrape Coonatra Routes + Frequency PDFs
+name: Scrape Coonatra Routes + Frequency PDFs + KML
 
 # One workflow: scrapes all 4 Coonatra route-group pages (branch names,
-# schedule text, Google My Maps IDs), then automatically finds and
-# parses every frequency-timetable PDF linked from any of those pages
-# (currently just Calasanz-Boston's, but this discovers new ones
-# automatically rather than hardcoding that one URL). Purely a
+# schedule text, Google My Maps IDs), automatically finds and parses
+# every frequency-timetable PDF linked from any of those pages, and
+# fetches real KML geometry for every branch that scraped cleanly
+# (scripts/fetch_coonatra_kml.py reads raw/coonatra_routes.json
+# directly - currently Floresta-San Juan's 4 branches and
+# Calasanz-Boston's 6; nothing is hardcoded, so if Copacabana or
+# Circular Coonatra's reconciliation is fixed later, their branches get
+# picked up automatically with no workflow changes needed). Purely a
 # data-gathering step - does NOT build a GTFS feed yet. Manual trigger
-# only, since the PDF column-mapping needs a human to verify the
-# printed diagnostic output before anything downstream trusts it (see
-# scripts/parse_coonatra_pdf.py's docstring).
+# only, since the PDF column-mapping and the KML stop-point check both
+# need a human to verify the printed diagnostic output before anything
+# downstream trusts it.
 
 on:
   workflow_dispatch:
@@ -54,7 +58,10 @@ jobs:
               subprocess.run(['python', 'scripts/parse_coonatra_pdf.py', url], check=True)
           "
 
-      - name: Upload scraped data + PDFs + extracted tables
+      - name: Fetch KML for every cleanly-matched branch
+        run: python scripts/fetch_coonatra_kml.py
+
+      - name: Upload scraped data + PDFs + extracted tables + KML
         uses: actions/upload-artifact@v4
         with:
           name: coonatra-scrape
@@ -62,5 +69,7 @@ jobs:
             raw/coonatra_routes.json
             raw/coonatra_pdf_*.json
             raw/*.pdf
+            raw/coonatra_kml/
+            raw/coonatra_kml_summary.json
           retention-days: 30
           if-no-files-found: warn
