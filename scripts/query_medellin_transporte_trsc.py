@@ -1,68 +1,62 @@
 #!/usr/bin/env python3
 """
-Query TWO of Medellín's official government ArcGIS layers for
+Query THREE of Medellín's official government ArcGIS layers for
 Transportes Rapido San Cristobal / route "255" data, and cross-reference
-them client-side (these are two separate ArcGIS services - the REST API
-doesn't support a server-side SQL join across them, so this script
-fetches both and matches records in Python):
+each Paradas (stops) layer against Rutas (route geometry) client-side
+(these are separate ArcGIS services - the REST API doesn't support a
+server-side SQL join across them, so this script fetches all three and
+matches records in Python):
 
   1. "Rutas de transporte publico" (mapas_nacionales/VC_Transporte/
      MapServer/6) - POLYLINE geometry per route: nombre, id_ruta,
-     codigo, recorrido, sistema, tipo, empresa.
-  2. "Parada" (transporte/VM_Movilidad/MapServer/0) - POINT stops:
+     codigo, recorrido, sistema, tipo, empresa, id_gflota.
+  2. "Parada" (transporte/VM_Movilidad/MapServer/0) - POINT stops, from
+     a DIFFERENT ArcGIS service than Rutas (different Service Item Id) -
      id_ruta, codigo_ruta, nombre_ruta, sistema_ruta, empresa,
-     latitud/longitud, direccion, nro_parada.
+     latitud/longitud, direccion, nro_parada. Already confirmed to join
+     well against Rutas via id_ruta (18 of 21 real routes matched, with
+     genuine stop counts) - kept as-is, not because it's the best
+     structural fit, but because it's already proven to work.
+  3. "Parada de transporte publico" (mapas_nacionales/VC_Transporte/
+     MapServer/5) - POINT stops, THE TRUE SIBLING of the Rutas layer:
+     confirmed same Service Item Id (9d0f7d17b7924c8dab4933f4664a6d7b)
+     as layer 6, same MapServer, adjacent layer index - almost
+     certainly maintained together, more likely to relate cleanly via
+     id_ruta than layer 0's coincidental match. Also has 4 fields layer
+     0 lacks entirely: nombre (a real STOP NAME - layer 0 has no name
+     field, only direccion/address), orientacion, mobiliario, and
+     id_gflota (a second potential join key, since Rutas has this
+     field too). NOT YET COMPARED against layer 0 for TRSC specifically -
+     this script queries and joins both, so the actual results (not an
+     assumption from the schema) show which is more complete.
 
-SUPERSEDES scripts/query_medellin_paradas_trsc.py (the Paradas-only
-version) - this does everything that one did, plus the Rutas layer and
-the cross-reference step the person running this project asked for.
-
-WHY THIS MATTERS: if TRSC's 255-family routes are represented in
-either layer, this would be genuinely official, government-sourced
-route geometry and/or stop locations - categorically better than the
+WHY THIS MATTERS: confirmed via a REAL run of the layer-0-based version
+of this script - 18 of 21 distinct TRSC routes matched real stops via
+id_ruta==id_ruta (843 stop records total), and this also surfaced real
+routes/route variants (e.g. "255P Palmitas-Centro", left/right
+"255V3 Boqueron" branches, "Estacion Estadio" routes) that aren't
+listed anywhere on trscsas.com's own /rutas/ page. This is genuinely
+official, government-sourced data, categorically better than the
 photographed schedule boards and Google-My-Maps-only line geometry
-this project has had for every TRSC route so far (all 25 confirmed
-line-only via KML, zero real stop points).
+this project otherwise has for TRSC (all 25 website-listed routes
+confirmed line-only via KML, zero real stop points there).
 
-UNTESTED AGAINST REAL RESULTS - genuinely, for both layers. The
-environment that wrote this script could fetch each layer's METADATA
-directly (confirming the field names above are real - see the
-conversation this script came from), but every attempt to fetch an
-actual QUERY result (adding a `where=` clause and other parameters, on
-EITHER layer) returned the same blank HTML query FORM page instead of
-real JSON data - the fetching tool available seems to strip
-query-string parameters for this whole medellin.gov.co domain, not
-just one layer. This script's query logic is standard ArcGIS REST API
-usage (the same pattern already used successfully elsewhere in this
-project for other ArcGIS layers, e.g. the Metro colectivos data), but
-it has NOT been run against real data by the environment that wrote
-it - only its pagination and error-handling logic were unit-tested
-against synthetic ArcGIS-shaped responses. Run it for real and share
-the output back.
-
-JOIN STRATEGY: id_ruta is tried FIRST (per the project owner's
-hypothesis that both layers, hosted on the same government server,
-share one underlying internal route-numbering system - plausible since
-they're maintained by the same department), with codigo == codigo_ruta
-as a fallback. The two layers' id_ruta fields don't share a consistent
-TYPE - confirmed from each layer's real metadata: Rutas' id_ruta is a
-STRING field, Parada's is an INTEGER field - but this script's join
-normalizes both to strings before comparing, so id_ruta=9001 (int) and
-id_ruta="9001" (string) DO match correctly. CORRECTION to an earlier
-version of this docstring: it claimed the id_ruta fallback "essentially
-cannot match in practice," based on a synthetic test that used
-arbitrary, deliberately UNRELATED id values on each side - that only
-tested whether the comparison mechanism works at all (it does), not
-whether real id_ruta values actually correspond between the two
-layers, which remains genuinely unknown until this runs against real
-data.
+JOIN STRATEGY: id_ruta is tried FIRST for each Paradas layer against
+Rutas (confirmed via real data to work well for layer 0 - see above),
+with codigo == codigo_ruta as a fallback. Both layers' id_ruta fields
+don't share a consistent TYPE with Rutas' id_ruta (Rutas: STRING,
+both Paradas layers: INTEGER, confirmed from each layer's real
+metadata) - this script normalizes all three to strings before
+comparing, confirmed correct via testing (id_ruta=9001 as int and
+id_ruta="9001" as string DO match after normalization).
 
 Usage: python scripts/query_medellin_transporte_trsc.py
 Output: raw/medellin_rutas_trsc.json (matching route/line records)
-        raw/medellin_paradas_trsc.json (matching stop records)
-        raw/medellin_transporte_trsc_joined.json (cross-referenced:
-        each matched route with its matched stops, plus anything that
-        didn't join on either side)
+        raw/medellin_paradas_v0_trsc.json (layer 0 matching stops)
+        raw/medellin_paradas_v1_trsc.json (layer 5 matching stops -
+        the richer, structurally-related layer)
+        raw/medellin_transporte_trsc_joined_v0.json (Rutas x layer 0)
+        raw/medellin_transporte_trsc_joined_v1.json (Rutas x layer 5)
         raw/medellin_*_empresa_values.json (diagnostic, only written if
         a main query comes back empty - every distinct 'empresa' value
         in that layer, in case TRSC is spelled differently than
@@ -76,17 +70,24 @@ from pathlib import Path
 import requests
 
 RUTAS_LAYER_URL = "https://www.medellin.gov.co/servidormapas/rest/services/mapas_nacionales/VC_Transporte/MapServer/6/query"
-PARADAS_LAYER_URL = "https://www.medellin.gov.co/servidormapas/rest/services/transporte/VM_Movilidad/MapServer/0/query"
+PARADAS_V0_LAYER_URL = "https://www.medellin.gov.co/servidormapas/rest/services/transporte/VM_Movilidad/MapServer/0/query"
+PARADAS_V1_LAYER_URL = "https://www.medellin.gov.co/servidormapas/rest/services/mapas_nacionales/VC_Transporte/MapServer/5/query"
 
 RUTAS_OUT = Path("raw/medellin_rutas_trsc.json")
-PARADAS_OUT = Path("raw/medellin_paradas_trsc.json")
-JOINED_OUT = Path("raw/medellin_transporte_trsc_joined.json")
+PARADAS_V0_OUT = Path("raw/medellin_paradas_v0_trsc.json")
+PARADAS_V1_OUT = Path("raw/medellin_paradas_v1_trsc.json")
+JOINED_V0_OUT = Path("raw/medellin_transporte_trsc_joined_v0.json")
+JOINED_V1_OUT = Path("raw/medellin_transporte_trsc_joined_v1.json")
 
 RUTAS_FIELDS = ["objectid", "nombre", "id_ruta", "codigo", "recorrido",
                 "sistema", "tipo", "empresa", "id_gflota"]
-PARADAS_FIELDS = ["id_paradero", "id_parada", "id_ruta", "nro_parada", "direccion",
-                   "tipo_parada", "recorrido", "codigo_ruta", "nombre_ruta",
-                   "sistema_ruta", "tipo_ruta", "empresa", "latitud", "longitud", "estado"]
+PARADAS_V0_FIELDS = ["id_paradero", "id_parada", "id_ruta", "nro_parada", "direccion",
+                      "tipo_parada", "recorrido", "codigo_ruta", "nombre_ruta",
+                      "sistema_ruta", "tipo_ruta", "empresa", "latitud", "longitud", "estado"]
+PARADAS_V1_FIELDS = ["id_paradero", "id_parada", "id_ruta", "nro_parada", "nombre",
+                      "direccion", "orientacion", "mobiliario", "tipo_parada", "recorrido",
+                      "codigo_ruta", "nombre_ruta", "sistema_ruta", "tipo_ruta", "empresa",
+                      "id_gflota", "latitud", "longitud", "estado"]
 
 TRSC_WHERE_RUTAS = (
     "UPPER(empresa) LIKE '%CRISTOBAL%' OR UPPER(empresa) LIKE '%RAPIDO%' "
@@ -223,41 +224,69 @@ def join_routes_and_stops(routes: list, paradas: list) -> dict:
     }
 
 
-def main():
-    routes = run_query_with_fallback(
-        RUTAS_LAYER_URL, TRSC_WHERE_RUTAS, RUTAS_FIELDS, RUTAS_OUT, "empresa", "Rutas"
-    )
-    paradas = run_query_with_fallback(
-        PARADAS_LAYER_URL, TRSC_WHERE_PARADAS, PARADAS_FIELDS, PARADAS_OUT, "empresa", "Paradas"
-    )
-
-    if not routes and not paradas:
-        print("\nNeither layer returned any TRSC/255 matches - nothing to join.")
-        return
-
-    print(f"\nJoining {len(routes)} route(s) with {len(paradas)} stop(s)...")
-    result = join_routes_and_stops(routes, paradas)
-    JOINED_OUT.write_text(json.dumps(result, indent=2, ensure_ascii=False))
-
+def summarize_join(result: dict, label: str):
     print(f"\n{result['num_routes_with_matched_stops']} / {result['num_routes']} "
-          f"route(s) have at least one matched stop.")
-    print(f"{len(result['unmatched_paradas'])} stop(s) didn't match any route "
-          f"found in the Rutas layer.")
+          f"route(s) have at least one matched stop in {label}.")
+    print(f"{len(result['unmatched_paradas'])} stop(s) in {label} didn't match any "
+          f"route found in the Rutas layer.")
     for j in result["joined_routes"]:
         r = j["route"]
         print(f"  {r.get('codigo')} - {r.get('nombre')}: "
               f"{j['num_matched_stops']} stop(s) [{j['match_basis'] or 'no match'}]")
 
-    print(f"\nSaved -> {JOINED_OUT}")
+
+def main():
+    routes = run_query_with_fallback(
+        RUTAS_LAYER_URL, TRSC_WHERE_RUTAS, RUTAS_FIELDS, RUTAS_OUT, "empresa", "Rutas"
+    )
+    paradas_v0 = run_query_with_fallback(
+        PARADAS_V0_LAYER_URL, TRSC_WHERE_PARADAS, PARADAS_V0_FIELDS, PARADAS_V0_OUT,
+        "empresa", "Paradas_v0"
+    )
+    paradas_v1 = run_query_with_fallback(
+        PARADAS_V1_LAYER_URL, TRSC_WHERE_PARADAS, PARADAS_V1_FIELDS, PARADAS_V1_OUT,
+        "empresa", "Paradas_v1"
+    )
+
+    if not routes:
+        print("\nRutas layer returned no TRSC/255 matches - nothing to join.")
+        return
+
+    if paradas_v0:
+        print(f"\nJoining {len(routes)} route(s) with {len(paradas_v0)} stop(s) "
+              f"from Paradas layer 0 (VM_Movilidad)...")
+        result_v0 = join_routes_and_stops(routes, paradas_v0)
+        JOINED_V0_OUT.write_text(json.dumps(result_v0, indent=2, ensure_ascii=False))
+        summarize_join(result_v0, "layer 0 (VM_Movilidad)")
+        print(f"Saved -> {JOINED_V0_OUT}")
+
+    if paradas_v1:
+        print(f"\nJoining {len(routes)} route(s) with {len(paradas_v1)} stop(s) "
+              f"from Paradas layer 5 (VC_Transporte, Rutas' true sibling)...")
+        result_v1 = join_routes_and_stops(routes, paradas_v1)
+        JOINED_V1_OUT.write_text(json.dumps(result_v1, indent=2, ensure_ascii=False))
+        summarize_join(result_v1, "layer 5 (VC_Transporte)")
+        print(f"Saved -> {JOINED_V1_OUT}")
+
+    if paradas_v0 and paradas_v1:
+        print(
+            f"\n{'='*60}\nCOMPARISON: layer 0 gave {len(paradas_v0)} matching "
+            f"stop(s) ({result_v0['num_routes_with_matched_stops']}/{result_v0['num_routes']} "
+            f"routes matched); layer 5 gave {len(paradas_v1)} matching stop(s) "
+            f"({result_v1['num_routes_with_matched_stops']}/{result_v1['num_routes']} "
+            f"routes matched). Layer 5 also carries real stop NAMES "
+            f"('nombre' field) that layer 0 doesn't have at all - check "
+            f"{PARADAS_V1_OUT} for that even if layer 0's route/stop coverage "
+            f"turns out broader."
+        )
+
     print(
-        "\nCHECK BY EYE before trusting the join: match_basis shows which key "
-        "linked each route to its stops - id_ruta is tried first, codigo as "
-        "fallback (see module docstring). A route with match_basis=None or "
-        "0 matched stops means NEITHER key lined up for it in the real data - "
-        "check unmatched_paradas for anything that looks like it should "
-        "have matched, since a real mismatch here (rather than no real "
-        "stops existing) is entirely possible until this has been checked "
-        "against actual results."
+        "\nCHECK BY EYE before trusting either join: match_basis shows which "
+        "key linked each route to its stops - id_ruta is tried first, codigo "
+        "as fallback (see module docstring). A route with match_basis=None "
+        "or 0 matched stops means NEITHER key lined up for it in that "
+        "layer's real data - check that layer's unmatched_paradas for "
+        "anything that looks like it should have matched."
     )
 
 
