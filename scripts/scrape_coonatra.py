@@ -260,6 +260,51 @@ def scrape_route_group(url: str) -> dict:
     return result
 
 
+# Confirmed by direct inspection of the live Google Maps links (see the
+# conversation this correction came from): Coonatra's own
+# Calasanz-Boston page has these two branches' embedded maps SWAPPED
+# relative to their labels. "Metro 311-ii"'s map was internally named
+# "310 METRO" (a 310-series name) and "310 Metro Rosal"'s map was
+# internally named "RUTA 311ii Rosales" (a 311ii-series name) - each
+# one's real content matches the OTHER branch's label. This is a
+# mistake on Coonatra's own site, not a scraping bug, so it's corrected
+# here - every downstream consumer of raw/coonatra_routes.json gets the
+# right geometry for the right route name, without needing to remember
+# this by hand. If Coonatra ever fixes it on their end, this swap would
+# need to be removed; the printed confirmation below makes that
+# noticeable if the mids it expects no longer show up.
+KNOWN_MID_SWAPS = [
+    ("Calasanz-Boston", "Metro 311-ii", "310 Metro Rosal"),
+]
+
+
+def apply_known_corrections(results: list) -> None:
+    """Mutates results in place, swapping mids between two named
+    branches on a given page per KNOWN_MID_SWAPS."""
+    by_title = {r["title"]: r for r in results}
+    for page_title, name_a, name_b in KNOWN_MID_SWAPS:
+        page = by_title.get(page_title)
+        if not page or not page.get("branches"):
+            print(f"  NOTE: expected to apply a known mid-swap correction on "
+                  f"{page_title!r}, but that page has no clean branch list "
+                  f"anymore - correction skipped, check KNOWN_MID_SWAPS.",
+                  file=sys.stderr)
+            continue
+
+        branch_a = next((b for b in page["branches"] if b["name"] == name_a), None)
+        branch_b = next((b for b in page["branches"] if b["name"] == name_b), None)
+        if not branch_a or not branch_b:
+            print(f"  NOTE: expected branches {name_a!r} and {name_b!r} on "
+                  f"{page_title!r} to swap mids, but one or both are missing "
+                  f"now - correction skipped, check KNOWN_MID_SWAPS.",
+                  file=sys.stderr)
+            continue
+
+        branch_a["mid"], branch_b["mid"] = branch_b["mid"], branch_a["mid"]
+        print(f"  Applied known correction: swapped mids between "
+              f"{page_title!r}/{name_a!r} and {page_title!r}/{name_b!r}")
+
+
 def main():
     print(f"Fetching route-group list from {RUTAS_URL} ...")
     group_urls = fetch_route_group_urls()
@@ -276,6 +321,9 @@ def main():
               f"mids={len(data['mids'])} -> {status}")
         if data["frequency_pdf_urls"]:
             print(f"  Frequency PDF(s) found: {data['frequency_pdf_urls']}")
+
+    print()
+    apply_known_corrections(results)
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUT_PATH.write_text(json.dumps(results, indent=2, ensure_ascii=False))
