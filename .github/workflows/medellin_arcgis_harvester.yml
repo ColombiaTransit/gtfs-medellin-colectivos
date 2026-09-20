@@ -1,0 +1,55 @@
+name: Harvest Medellín ArcGIS Transport Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * 0"
+
+permissions:
+  contents: write
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Harvest Medellín ArcGIS service
+        run: |
+          python scripts/harvest_medellin_arcgis.py
+
+      - name: Show harvested data
+        run: |
+          echo "=== Files ==="
+          find data/medellin -type f -print | sort
+
+          echo
+          echo "=== Feature counts ==="
+          find data/medellin/raw -name "*.json" -print0 | \
+            xargs -0 -I{} sh -c 'echo -n "{}: "; python -c "import json; d=json.load(open(\"{}\")); print(len(d.get(\"features\", [])))"'
+
+      - name: Commit harvested data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/medellin/
+
+          if git diff --cached --quiet; then
+            echo "No changes detected."
+          else
+            git commit -m "Update Medellín transport GIS data"
+            git push
+          fi
