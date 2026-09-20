@@ -1,17 +1,20 @@
-name: Scrape Coonatra Routes + Frequency PDFs + KML
+name: Scrape Coonatra Routes + Build GTFS
 
 # One workflow: scrapes all 4 Coonatra route-group pages (branch names,
 # schedule text, Google My Maps IDs), automatically finds and parses
-# every frequency-timetable PDF linked from any of those pages, and
-# fetches real KML geometry for every branch that scraped cleanly
+# every frequency-timetable PDF linked from any of those pages, fetches
+# real KML geometry for every branch that scraped cleanly
 # (scripts/fetch_coonatra_kml.py reads raw/coonatra_routes.json
 # directly - currently Floresta-San Juan's 4 branches and
 # Calasanz-Boston's 6; nothing is hardcoded, so if Copacabana or
 # Circular Coonatra's reconciliation is fixed later, their branches get
-# picked up automatically with no workflow changes needed). Purely a
-# data-gathering step - does NOT build a GTFS feed yet. Manual trigger
-# only, since the PDF column-mapping and the KML stop-point check both
-# need a human to verify the printed diagnostic output before anything
+# picked up automatically with no workflow changes needed), builds a
+# GTFS feed from the 5 Calasanz-Boston branches with a confident
+# PDF-departure-time mapping (scripts/build_gtfs_coonatra.py - see its
+# own docstring for exactly what's included and why), and validates
+# that feed with the real MobilityData validator. Manual trigger only,
+# since the PDF column-mapping and the KML stop-point check both need a
+# human to verify the printed diagnostic output before anything
 # downstream trusts it.
 
 on:
@@ -61,7 +64,33 @@ jobs:
       - name: Fetch KML for every cleanly-matched branch
         run: python scripts/fetch_coonatra_kml.py
 
-      - name: Upload scraped data + PDFs + extracted tables + KML
+      - name: Build GTFS feed
+        run: python scripts/build_gtfs_coonatra.py
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Resolve gtfs-validator-cli download URL
+        id: resolve_validator
+        run: |
+          URL=$(curl -sSL https://api.github.com/repos/MobilityData/gtfs-validator/releases/latest \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print(next(a['browser_download_url'] for a in d['assets'] if a['name'].endswith('-cli.jar')))")
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+
+      - name: Download gtfs-validator-cli.jar
+        run: curl -L -o gtfs-validator-cli.jar "${{ steps.resolve_validator.outputs.url }}"
+
+      - name: Validate
+        run: |
+          mkdir -p validation-report
+          java -Xmx4G -jar gtfs-validator-cli.jar \
+            -i gtfs-coonatra.zip \
+            -o validation-report
+
+      - name: Upload scraped data + PDFs + KML + GTFS feed + validation report
         uses: actions/upload-artifact@v4
         with:
           name: coonatra-scrape
@@ -71,5 +100,8 @@ jobs:
             raw/*.pdf
             raw/coonatra_kml/
             raw/coonatra_kml_summary.json
+            gtfs-coonatra.zip
+            validation-report/report.html
+            validation-report/report.json
           retention-days: 30
           if-no-files-found: warn
