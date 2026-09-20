@@ -1,0 +1,751 @@
+{
+  "currentVersion": 11.5,
+  "cimVersion": "3.5.0",
+  "id": 4,
+  "name": "Red Ciclista",
+  "type": "Feature Layer",
+  "description": "La información fue levantada mediante trabajo de campo, revisión de documentos técnicos y fuentes oficiales, con el objetivo de identificar las condiciones actuales de conectividad, seguridad y accesibilidad para los usuarios de la bicicleta. La finalidad principal es facilitar el análisis espacial, la identificación de brechas y la priorización de intervenciones en la red ciclista como parte de las estrategias de movilidad activa y sostenibilidad ambiental.",
+  "geometryType": "esriGeometryPolyline",
+  "sourceSpatialReference": {
+    "wkid": 9377,
+    "latestWkid": 9377,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -618700,
+    "falseY": -8436100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "spatialReference": {
+    "wkid": 9377,
+    "latestWkid": 9377,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -618700,
+    "falseY": -8436100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "copyrightText": "Alcladía de Medellín - Secretaría de Movilidad - Gerencia de Movilidad Humana",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 0,
+  "maxScale": 0,
+  "referenceScale": 0.0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "uniqueValue",
+      "field1": "tipologia_redciclista",
+      "uniqueValueGroups": [
+        {
+          "heading": "TIPOLOGIA",
+          "classes": [
+            {
+              "label": "Bidireccional en andén",
+              "description": "Bidireccional en andén",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  0,
+                  255,
+                  197,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "Bidireccional en andén"
+                ]
+              ]
+            },
+            {
+              "label": "Bidireccional en calzada",
+              "description": "Bidireccional en calzada",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  255,
+                  0,
+                  197,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "Bidireccional en calzada"
+                ]
+              ]
+            },
+            {
+              "label": "Compartida con contraflujo",
+              "description": "Compartida con contraflujo",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  168,
+                  56,
+                  0,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "Compartida con contraflujo"
+                ]
+              ]
+            },
+            {
+              "label": "Compartida con peatón",
+              "description": "Compartida con peatón",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  0,
+                  197,
+                  255,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "Compartida con peatón"
+                ]
+              ]
+            },
+            {
+              "label": "Compartida en sentido vehicular",
+              "description": "Compartida en sentido vehicular",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  0,
+                  77,
+                  168,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "Compartida en sentido vehicular"
+                ]
+              ]
+            },
+            {
+              "label": "Unidireccional en andén",
+              "description": "Unidireccional en andén",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  76,
+                  0,
+                  115,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "Unidireccional en andén"
+                ]
+              ]
+            },
+            {
+              "label": "Unidireccional en calzada",
+              "description": "Unidireccional en calzada",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  56,
+                  168,
+                  0,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "Unidireccional en calzada"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "uniqueValueInfos": [
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              0,
+              255,
+              197,
+              255
+            ],
+            "width": 2
+          },
+          "value": "Bidireccional en andén",
+          "label": "Bidireccional en andén"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              255,
+              0,
+              197,
+              255
+            ],
+            "width": 2
+          },
+          "value": "Bidireccional en calzada",
+          "label": "Bidireccional en calzada"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              168,
+              56,
+              0,
+              255
+            ],
+            "width": 2
+          },
+          "value": "Compartida con contraflujo",
+          "label": "Compartida con contraflujo"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              0,
+              197,
+              255,
+              255
+            ],
+            "width": 2
+          },
+          "value": "Compartida con peatón",
+          "label": "Compartida con peatón"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              0,
+              77,
+              168,
+              255
+            ],
+            "width": 2
+          },
+          "value": "Compartida en sentido vehicular",
+          "label": "Compartida en sentido vehicular"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              76,
+              0,
+              115,
+              255
+            ],
+            "width": 2
+          },
+          "value": "Unidireccional en andén",
+          "label": "Unidireccional en andén"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              56,
+              168,
+              0,
+              255
+            ],
+            "width": 2
+          },
+          "value": "Unidireccional en calzada",
+          "label": "Unidireccional en calzada"
+        }
+      ],
+      "fieldDelimiter": ",",
+      "authoringInfo": {
+        "colorRamp": {
+          "type": "multipart",
+          "colorRamps": [
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                221,
+                197,
+                255
+              ],
+              "toColor": [
+                252,
+                221,
+                197,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                190,
+                179,
+                252,
+                255
+              ],
+              "toColor": [
+                190,
+                179,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                185,
+                252,
+                182,
+                255
+              ],
+              "toColor": [
+                185,
+                252,
+                182,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                182,
+                238,
+                252,
+                255
+              ],
+              "toColor": [
+                182,
+                238,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                187,
+                228,
+                255
+              ],
+              "toColor": [
+                252,
+                187,
+                228,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                249,
+                182,
+                255
+              ],
+              "toColor": [
+                252,
+                249,
+                182,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                210,
+                252,
+                226,
+                255
+              ],
+              "toColor": [
+                210,
+                252,
+                226,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                224,
+                215,
+                252,
+                255
+              ],
+              "toColor": [
+                224,
+                215,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                179,
+                184,
+                255
+              ],
+              "toColor": [
+                252,
+                179,
+                184,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                215,
+                226,
+                255
+              ],
+              "toColor": [
+                252,
+                215,
+                226,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                240,
+                179,
+                252,
+                255
+              ],
+              "toColor": [
+                240,
+                179,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                182,
+                217,
+                252,
+                255
+              ],
+              "toColor": [
+                182,
+                217,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                251,
+                215,
+                255
+              ],
+              "toColor": [
+                252,
+                251,
+                215,
+                255
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "scaleSymbols": true,
+    "transparency": 0,
+    "labelingInfo": null
+  },
+  "defaultVisibility": true,
+  "extent": {
+    "xmin": 4710242.5704,
+    "ymin": 2243281.3477999996,
+    "xmax": 4719582.8065,
+    "ymax": 2255958.7731999997,
+    "spatialReference": {
+      "wkid": 9377,
+      "latestWkid": 9377,
+      "xyTolerance": 0.001,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -618700,
+      "falseY": -8436100,
+      "xyUnits": 10000,
+      "falseZ": -100000,
+      "zUnits": 10000,
+      "falseM": -100000,
+      "mUnits": 10000
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "corredor",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "objectid",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "domain": null
+    },
+    {
+      "name": "corredor",
+      "type": "esriFieldTypeString",
+      "alias": "corredor",
+      "length": 254,
+      "domain": null
+    },
+    {
+      "name": "municipio",
+      "type": "esriFieldTypeString",
+      "alias": "municipio",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "comuna",
+      "type": "esriFieldTypeString",
+      "alias": "comuna",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "nom_comuna",
+      "type": "esriFieldTypeString",
+      "alias": "nom_comuna",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "estado",
+      "type": "esriFieldTypeString",
+      "alias": "estado",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "anio_construido",
+      "type": "esriFieldTypeString",
+      "alias": "anio_construido",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "ente_constructor",
+      "type": "esriFieldTypeString",
+      "alias": "ente_constructor",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "ubicacion",
+      "type": "esriFieldTypeString",
+      "alias": "ubicacion",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "tipo",
+      "type": "esriFieldTypeString",
+      "alias": "tipo",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "nombre_ciclorruta",
+      "type": "esriFieldTypeString",
+      "alias": "nombre_ciclorruta",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "tipologia_redciclista",
+      "type": "esriFieldTypeString",
+      "alias": "tipologia_redciclista",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "longitud",
+      "type": "esriFieldTypeDouble",
+      "alias": "longitud",
+      "domain": null
+    },
+    {
+      "name": "shape",
+      "type": "esriFieldTypeGeometry",
+      "alias": "SHAPE",
+      "domain": null
+    },
+    {
+      "name": "st_length(shape)",
+      "type": "esriFieldTypeDouble",
+      "alias": "st_length(shape)",
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "shape",
+    "type": "esriFieldTypeGeometry",
+    "alias": "SHAPE"
+  },
+  "indexes": [
+    {
+      "name": "r3347_sde_rowid_uk",
+      "fields": "objectid",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "a3649_ix1",
+      "fields": "shape",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    }
+  ],
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": false,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "maxSelectionCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON, PBF",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "supportedSpatialRelationships": [
+    "esriSpatialRelIntersects",
+    "esriSpatialRelContains",
+    "esriSpatialRelCrosses",
+    "esriSpatialRelEnvelopeIntersects",
+    "esriSpatialRelIndexIntersects",
+    "esriSpatialRelOverlaps",
+    "esriSpatialRelTouches",
+    "esriSpatialRelWithin",
+    "esriSpatialRelRelation"
+  ],
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsAdvancedQueryRelated": true,
+    "supportsQueryRelatedPagination": true,
+    "supportsPagination": true,
+    "supportsLod": false,
+    "supportsQueryWithLodSR": false,
+    "supportsTrueCurve": true,
+    "supportsQueryWithDatumTransformation": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": true,
+    "supportsCurrentUserQueries": true
+  },
+  "supportsDatumTransformation": true,
+  "advancedQueryAnalyticCapabilities": {
+    "supportsLinearRegression": true,
+    "supportsAsync": false,
+    "supportsPercentileAnalytic": false
+  },
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasGeometryProperties": true,
+  "geometryProperties": {
+    "shapeLengthFieldName": "st_length(shape)",
+    "units": "esriMeters",
+    "mapUnits": {
+      "uwkid": 9001
+    }
+  },
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  },
+  "supportsCoordinatesQuantization": true,
+  "supportsDynamicLegends": true,
+  "serviceItemId": "9d0f7d17b7924c8dab4933f4664a6d7b"
+}

@@ -1,0 +1,1098 @@
+{
+  "currentVersion": 11.5,
+  "cimVersion": "3.5.0",
+  "id": 1,
+  "name": "Lineas del Sistema de transporte masivo",
+  "type": "Feature Layer",
+  "description": "",
+  "geometryType": "esriGeometryPolyline",
+  "sourceSpatialReference": {
+    "wkid": 9377,
+    "latestWkid": 9377,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -618700,
+    "falseY": -8436100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "spatialReference": {
+    "wkid": 9377,
+    "latestWkid": 9377,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -618700,
+    "falseY": -8436100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "copyrightText": "",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 250000,
+  "maxScale": 0,
+  "referenceScale": 0.0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "uniqueValue",
+      "field1": "tipo",
+      "field2": "linea",
+      "field3": "nombre",
+      "uniqueValueGroups": [
+        {
+          "heading": "TIPO, LINEA, NOMBRE",
+          "classes": [
+            {
+              "label": "METRO,Línea A,Niquía-La Estrella",
+              "description": "METRO,Línea A,Niquía-La Estrella",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  13,
+                  48,
+                  130,
+                  255
+                ],
+                "width": 4
+              },
+              "values": [
+                [
+                  "1",
+                  "Línea A",
+                  "Niquía-La Estrella"
+                ]
+              ]
+            },
+            {
+              "label": "METRO, Línea B, San Antonio-San Javier",
+              "description": "METRO, Línea B, San Antonio-San Javier",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  236,
+                  118,
+                  57,
+                  255
+                ],
+                "width": 4
+              },
+              "values": [
+                [
+                  "1",
+                  "Línea B",
+                  "San Antonio-San Javier"
+                ]
+              ]
+            },
+            {
+              "label": "METROCABLE, Línea J, San Javier-La Aurora",
+              "description": "METROCABLE, Línea J, San Javier-La Aurora",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  248,
+                  179,
+                  0,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "2",
+                  "Línea J",
+                  "San Javier-La Aurora"
+                ]
+              ]
+            },
+            {
+              "label": "METROCABLE, Línea K, Acevedo-Santo Domingo",
+              "description": "METROCABLE, Línea K, Acevedo-Santo Domingo",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  171,
+                  199,
+                  36,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "2",
+                  "Línea K",
+                  "Acevedo-Santo Domingo"
+                ]
+              ]
+            },
+            {
+              "label": "METROCABLE, Línea L, Santo Domingo-Arví",
+              "description": "METROCABLE, Línea L, Santo Domingo-Arví",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  125,
+                  77,
+                  37,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "2",
+                  "Línea L",
+                  "Santo Domingo-Arví"
+                ]
+              ]
+            },
+            {
+              "label": "METROCABLE, La Aldea, Cable Palmitas",
+              "description": "METROCABLE, La Aldea, Cable Palmitas",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  115,
+                  154,
+                  255,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "2",
+                  "La Aldea",
+                  "Cable Palmitas"
+                ]
+              ]
+            },
+            {
+              "label": "METROPLUS, Línea 1, U. de M-Av. del Ferrocarril-Parque Aranjuez",
+              "description": "METROPLUS, Línea 1, U. de M-Av. del Ferrocarril-Parque Aranjuez",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  24,
+                  160,
+                  150,
+                  255
+                ],
+                "width": 2.5
+              },
+              "values": [
+                [
+                  "3",
+                  "Línea 1",
+                  "U. de M-Av. del Ferrocarril-Parque Aranjuez"
+                ]
+              ]
+            },
+            {
+              "label": "METROPLUS, Línea 2, U. de M- Pretroncal Oriental",
+              "description": "METROPLUS, Línea 2, U. de M- Pretroncal Oriental",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  121,
+                  197,
+                  193,
+                  255
+                ],
+                "width": 2.5
+              },
+              "values": [
+                [
+                  "3",
+                  "Línea 2",
+                  "U. de M- Pretroncal Oriental"
+                ]
+              ]
+            },
+            {
+              "label": "TRANVIA,Línea T,San Antonio-Alejandro Echavarría",
+              "description": "TRANVIA,Línea T,San Antonio-Alejandro Echavarría",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  79,
+                  134,
+                  40,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "4",
+                  "Línea T",
+                  "San Antonio-Alejandro Echavarría"
+                ]
+              ]
+            },
+            {
+              "label": "METROCABLE, Línea H, Alejandro Echavarría-La Sierra",
+              "description": "METROCABLE, Línea H, Alejandro Echavarría-La Sierra",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  228,
+                  24,
+                  113,
+                  255
+                ],
+                "width": 3
+              },
+              "values": [
+                [
+                  "2",
+                  "Línea H",
+                  "Alejandro Echavarría-La Sierra"
+                ]
+              ]
+            },
+            {
+              "label": "METROCABLE,Línea M,Miraflores-13 Noviembre",
+              "description": "METROCABLE,Línea M,Miraflores-13 Noviembre",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  98,
+                  32,
+                  129,
+                  255
+                ],
+                "width": 3
+              },
+              "values": [
+                [
+                  "2",
+                  "Línea M",
+                  "Miraflores-13 Noviembre"
+                ]
+              ]
+            },
+            {
+              "label": "METRO,Línea O,Corredor de la 80 Caribe-La Palma ",
+              "description": "METRO,Línea O,Corredor de la 80 Caribe-La Palma ",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  232,
+                  190,
+                  255,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "1",
+                  "Línea O",
+                  "Corredor de la 80 Caribe-La Palma "
+                ]
+              ]
+            },
+            {
+              "label": "METROCABLE, Línea P, Picacho",
+              "description": "METROCABLE, Línea P, Picacho",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  230,
+                  0,
+                  0,
+                  255
+                ],
+                "width": 2
+              },
+              "values": [
+                [
+                  "2",
+                  "Línea P",
+                  "Picacho"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "uniqueValueInfos": [
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              13,
+              48,
+              130,
+              255
+            ],
+            "width": 4
+          },
+          "value": "1,Línea A,Niquía-La Estrella",
+          "label": "METRO,Línea A,Niquía-La Estrella"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              236,
+              118,
+              57,
+              255
+            ],
+            "width": 4
+          },
+          "value": "1,Línea B,San Antonio-San Javier",
+          "label": "METRO, Línea B, San Antonio-San Javier"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              248,
+              179,
+              0,
+              255
+            ],
+            "width": 2
+          },
+          "value": "2,Línea J,San Javier-La Aurora",
+          "label": "METROCABLE, Línea J, San Javier-La Aurora"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              171,
+              199,
+              36,
+              255
+            ],
+            "width": 2
+          },
+          "value": "2,Línea K,Acevedo-Santo Domingo",
+          "label": "METROCABLE, Línea K, Acevedo-Santo Domingo"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              125,
+              77,
+              37,
+              255
+            ],
+            "width": 2
+          },
+          "value": "2,Línea L,Santo Domingo-Arví",
+          "label": "METROCABLE, Línea L, Santo Domingo-Arví"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              115,
+              154,
+              255,
+              255
+            ],
+            "width": 2
+          },
+          "value": "2,La Aldea,Cable Palmitas",
+          "label": "METROCABLE, La Aldea, Cable Palmitas"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              24,
+              160,
+              150,
+              255
+            ],
+            "width": 2.5
+          },
+          "value": "3,Línea 1,U. de M-Av. del Ferrocarril-Parque Aranjuez",
+          "label": "METROPLUS, Línea 1, U. de M-Av. del Ferrocarril-Parque Aranjuez"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              121,
+              197,
+              193,
+              255
+            ],
+            "width": 2.5
+          },
+          "value": "3,Línea 2,U. de M- Pretroncal Oriental",
+          "label": "METROPLUS, Línea 2, U. de M- Pretroncal Oriental"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              79,
+              134,
+              40,
+              255
+            ],
+            "width": 2
+          },
+          "value": "4,Línea T,San Antonio-Alejandro Echavarría",
+          "label": "TRANVIA,Línea T,San Antonio-Alejandro Echavarría"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              228,
+              24,
+              113,
+              255
+            ],
+            "width": 3
+          },
+          "value": "2,Línea H,Alejandro Echavarría-La Sierra",
+          "label": "METROCABLE, Línea H, Alejandro Echavarría-La Sierra"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              98,
+              32,
+              129,
+              255
+            ],
+            "width": 3
+          },
+          "value": "2,Línea M,Miraflores-13 Noviembre",
+          "label": "METROCABLE,Línea M,Miraflores-13 Noviembre"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              232,
+              190,
+              255,
+              255
+            ],
+            "width": 2
+          },
+          "value": "1,Línea O,Corredor de la 80 Caribe-La Palma ",
+          "label": "METRO,Línea O,Corredor de la 80 Caribe-La Palma "
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              230,
+              0,
+              0,
+              255
+            ],
+            "width": 2
+          },
+          "value": "2,Línea P,Picacho",
+          "label": "METROCABLE, Línea P, Picacho"
+        }
+      ],
+      "fieldDelimiter": ",",
+      "authoringInfo": {
+        "colorRamp": {
+          "type": "multipart",
+          "colorRamps": [
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                176,
+                112,
+                63,
+                255
+              ],
+              "toColor": [
+                176,
+                112,
+                63,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                95,
+                120,
+                245,
+                255
+              ],
+              "toColor": [
+                95,
+                120,
+                245,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                90,
+                224,
+                94,
+                255
+              ],
+              "toColor": [
+                90,
+                224,
+                94,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                113,
+                198,
+                209,
+                255
+              ],
+              "toColor": [
+                113,
+                198,
+                209,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                207,
+                99,
+                165,
+                255
+              ],
+              "toColor": [
+                207,
+                99,
+                165,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                245,
+                218,
+                86,
+                255
+              ],
+              "toColor": [
+                245,
+                218,
+                86,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                75,
+                128,
+                47,
+                255
+              ],
+              "toColor": [
+                75,
+                128,
+                47,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                100,
+                108,
+                158,
+                255
+              ],
+              "toColor": [
+                100,
+                108,
+                158,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                100,
+                50,
+                135,
+                255
+              ],
+              "toColor": [
+                100,
+                50,
+                135,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                158,
+                240,
+                183,
+                255
+              ],
+              "toColor": [
+                158,
+                240,
+                183,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                201,
+                189,
+                129,
+                255
+              ],
+              "toColor": [
+                201,
+                189,
+                129,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                245,
+                93,
+                237,
+                255
+              ],
+              "toColor": [
+                245,
+                93,
+                237,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                232,
+                104,
+                117,
+                255
+              ],
+              "toColor": [
+                232,
+                104,
+                117,
+                255
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "scaleSymbols": true,
+    "transparency": 0,
+    "labelingInfo": null
+  },
+  "defaultVisibility": true,
+  "extent": {
+    "xmin": 4699616.509,
+    "ymin": 2238519.9306000005,
+    "xmax": 4723167.2251,
+    "ymax": 2259607.8979,
+    "spatialReference": {
+      "wkid": 9377,
+      "latestWkid": 9377,
+      "xyTolerance": 0.001,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -618700,
+      "falseY": -8436100,
+      "xyUnits": 10000,
+      "falseZ": -100000,
+      "zUnits": 10000,
+      "falseM": -100000,
+      "mUnits": 10000
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "NOMBRE",
+  "typeIdField": "tipo",
+  "subtypeFieldName": "tipo",
+  "subtypeField": "tipo",
+  "defaultSubtypeCode": 0,
+  "fields": [
+    {
+      "name": "objectid",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "domain": null
+    },
+    {
+      "name": "nombre",
+      "type": "esriFieldTypeString",
+      "alias": "NOMBRE",
+      "length": 100,
+      "domain": null
+    },
+    {
+      "name": "linea",
+      "type": "esriFieldTypeString",
+      "alias": "LINEA",
+      "length": 10,
+      "domain": null
+    },
+    {
+      "name": "tipo",
+      "type": "esriFieldTypeInteger",
+      "alias": "TIPO",
+      "domain": null
+    },
+    {
+      "name": "estado",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "ESTADO",
+      "domain": {
+        "type": "codedValue",
+        "name": "WS5_DomPOT48_Estado",
+        "description": "Estado en el que se encuentra la infraestructura",
+        "codedValues": [
+          {
+            "name": "Existente",
+            "code": 1
+          },
+          {
+            "name": "Ampliación",
+            "code": 2
+          },
+          {
+            "name": "Proyectado",
+            "code": 3
+          },
+          {
+            "name": "En Ejecución",
+            "code": 4
+          },
+          {
+            "name": "En Estudio",
+            "code": 5
+          }
+        ],
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue"
+      }
+    },
+    {
+      "name": "label",
+      "type": "esriFieldTypeString",
+      "alias": "LABEL",
+      "length": 100,
+      "domain": null
+    },
+    {
+      "name": "shape",
+      "type": "esriFieldTypeGeometry",
+      "alias": "SHAPE",
+      "domain": null
+    },
+    {
+      "name": "codigo_linea",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "CODIGO_LINEA",
+      "domain": null
+    },
+    {
+      "name": "fecha_actualizacion",
+      "type": "esriFieldTypeDate",
+      "alias": "fecha_actualizacion",
+      "length": 8,
+      "domain": null
+    },
+    {
+      "name": "st_length(shape)",
+      "type": "esriFieldTypeDouble",
+      "alias": "st_length(shape)",
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "shape",
+    "type": "esriFieldTypeGeometry",
+    "alias": "SHAPE"
+  },
+  "indexes": [
+    {
+      "name": "i1320codigo_line",
+      "fields": "codigo_linea",
+      "isAscending": true,
+      "isUnique": false,
+      "description": ""
+    },
+    {
+      "name": "r991_sde_rowid_uk",
+      "fields": "objectid",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "a933_ix1",
+      "fields": "shape",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    }
+  ],
+  "types": [
+    {
+      "domains": {
+        "estado": {
+          "type": "inherited"
+        }
+      },
+      "id": 1,
+      "name": "METRO"
+    },
+    {
+      "domains": {
+        "estado": {
+          "type": "inherited"
+        }
+      },
+      "id": 2,
+      "name": "METROCABLE"
+    },
+    {
+      "domains": {
+        "estado": {
+          "type": "inherited"
+        }
+      },
+      "id": 3,
+      "name": "METROPLUS"
+    },
+    {
+      "domains": {
+        "estado": {
+          "type": "inherited"
+        }
+      },
+      "id": 4,
+      "name": "TRANVIA"
+    }
+  ],
+  "subtypes": [
+    {
+      "domains": {
+        "estado": {
+          "type": "inherited"
+        }
+      },
+      "defaultValues": {
+        "nombre": null,
+        "linea": null,
+        "estado": null,
+        "label": null,
+        "codigo_linea": null,
+        "tipo": null,
+        "fecha_actualizacion": null
+      },
+      "code": 1,
+      "name": "METRO"
+    },
+    {
+      "domains": {
+        "estado": {
+          "type": "inherited"
+        }
+      },
+      "defaultValues": {
+        "nombre": null,
+        "linea": null,
+        "estado": null,
+        "label": null,
+        "codigo_linea": null,
+        "tipo": null,
+        "fecha_actualizacion": null
+      },
+      "code": 2,
+      "name": "METROCABLE"
+    },
+    {
+      "domains": {
+        "estado": {
+          "type": "inherited"
+        }
+      },
+      "defaultValues": {
+        "nombre": null,
+        "linea": null,
+        "estado": null,
+        "label": null,
+        "codigo_linea": null,
+        "tipo": null,
+        "fecha_actualizacion": null
+      },
+      "code": 3,
+      "name": "METROPLUS"
+    },
+    {
+      "domains": {
+        "estado": {
+          "type": "inherited"
+        }
+      },
+      "defaultValues": {
+        "nombre": null,
+        "linea": null,
+        "estado": null,
+        "label": null,
+        "codigo_linea": null,
+        "tipo": null,
+        "fecha_actualizacion": null
+      },
+      "code": 4,
+      "name": "TRANVIA"
+    }
+  ],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": false,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "maxSelectionCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON, PBF",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "supportedSpatialRelationships": [
+    "esriSpatialRelIntersects",
+    "esriSpatialRelContains",
+    "esriSpatialRelCrosses",
+    "esriSpatialRelEnvelopeIntersects",
+    "esriSpatialRelIndexIntersects",
+    "esriSpatialRelOverlaps",
+    "esriSpatialRelTouches",
+    "esriSpatialRelWithin",
+    "esriSpatialRelRelation"
+  ],
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsAdvancedQueryRelated": true,
+    "supportsQueryRelatedPagination": true,
+    "supportsPagination": true,
+    "supportsLod": false,
+    "supportsQueryWithLodSR": false,
+    "supportsTrueCurve": true,
+    "supportsQueryWithDatumTransformation": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": true,
+    "supportsCurrentUserQueries": true
+  },
+  "supportsDatumTransformation": true,
+  "advancedQueryAnalyticCapabilities": {
+    "supportsLinearRegression": true,
+    "supportsAsync": false,
+    "supportsPercentileAnalytic": false
+  },
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasGeometryProperties": true,
+  "geometryProperties": {
+    "shapeLengthFieldName": "st_length(shape)",
+    "units": "esriMeters",
+    "mapUnits": {
+      "uwkid": 9001
+    }
+  },
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  },
+  "supportsCoordinatesQuantization": true,
+  "supportsDynamicLegends": true,
+  "serviceItemId": "9d0f7d17b7924c8dab4933f4664a6d7b"
+}

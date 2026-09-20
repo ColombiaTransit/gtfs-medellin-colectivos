@@ -1,0 +1,1712 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 452,
+        "nombre": "El Pinal",
+        "linea": "Línea M",
+        "ruleid": 2,
+        "override": null,
+        "estado": 3,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4718554.3903,
+          2248770.0796000008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 453,
+        "nombre": "Sena-Pedregal",
+        "linea": "Línea P",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716056.7518,
+          2255044.9453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 454,
+        "nombre": "Doce de Octubre",
+        "linea": "Línea P",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715103.1289,
+          2255311.3050999995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 455,
+        "nombre": "El Progreso",
+        "linea": "Línea P",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4714397.2928,
+          2255508.4551999997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 456,
+        "nombre": "Acevedo",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717053.1257,
+          2254861.9126999993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 457,
+        "nombre": "Tricentenario",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716340.5376,
+          2253762.8148
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 458,
+        "nombre": "Caribe",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715811.0191,
+          2252440.9047999997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 459,
+        "nombre": "Universidad",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716207.9458,
+          2251452.6251999997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 460,
+        "nombre": "Hospital",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716475.6163,
+          2250845.7157000005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 461,
+        "nombre": "Prado",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716160.3055,
+          2250063.3839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 462,
+        "nombre": "Parque Berrío",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715928.8851,
+          2249362.4837999996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 463,
+        "nombre": "San Antonio",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715762.4819,
+          2248997.5604
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 464,
+        "nombre": "Cisneros",
+        "linea": "Línea B",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715161.1366,
+          2249205.899700001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 465,
+        "nombre": "Alpujarra",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715572.07,
+          2248529.8839999996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 466,
+        "nombre": "Exposiciones",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715375.7314,
+          2248028.5709000006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 467,
+        "nombre": "Industriales",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715107.416,
+          2247166.645199999
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 468,
+        "nombre": "Poblado",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4714824.2016,
+          2245187.798800001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 469,
+        "nombre": "Aguacatala",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4714415.1603,
+          2243167.4908000007
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 470,
+        "nombre": "Suramericana",
+        "linea": "Línea B",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4714300.91,
+          2249644.2025000006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 471,
+        "nombre": "Estadio",
+        "linea": "Línea B",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4713710.6359,
+          2249687.3772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 472,
+        "nombre": "Floresta",
+        "linea": "Línea B",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4712666.7155,
+          2250286.9275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 473,
+        "nombre": "Santa Lucía",
+        "linea": "Línea B",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4711995.8379,
+          2250214.0481000002
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 474,
+        "nombre": "San Javier",
+        "linea": "Línea B",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4710929.6672,
+          2250066.8902000003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 475,
+        "nombre": "Madera",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717396.1355,
+          2256524.6251999997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 476,
+        "nombre": "Bello",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717614.8005,
+          2258206.834899999
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 477,
+        "nombre": "Niquía",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4718622.4118,
+          2259006.9846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 478,
+        "nombre": "Ayurá",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4713969.0669,
+          2242289.2415999994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 479,
+        "nombre": "Envigado",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4712694.8398,
+          2240992.1085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 480,
+        "nombre": "Itagüí",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4711603.9878,
+          2239691.3444999997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 481,
+        "nombre": "Arví",
+        "linea": "Línea L",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4723167.226,
+          2252761.0149000008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 482,
+        "nombre": "Santo Domingo Savio",
+        "linea": "Línea K",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4718889.7898,
+          2254063.8686999995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 483,
+        "nombre": "Popular",
+        "linea": "Línea K",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4718173.3732,
+          2254287.489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 484,
+        "nombre": "Andalucía",
+        "linea": "Línea K",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717760.4846,
+          2254415.994999999
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 485,
+        "nombre": "Juan XXIII",
+        "linea": "Línea J",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4710903.2824,
+          2251065.5976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 486,
+        "nombre": "Vallejuelos",
+        "linea": "Línea J",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4710873.8142,
+          2252136.5856999997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 487,
+        "nombre": "La  Aurora",
+        "linea": "Línea J",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4710856.3561,
+          2252771.1434000004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 488,
+        "nombre": "Universidad de Medellín",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4711370.5412,
+          2247205.3466
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 489,
+        "nombre": "Los Alpes",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4711829.0078,
+          2247231.3440000005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 490,
+        "nombre": "La Palma",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4712287.4467,
+          2247239.0112999994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 491,
+        "nombre": "Parque Belén",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4712761.0381,
+          2247260.8013000004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 492,
+        "nombre": "Rosales",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4713400.892,
+          2247279.9321999997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 493,
+        "nombre": "Fátima",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4713888.7015,
+          2247290.5252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 494,
+        "nombre": "Nutibara",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4714387.5712,
+          2247301.6105000004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 495,
+        "nombre": "Industriales",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4714987.4984,
+          2247153.1417999994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 496,
+        "nombre": "Plaza Mayor",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715136.8799,
+          2248609.4264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 497,
+        "nombre": "Cisneros-Moda",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715170.3681,
+          2249405.0682999995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 498,
+        "nombre": "Minorista",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715383.1883,
+          2249986.9981999993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 499,
+        "nombre": "Chagualo",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715829.485,
+          2250493.5862000007
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 500,
+        "nombre": "RutaN-UdeA",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716002.7213,
+          2250848.223200001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 501,
+        "nombre": "San Pedro",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716826.2387,
+          2250789.1965999994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 502,
+        "nombre": "Palos Verdes",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717301.9306,
+          2250637.833900001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 503,
+        "nombre": "Gardel",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717400.3866,
+          2251253.5595999993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 504,
+        "nombre": "Manrique",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717509.4492,
+          2251871.0545000006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 505,
+        "nombre": "Las Esmeraldas",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717612.7733,
+          2252438.7687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 506,
+        "nombre": "Berlín",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717641.4273,
+          2252940.7744999994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 507,
+        "nombre": "Parque Aranjuez",
+        "linea": "Línea 1",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Parada",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717232.7815,
+          2253193.793400001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 508,
+        "nombre": "Sabaneta",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4710568.2024,
+          2239126.2180000003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 509,
+        "nombre": "La Estrella",
+        "linea": "Línea A",
+        "ruleid": 1,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 1,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4709441.1312,
+          2238581.1286999993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 510,
+        "nombre": "Alejandro Echavarría",
+        "linea": "Línea T-A",
+        "ruleid": 4,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 4,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4718852.8083,
+          2247688.9528
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 511,
+        "nombre": "13 de Noviembre",
+        "linea": "Línea M",
+        "ruleid": 2,
+        "override": null,
+        "estado": 3,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4718896.7073,
+          2249028.5867999997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 512,
+        "nombre": "Bicentenario",
+        "linea": "Línea T-A",
+        "ruleid": 4,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 4,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716970.6271,
+          2248633.4924999997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 513,
+        "nombre": "Loyola",
+        "linea": "Línea T-A",
+        "ruleid": 4,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 4,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4718473.5685,
+          2248084.9824
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 514,
+        "nombre": "Oriente",
+        "linea": "Línea T-A",
+        "ruleid": 4,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 4,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4719027.8705,
+          2247428.0068999995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 515,
+        "nombre": "Pabellón del Agua EPM",
+        "linea": "Línea T-A",
+        "ruleid": 4,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 4,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716615.6996,
+          2248815.4893999994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 516,
+        "nombre": "Villa Sierra",
+        "linea": "Línea H",
+        "ruleid": 2,
+        "override": null,
+        "estado": 3,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4720297.2491,
+          2247612.630000001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 517,
+        "nombre": "San José",
+        "linea": "Línea T-A",
+        "ruleid": 4,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 4,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716241.097,
+          2249009.8365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 518,
+        "nombre": "Las Torres",
+        "linea": "Línea H",
+        "ruleid": 2,
+        "override": null,
+        "estado": 3,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4719446.7459,
+          2247812.5875000004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 519,
+        "nombre": "Buenos Aires",
+        "linea": "Línea T-A",
+        "ruleid": 4,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 4,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717508.5145,
+          2248348.1428999994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 520,
+        "nombre": "Miraflores",
+        "linea": "Línea T-A",
+        "ruleid": 4,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 4,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4718052.5918,
+          2248342.9518
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 521,
+        "nombre": "Barrio Colombia",
+        "linea": "Línea 2",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Paradero",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715606.5466,
+          2246938.5582999997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 522,
+        "nombre": "Barrio Colombia B",
+        "linea": "Línea 2",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Paradero",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715735.8835,
+          2246980.6900999993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 523,
+        "nombre": "San Diego",
+        "linea": "Línea 2",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Paradero",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715715.0699,
+          2247499.182600001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 524,
+        "nombre": "Colón",
+        "linea": "Línea 2",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Paradero",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4715739.1871,
+          2248255.1953999996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 525,
+        "nombre": "San José",
+        "linea": "Línea 2",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Paradero",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716097.7931,
+          2248908.785700001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 526,
+        "nombre": "La Playa",
+        "linea": "Línea 2",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Paradero",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716343.8258,
+          2249260.8899000008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 527,
+        "nombre": "Catedral Metropolitana",
+        "linea": "Línea 2",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Paradero",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716561.2429,
+          2249637.9781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 528,
+        "nombre": "Prado A",
+        "linea": "Línea 2",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Paradero",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716889.0221,
+          2250275.1652000006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 529,
+        "nombre": "Prado B",
+        "linea": "Línea 2",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Paradero",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716802.2549,
+          2250294.7338999994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 530,
+        "nombre": "Palos Verdes B",
+        "linea": "Línea 2",
+        "ruleid": 3,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Paradero",
+        "tipo": 3,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4717244.0004,
+          2250766.6131999996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 531,
+        "nombre": "Santo Domingo Savio",
+        "linea": "Línea L",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4718859.759,
+          2254022.2597000003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 772,
+        "nombre": "Acevedo",
+        "linea": "Línea P",
+        "ruleid": 2,
+        "override": null,
+        "estado": 1,
+        "tipo_est": "Estación",
+        "tipo": 2,
+        "fecha_actualizacion": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4716997.4031,
+          2254782.2095
+        ]
+      }
+    }
+  ],
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:9377"
+    }
+  }
+}

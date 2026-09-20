@@ -1,0 +1,1264 @@
+{
+  "currentVersion": 11.5,
+  "cimVersion": "3.5.0",
+  "id": 0,
+  "name": "Jerarquia vial",
+  "type": "Feature Layer",
+  "description": "Es el conjunto de vias que distribuyen y canalizan el transito vehicular hacia diferentes sectores urbanosy rurales. Corresponde a la categorizacion de las vias considerando aspectos asociados a la accesibilidad, velocidad, longitud de los desplazamientos, caracteristicas del transito y de la via, la relacion con las actividades de la poblacion, la accesibilidad, continuidad, longitud y areas que relaciona.",
+  "geometryType": "esriGeometryPolyline",
+  "sourceSpatialReference": {
+    "wkid": 9377,
+    "latestWkid": 9377,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -618700,
+    "falseY": -8436100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "spatialReference": {
+    "wkid": 9377,
+    "latestWkid": 9377,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -618700,
+    "falseY": -8436100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "copyrightText": "Departamento Administrativo de Planeacion -Subdireccion Planeacion Territorial y Estrategica de Ciudad- Subdireccion de Informacion Seguimiento y Evaluacion",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 0,
+  "maxScale": 0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "uniqueValue",
+      "field1": "jerarquizacion_via",
+      "field2": "estado",
+      "uniqueValueGroups": [
+        {
+          "heading": "jerarquizacion_via,estado",
+          "classes": [
+            {
+              "label": "Autopista urbana o vía de travesía,Existente",
+              "description": "Autopista urbana o vía de travesía,Existente",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  76,
+                  173,
+                  148,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Autopista urbana o vía de travesía",
+                  "Existente"
+                ]
+              ]
+            },
+            {
+              "label": "Autopista urbana o vía de travesía,Proyectado",
+              "description": "Autopista urbana o vía de travesía,Proyectado",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  190,
+                  71,
+                  196,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Autopista urbana o vía de travesía",
+                  "Proyectado"
+                ]
+              ]
+            },
+            {
+              "label": "Vía arteria,Ampliación",
+              "description": "Vía arteria,Ampliación",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  217,
+                  106,
+                  76,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía arteria",
+                  "Ampliación"
+                ]
+              ]
+            },
+            {
+              "label": "Vía arteria,Existente",
+              "description": "Vía arteria,Existente",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  175,
+                  247,
+                  92,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía arteria",
+                  "Existente"
+                ]
+              ]
+            },
+            {
+              "label": "Vía arteria,Proyectado",
+              "description": "Vía arteria,Proyectado",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  109,
+                  171,
+                  247,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía arteria",
+                  "Proyectado"
+                ]
+              ]
+            },
+            {
+              "label": "Vía colectora,Ampliación",
+              "description": "Vía colectora,Ampliación",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  153,
+                  147,
+                  58,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía colectora",
+                  "Ampliación"
+                ]
+              ]
+            },
+            {
+              "label": "Vía colectora,Existente",
+              "description": "Vía colectora,Existente",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  51,
+                  53,
+                  143,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía colectora",
+                  "Existente"
+                ]
+              ]
+            },
+            {
+              "label": "Vía colectora,Proyectado",
+              "description": "Vía colectora,Proyectado",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  153,
+                  63,
+                  102,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía colectora",
+                  "Proyectado"
+                ]
+              ]
+            },
+            {
+              "label": "Vía de primer orden nacional,Existente",
+              "description": "Vía de primer orden nacional,Existente",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  54,
+                  91,
+                  128,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía de primer orden nacional",
+                  "Existente"
+                ]
+              ]
+            },
+            {
+              "label": "Vía de primer orden nacional,Proyectado",
+              "description": "Vía de primer orden nacional,Proyectado",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  128,
+                  102,
+                  80,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía de primer orden nacional",
+                  "Proyectado"
+                ]
+              ]
+            },
+            {
+              "label": "Vía de segundo orden nacional,Existente",
+              "description": "Vía de segundo orden nacional,Existente",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  247,
+                  166,
+                  175,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía de segundo orden nacional",
+                  "Existente"
+                ]
+              ]
+            },
+            {
+              "label": "Vía de segundo orden nacional,Proyectado",
+              "description": "Vía de segundo orden nacional,Proyectado",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  73,
+                  158,
+                  62,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía de segundo orden nacional",
+                  "Proyectado"
+                ]
+              ]
+            },
+            {
+              "label": "Vía de tercer orden nacional,Existente",
+              "description": "Vía de tercer orden nacional,Existente",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  192,
+                  143,
+                  217,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía de tercer orden nacional",
+                  "Existente"
+                ]
+              ]
+            },
+            {
+              "label": "Vía férrea,Existente",
+              "description": "Vía férrea,Existente",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  94,
+                  242,
+                  168,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía férrea",
+                  "Existente"
+                ]
+              ]
+            },
+            {
+              "label": "Vía férrea,Proyectado",
+              "description": "Vía férrea,Proyectado",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  205,
+                  224,
+                  148,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía férrea",
+                  "Proyectado"
+                ]
+              ]
+            },
+            {
+              "label": "Vía primaria rural,Existente",
+              "description": "Vía primaria rural,Existente",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  118,
+                  104,
+                  247,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía primaria rural",
+                  "Existente"
+                ]
+              ]
+            },
+            {
+              "label": "Vía primaria rural,Proyectado",
+              "description": "Vía primaria rural,Proyectado",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  232,
+                  171,
+                  121,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía primaria rural",
+                  "Proyectado"
+                ]
+              ]
+            },
+            {
+              "label": "Vía secundaria rural,Existente",
+              "description": "Vía secundaria rural,Existente",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  116,
+                  156,
+                  176,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía secundaria rural",
+                  "Existente"
+                ]
+              ]
+            },
+            {
+              "label": "Vía secundaria rural,Proyectado",
+              "description": "Vía secundaria rural,Proyectado",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  240,
+                  86,
+                  178,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "Vía secundaria rural",
+                  "Proyectado"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "uniqueValueInfos": [
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              76,
+              173,
+              148,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Autopista urbana o vía de travesía,Existente",
+          "label": "Autopista urbana o vía de travesía,Existente"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              190,
+              71,
+              196,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Autopista urbana o vía de travesía,Proyectado",
+          "label": "Autopista urbana o vía de travesía,Proyectado"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              217,
+              106,
+              76,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía arteria,Ampliación",
+          "label": "Vía arteria,Ampliación"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              175,
+              247,
+              92,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía arteria,Existente",
+          "label": "Vía arteria,Existente"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              109,
+              171,
+              247,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía arteria,Proyectado",
+          "label": "Vía arteria,Proyectado"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              153,
+              147,
+              58,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía colectora,Ampliación",
+          "label": "Vía colectora,Ampliación"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              51,
+              53,
+              143,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía colectora,Existente",
+          "label": "Vía colectora,Existente"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              153,
+              63,
+              102,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía colectora,Proyectado",
+          "label": "Vía colectora,Proyectado"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              54,
+              91,
+              128,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía de primer orden nacional,Existente",
+          "label": "Vía de primer orden nacional,Existente"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              128,
+              102,
+              80,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía de primer orden nacional,Proyectado",
+          "label": "Vía de primer orden nacional,Proyectado"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              247,
+              166,
+              175,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía de segundo orden nacional,Existente",
+          "label": "Vía de segundo orden nacional,Existente"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              73,
+              158,
+              62,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía de segundo orden nacional,Proyectado",
+          "label": "Vía de segundo orden nacional,Proyectado"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              192,
+              143,
+              217,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía de tercer orden nacional,Existente",
+          "label": "Vía de tercer orden nacional,Existente"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              94,
+              242,
+              168,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía férrea,Existente",
+          "label": "Vía férrea,Existente"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              205,
+              224,
+              148,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía férrea,Proyectado",
+          "label": "Vía férrea,Proyectado"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              118,
+              104,
+              247,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía primaria rural,Existente",
+          "label": "Vía primaria rural,Existente"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              232,
+              171,
+              121,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía primaria rural,Proyectado",
+          "label": "Vía primaria rural,Proyectado"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              116,
+              156,
+              176,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía secundaria rural,Existente",
+          "label": "Vía secundaria rural,Existente"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              240,
+              86,
+              178,
+              255
+            ],
+            "width": 1
+          },
+          "value": "Vía secundaria rural,Proyectado",
+          "label": "Vía secundaria rural,Proyectado"
+        }
+      ],
+      "fieldDelimiter": ",",
+      "authoringInfo": {
+        "colorRamp": {
+          "type": "multipart",
+          "colorRamps": [
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                176,
+                112,
+                63,
+                255
+              ],
+              "toColor": [
+                176,
+                112,
+                63,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                202,
+                87,
+                247,
+                255
+              ],
+              "toColor": [
+                202,
+                87,
+                247,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                92,
+                247,
+                162,
+                255
+              ],
+              "toColor": [
+                92,
+                247,
+                162,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                72,
+                151,
+                207,
+                255
+              ],
+              "toColor": [
+                72,
+                151,
+                207,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                199,
+                93,
+                151,
+                255
+              ],
+              "toColor": [
+                199,
+                93,
+                151,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                240,
+                229,
+                86,
+                255
+              ],
+              "toColor": [
+                240,
+                229,
+                86,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                70,
+                128,
+                91,
+                255
+              ],
+              "toColor": [
+                70,
+                128,
+                91,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                84,
+                60,
+                140,
+                255
+              ],
+              "toColor": [
+                84,
+                60,
+                140,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                145,
+                242,
+                236,
+                255
+              ],
+              "toColor": [
+                145,
+                242,
+                236,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                240,
+                86,
+                89,
+                255
+              ],
+              "toColor": [
+                240,
+                86,
+                89,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                82,
+                78,
+                222,
+                255
+              ],
+              "toColor": [
+                82,
+                78,
+                222,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                188,
+                158,
+                247,
+                255
+              ],
+              "toColor": [
+                188,
+                158,
+                247,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                208,
+                212,
+                142,
+                255
+              ],
+              "toColor": [
+                208,
+                212,
+                142,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                100,
+                163,
+                57,
+                255
+              ],
+              "toColor": [
+                100,
+                163,
+                57,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                140,
+                72,
+                76,
+                255
+              ],
+              "toColor": [
+                140,
+                72,
+                76,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                125,
+                245,
+                88,
+                255
+              ],
+              "toColor": [
+                125,
+                245,
+                88,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                250,
+                161,
+                147,
+                255
+              ],
+              "toColor": [
+                250,
+                161,
+                147,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                133,
+                129,
+                60,
+                255
+              ],
+              "toColor": [
+                133,
+                129,
+                60,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                66,
+                84,
+                128,
+                255
+              ],
+              "toColor": [
+                66,
+                84,
+                128,
+                255
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "scaleSymbols": false,
+    "transparency": 0,
+    "labelingInfo": null
+  },
+  "defaultVisibility": true,
+  "extent": {
+    "xmin": 4696398.1045,
+    "ymin": 2238444.9493000004,
+    "xmax": 4730235.5367,
+    "ymax": 2272993.5768,
+    "spatialReference": {
+      "wkid": 9377,
+      "latestWkid": 9377,
+      "xyTolerance": 0.001,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -618700,
+      "falseY": -8436100,
+      "xyUnits": 10000,
+      "falseZ": -100000,
+      "zUnits": 10000,
+      "falseM": -100000,
+      "mUnits": 10000
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "nombre",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "objectid",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "domain": null
+    },
+    {
+      "name": "nombre",
+      "type": "esriFieldTypeString",
+      "alias": "nombre",
+      "length": 100,
+      "domain": null
+    },
+    {
+      "name": "label",
+      "type": "esriFieldTypeString",
+      "alias": "label",
+      "length": 100,
+      "domain": null
+    },
+    {
+      "name": "retiro",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "retiro",
+      "domain": null
+    },
+    {
+      "name": "clasificacion_via",
+      "type": "esriFieldTypeString",
+      "alias": "clasificacion_via",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "estado",
+      "type": "esriFieldTypeString",
+      "alias": "estado",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "jerarquizacion_via",
+      "type": "esriFieldTypeString",
+      "alias": "jerarquizacion_via",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "id_elemento",
+      "type": "esriFieldTypeInteger",
+      "alias": "id_elemento",
+      "domain": null
+    },
+    {
+      "name": "shape",
+      "type": "esriFieldTypeGeometry",
+      "alias": "SHAPE",
+      "domain": null
+    },
+    {
+      "name": "fecha_adopcion",
+      "type": "esriFieldTypeDate",
+      "alias": "fecha_adopcion",
+      "length": 8,
+      "domain": null
+    },
+    {
+      "name": "fecha_actualizacion",
+      "type": "esriFieldTypeDate",
+      "alias": "fecha_actualizacion",
+      "length": 8,
+      "domain": null
+    },
+    {
+      "name": "st_length(shape)",
+      "type": "esriFieldTypeDouble",
+      "alias": "st_length(shape)",
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "shape",
+    "type": "esriFieldTypeGeometry",
+    "alias": "SHAPE"
+  },
+  "indexes": [
+    {
+      "name": "r362_sde_rowid_uk",
+      "fields": "objectid",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "a341_ix1",
+      "fields": "shape",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    }
+  ],
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": false,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "maxSelectionCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON, PBF",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "supportedSpatialRelationships": [
+    "esriSpatialRelIntersects",
+    "esriSpatialRelContains",
+    "esriSpatialRelCrosses",
+    "esriSpatialRelEnvelopeIntersects",
+    "esriSpatialRelIndexIntersects",
+    "esriSpatialRelOverlaps",
+    "esriSpatialRelTouches",
+    "esriSpatialRelWithin",
+    "esriSpatialRelRelation"
+  ],
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsAdvancedQueryRelated": true,
+    "supportsQueryRelatedPagination": true,
+    "supportsPagination": true,
+    "supportsLod": false,
+    "supportsQueryWithLodSR": false,
+    "supportsTrueCurve": true,
+    "supportsQueryWithDatumTransformation": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": true,
+    "supportsCurrentUserQueries": true
+  },
+  "supportsDatumTransformation": true,
+  "advancedQueryAnalyticCapabilities": {
+    "supportsLinearRegression": true,
+    "supportsAsync": false,
+    "supportsPercentileAnalytic": false
+  },
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasGeometryProperties": true,
+  "geometryProperties": {
+    "shapeLengthFieldName": "st_length(shape)",
+    "units": "esriMeters",
+    "mapUnits": {
+      "uwkid": 9001
+    }
+  },
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  },
+  "supportsCoordinatesQuantization": true,
+  "supportsDynamicLegends": true,
+  "serviceItemId": "9d0f7d17b7924c8dab4933f4664a6d7b"
+}

@@ -1,0 +1,366 @@
+{
+  "currentVersion": 11.5,
+  "cimVersion": "3.5.0",
+  "id": 5,
+  "name": "Parada de transporte publico",
+  "type": "Feature Layer",
+  "description": "",
+  "geometryType": "esriGeometryPoint",
+  "sourceSpatialReference": {
+    "wkid": 9377,
+    "latestWkid": 9377,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -618700,
+    "falseY": -8436100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "spatialReference": {
+    "wkid": 9377,
+    "latestWkid": 9377,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -618700,
+    "falseY": -8436100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "copyrightText": "",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 0,
+  "maxScale": 0,
+  "referenceScale": 0.0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "simple",
+      "symbol": {
+        "type": "esriSMS",
+        "style": "esriSMSCircle",
+        "color": [
+          255,
+          0,
+          0,
+          255
+        ],
+        "size": 8,
+        "angle": 0,
+        "xoffset": 0,
+        "yoffset": 0,
+        "outline": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "width": 0
+        }
+      }
+    },
+    "scaleSymbols": true,
+    "transparency": 0,
+    "labelingInfo": null
+  },
+  "defaultVisibility": true,
+  "extent": {
+    "xmin": 4701051,
+    "ymin": 2241673,
+    "xmax": 4726087,
+    "ymax": 2260497,
+    "spatialReference": {
+      "wkid": 9377,
+      "latestWkid": 9377,
+      "xyTolerance": 0.001,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -618700,
+      "falseY": -8436100,
+      "xyUnits": 10000,
+      "falseZ": -100000,
+      "zUnits": 10000,
+      "falseM": -100000,
+      "mUnits": 10000
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "id_parada",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "objectid",
+      "type": "esriFieldTypeOID",
+      "alias": "objectid",
+      "domain": null
+    },
+    {
+      "name": "id_paradero",
+      "type": "esriFieldTypeInteger",
+      "alias": "id_paradero",
+      "domain": null
+    },
+    {
+      "name": "id_parada",
+      "type": "esriFieldTypeString",
+      "alias": "id_parada",
+      "length": 20,
+      "domain": null
+    },
+    {
+      "name": "id_ruta",
+      "type": "esriFieldTypeInteger",
+      "alias": "id_ruta",
+      "domain": null
+    },
+    {
+      "name": "nro_parada",
+      "type": "esriFieldTypeDouble",
+      "alias": "nro_parada",
+      "domain": null
+    },
+    {
+      "name": "nombre",
+      "type": "esriFieldTypeString",
+      "alias": "nombre",
+      "length": 100,
+      "domain": null
+    },
+    {
+      "name": "direccion",
+      "type": "esriFieldTypeString",
+      "alias": "direccion",
+      "length": 80,
+      "domain": null
+    },
+    {
+      "name": "orientacion",
+      "type": "esriFieldTypeString",
+      "alias": "orientacion",
+      "length": 20,
+      "domain": null
+    },
+    {
+      "name": "mobiliario",
+      "type": "esriFieldTypeString",
+      "alias": "mobiliario",
+      "length": 20,
+      "domain": null
+    },
+    {
+      "name": "tipo_parada",
+      "type": "esriFieldTypeString",
+      "alias": "tipo_parada",
+      "length": 20,
+      "domain": null
+    },
+    {
+      "name": "recorrido",
+      "type": "esriFieldTypeString",
+      "alias": "recorrido",
+      "length": 20,
+      "domain": null
+    },
+    {
+      "name": "codigo_ruta",
+      "type": "esriFieldTypeString",
+      "alias": "codigo_ruta",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "nombre_ruta",
+      "type": "esriFieldTypeString",
+      "alias": "nombre_ruta",
+      "length": 150,
+      "domain": null
+    },
+    {
+      "name": "sistema_ruta",
+      "type": "esriFieldTypeString",
+      "alias": "sistema_ruta",
+      "length": 80,
+      "domain": null
+    },
+    {
+      "name": "tipo_ruta",
+      "type": "esriFieldTypeString",
+      "alias": "tipo_ruta",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "empresa",
+      "type": "esriFieldTypeString",
+      "alias": "empresa",
+      "length": 80,
+      "domain": null
+    },
+    {
+      "name": "id_gflota",
+      "type": "esriFieldTypeInteger",
+      "alias": "id_gflota",
+      "domain": null
+    },
+    {
+      "name": "from_date",
+      "type": "esriFieldTypeDate",
+      "alias": "from_date",
+      "length": 8,
+      "precision": 1,
+      "domain": null
+    },
+    {
+      "name": "shape",
+      "type": "esriFieldTypeGeometry",
+      "alias": "shape",
+      "domain": null
+    },
+    {
+      "name": "x_origen_nacional",
+      "type": "esriFieldTypeDouble",
+      "alias": "x_origen_nacional",
+      "domain": null
+    },
+    {
+      "name": "y_origen_nacional",
+      "type": "esriFieldTypeDouble",
+      "alias": "y_origen_nacional",
+      "domain": null
+    },
+    {
+      "name": "longitud",
+      "type": "esriFieldTypeDouble",
+      "alias": "longitud",
+      "domain": null
+    },
+    {
+      "name": "latitud",
+      "type": "esriFieldTypeDouble",
+      "alias": "latitud",
+      "domain": null
+    },
+    {
+      "name": "tipo_actoadmin",
+      "type": "esriFieldTypeString",
+      "alias": "tipo_actoadmin",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "numero_actoadmin",
+      "type": "esriFieldTypeString",
+      "alias": "numero_actoadmin",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "anio_actoadmin",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "anio_actoadmin",
+      "domain": null
+    },
+    {
+      "name": "estado",
+      "type": "esriFieldTypeString",
+      "alias": "estado",
+      "length": 10,
+      "domain": null
+    },
+    {
+      "name": "fecha_actualizacion",
+      "type": "esriFieldTypeDate",
+      "alias": "fecha_actualizacion",
+      "length": 8,
+      "precision": 1,
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "shape",
+    "type": "esriFieldTypeGeometry",
+    "alias": "shape"
+  },
+  "indexes": null,
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": false,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "maxSelectionCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON, PBF",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "supportedSpatialRelationships": [
+    "esriSpatialRelIntersects",
+    "esriSpatialRelContains",
+    "esriSpatialRelCrosses",
+    "esriSpatialRelEnvelopeIntersects",
+    "esriSpatialRelIndexIntersects",
+    "esriSpatialRelOverlaps",
+    "esriSpatialRelTouches",
+    "esriSpatialRelWithin",
+    "esriSpatialRelRelation"
+  ],
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsAdvancedQueryRelated": true,
+    "supportsQueryRelatedPagination": true,
+    "supportsPagination": true,
+    "supportsLod": false,
+    "supportsQueryWithLodSR": false,
+    "supportsTrueCurve": true,
+    "supportsQueryWithDatumTransformation": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": true,
+    "supportsCurrentUserQueries": true
+  },
+  "supportsDatumTransformation": true,
+  "advancedQueryAnalyticCapabilities": {
+    "supportsLinearRegression": true,
+    "supportsAsync": false,
+    "supportsPercentileAnalytic": false
+  },
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  },
+  "supportsCoordinatesQuantization": true,
+  "supportsDynamicLegends": true,
+  "serviceItemId": "9d0f7d17b7924c8dab4933f4664a6d7b"
+}

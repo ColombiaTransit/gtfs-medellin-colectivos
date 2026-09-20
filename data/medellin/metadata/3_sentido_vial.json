@@ -1,0 +1,795 @@
+{
+  "currentVersion": 11.5,
+  "cimVersion": "3.5.0",
+  "id": 3,
+  "name": "Sentido vial",
+  "type": "Feature Layer",
+  "description": "Malla vial de segmentos viales construida con orientación al manejo de temas de movilidad.Se actualiza a partir de resoluciones",
+  "geometryType": "esriGeometryPolyline",
+  "sourceSpatialReference": {
+    "wkid": 9377,
+    "latestWkid": 9377,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -618700,
+    "falseY": -8436100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "spatialReference": {
+    "wkid": 9377,
+    "latestWkid": 9377,
+    "xyTolerance": 0.001,
+    "zTolerance": 0.001,
+    "mTolerance": 0.001,
+    "falseX": -618700,
+    "falseY": -8436100,
+    "xyUnits": 10000,
+    "falseZ": -100000,
+    "zUnits": 10000,
+    "falseM": -100000,
+    "mUnits": 10000
+  },
+  "copyrightText": "Secretaria de Movilidad",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 0,
+  "maxScale": 0,
+  "referenceScale": 0.0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "uniqueValue",
+      "field1": "oneway",
+      "uniqueValueGroups": [
+        {
+          "heading": "ONEWAY",
+          "classes": [
+            {
+              "label": "Sentido vehicular (FT)",
+              "description": "Sentido vehicular (FT)",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  255,
+                  0,
+                  0,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "FT"
+                ]
+              ]
+            },
+            {
+              "label": "Sentido vehicular (TF)",
+              "description": "Sentido vehicular (TF)",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  255,
+                  127,
+                  127,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "TF"
+                ]
+              ]
+            },
+            {
+              "label": "Restringido vehicular",
+              "description": "Restringido vehicular",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSDash",
+                "color": [
+                  255,
+                  0,
+                  0,
+                  255
+                ],
+                "width": 1
+              },
+              "values": [
+                [
+                  "N"
+                ]
+              ]
+            },
+            {
+              "label": "Doble via",
+              "description": "Doble via",
+              "symbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  168,
+                  0,
+                  0,
+                  255
+                ],
+                "width": 0.6
+              },
+              "values": [
+                [
+                  "DW"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "uniqueValueInfos": [
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "width": 1
+          },
+          "value": "FT",
+          "label": "Sentido vehicular (FT)"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              255,
+              127,
+              127,
+              255
+            ],
+            "width": 1
+          },
+          "value": "TF",
+          "label": "Sentido vehicular (TF)"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSDash",
+            "color": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "width": 1
+          },
+          "value": "N",
+          "label": "Restringido vehicular"
+        },
+        {
+          "symbol": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              168,
+              0,
+              0,
+              255
+            ],
+            "width": 0.6
+          },
+          "value": "DW",
+          "label": "Doble via"
+        }
+      ],
+      "fieldDelimiter": ",",
+      "authoringInfo": {
+        "colorRamp": {
+          "type": "multipart",
+          "colorRamps": [
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                221,
+                197,
+                255
+              ],
+              "toColor": [
+                252,
+                221,
+                197,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                190,
+                179,
+                252,
+                255
+              ],
+              "toColor": [
+                190,
+                179,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                185,
+                252,
+                182,
+                255
+              ],
+              "toColor": [
+                185,
+                252,
+                182,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                182,
+                238,
+                252,
+                255
+              ],
+              "toColor": [
+                182,
+                238,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                187,
+                228,
+                255
+              ],
+              "toColor": [
+                252,
+                187,
+                228,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                249,
+                182,
+                255
+              ],
+              "toColor": [
+                252,
+                249,
+                182,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                210,
+                252,
+                226,
+                255
+              ],
+              "toColor": [
+                210,
+                252,
+                226,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                224,
+                215,
+                252,
+                255
+              ],
+              "toColor": [
+                224,
+                215,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                179,
+                184,
+                255
+              ],
+              "toColor": [
+                252,
+                179,
+                184,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                215,
+                226,
+                255
+              ],
+              "toColor": [
+                252,
+                215,
+                226,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                240,
+                179,
+                252,
+                255
+              ],
+              "toColor": [
+                240,
+                179,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                182,
+                217,
+                252,
+                255
+              ],
+              "toColor": [
+                182,
+                217,
+                252,
+                255
+              ]
+            },
+            {
+              "type": "algorithmic",
+              "algorithm": "esriCIELabAlgorithm",
+              "fromColor": [
+                252,
+                251,
+                215,
+                255
+              ],
+              "toColor": [
+                252,
+                251,
+                215,
+                255
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "scaleSymbols": true,
+    "transparency": 0,
+    "labelingInfo": [
+      {
+        "labelExpression": "[ID_SVIAL]",
+        "labelPlacement": "esriServerLinePlacementAboveAlong",
+        "textLayout": "followFeature",
+        "deconflictionStrategy": "dynamicNeverRemove",
+        "allowOverrun": true,
+        "repeatLabel": false,
+        "lineConnection": "none",
+        "multiPart": "labelPerFeature",
+        "useClippedGeometry": true,
+        "allowOverlapOfFeatureInterior": "avoid",
+        "offsetDistance": 0,
+        "stackLabel": true,
+        "stackAlignment": "dynamic",
+        "removeDuplicates": "none",
+        "stackRowLength": 24,
+        "useCodedValues": true,
+        "maxScale": 0,
+        "minScale": 2000,
+        "name": "Default",
+        "priority": 15,
+        "symbol": {
+          "type": "esriTS",
+          "color": [
+            255,
+            0,
+            0,
+            255
+          ],
+          "backgroundColor": null,
+          "borderLineColor": null,
+          "borderLineSize": null,
+          "verticalAlignment": "baseline",
+          "horizontalAlignment": "left",
+          "rightToLeft": false,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "kerning": true,
+          "haloColor": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "haloSize": 2,
+          "font": {
+            "family": "Arial",
+            "size": 7,
+            "style": "normal",
+            "weight": "bold",
+            "decoration": "none"
+          }
+        }
+      }
+    ]
+  },
+  "defaultVisibility": true,
+  "extent": {
+    "xmin": 4682774.6309,
+    "ymin": 2215662.6774000004,
+    "xmax": 4770332.488,
+    "ymax": 2283076.8926999997,
+    "spatialReference": {
+      "wkid": 9377,
+      "latestWkid": 9377,
+      "xyTolerance": 0.001,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -618700,
+      "falseY": -8436100,
+      "xyUnits": 10000,
+      "falseZ": -100000,
+      "zUnits": 10000,
+      "falseM": -100000,
+      "mUnits": 10000
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "nombre",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "objectid",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "domain": null
+    },
+    {
+      "name": "id_svial",
+      "type": "esriFieldTypeInteger",
+      "alias": "id_svial",
+      "domain": null
+    },
+    {
+      "name": "nombre",
+      "type": "esriFieldTypeString",
+      "alias": "NOMBRE",
+      "length": 100,
+      "domain": null
+    },
+    {
+      "name": "jerarquia_op",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "JERARQUIA_OP",
+      "domain": {
+        "type": "codedValue",
+        "name": "WS3_DomMov_Jerarquia_OP",
+        "description": "Jerarquia de los segmentos de acuedo con OP",
+        "codedValues": [
+          {
+            "name": "1-Autopista",
+            "code": 1
+          },
+          {
+            "name": "2-Arteria Principal",
+            "code": 2
+          },
+          {
+            "name": "3-Arteria Menor",
+            "code": 3
+          },
+          {
+            "name": "4-Colectora",
+            "code": 4
+          },
+          {
+            "name": "5-Servicio",
+            "code": 5
+          },
+          {
+            "name": "6-Vía Rural (Cabecera corregimiento)",
+            "code": 6
+          },
+          {
+            "name": "7-Vía Rural (Vías inter-veredales)",
+            "code": 7
+          },
+          {
+            "name": "8-Privada",
+            "code": 8
+          },
+          {
+            "name": "99-No Clasificada",
+            "code": 99
+          }
+        ],
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDuplicate"
+      }
+    },
+    {
+      "name": "oneway",
+      "type": "esriFieldTypeString",
+      "alias": "ONEWAY",
+      "length": 10,
+      "domain": {
+        "type": "codedValue",
+        "name": "WS3_DomMov_ONEWAY",
+        "description": "Informacion del sentido vehicular con respecto al sentido digitalizado",
+        "codedValues": [
+          {
+            "name": "FT",
+            "code": "FT"
+          },
+          {
+            "name": "TF",
+            "code": "TF"
+          },
+          {
+            "name": "DW",
+            "code": "DW"
+          },
+          {
+            "name": "N",
+            "code": "N"
+          }
+        ],
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDuplicate"
+      }
+    },
+    {
+      "name": "nro_carriles",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "NRO_CARRILES",
+      "domain": null
+    },
+    {
+      "name": "paso_nivel",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "PASO_NIVEL",
+      "domain": null
+    },
+    {
+      "name": "f_elev",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "F_ELEV",
+      "domain": null
+    },
+    {
+      "name": "t_elev",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "T_ELEV",
+      "domain": null
+    },
+    {
+      "name": "actualizado",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "ACTUALIZO",
+      "domain": {
+        "type": "codedValue",
+        "name": "WS3_DomMov_ACTZ_SGMTO",
+        "description": "Grupo que actualiza segmento vial",
+        "codedValues": [
+          {
+            "name": "Circulacion",
+            "code": "Circulacion"
+          },
+          {
+            "name": "Prospectiva",
+            "code": "Prospectiva"
+          },
+          {
+            "name": "Transporte",
+            "code": "Transporte"
+          },
+          {
+            "name": "GIS",
+            "code": "GIS"
+          }
+        ],
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDuplicate"
+      }
+    },
+    {
+      "name": "fecha_act",
+      "type": "esriFieldTypeDate",
+      "alias": "FECHA_ACT",
+      "length": 8,
+      "domain": null
+    },
+    {
+      "name": "observ",
+      "type": "esriFieldTypeString",
+      "alias": "OBSERV",
+      "length": 150,
+      "domain": null
+    },
+    {
+      "name": "municipio",
+      "type": "esriFieldTypeString",
+      "alias": "MUNICIPIO",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "shape",
+      "type": "esriFieldTypeGeometry",
+      "alias": "shape",
+      "domain": null
+    },
+    {
+      "name": "st_length(shape)",
+      "type": "esriFieldTypeDouble",
+      "alias": "st_length(shape)",
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "shape",
+    "type": "esriFieldTypeGeometry",
+    "alias": "shape"
+  },
+  "indexes": [
+    {
+      "name": "i7id_svial",
+      "fields": "id_svial",
+      "isAscending": true,
+      "isUnique": false,
+      "description": ""
+    },
+    {
+      "name": "r13_sde_rowid_uk",
+      "fields": "objectid",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    },
+    {
+      "name": "segmento_vial_shape_idx",
+      "fields": "shape",
+      "isAscending": true,
+      "isUnique": true,
+      "description": ""
+    }
+  ],
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": true,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 2000,
+  "maxSelectionCount": 2000,
+  "supportsStatistics": true,
+  "supportsExceedsLimitStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON, PBF",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "supportedSpatialRelationships": [
+    "esriSpatialRelIntersects",
+    "esriSpatialRelContains",
+    "esriSpatialRelCrosses",
+    "esriSpatialRelEnvelopeIntersects",
+    "esriSpatialRelIndexIntersects",
+    "esriSpatialRelOverlaps",
+    "esriSpatialRelTouches",
+    "esriSpatialRelWithin",
+    "esriSpatialRelRelation"
+  ],
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsPercentileStatistics": true,
+    "supportsHavingClause": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsCountDistinct": true,
+    "supportsAdvancedQueryRelated": true,
+    "supportsQueryRelatedPagination": true,
+    "supportsPagination": true,
+    "supportsLod": false,
+    "supportsQueryWithLodSR": false,
+    "supportsTrueCurve": true,
+    "supportsQueryWithDatumTransformation": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true,
+    "supportsTimeRelation": true,
+    "supportsSqlFormat": false,
+    "supportsQueryAnalytic": true,
+    "supportsCurrentUserQueries": true
+  },
+  "supportsDatumTransformation": true,
+  "advancedQueryAnalyticCapabilities": {
+    "supportsLinearRegression": true,
+    "supportsAsync": false,
+    "supportsPercentileAnalytic": false
+  },
+  "dateFieldsTimeReference": null,
+  "preferredTimeReference": null,
+  "datesInUnknownTimezone": false,
+  "hasGeometryProperties": true,
+  "geometryProperties": {
+    "shapeLengthFieldName": "st_length(shape)",
+    "units": "esriMeters",
+    "mapUnits": {
+      "uwkid": 9001
+    }
+  },
+  "hasMetadata": true,
+  "isDataArchived": false,
+  "archivingInfo": {
+    "supportsQueryWithHistoricMoment": false,
+    "startArchivingMoment": -1
+  },
+  "supportsCoordinatesQuantization": true,
+  "supportsDynamicLegends": true,
+  "serviceItemId": "9d0f7d17b7924c8dab4933f4664a6d7b"
+}
