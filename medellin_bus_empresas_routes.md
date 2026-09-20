@@ -1,72 +1,34 @@
-# Medellin Bus Empresas and Routes
+# Medellín Bus Companies and Route Codes
 
 ## Scope
 
-At this stage, the dataset focuses only on the **bus empresa (operator)** and the **routes operated by that empresa**.
+This table is based on the **Alcaldía de Medellín – Listado de depósitos de buses en Medellín**. Route codes and depot/operator relationships are taken from that source. Official company websites are included only where they have been verified. **No C6 information is included.**
 
-The official **Alcaldia de Medellin / Secretaria de Movilidad** bus-company directory is used as the master list of empresas. The directory contains 40 bus companies, but this specific page does **not** identify which routes each company operates. Therefore, the route fields below are intentionally left blank until an official route source can be linked to each operator.
+Source: https://www.medellin.gov.co/es/secretaria-de-movilidad/transporte-publico/buses-de-medellin/listado-de-depositos/
 
-## Empresa to Routes
+| Empresa | Código(s) de ruta | Depósito(s) | Official website |
+|---|---|---|---|
+| Transportes Castilla | 261, 261A, 262, 263, 264, 265, 280, 280A | EITP Castilla; Boyacá Las Brisas; La Bombonera; San Martín | No verified official website found |
+| Flota Nueva Villa | 080, 081, 082 | EITP Villa Hermosa | https://principal.flotanuevavilla.com/ |
+| Flota La V | 096, 097 | EITP Buenos Aires - El Vergel | No verified official website found |
+| Translamaya | 143 | EITP La Colinita | No verified official website found |
+| Autobuses Laureles El Poblado | 130, 132, 133, 134, 135, 136 | EITP Poblado - El Tesoro | https://www.autopobla.com.co/ |
+| Rápido San Cristóbal | 255 | San Cristóbal | https://trscsas.com/ |
+| Coonatra | 173, 174, 202, 203, 204, 242, 243 | Floresta Los Alcázares; Las Violetas | https://coonatra.com/ |
+| Cootrabel | 170, 171, 172, 176, 178 | San Javier San Mitchell; Altavista; Vaso de Leche; Belén Rincón | No verified official website found |
+| Flota La Milagrosa | 110, 111, 112, 114 | Loreto | No verified official website found |
+| Cootranspinal | 087, 088 | Barrio El Pinal | No verified official website found |
+| Tax Maya | C23 Micros | Tax Maya La Palma | No verified official website found |
+| Conducciones América S.A. | 200, 201, 202, 203, 204 | Belencito | http://www.conduccionesamerica.com/Home/ |
+| Santra | 179 | Aguas Frías | No verified official website found |
+| Cootrasana | Not specified on source page | San Antonio de Prado | https://cootrasana.com.co/ |
+| Varias | 281, 282, 283, 288 | Doce de Octubre | N/A |
 
-| Empresa | Ruta(s) |
-|---|---|
-| Autobuses El Poblado Laureles S.A. | |
-| Autocol | |
-| Coinvetrans | |
-| Combuses | |
-| Conaltracoop | |
-| Conducciones America S.A. | |
-| Conducciones Palenque Robledal | |
-| Coometropol Ltda. | |
-| Coonatra Ltda. | |
-| Coopcerquin | |
-| Coopetransa Ltda. | |
-| Cooptransnor | |
-| Cootrabel Ltda. | |
-| Cootracovi | |
-| Cootransblan | |
-| Cootranscataluna | |
-| Cootranscol | |
-| Cootransgranizal | |
-| Cootransi | |
-| Cootransmallat | |
-| Cootransmon | |
-| Cootranspinal | |
-| Cootransvi | |
-| Cootrasana | |
-| Copatra Ltda. | |
-| Expreso Campo Valdes | |
-| Flota La "V" S.C.A. | |
-| Flota La Milagrosa S.A. | |
-| Flota Nueva Villa S.A. | |
-| Invetrans | |
-| Metrosan | |
-| Rapido San Cristobal | |
-| Santra Ltda. | |
-| Sotrames | |
-| Tax Maya S.A. | |
-| Transconor | |
-| Transportes Aranjuez Santa Cruz S.A. | |
-| Transportes La Mayoritaria Guayabal Ltda. | |
-| Transportes Medellin Castilla S.A. | |
-| Trasancoop | |
+## Notes
 
-## Recommended Route Mapping Format
-
-Once route information is found, it is preferable to store **one route per row** instead of placing many route codes in one cell:
-
-| Empresa | Codigo | Ruta |
-|---|---|---|
-| Example empresa | 001 | Route description |
-| Example empresa | 002 | Route description |
-| Another empresa | 100 | Route description |
-
-This structure will make it easier to combine the operator information later with route schedules, operating hours, frequencies and the C6 data.
-
-## Source
-
-- Alcaldia de Medellin, Secretaria de Movilidad, **Directorio de empresas de buses en Medellin**: https://www.medellin.gov.co/es/secretaria-de-movilidad/transporte-publico/buses-de-medellin/directorio-de-buses/
-
-## Source limitation
-
-The directory page identifies the bus companies and provides contact information, but it does not contain route codes or route assignments. No Empresa-to-Ruta relationship has therefore been inferred from company names or other non-route information.
+- Route codes are grouped by **empresa**. Duplicate depot entries have been consolidated.
+- Cootrabel routes 172, 176 and 178 occur under both San Javier San Mitchell and Altavista on the source page.
+- Codes 202, 203 and 204 occur under both Conducciones América S.A. and Coonatra on the source page; this overlap is preserved rather than corrected or inferred.
+- Cootrasana is listed for San Antonio de Prado, but the source page does not specify a route code.
+- “Varias” is the empresa value shown for routes 281, 282, 283 and 288, so these routes have not been attributed to a specific operator.
+- No C6 route, frequency, timetable, or Cuenca 6 information is included in this document.
