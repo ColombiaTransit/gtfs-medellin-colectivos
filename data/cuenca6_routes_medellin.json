@@ -1,0 +1,596 @@
+{
+  "dataset": {
+    "title": "Cuenca 6 (C6) Medellín - known operating times and frequencies",
+    "generated": "2026-09-20",
+    "timezone": "America/Bogota",
+    "classification": {
+      "A": "official primary/regulatory source",
+      "B": "official route/change + secondary timetable for frequency",
+      "C": "secondary timetable/aggregator",
+      "D": "unknown/unverified"
+    },
+    "notes": [
+      "null means not reliably established from the sources reviewed.",
+      "Times are conservative known service windows; suspicious next-day values such as 04:45 in secondary feeds were not interpreted as near-24-hour service.",
+      "Frequency values are scheduled/headway-style values, not guaranteed real-time waiting times."
+    ]
+  },
+  "official_framework": {
+    "feeder_interval_ranges_minutes": {
+      "04:00-06:00": {
+        "min": 3,
+        "max": 30
+      },
+      "peak": {
+        "min": 1.5,
+        "max": 6
+      },
+      "off_peak": {
+        "min": 3,
+        "max": 15
+      },
+      "20:00-23:00": {
+        "min": 4,
+        "max": 30
+      },
+      "sunday_holiday": {
+        "min": 3,
+        "max": 30
+      }
+    },
+    "source": "official_amva_parameters"
+  },
+  "sources": {
+    "official_amva_parameters": {
+      "classification": "A",
+      "authority": "Área Metropolitana del Valle de Aburrá (AMVA)",
+      "url": "https://alphasig.metropol.gov.co/normograma/compilacion/docs/r_amva_0348_2012.htm",
+      "note": "Official regulatory/operational framework; feeder interval bands and PSO mechanism."
+    },
+    "official_metro_routes": {
+      "classification": "A",
+      "authority": "Metro de Medellín",
+      "url": "https://www.metrodemedellin.gov.co/usuarios/sistema-integrado/",
+      "note": "Official Cuenca 6 route list/map source."
+    },
+    "official_metro_tram_feeders": {
+      "classification": "A",
+      "authority": "Metro de Medellín",
+      "url": "https://www.metrodemedellin.gov.co/al-dia/noticias/el-tranv%C3%ADa-de-ayacucho-ya-tiene-tres-rutas-alimentadoras",
+      "note": "Official confirmation of C6-023/C6-024/C6-025 tram feeder operation."
+    },
+    "official_medellin_c6010": {
+      "classification": "A",
+      "authority": "Alcaldía de Medellín",
+      "url": "https://www.medellin.gov.co/es/sala-de-prensa/noticias/nueva-ruta-alimentadora-del-metro-da-solucion-de-movilidad-a-mas-de-11-000-estudiantes-del-itm-en-boston/",
+      "note": "Official C6-010 operating window 04:00-23:30 (2024)."
+    },
+    "secop_contract": {
+      "classification": "A",
+      "authority": "SECOP / Colombia Compra Eficiente",
+      "url": "https://www.contratos.gov.co/consultas/detalleProceso.do?numConstancia=12-1-76754",
+      "note": "Primary concession file CN2012-0207 and contract documents."
+    },
+    "moovit": {
+      "classification": "C",
+      "authority": "Moovit",
+      "url": "https://moovitapp.com/index/es-419/transporte_p%C3%BAblico-lines-Medellin-1642-3763299",
+      "note": "Secondary operational timetable; useful but not contractually authoritative."
+    },
+    "transitrun": {
+      "classification": "C",
+      "authority": "TransitRun",
+      "url": "https://transitrun.com/",
+      "note": "Secondary timetable aggregator; corroborative only."
+    },
+    "ualabee": {
+      "classification": "C",
+      "authority": "Ualabee",
+      "url": "https://ualabee.com/",
+      "note": "Secondary detailed stop/departure timetable; corroborative only."
+    }
+  },
+  "routes": [
+    {
+      "route": "C6-001",
+      "origin": "Santa Rita",
+      "destination": "Estación Acevedo",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 30
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-002",
+      "origin": "Versalles / Punto Cero",
+      "destination": "Estación Hospital",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 30
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable_conflict"
+      }
+    },
+    {
+      "route": "C6-002A",
+      "origin": "Versalles",
+      "destination": "Estación Hospital",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 30
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_explicit_departures"
+      }
+    },
+    {
+      "route": "C6-003",
+      "origin": "Campo Valdés",
+      "destination": "Estación Hospital",
+      "service": {
+        "start": "04:30",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_explicit_departures"
+      }
+    },
+    {
+      "route": "C6-004",
+      "origin": "Reserva del Seminario",
+      "destination": "Estación Exposiciones",
+      "service": {
+        "start": "04:30",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_explicit_departures"
+      }
+    },
+    {
+      "route": "C6-004A",
+      "origin": "Quinta Linda / Reserva del Seminario",
+      "destination": "Centro / Exposiciones",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_explicit_departures_numbering_conflict"
+      }
+    },
+    {
+      "route": "C6-005",
+      "origin": "Vergel",
+      "destination": "San Antonio",
+      "service": {
+        "start": "04:30",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-006",
+      "origin": "Villa Liliam",
+      "destination": "Alejandro Echavarría",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-007",
+      "origin": "Cataluña",
+      "destination": "San Antonio / Alpujarra",
+      "service": {
+        "start": null,
+        "end": null,
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_frequency_route_official"
+      }
+    },
+    {
+      "route": "C6-008",
+      "origin": "La Libertad",
+      "destination": "Estación Prado",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_explicit_departures"
+      }
+    },
+    {
+      "route": "C6-009",
+      "origin": "Enciso",
+      "destination": "Estación Prado",
+      "service": {
+        "start": null,
+        "end": null,
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_frequency_route_official"
+      }
+    },
+    {
+      "route": "C6-010",
+      "origin": "Villatina / ITM",
+      "destination": "Estación Prado",
+      "service": {
+        "start": "04:00",
+        "end": "23:30",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "B",
+        "source_ids": [
+          "official_metro_routes",
+          "official_medellin_c6010",
+          "moovit"
+        ],
+        "caveat": "official_hours_secondary_frequency"
+      }
+    },
+    {
+      "route": "C6-011",
+      "origin": "El Playón / Popular 2",
+      "destination": "Estación Acevedo",
+      "service": {
+        "start": "05:00",
+        "end": null,
+        "frequency_minutes": {
+          "mon_sat": 6,
+          "sun": 12
+        }
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_explicit_departures"
+      }
+    },
+    {
+      "route": "C6-012",
+      "origin": "La Francia / Aranjuez",
+      "destination": "Estación Acevedo",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_explicit_departures"
+      }
+    },
+    {
+      "route": "C6-013",
+      "origin": "Aranjuez Anillo",
+      "destination": "Estación Tricentenario",
+      "service": {
+        "start": null,
+        "end": null,
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_frequency_route_official"
+      }
+    },
+    {
+      "route": "C6-014",
+      "origin": "La Ladera",
+      "destination": "Prado",
+      "service": {
+        "start": null,
+        "end": null,
+        "frequency_minutes": null
+      },
+      "evidence": {
+        "classification": "A",
+        "source_ids": [
+          "official_metro_routes"
+        ],
+        "caveat": "official_route_only"
+      }
+    },
+    {
+      "route": "C6-015",
+      "origin": "Villa de Guadalupe / Granizal",
+      "destination": "Estación Hospital",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-016",
+      "origin": "Nuevo Horizonte",
+      "destination": "Hospital",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-018",
+      "origin": "Santa Cecilia",
+      "destination": "Estación Tricentenario",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-019",
+      "origin": "El Raizal",
+      "destination": "Estación Universidad / Gardel",
+      "service": {
+        "start": "05:00",
+        "end": null,
+        "frequency_minutes": {
+          "mon_sat": 6,
+          "sun": 12
+        }
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-019A",
+      "origin": "El Jardín",
+      "destination": "Estación Gardel",
+      "service": {
+        "start": "05:00",
+        "end": null,
+        "frequency_minutes": {
+          "mon_sat": 6,
+          "sun": 12
+        }
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-020",
+      "origin": "San José La Cima",
+      "destination": "Estación Universidad",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-021",
+      "origin": "Granizal",
+      "destination": "Tricentenario / Aranjuez",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-022",
+      "origin": "La Cruz",
+      "destination": "Estación Prado",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "C",
+        "source_ids": [
+          "official_metro_routes",
+          "moovit"
+        ],
+        "caveat": "secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-023",
+      "origin": "Santa Lucía / 8 de Marzo",
+      "destination": "Alejandro Echavarría",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "B",
+        "source_ids": [
+          "official_metro_routes",
+          "official_metro_tram_feeders",
+          "moovit"
+        ],
+        "caveat": "official_route_secondary_timetable"
+      }
+    },
+    {
+      "route": "C6-024",
+      "origin": "8 de Marzo / Santa Lucía",
+      "destination": "Alejandro Echavarría / Oriente",
+      "service": {
+        "start": "05:00",
+        "end": "23:00",
+        "frequency_minutes": 15
+      },
+      "evidence": {
+        "classification": "B",
+        "source_ids": [
+          "official_metro_routes",
+          "official_metro_tram_feeders",
+          "moovit"
+        ],
+        "caveat": "official_route_secondary_explicit_departures"
+      }
+    },
+    {
+      "route": "C6-025",
+      "origin": "La Espadera / 8 de Marzo",
+      "destination": "Estación Oriente",
+      "service": {
+        "start": "05:00",
+        "end": "22:00",
+        "frequency_minutes": {
+          "mon_sat": 6,
+          "sun": 12
+        }
+      },
+      "evidence": {
+        "classification": "B",
+        "source_ids": [
+          "official_metro_routes",
+          "official_metro_tram_feeders",
+          "moovit"
+        ],
+        "caveat": "official_route_secondary_timetable"
+      }
+    }
+  ]
+}
