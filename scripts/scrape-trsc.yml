@@ -1,0 +1,50 @@
+name: Scrape TRSC Routes + KML + Horarios
+
+# One workflow: scrapes trscsas.com/rutas/ for route names and Google
+# My Maps IDs, fetches real KML geometry for all 25 routes, and
+# separately scrapes trscsas.com/horarios/ for its schedule image
+# metadata (URLs, dimensions, position, any caption - the schedule
+# data itself is photographed, not text, and the photo-to-route
+# pairing is genuinely ambiguous for most routes - see both scripts'
+# docstrings). Manual trigger only.
+#
+# IMPORTANT - robots.txt: trscsas.com's robots.txt disallows automated
+# access, confirmed directly. Both scripts use `requests`, which
+# doesn't check robots.txt itself - running this workflow is a
+# deliberate choice to proceed despite the site's stated preference.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Scrape rutas page + fetch route KML
+        run: python scripts/scrape_trsc.py
+
+      - name: Scrape horarios page (schedule image metadata)
+        run: python scripts/scrape_trsc_horarios.py
+
+      - name: Upload scraped data + KML
+        uses: actions/upload-artifact@v4
+        with:
+          name: trsc-scrape
+          path: |
+            raw/trsc_routes.json
+            raw/trsc_kml/
+            raw/trsc_kml_summary.json
+            raw/trsc_horarios_images.json
+          retention-days: 30
+          if-no-files-found: warn
