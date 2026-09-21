@@ -1,0 +1,274 @@
+# Transportes Rapido San Cristobal (TRSC) - route identity mapping.
+#
+# The 21 real routes below (each id_ruta = one real route, each with
+# TWO directional records - Origen-Destino / Destino-Origen - in the
+# official Rutas layer) come from Medellín's official government
+# ArcGIS data (mapas_nacionales/VC_Transporte/MapServer/5 and 6),
+# cross-referenced against trscsas.com's own /rutas/ page (25 website
+# entries: some map 1:1 to a real route, several are itinerary-detail
+# variants of one real route, and a few real routes aren't listed on
+# the website at all) and its /horarios/ page (11 schedule photos,
+# only ONE of which has a real caption on the page itself - the rest
+# were matched by name/content, several genuinely ambiguously).
+#
+# CONFIDENCE LEVELS, used throughout below:
+#   confirmed   - direct evidence: an exact name match, a real page
+#                 caption, or the person running this project visually
+#                 comparing the actual maps.
+#   provisional - a reasonable working assumption (shared schedule
+#                 across same-named route variants, geographic
+#                 plausibility, or "this is probably the same family")
+#                 that was NOT independently verified. Safe to use for
+#                 a first GTFS build, but should carry a provisional
+#                 flag all the way through (same pattern as SAO6's
+#                 placeholder schedule data elsewhere in this project) -
+#                 not presented as equivalent to confirmed data.
+#
+# UNRESOLVED TENSION, flagged here rather than silently picked: the
+# original "share one schedule across all four 255i/255iD Aurora
+# branches (Carcel, Pajarito, Regina, Roblemar)" idea, made before any
+# official route-ID evidence existed, has since been PARTIALLY
+# superseded by stronger, route-specific evidence for two of those four
+# (Carcel via a real page caption, Pajarito via geographic
+# plausibility). The other two website itinerary names -
+# "Itinerario 255iD Metrocable La Aurora - Regina" and
+# "... - Roblemar" - were never matched to a specific id_ruta at all
+# and have no confirmed home in this file. Their schedule photos
+# (REGINA column, and the separate Doña-Maria-family 255 ROBLEMAR
+# photo, which is NOT the same Roblemar) are recorded in
+# data/trsc_schedule_photos.json but are not attached to any route here.
+
+routes:
+  # --- Confirmed identity (website name matches exactly or near-exactly) ---
+  - id_ruta: "90081"
+    codigo: "255A"
+    nombre: "Nuevo Occidente-Las Flores"
+    tipo: "Directa Centro"
+    website_match: "RUTA 255A Nuevo Occidente - Las Flores"
+    identity_confidence: confirmed
+    schedule_photo: null
+
+  - id_ruta: "90082"
+    codigo: "255D"
+    nombre: "San Cristóbal -Conexión vial"
+    tipo: "Directa Centro"
+    website_match: "Ruta 255 D Viaducto"
+    identity_confidence: provisional  # different descriptive names (official
+      # vs website); never independently confirmed as the same route beyond
+      # sharing the 255D family code
+    schedule_photo: "255_D_DIRECTO"
+    schedule_confidence: provisional  # via external search (daily/extended
+      # hours matched this photo's time range) + VEH grid's unmarked rows
+
+  - id_ruta: "90083"
+    codigo: "255"
+    nombre: "San Cristóbal - Doña María"
+    tipo: "Directa Centro"
+    website_match: "255 Doña Maria Centro"
+    identity_confidence: confirmed
+    schedule_photo: null  # no photo confirmed for the base "Centro" variant
+      # itself - 255_COMBINADO and 255_ROBLEMAR are confirmed for its two
+      # itinerary siblings (see below), not this base route
+
+  - id_ruta: "90084"
+    codigo: "255i"
+    nombre: "Metrocable Aurora-Cárcel"
+    tipo: "Integrada"
+    website_match: "Ruta 255i Metrocable Aurora - Carcel"
+    identity_confidence: confirmed
+    schedule_photo: "COLORED_GRID_CARCEL"
+    schedule_confidence: confirmed  # real <figcaption>"Cárcel"</figcaption> on
+      # the live /horarios/ page, and this is the only official route whose
+      # nombre mentions Cárcel at all - takes precedence over the earlier,
+      # weaker "share REGINA across all four Aurora branches" idea
+
+  - id_ruta: "90085"
+    codigo: "255iD"
+    nombre: "Metrocable La Aurora"
+    tipo: "Integrada"
+    website_match: null  # no website entry has this exact unbranded name;
+      # this is the working hypothesis for the Pajarito connection, not a
+      # direct match to any of the three website "- Pajarito/Regina/Roblemar"
+      # itinerary entries specifically
+    identity_confidence: provisional  # stop addresses (CR 99-131, CL 62-72)
+      # are geographically consistent with the far-west Pajarito corridor;
+      # not independently confirmed
+    schedule_photo: "HUECO_PAJARITO"
+    schedule_confidence: provisional  # two candidates existed
+      # (HUECO_PAJARITO, or the PARQUE_METRO_PAJARITO column in the 5-route
+      # spreadsheet) - HUECO_PAJARITO chosen as the dedicated single-route
+      # photo, the other kept as an alternate candidate in
+      # trsc_schedule_photos.json
+
+  - id_ruta: "90086"
+    codigo: "255P"
+    nombre: "Palmitas-Centro"
+    tipo: "Directa Centro"
+    website_match: null  # NOT listed anywhere on trscsas.com/rutas/ -
+      # resolved entirely through the official ArcGIS data and the
+      # otherwise-orphaned "255 PALMITAS" schedule photo
+    identity_confidence: confirmed
+    schedule_photo: "255_PALMITAS"
+    schedule_confidence: confirmed
+
+  - id_ruta: "90087"
+    codigo: "255V1"
+    nombre: "Vereda El Llano - Parque San Cristóbal"
+    tipo: "Directa No Centro"
+    website_match: "Ruta 255 V1 El Llano"
+    identity_confidence: confirmed
+    schedule_photo: "255_LLANO"
+    schedule_confidence: provisional  # shared across this route AND 90351
+      # (a structurally different Integrada route with the official name
+      # "El Llano" itself) AND three website-only itinerary variants
+      # (Llano Cumbre/Alto/Naranjal) with no id_ruta of their own - the
+      # widest shared-schedule assumption in this whole file
+
+  - id_ruta: "90088"
+    codigo: "255V1D"
+    nombre: "Vereda El Llano - Centro"
+    tipo: "Directa Centro"
+    website_match: "Ruta 255 V1D"
+    identity_confidence: confirmed
+    schedule_photo: null
+
+  - id_ruta: "90089"
+    codigo: "255V2"
+    nombre: "Vereda Yolombó - Parque San Cristóbal"
+    tipo: "Directa No Centro"
+    website_match: "Ruta 255 V2 Yolombo"
+    identity_confidence: confirmed
+    schedule_photo: null
+
+  - id_ruta: "90090"
+    codigo: "255V3"
+    nombre: "Derecha Vereda Boquerón - Parque San Cristóbal"
+    tipo: "Directa No Centro"
+    website_match: "Ruta 255 V3 Boqueron"
+    identity_confidence: provisional  # website has one V3 entry, official
+      # data has two (Derecha/Izquierda) - assumed to share the listing
+    schedule_photo: null
+
+  - id_ruta: "90091"
+    codigo: "255V3"
+    nombre: "Izquierda Vereda Boquerón - Parque San Cristóbal"
+    tipo: "Directa No Centro"
+    website_match: "Ruta 255 V3 Boqueron"
+    identity_confidence: provisional  # see 90090 - same shared listing
+    schedule_photo: null
+
+  - id_ruta: "90092"
+    codigo: "255A"
+    nombre: "Nuevo Occidente El Tirol"
+    tipo: "Directa Centro"
+    website_match: "Ruta 255 A Moravia"
+    identity_confidence: provisional  # the project owner visually compared
+      # this route's real map against 90093's on trscsas.com and judged
+      # them to share the same website listing despite different routes/
+      # different official names
+    schedule_photo: "255_A_MORAVIA"
+    schedule_confidence: provisional  # shared with 90093 on the same basis
+
+  - id_ruta: "90093"
+    codigo: "255A"
+    nombre: "Las Flores-Moravia-Centro"
+    tipo: "Directa Centro"
+    website_match: "Ruta 255 A Moravia"
+    identity_confidence: confirmed
+    schedule_photo: "255_A_MORAVIA"
+    schedule_confidence: confirmed
+
+  - id_ruta: "90102"
+    codigo: "255V"
+    nombre: "Vereda La Suiza-La Frisola-La Guayabala-La Volcana"
+    tipo: "Directa No Centro"
+    website_match: null
+    identity_confidence: provisional  # assumed to be a "255" family variant;
+      # no independent confirmation
+    schedule_photo: "255_COMBINADO"
+    schedule_confidence: provisional  # the loosest schedule assignment in
+      # this file - 255_COMBINADO is confirmed for a specific Doña Maria
+      # itinerary, then separately assumed to also cover this structurally
+      # unrelated vereda route on general "same 255 family" reasoning alone
+
+  - id_ruta: "90103"
+    codigo: "255V"
+    nombre: "Vereda La Aldea"
+    tipo: "Directa No Centro"
+    website_match: null
+    identity_confidence: provisional  # see 90102 - same reasoning
+    schedule_photo: "255_COMBINADO"
+    schedule_confidence: provisional  # see 90102 - same caveat
+
+  - id_ruta: "90347"
+    codigo: "255V4"
+    nombre: "Las Playas"
+    tipo: "Directa No Centro"
+    website_match: "Ruta 255 V4 Las Playas"
+    identity_confidence: confirmed
+    schedule_photo: null
+
+  - id_ruta: "90349"
+    codigo: "255V5"
+    nombre: "La Cuchilla"
+    tipo: "Directa No Centro"
+    website_match: "Ruta 255 V5 Cuchillas"
+    identity_confidence: confirmed
+    schedule_photo: null
+
+  - id_ruta: "90351"
+    codigo: "255i"
+    nombre: "El Llano"
+    tipo: "Integrada"
+    website_match: null  # a DIFFERENT "Llano" than 90087's family - this one
+      # is the Integrada/Metrocable-connected route, confirmed structurally
+      # distinct from the V1/Cumbre/Alto/Naranjal group
+    identity_confidence: provisional
+    schedule_photo: "255_LLANO"
+    schedule_confidence: provisional  # see 90087's note - shared assumption
+
+  - id_ruta: "90353"
+    codigo: "255 V3 HOR ESP"
+    nombre: "Boqueron Centro Horario Especial"
+    tipo: "Directa Centro"
+    website_match: null  # confirmed distinct from 90090/90091 (its own
+      # codigo, own descriptive "Horario Especial" name) despite sharing
+      # the Boquerón corridor
+    identity_confidence: confirmed
+    schedule_photo: null  # the VEH grid's ".P." rows (2 and 13 only) are for
+      # "255 P (Por Viaducto)", a different route entirely, NOT this one -
+      # do not confuse the two
+
+  - id_ruta: "90372"
+    codigo: "255iD Estacion Estadio"
+    nombre: "Metrocable La Aurora Estacion Estadio"
+    tipo: "Directa Centro"
+    website_match: null
+    identity_confidence: confirmed  # resolved entirely via the official
+      # ArcGIS data + the "A.E. AURORA ESTADIO" horarios column
+    schedule_photo: "AE_AURORA_ESTADIO"
+    schedule_confidence: confirmed
+
+  - id_ruta: "90373"
+    codigo: "255i Estacion Estadio"
+    nombre: "Metrocable La Aurora Estacion Estadio"
+    tipo: "Directa Centro"
+    website_match: null
+    identity_confidence: confirmed
+    schedule_photo: "AE_AURORA_ESTADIO"
+    schedule_confidence: confirmed  # shares the same nombre and the same
+      # schedule column as 90372 - two directional/branch variants of one
+      # real connection, not a duplicate entry
+
+# Schedule photos referenced above but NOT attached to any route in this
+# file - recorded in data/trsc_schedule_photos.json for completeness, kept
+# out of the GTFS build until a route match exists:
+#   - REGINA column (5-route spreadsheet): no id_ruta match found for
+#     "Itinerario 255iD Metrocable La Aurora - Regina"
+#   - 255_ROBLEMAR: confirmed for "Itinerario 255 Doña Maria (Roblemar)",
+#     which likewise has no id_ruta match of its own (distinct from the
+#     Doña Maria base route 90083)
+#   - PARTIDAS: no route match found at all
+#   - VEH grid's unmarked rows: folded into 90082 via 255_D_DIRECTO;
+#     the sparse ".P." rows (2, 13 only) belong to "255 P (Por Viaducto)",
+#     a route with no id_ruta match found in this project
