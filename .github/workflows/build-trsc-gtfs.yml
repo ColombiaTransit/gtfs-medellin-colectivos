@@ -1,0 +1,89 @@
+name: Build TRSC GTFS
+
+# Stitches together everything built for Transportes Rapido San
+# Cristobal into one real GTFS feed:
+#   - raw/medellin_raw/vc_transporte_rutas.json and
+#     vc_transporte_parada.json - Medellín's official government route
+#     geometry and stop data, already committed to the repo by
+#     download-medellin-transporte-layers.yml (run that workflow first,
+#     or whenever the underlying data needs refreshing - this workflow
+#     does NOT re-download it, just reads what's already checked out)
+#   - data/trsc_route_mapping.yml - which of the 21 real routes match
+#     which trscsas.com website listing, with a confirmed/provisional
+#     confidence level for each
+#   - data/trsc_schedule_photos.json - real departure times transcribed
+#     from trscsas.com/horarios/'s schedule photos, for the photos that
+#     could be transcribed
+# Then validates the result with the real MobilityData validator.
+# Manual trigger only - see scripts/build_gtfs_trsc.py's own docstring
+# for the full technical detail on what this build does and does not
+# assume (CRS transformation, per-direction stop/geometry splitting,
+# the direction-symmetry schedule assumption, provisional data, etc).
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check required input data is present
+        run: |
+          for f in raw/medellin_raw/vc_transporte_rutas.json \
+                   raw/medellin_raw/vc_transporte_parada.json \
+                   data/trsc_route_mapping.yml \
+                   data/trsc_schedule_photos.json; do
+            if [ ! -f "$f" ]; then
+              echo "::error::$f not found. Run download-medellin-transporte-layers.yml first if the raw data is missing." 
+              exit 1
+            fi
+          done
+
+      - name: Build GTFS feed
+        run: python scripts/build_gtfs_trsc.py
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Resolve gtfs-validator-cli download URL
+        id: resolve_validator
+        run: |
+          URL=$(curl -sSL https://api.github.com/repos/MobilityData/gtfs-validator/releases/latest \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print(next(a['browser_download_url'] for a in d['assets'] if a['name'].endswith('-cli.jar')))")
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+
+      - name: Download gtfs-validator-cli.jar
+        run: curl -L -o gtfs-validator-cli.jar "${{ steps.resolve_validator.outputs.url }}"
+
+      - name: Validate
+        run: |
+          mkdir -p validation-report
+          java -Xmx4G -jar gtfs-validator-cli.jar \
+            -i gtfs-trsc.zip \
+            -o validation-report
+
+      - name: Upload GTFS feed + validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: trsc-gtfs
+          path: |
+            gtfs-trsc.zip
+            PROVISIONAL_DATA_WARNING.txt
+            validation-report/report.html
+            validation-report/report.json
+          retention-days: 30
+          if-no-files-found: error
