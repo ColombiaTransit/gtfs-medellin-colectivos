@@ -1,0 +1,213 @@
+# Tax Maya route mapping: official ArcGIS route identity (Medellín
+# government transport layers, current) cross-referenced against real
+# frequency/technical data from Gaceta Oficial N°4325 (Resolución 1042
+# de 2015, "FICHA TÉCNICA" pages, PDF - older than the ArcGIS layers,
+# so ArcGIS is used for GEOMETRY/STOPS, this PDF is used for
+# FREQUENCY, per the project owner's explicit direction).
+#
+# CONFIDENCE LEVELS:
+#   confirmed   - exact or near-exact name match between the PDF's
+#                 "NOMBRE" field and the ArcGIS route's own nombre.
+#   provisional - a reasonable match (e.g. "Pedregal Alto" in the PDF
+#                 vs "Pedregal Bajo" in ArcGIS - same vereda corridor,
+#                 no other candidate exists in either source, but the
+#                 naming discrepancy is real and unexplained) or a
+#                 structural inference (the PDF's single "C23-i" entry
+#                 mapped to BOTH of ArcGIS's Izquierda/Derecha variants,
+#                 the same left/right branch pattern already seen for
+#                 Coonatra's V3 Boquerón).
+#
+# ALL FREQUENCY NUMBERS BELOW ARE FROM THE PDF, taken at face value.
+# The PDF's "INTERVALO DE DESPACHO" table has two columns per day-type
+# ("DÍA" and "HMD") - HMD very likely means "Hora de Máxima Demanda"
+# (peak-hour headway), but the PDF does NOT state clock-time boundaries
+# for when peak hours apply, so only the "DÍA" (general/normal) headway
+# is used to build frequencies.txt below - using HMD would require
+# guessing peak-hour clock windows that aren't in the source, which
+# this project's established practice avoids. The real HMD values are
+# kept here for reference/future use, not discarded, just not built
+# into the GTFS frequencies yet.
+#
+# DAY-TYPE NOTE: the PDF gives 4 day-types (Día Normal, Sábado, Domingo,
+# Festivo) - Domingo and Festivo have IDENTICAL values in every route
+# observed. GTFS calendar.txt can express weekday/Saturday/Sunday as a
+# real weekly pattern, but "Festivo" (holidays) needs calendar_dates.txt
+# with actual Colombian holiday dates, which isn't available here -
+# Festivo is deliberately NOT built as a separate service, since its
+# real values already match Sunday's exactly in every case seen.
+
+routes:
+  - id_ruta: "90328"
+    codigo_arcgis: "C23i IZQUIERA"
+    codigo_pdf: "C23-i"
+    nombre: "San Cristóbal-Estación San Javier (Izquierda)"
+    identity_confidence: provisional  # PDF's single "C23-i" entry split
+      # across ArcGIS's Izquierda/Derecha pair - same branch pattern
+      # already confirmed for Coonatra's V3 Boquerón
+    tipo: "Integrada"
+    empresa: "Tax Maya"
+    longitud_km: 19.48
+    horario_inicio: "03:35:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 13
+      sabado: 12
+      domingo: 23
+    headway_min_hmd_reference_only:
+      dia_normal: 12
+      sabado: 12
+      domingo: 20
+
+  - id_ruta: "90355"
+    codigo_arcgis: "C23i DERECHA"
+    codigo_pdf: "C23-i"
+    nombre: "San Cristóbal-Estación San Javier (Derecha)"
+    identity_confidence: provisional
+    tipo: "Integrada"
+    empresa: "Tax Maya"
+    longitud_km: 19.48
+    horario_inicio: "03:35:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 13
+      sabado: 12
+      domingo: 23
+    headway_min_hmd_reference_only:
+      dia_normal: 12
+      sabado: 12
+      domingo: 20
+
+  - id_ruta: "90334"
+    codigo_arcgis: "C23ii"
+    codigo_pdf: "C23-ii"
+    nombre: "San Cristóbal-Calle Negra-Estación Aurora"
+    identity_confidence: confirmed  # exact codigo + near-exact nombre match
+    tipo: "Integrada"
+    empresa: "Tax Maya"
+    longitud_km: 13.68
+    horario_inicio: "03:35:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 13
+      sabado: 12
+      domingo: 23
+    headway_min_hmd_reference_only:
+      dia_normal: 12
+      sabado: 12
+      domingo: 20
+
+  - id_ruta: "90329"
+    codigo_arcgis: "C23i"
+    codigo_pdf: "C23IAV"
+    nombre: "Asomadera Veredal"
+    identity_confidence: confirmed  # "La Asomadera" in ArcGIS nombre matches directly
+    tipo: "Integrada"
+    empresa: "Tax Maya"
+    longitud_km: 11.20
+    horario_inicio: "04:30:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 58
+      sabado: 57
+      domingo: 102
+    headway_min_hmd_reference_only:
+      dia_normal: 60
+      sabado: 60
+      domingo: 60
+
+  - id_ruta: "90330"
+    codigo_arcgis: "C23i"
+    codigo_pdf: "C23IPV"
+    nombre: "El Patio Veredal"
+    identity_confidence: confirmed
+    tipo: "Integrada"
+    empresa: "Tax Maya"
+    longitud_km: 17.00
+    horario_inicio: "03:35:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 58
+      sabado: 57
+      domingo: 102
+    headway_min_hmd_reference_only:
+      dia_normal: 60
+      sabado: 60
+      domingo: 60
+
+  - id_ruta: "90332"
+    codigo_arcgis: "C23i"
+    codigo_pdf: "C23iLPV"
+    nombre: "Las Playas Veredal"
+    identity_confidence: confirmed
+    tipo: "Integrada"
+    empresa: "Tax Maya"
+    longitud_km: 15.5
+    horario_inicio: "03:35:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 58
+      sabado: 57
+      domingo: 102
+    headway_min_hmd_reference_only:
+      dia_normal: 60
+      sabado: 60
+      domingo: 60
+
+  - id_ruta: "90333"
+    codigo_arcgis: "C23i"
+    codigo_pdf: "C23IPAV"
+    nombre: "Pedregal Veredal"
+    identity_confidence: provisional  # PDF says "Pedregal ALTO", ArcGIS
+      # nombre says "Pedregal BAJO" - real, unexplained naming
+      # discrepancy; no other Pedregal candidate exists in either source
+    tipo: "Integrada"
+    empresa: "Tax Maya"
+    longitud_km: 18.30
+    horario_inicio: "03:35:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 58
+      sabado: 57
+      domingo: 102
+    headway_min_hmd_reference_only:
+      dia_normal: 60
+      sabado: 60
+      domingo: 60
+
+  - id_ruta: "90331"
+    codigo_arcgis: "C23i"
+    codigo_pdf: "C23iPALV"
+    nombre: "La Palma Veredal"
+    identity_confidence: confirmed
+    tipo: "Integrada"
+    empresa: "Tax Maya"
+    longitud_km: 20.30
+    horario_inicio: "03:35:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 58
+      sabado: 57
+      domingo: 102
+    headway_min_hmd_reference_only:
+      dia_normal: 60
+      sabado: 60
+      domingo: 60
+
+# NOT INCLUDED, pending further work - see module docstring:
+#   - id_ruta 90326 "C23_Alterna" (San Cristóbal-La Asomadera-Centro)
+#     and 90327 "C23" (San Cristóbal-San Javier-La Loma-Centro): no
+#     matching Ficha Técnica page found in this PDF - these are the
+#     website's "Rutas urbanas" category (plain C23 / C23 alterna
+#     asomadera), distinct from the "Rutas integradas" (C23i/C23ii)
+#     family this PDF documented. May exist elsewhere in the 336-page
+#     document, not yet searched for specifically.
+#   - "C23 AL 7" (Alimentadora La Palma, PDF-confirmed real data: BUS
+#     vehicle 27-31 cap, 17.20km, 3:25-23:00, headway 9/8/16 min) has
+#     NO confirmed ArcGIS id_ruta match - possibly tracked in a
+#     separate Metro-feeder system (the same reason MDO/SAO6 don't
+#     appear in these ArcGIS layers at all, confirmed earlier in this
+#     project), not confirmed either way.
+#   - 195/195i/195ii: real frequency data exists for 195 and 195i, but
+#     from a DIFFERENT source (two schedule-board photos shared
+#     directly, not this PDF) - not included in this file, which is
+#     scoped to this PDF's C23 data specifically.
