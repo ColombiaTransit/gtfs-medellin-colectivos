@@ -95,8 +95,20 @@ BRANCH_TO_PDF_HEADER = {
 }
 
 # Branches with real stop points from KML, confirmed via
-# raw/coonatra_kml_summary.json
+# raw/coonatra_kml_summary.json. Their real per-direction GEOMETRY now
+# comes from ArcGIS instead of the single KML line (see
+# KML_STOP_BASED_TO_ARCGIS_ID below and the module docstring's
+# "hybrid" note) - cross-checked against the KML line first: Origen-
+# Destino matched within ~3m average, but Destino-Origen diverged
+# notably for several branches (up to ~280m average for some Floresta
+# routes) because Coonatra's KML has only ONE line per route, which
+# can't represent a real one-way-street return path that differs from
+# the outbound one. ArcGIS's genuinely separate per-direction lines fix
+# that. The real KML-derived stop NAMES (actual named Medellin
+# landmarks, not street addresses) are kept - only the line each stop
+# gets projected onto changes.
 STOP_BASED_BRANCHES = {"310", "311"}
+KML_STOP_BASED_TO_ARCGIS_ID = {"310": "90007", "311": "90008"}
 
 # Branch name -> its real official id_ruta in Medellín's ArcGIS data.
 # "310 Rosal": confident name match ("310" + "Rosales"/"Rosal").
@@ -128,9 +140,16 @@ FLEX_BRANCHES = {"310 Metro Rosal"}
 # shape, no trips), the same policy as Metro 311-ii. Website branch
 # name -> official id_ruta, matched by codigo (242/243) + nombre
 # ("La Divisa"/"La Quiebra") - a direct, unambiguous match.
+# "243i Floresta" / "243iD Floresta Directa": not on the website at
+# all - discovered via the shared "8A" sistema tag connecting this
+# whole family, confirmed genuinely related (not just similarly named)
+# by a real shared endpoint: 243i's destination address is identical
+# to the 311i/311ii/311iiR family's shared destination, meaning this
+# whole "8A" system converges on one real physical hub.
 FLORESTA_SAN_JUAN_ROUTES = {
     "242 Divisa": "90318", "242 Quiebra": "90319",
     "243 Divisa": "90320", "243 Quiebra": "90321",
+    "243i Floresta": "90322", "243iD Floresta Directa": "90323",
 }
 
 # Circular Coonatra - the corresponding trscsas... no, coonatra.com
@@ -461,52 +480,77 @@ def main():
         })
 
         if name in STOP_BASED_BRANCHES:
-            lat0 = sum(lat for _, lat in line_coords) / len(line_coords)
-            line_xy = [to_xy(lon, lat, lat0) for lon, lat in line_coords]
-            total_len_m = line_length_m(line_xy)
-            running_time_s = total_len_m / (AVERAGE_SPEED_KMH * 1000 / 3600)
+            arcgis_id_ruta = KML_STOP_BASED_TO_ARCGIS_ID.get(name)
 
-            ordered_stops = []
-            relocated = []
+            # Build both directions' real lines first.
+            direction_lines = {}
+            for recorrido, dir_suffix in [("Origen-Destino", "OD"), ("Destino-Origen", "DO")]:
+                route_rec = arcgis_rutas.get((arcgis_id_ruta, recorrido)) if arcgis_id_ruta else None
+                if not route_rec:
+                    print(f"  WARNING: no {recorrido} ArcGIS geometry for {name!r} "
+                          f"(id_ruta={arcgis_id_ruta}) - falling back to the single "
+                          f"KML line for this direction", file=sys.stderr)
+                    line_lonlat = line_coords
+                else:
+                    raw_path = route_rec["geometry"]["paths"][0]
+                    line_lonlat = [CRS_TRANSFORMER.transform(x, y) for x, y in raw_path]
+                lat0 = sum(lat for _, lat in line_lonlat) / len(line_lonlat)
+                line_xy = [to_xy(lon, lat, lat0) for lon, lat in line_lonlat]
+                direction_lines[dir_suffix] = {
+                    "line_xy": line_xy, "lat0": lat0, "total_len_m": line_length_m(line_xy),
+                }
+
+            # Each real KML-derived named stop is assigned to whichever
+            # direction's real line it's actually closest to - NOT forced
+            # onto both. A stop only genuinely served in one direction
+            # (common on one-way streets) showed distances over 1000m to
+            # the other direction's line when every stop was projected
+            # onto every direction - confirmed by testing this against
+            # real data before settling on the closest-direction design.
+            relocated_all = []
+            stops_by_dir = {"OD": [], "DO": []}
             for pt in points:
-                px, py = to_xy(pt["lon"], pt["lat"], lat0)
-                dist_along, snap_dist, (proj_x, proj_y) = project_point_to_line(px, py, line_xy)
+                best_dir, best_dist_along, best_snap, best_proj = None, None, float("inf"), None
+                for dir_suffix, dl in direction_lines.items():
+                    px, py = to_xy(pt["lon"], pt["lat"], dl["lat0"])
+                    dist_along, snap_dist, proj = project_point_to_line(px, py, dl["line_xy"])
+                    if snap_dist < best_snap:
+                        best_dir, best_dist_along, best_snap, best_proj = dir_suffix, dist_along, snap_dist, proj
+
                 lat, lon = pt["lat"], pt["lon"]
-                if snap_dist > SUSPICIOUS_SNAP_DIST_M:
-                    suspicious_stops.append((route_id, pt["name"], round(snap_dist)))
-                    # This point is a landmark near the route, not the
-                    # actual on-road stop location (confirmed for "Metro
-                    # Estación San Antonio" - its raw coordinate is the
-                    # station building, ~296m from the road the bus
-                    # actually runs on). Use the projected point ON the
-                    # line instead of the raw landmark coordinate, for
-                    # every stop this far off, not just that one - the
-                    # same landmark-vs-road-stop issue likely affects
-                    # all of them equally.
-                    lon, lat = to_lon_lat(proj_x, proj_y, lat0)
-                    relocated.append(pt["name"])
-                stop_id = f"{route_id}_{safe_filename(pt['name'] or 'stop')}_{len(ordered_stops)}"
-                ordered_stops.append({"stop_id": stop_id, "name": pt["name"],
-                                       "lat": lat, "lon": lon, "dist_along": dist_along})
-            ordered_stops.sort(key=lambda s: s["dist_along"])
-            if relocated:
-                print(f"    relocated {len(relocated)} landmark-style stop(s) onto "
-                      f"the route line: {relocated}")
+                if best_snap > SUSPICIOUS_SNAP_DIST_M:
+                    suspicious_stops.append((f"{route_id}_{best_dir}", pt["name"], round(best_snap)))
+                    lon, lat = to_lon_lat(*best_proj, direction_lines[best_dir]["lat0"])
+                    relocated_all.append(f"{pt['name']} ({best_dir})")
 
-            for s in ordered_stops:
-                stop_rows.append({"stop_id": s["stop_id"], "stop_name": s["name"] or s["stop_id"],
-                                   "stop_lat": s["lat"], "stop_lon": s["lon"]})
+                stop_id = f"{route_id}_{best_dir}_{safe_filename(pt['name'] or 'stop')}_{len(stops_by_dir[best_dir])}"
+                stops_by_dir[best_dir].append({"stop_id": stop_id, "name": pt["name"],
+                                                "lat": lat, "lon": lon, "dist_along": best_dist_along})
 
-            for trip_idx, dep_time in enumerate(pdf_times):
-                trip_id = f"{route_id}_{trip_idx}"
-                trip_rows.append({"route_id": route_id, "service_id": "Diario", "trip_id": trip_id})
-                for seq, s in enumerate(ordered_stops):
-                    fraction = s["dist_along"] / total_len_m if total_len_m > 0 else 0
-                    t = add_seconds(dep_time, running_time_s * fraction)
-                    stop_time_rows_regular.append({
-                        "trip_id": trip_id, "stop_id": s["stop_id"], "stop_sequence": seq,
-                        "arrival_time": t, "departure_time": t,
-                    })
+            n_trips_built = 0
+            for dir_suffix, dl in direction_lines.items():
+                ordered_stops = sorted(stops_by_dir[dir_suffix], key=lambda s: s["dist_along"])
+                running_time_s = dl["total_len_m"] / (AVERAGE_SPEED_KMH * 1000 / 3600)
+
+                for s in ordered_stops:
+                    stop_rows.append({"stop_id": s["stop_id"], "stop_name": s["name"] or s["stop_id"],
+                                       "stop_lat": s["lat"], "stop_lon": s["lon"]})
+
+                for trip_idx, dep_time in enumerate(pdf_times):
+                    trip_id = f"{route_id}_{dir_suffix}_{trip_idx}"
+                    trip_rows.append({"route_id": route_id, "service_id": "Diario", "trip_id": trip_id})
+                    for seq, s in enumerate(ordered_stops):
+                        fraction = s["dist_along"] / dl["total_len_m"] if dl["total_len_m"] > 0 else 0
+                        t = add_seconds(dep_time, running_time_s * fraction)
+                        stop_time_rows_regular.append({
+                            "trip_id": trip_id, "stop_id": s["stop_id"], "stop_sequence": seq,
+                            "arrival_time": t, "departure_time": t,
+                        })
+                    n_trips_built += 1
+
+            if relocated_all:
+                print(f"    relocated {len(relocated_all)} landmark-style stop(s) "
+                      f"onto their (closest) direction's route line: {relocated_all}")
 
         else:  # FLEX_BRANCHES
             polygon_coords = buffer_line_to_polygon(line_coords, CORRIDOR_BUFFER_M)
@@ -537,8 +581,11 @@ def main():
                     "pickup_type": 1, "drop_off_type": 2,
                 })
 
-        print(f"  {name}: {len(pdf_times)} trip(s) built "
-              f"({'stop-based' if name in STOP_BASED_BRANCHES else 'flex'})")
+        if name in STOP_BASED_BRANCHES:
+            print(f"  {name}: {n_trips_built} trip(s) built (stop-based, KML stops + "
+                  f"ArcGIS per-direction geometry)")
+        else:
+            print(f"  {name}: {len(pdf_times)} trip(s) built (flex)")
 
     print("\nFloresta-San Juan (spatial data only - no schedule source exists):")
     for name, id_ruta in FLORESTA_SAN_JUAN_ROUTES.items():
