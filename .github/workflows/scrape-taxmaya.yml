@@ -1,0 +1,47 @@
+name: Scrape Tax Maya Routes + Horarios
+
+# Scrapes taxmaya.com for route descriptions (11 routes, from
+# /ruta-c23-san-cristobal-san-javier-centro) and schedule info (route
+# bullets, "Inicia...despacho..." hours blocks, and route-map images
+# with captions where present, from /Mapas-rutas-y-horarios). Unlike
+# trscsas.com, taxmaya.com's real content is present in the plain
+# server-rendered HTML - confirmed directly by comparing the real page
+# source against what a plain HTTP client receives - so no robots.txt
+# or JS-rendering workaround is needed here.
+#
+# This is a data-gathering step only - associating uncaptioned images
+# and Inicia blocks with specific routes, and cross-referencing against
+# Medellín's official ArcGIS data (13 real Tax Maya routes confirmed,
+# see the conversation this came from), is manual follow-up work, not
+# something this script or workflow attempts. Manual trigger only.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Scrape Tax Maya routes and horarios
+        run: python scripts/scrape_taxmaya.py
+
+      - name: Upload scraped data
+        uses: actions/upload-artifact@v4
+        with:
+          name: taxmaya-scrape
+          path: |
+            raw/taxmaya_routes.json
+            raw/taxmaya_horarios.json
+          retention-days: 30
+          if-no-files-found: error
