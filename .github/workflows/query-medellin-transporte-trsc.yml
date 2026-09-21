@@ -1,14 +1,21 @@
 name: Query Medellín ArcGIS for TRSC
 
-# Queries two of Medellín's official government ArcGIS layers (Rutas de
-# transporte publico, and Parada) for Transportes Rapido San Cristobal /
-# route "255" data, and cross-references them. Manual trigger only.
+# Filters TRSC's routes and stops out of the LOCAL bulk data already
+# committed to the repo by download-medellin-transporte-layers.yml
+# (raw/medellin_raw/ - run that workflow first, or whenever the data
+# needs refreshing) and cross-references routes against stops. No
+# network access to medellin.gov.co here anymore - this just checks
+# out the repo and runs scripts/query_local_medellin_operator.py
+# locally, which is faster and more reliable than the live-query
+# version this workflow used before (see git history / the
+# conversation this came from for that version and the real results it
+# already confirmed: 42 routes, up to 978 stops, layer 5 matching all
+# 42 routes vs layer 0's 34/42).
 #
-# UNTESTED AGAINST REAL RESULTS as of when this workflow was written -
-# every attempt to query these layers from the environment that built
-# this hit the same wall (query-string parameters seemingly stripped
-# for this domain by the fetching tool available there). This is the
-# first real end-to-end run against live data.
+# To check a DIFFERENT operator (Sotrames, Coonatra, El Poblado, MDO,
+# SAO6, ...), change the operator argument below, or run
+# scripts/query_local_medellin_operator.py locally/in a separate
+# workflow - it's already general-purpose, not TRSC-specific.
 
 on:
   workflow_dispatch:
@@ -28,17 +35,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Query Rutas + Parada layers and join
-        run: python scripts/query_medellin_transporte_trsc.py
+      - name: Query local data for San Cristobal
+        run: python scripts/query_local_medellin_operator.py "San Cristobal"
 
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
           name: medellin-transporte-trsc
-          path: |
-            raw/medellin_rutas_trsc.json
-            raw/medellin_paradas_trsc.json
-            raw/medellin_transporte_trsc_joined.json
-            raw/medellin_*_empresa_values.json
+          path: raw/medellin_local_san_cristobal_*.json
           retention-days: 30
-          if-no-files-found: warn
+          if-no-files-found: error
