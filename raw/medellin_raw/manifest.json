@@ -1,0 +1,111 @@
+{
+  "downloaded_at": "2026-09-21T05:45:43.737941+00:00",
+  "layers": {
+    "vc_transporte_parada": {
+      "url": "https://www.medellin.gov.co/servidormapas/rest/services/mapas_nacionales/VC_Transporte/MapServer/5/query",
+      "description": "Parada de transporte publico (VC_Transporte/5) - richer stop layer, real stop names",
+      "num_records": 10498,
+      "fields_seen": [
+        "anio_actoadmin",
+        "codigo_ruta",
+        "direccion",
+        "empresa",
+        "estado",
+        "fecha_actualizacion",
+        "from_date",
+        "id_gflota",
+        "id_parada",
+        "id_paradero",
+        "id_ruta",
+        "latitud",
+        "longitud",
+        "mobiliario",
+        "nombre",
+        "nombre_ruta",
+        "nro_parada",
+        "numero_actoadmin",
+        "objectid",
+        "orientacion",
+        "recorrido",
+        "sistema_ruta",
+        "tipo_actoadmin",
+        "tipo_parada",
+        "tipo_ruta",
+        "x_origen_nacional",
+        "y_origen_nacional"
+      ]
+    },
+    "vc_transporte_rutas": {
+      "url": "https://www.medellin.gov.co/servidormapas/rest/services/mapas_nacionales/VC_Transporte/MapServer/6/query",
+      "description": "Rutas de transporte publico (VC_Transporte/6) - route polyline geometry",
+      "num_records": 504,
+      "fields_seen": [
+        "codigo",
+        "empresa",
+        "fecha_actualizacion",
+        "from_date",
+        "id_gflota",
+        "id_ruta",
+        "nombre",
+        "objectid",
+        "recorrido",
+        "sistema",
+        "st_length(shape)",
+        "tipo"
+      ]
+    },
+    "vm_movilidad_parada": {
+      "url": "https://www.medellin.gov.co/servidormapas/rest/services/transporte/VM_Movilidad/MapServer/0/query",
+      "description": "Parada (VM_Movilidad/0) - stop layer, different service than the two above",
+      "num_records": 10043,
+      "fields_seen": [
+        "anio_actoadmin",
+        "codigo_ruta",
+        "direccion",
+        "empresa",
+        "estado",
+        "fecha_actualizacion",
+        "id_parada",
+        "id_paradero",
+        "id_ruta",
+        "latitud",
+        "longitud",
+        "nombre_ruta",
+        "nro_parada",
+        "numero_actoadmin",
+        "objectid",
+        "recorrido",
+        "sistema_ruta",
+        "tipo_actoadmin",
+        "tipo_parada",
+        "tipo_ruta",
+        "x_origen_nacional",
+        "y_origen_nacional"
+      ]
+    },
+    "vm_movilidad_rutas_unificadas": {
+      "url": "https://www.medellin.gov.co/servidormapas/rest/services/transporte/VM_Movilidad/MapServer/1/query",
+      "description": "Rutas Unificadas (VM_Movilidad/1) - UNEXPLORED schema, outFields=* used",
+      "error": "all 3 attempts failed - last error: ArcGIS query error: {'code': 400, 'message': 'Failed to execute query.', 'details': []}"
+    },
+    "vm_movilidad_rutas_transporte_publico": {
+      "url": "https://www.medellin.gov.co/servidormapas/rest/services/transporte/VM_Movilidad/MapServer/2/query",
+      "description": "Rutas de Transporte Público (VM_Movilidad/2) - UNEXPLORED schema, outFields=* used",
+      "num_records": 504,
+      "fields_seen": [
+        "codigo",
+        "empresa",
+        "fecha_actualizacion",
+        "from_date",
+        "id_gflota",
+        "id_ruta",
+        "nombre",
+        "objectid",
+        "recorrido",
+        "sistema",
+        "st_length(shape)",
+        "tipo"
+      ]
+    }
+  }
+}
