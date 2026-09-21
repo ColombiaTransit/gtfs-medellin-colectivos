@@ -40,15 +40,22 @@ jobs:
 
       - name: Check required input data is present
         run: |
-          for f in raw/medellin_raw/vc_transporte_rutas.json \
-                   raw/medellin_raw/vc_transporte_parada.json \
-                   data/trsc_route_mapping.yml \
-                   data/trsc_schedule_photos.json; do
+          missing=0
+          for f in raw/medellin_raw/vc_transporte_rutas.json raw/medellin_raw/vc_transporte_parada.json; do
             if [ ! -f "$f" ]; then
-              echo "::error::$f not found. Run download-medellin-transporte-layers.yml first if the raw data is missing." 
-              exit 1
+              echo "::error::$f not found. Run download-medellin-transporte-layers.yml first - it commits this file to the repo."
+              missing=1
             fi
           done
+          for f in data/trsc_route_mapping.yml data/trsc_schedule_photos.json; do
+            if [ ! -f "$f" ]; then
+              echo "::error::$f not found. This is a static file, not something any workflow generates - it needs to be committed into the repo directly."
+              missing=1
+            fi
+          done
+          if [ "$missing" = "1" ]; then
+            exit 1
+          fi
 
       - name: Build GTFS feed
         run: python scripts/build_gtfs_trsc.py
