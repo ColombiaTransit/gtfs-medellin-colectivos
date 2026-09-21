@@ -1,26 +1,46 @@
 #!/usr/bin/env python3
 """
 Build a GTFS feed for Coonatra from real scraped data: KML geometry
-(+ real stop points, where they exist), and real per-trip departure
-times from the Calasanz-Boston frequencies PDF.
+(+ real stop points, where they exist), real per-trip departure times
+from the Calasanz-Boston frequencies PDF, and - new - real official
+government stop/route data from Medellín's ArcGIS layers (raw/
+medellin_raw/, via scripts/download_medellin_transporte_layers.py) for
+branches that had no real stops from KML alone.
 
-SCOPE OF THIS FIRST VERSION - deliberately limited to the 5
-Calasanz-Boston branches that have BOTH real geometry AND a confident
+SCOPE OF THIS BUILD - the 5 Calasanz-Boston branches with a confident
 mapping to real PDF departure-time data (see BRANCH_TO_PDF_HEADER):
-  - "310", "311": REAL surveyed stop points (35 and 44 respectively,
-    real named Medellin landmarks - confirmed genuine, not placeholder
-    junk) + real per-trip departure times -> built as GENUINE regular
-    GTFS: real stops.txt, one trip per real departure time, stop_times
-    interpolated along the route proportional to each stop's real
-    distance from the route start (same distance-based method already
-    validated elsewhere in this project for MDO/SAO6).
-  - "310 Rosal", "Metro 311-i", "310 Metro Rosal": line-only geometry
-    (no stop points) + real per-trip departure times -> built as
-    GTFS-Flex (same pickup/drop-off-window pattern validated for
-    Sotrames), but with ONE NARROW-WINDOW FLEX TRIP PER REAL DEPARTURE
-    TIME rather than Sotrames' single all-day window - this data is
-    more precise than Sotrames' (literal times, not just hours), so the
-    output should be too.
+  - "310", "311": REAL surveyed stop points from KML (35 and 44
+    respectively, real named Medellin landmarks) + real per-trip PDF
+    departure times -> GENUINE regular GTFS, KML-sourced.
+  - "310 Rosal": previously flex-only (line-only KML geometry, no real
+    stops) - NOW built as genuine stop-based GTFS instead, using real
+    official stops from Medellín's ArcGIS "Parada de transporte
+    publico" layer (id_ruta=90363, codigo "310R", nombre "Rosales" -
+    a confident name match: "310" + "Rosales"/"Rosal" mirrors this
+    branch's own name closely). 39 real stops, split by direction like
+    every ArcGIS-sourced route in this project (see
+    scripts/build_gtfs_trsc.py's docstring for the full technical
+    detail on the CRS transform and per-direction split this relies
+    on - identical technique reused here). Real PDF departure times
+    (from BRANCH_TO_PDF_HEADER, unchanged) are applied to BOTH
+    directions equally, the same direction-symmetry assumption used
+    for TRSC, since the PDF gives one time list, not one per direction.
+  - "310 Metro Rosal", "Metro 311-i": still line-only geometry (no
+    stop points anywhere, KML or ArcGIS) + real per-trip departure
+    times -> built as GTFS-Flex (same pickup/drop-off-window pattern
+    validated for Sotrames), with ONE NARROW-WINDOW FLEX TRIP PER REAL
+    DEPARTURE TIME rather than an all-day window.
+
+NOT YET ENHANCED, pending further investigation - real ArcGIS data
+exists for a "311i"/"311ii"/"311iiR" route family that plausibly
+corresponds to "Metro 311-i"/"310 Metro Rosal"/"Metro 311-ii", but
+which specific official route matches which branch name was NOT
+confidently resolved (unlike "310 Rosal", where the name match was
+clear) - attaching the wrong stops to the wrong branch would be worse
+than leaving them as flex. Also not yet touched: Floresta-San Juan
+(242/243 Divisa/Quiebra, still no frequency data anywhere) and Circular
+Coonatra (300/301/303, still genuinely ambiguous) - both now have
+confirmed real ArcGIS matches too, but adding them is separate work.
 
 DELIBERATELY EXCLUDED from this version, pending a decision, not
 because of a bug:
@@ -29,12 +49,6 @@ because of a bug:
     every other branch's does - see BRANCH_TO_PDF_HEADER. Building
     trips from a guessed PDF table risks attributing real departure
     times to the wrong route.
-  - Floresta-San Juan's 4 branches (242/243 Divisa/Quiebra): these DO
-    have real stops, but NO frequency data exists anywhere for them
-    (no PDF, only first/last-departure hours) - the same "how should
-    this be modeled without a known frequency" question this project
-    already stopped to ask about Sotrames, not something to decide
-    unilaterally here.
 
 VALIDATED: output run through MobilityData's real gtfs-validator-cli -
 see the conversation this script came from for the actual result; if
@@ -45,16 +59,20 @@ new build blindly.
 import csv
 import json
 import sys
+import unicodedata
 import zipfile
 from math import atan2, cos, radians, sin, sqrt
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
 import yaml
+from pyproj import Transformer
 
 ROUTES_PATH = Path("raw/coonatra_routes.json")
 KML_DIR = Path("raw/coonatra_kml")
 PDF_JSON_PATH = Path("raw/coonatra_pdf_Frecuencias-rutas-Calasanz.json")
+ARCGIS_RUTAS_PATH = Path("raw/medellin_raw/vc_transporte_rutas.json")
+ARCGIS_PARADA_PATH = Path("raw/medellin_raw/vc_transporte_parada.json")
 OUT_DIR = Path("gtfs-coonatra-out")
 ZIP_PATH = Path("gtfs-coonatra.zip")
 
@@ -62,6 +80,7 @@ KML_NS = {"kml": "http://www.opengis.net/kml/2.2"}
 SUSPICIOUS_SNAP_DIST_M = 150  # stops farther than this from the line are flagged, not dropped
 AVERAGE_SPEED_KMH = 18  # ASSUMED, same figure used elsewhere in this project
 CORRIDOR_BUFFER_M = 40  # ASSUMED flex-zone half-width, same as the Sotrames/El Poblado builders
+CRS_TRANSFORMER = Transformer.from_crs("EPSG:9377", "EPSG:4326", always_xy=True)
 
 # Branch name -> its matching PDF table header, established by name AND
 # by cross-checking each branch's real KML internal placemark name
@@ -75,9 +94,60 @@ BRANCH_TO_PDF_HEADER = {
     "Metro 311-i": "Ruta 311 Metro",
 }
 
-# Branches with real stop points, confirmed via raw/coonatra_kml_summary.json
+# Branches with real stop points from KML, confirmed via
+# raw/coonatra_kml_summary.json
 STOP_BASED_BRANCHES = {"310", "311"}
-FLEX_BRANCHES = {"310 Rosal", "310 Metro Rosal", "Metro 311-i"}
+
+# Branch name -> its real official id_ruta in Medellín's ArcGIS data.
+# "310 Rosal": confident name match ("310" + "Rosales"/"Rosal").
+# "Metro 311-ii": confirmed via its KML's internal placemark name
+# ("RUTA 311ii Rosales") structurally decomposing into the official
+# codigo "311iiR" (311ii + R for Rosales) - not just a similar-sounding
+# name, the code literally spells out the KML name. This resolves its
+# STOP/GEOMETRY identity, but NOT its PDF departure-time header - that
+# question (see BRANCH_TO_PDF_HEADER's absence of this branch) is
+# still separately unresolved, so this branch gets real stops/shape
+# but no trips yet, same "don't fabricate a schedule" policy used for
+# TRSC's routes without a transcribed schedule photo.
+# "Metro 311-i": KML-internal name ("311 METRO") was genuinely
+# ambiguous between official "311i" (Santa Lucia, 23 stops) and "311ii"
+# (Santa Lucia Directa, 15 stops) - resolved by the project owner's own
+# judgment to "311i", not independently re-derived here.
+ARCGIS_STOP_BASED_BRANCHES = {
+    "310 Rosal": "90363", "Metro 311-ii": "90361", "Metro 311-i": "90324",
+}
+
+FLEX_BRANCHES = {"310 Metro Rosal"}
+
+# Floresta-San Juan (from the CONTÁCTENOS page, confirmed clean 4/4/4
+# match) - real KML stops already existed (4-22 points), but this
+# family was deliberately never built: no frequency/schedule data
+# exists anywhere for it, not on the website, not in any PDF. Real
+# ArcGIS data doesn't solve that either (Parada layer has no
+# schedule field at all) - built here as spatial-data-only (stops +
+# shape, no trips), the same policy as Metro 311-ii. Website branch
+# name -> official id_ruta, matched by codigo (242/243) + nombre
+# ("La Divisa"/"La Quiebra") - a direct, unambiguous match.
+FLORESTA_SAN_JUAN_ROUTES = {
+    "242 Divisa": "90318", "242 Quiebra": "90319",
+    "243 Divisa": "90320", "243 Quiebra": "90321",
+}
+
+# Circular Coonatra - the corresponding trscsas... no, coonatra.com
+# page was genuinely ambiguous (6 names, 2 schedules, 3 mids -
+# couldn't cleanly pair them, see the conversation this came from).
+# Built here DIRECTLY from the official ArcGIS data instead of the
+# website's tangled pairing - route identity (codigo, nombre) comes
+# straight from Medellín's government registry, bypassing the
+# website ambiguity entirely. Also spatial-data-only: no schedule
+# source has ever been resolved for this family either.
+CIRCULAR_COONATRA_ROUTES = {
+    "300": ("90005", "Circular"),
+    "301": ("90006", "Circular"),
+    "303": ("90001", "Circular Horario 303"),
+    "300 DIR-80": ("90367", "Circular (via Carrera 80)"),
+    "301 DIR-80": ("90369", "Circular (via Carrera 80)"),
+}
 
 FIELDNAMES = {
     "agency.txt": ["agency_id", "agency_name", "agency_url", "agency_timezone", "agency_lang"],
@@ -183,6 +253,103 @@ def safe_filename(s: str) -> str:
     return re.sub(r"[^\w\-]+", "_", s).strip("_")
 
 
+def strip_accents(s: str) -> str:
+    return "".join(c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c))
+
+
+def load_coonatra_arcgis_data():
+    """Loads and filters Medellín's official ArcGIS Rutas/Parada layers
+    for Coonatra records only. Returns (rutas_by_id_dir, parada_by_id_dir)
+    dicts keyed by (id_ruta: str, recorrido: str)."""
+    if not ARCGIS_RUTAS_PATH.exists() or not ARCGIS_PARADA_PATH.exists():
+        return {}, {}
+
+    all_rutas = json.loads(ARCGIS_RUTAS_PATH.read_text())
+    all_parada = json.loads(ARCGIS_PARADA_PATH.read_text())
+
+    def is_coonatra(attrs):
+        empresa = attrs.get("empresa")
+        return bool(empresa) and "COONATRA" in strip_accents(empresa.upper())
+
+    rutas_by_id_dir = {}
+    for r in all_rutas:
+        a = r["attributes"]
+        if is_coonatra(a):
+            rutas_by_id_dir[(a["id_ruta"], a["recorrido"])] = r
+
+    parada_by_id_dir = {}
+    for p in all_parada:
+        a = p["attributes"]
+        if is_coonatra(a):
+            key = (str(a["id_ruta"]), a["recorrido"])
+            parada_by_id_dir.setdefault(key, []).append(a)
+
+    return rutas_by_id_dir, parada_by_id_dir
+
+
+def build_arcgis_stop_route(route_id, id_ruta, pdf_times, arcgis_rutas, arcgis_parada, suspicious_stops):
+    """Builds stop_rows/trip_rows/stop_time_rows_regular for one route,
+    both directions, from real Medellín ArcGIS data. pdf_times may be
+    empty - real stops/shape are built regardless (spatial-data-only
+    policy), trips only when pdf_times is non-empty. Same
+    direction-symmetry assumption used throughout this project: one
+    departure-time list applied to both directions equally, since none
+    of this project's data sources give separate times per direction.
+    Returns (stop_rows, trip_rows, stop_time_rows, n_trips_built)."""
+    stop_rows, trip_rows, stop_time_rows = [], [], []
+    n_trips_built = 0
+
+    for recorrido, dir_suffix in [("Origen-Destino", "OD"), ("Destino-Origen", "DO")]:
+        route_rec = arcgis_rutas.get((id_ruta, recorrido))
+        dir_stops = arcgis_parada.get((id_ruta, recorrido), [])
+        if not route_rec or not dir_stops:
+            print(f"  WARNING: no {recorrido} ArcGIS geometry/stops for "
+                  f"{route_id!r} (id_ruta={id_ruta}) - skipping this direction",
+                  file=sys.stderr)
+            continue
+
+        raw_path = route_rec["geometry"]["paths"][0]
+        line_lonlat = [CRS_TRANSFORMER.transform(x, y) for x, y in raw_path]
+        lat0 = sum(lat for _, lat in line_lonlat) / len(line_lonlat)
+        line_xy = [to_xy(lon, lat, lat0) for lon, lat in line_lonlat]
+        total_len_m = line_length_m(line_xy)
+        running_time_s = total_len_m / (AVERAGE_SPEED_KMH * 1000 / 3600)
+
+        ordered = []
+        for s in sorted(dir_stops, key=lambda a: a.get("nro_parada", 0)):
+            px, py = to_xy(s["longitud"], s["latitud"], lat0)
+            dist_along, snap_dist, _ = project_point_to_line(px, py, line_xy)
+            if snap_dist > SUSPICIOUS_SNAP_DIST_M:
+                suspicious_stops.append((route_id, s.get("direccion"), round(snap_dist)))
+            # nro_parada can have genuine duplicates (two different real
+            # stops sharing one number) or decimals (inserted stops) -
+            # objectid is included as a tiebreaker to guarantee a unique
+            # stop_id while keeping it traceable to the real source value.
+            nro_str = str(s["nro_parada"]).replace(".", "_")
+            stop_id = f"{route_id}_{dir_suffix}_{nro_str}_{s['objectid']}"
+            ordered.append({"stop_id": stop_id, "name": s.get("direccion") or stop_id,
+                             "lat": s["latitud"], "lon": s["longitud"], "dist_along": dist_along})
+        ordered.sort(key=lambda x: x["dist_along"])
+
+        for s in ordered:
+            stop_rows.append({"stop_id": s["stop_id"], "stop_name": s["name"],
+                               "stop_lat": s["lat"], "stop_lon": s["lon"]})
+
+        for trip_idx, dep_time in enumerate(pdf_times):
+            trip_id = f"{route_id}_{dir_suffix}_{trip_idx}"
+            trip_rows.append({"route_id": route_id, "service_id": "Diario", "trip_id": trip_id})
+            for seq, s in enumerate(ordered):
+                fraction = s["dist_along"] / total_len_m if total_len_m > 0 else 0
+                t = add_seconds(dep_time, running_time_s * fraction)
+                stop_time_rows.append({
+                    "trip_id": trip_id, "stop_id": s["stop_id"], "stop_sequence": seq,
+                    "arrival_time": t, "departure_time": t,
+                })
+            n_trips_built += 1
+
+    return stop_rows, trip_rows, stop_time_rows, n_trips_built
+
+
 def main():
     for p in (ROUTES_PATH, PDF_JSON_PATH):
         if not p.exists():
@@ -201,6 +368,12 @@ def main():
         sys.exit(1)
 
     branches_by_name = {b["name"]: b for b in calasanz["branches"]}
+    arcgis_rutas, arcgis_parada = load_coonatra_arcgis_data()
+    if ARCGIS_STOP_BASED_BRANCHES and not arcgis_rutas:
+        print(f"NOTE: {ARCGIS_RUTAS_PATH} / {ARCGIS_PARADA_PATH} not found - "
+              f"ArcGIS-sourced branch(es) {list(ARCGIS_STOP_BASED_BRANCHES)} will be "
+              f"skipped. Run scripts/download_medellin_transporte_layers.py first "
+              f"if this is unexpected.", file=sys.stderr)
 
     agency_rows = [{
         "agency_id": "coonatra", "agency_name": "Coonatra",
@@ -218,11 +391,48 @@ def main():
     location_features = []
     suspicious_stops, skipped = [], []
 
-    all_target_branches = STOP_BASED_BRANCHES | FLEX_BRANCHES
+    all_target_branches = STOP_BASED_BRANCHES | FLEX_BRANCHES | set(ARCGIS_STOP_BASED_BRANCHES)
     for name in sorted(all_target_branches):
         branch = branches_by_name.get(name)
         if not branch:
             skipped.append((name, "not found in coonatra_routes.json"))
+            continue
+
+        pdf_header = BRANCH_TO_PDF_HEADER.get(name)
+        pdf_times = pdf_by_header.get(pdf_header, {}).get("concatenated", []) if pdf_header else []
+
+        if name in ARCGIS_STOP_BASED_BRANCHES:
+            # Real stops/shape don't require a resolved PDF header - only
+            # trips do. A branch like "Metro 311-ii" can have a confirmed
+            # stop/geometry identity while its schedule question stays
+            # separately unresolved (see ARCGIS_STOP_BASED_BRANCHES'
+            # comment) - built as spatial-data-only when pdf_times is
+            # empty, same policy as TRSC's untranscribed-schedule routes.
+            if not pdf_times:
+                print(f"  NOTE: {name!r} has no resolved PDF header - building "
+                      f"real stops/shape only, no trips.", file=sys.stderr)
+
+            id_ruta = ARCGIS_STOP_BASED_BRANCHES[name]
+            route_id = name.replace(" ", "_")
+            route_rows.append({
+                "route_id": route_id, "agency_id": "coonatra",
+                "route_short_name": name,
+                "route_long_name": f"Calasanz-Boston - Ruta {name}",
+                "route_type": 3,
+            })
+
+            new_stops, new_trips, new_stop_times, n_trips_built = build_arcgis_stop_route(
+                route_id, id_ruta, pdf_times, arcgis_rutas, arcgis_parada, suspicious_stops
+            )
+            stop_rows.extend(new_stops)
+            trip_rows.extend(new_trips)
+            stop_time_rows_regular.extend(new_stop_times)
+
+            print(f"  {name}: {n_trips_built} trip(s) built (stop-based, ArcGIS-sourced)")
+            continue
+
+        if not pdf_times:
+            skipped.append((name, f"no PDF departure times found for header {pdf_header!r}"))
             continue
 
         kml_path = KML_DIR / f"Calasanz-Boston__{safe_filename(name)}.kml"
@@ -232,12 +442,6 @@ def main():
         line_coords, points = parse_kml(kml_path)
         if not line_coords or len(line_coords) < 2:
             skipped.append((name, "no usable line geometry in KML"))
-            continue
-
-        pdf_header = BRANCH_TO_PDF_HEADER.get(name)
-        pdf_times = pdf_by_header.get(pdf_header, {}).get("concatenated", []) if pdf_header else []
-        if not pdf_times:
-            skipped.append((name, f"no PDF departure times found for header {pdf_header!r}"))
             continue
 
         route_id = name.replace(" ", "_")
@@ -335,6 +539,36 @@ def main():
 
         print(f"  {name}: {len(pdf_times)} trip(s) built "
               f"({'stop-based' if name in STOP_BASED_BRANCHES else 'flex'})")
+
+    print("\nFloresta-San Juan (spatial data only - no schedule source exists):")
+    for name, id_ruta in FLORESTA_SAN_JUAN_ROUTES.items():
+        route_id = f"floresta_{name.replace(' ', '_')}"
+        route_rows.append({
+            "route_id": route_id, "agency_id": "coonatra",
+            "route_short_name": name, "route_long_name": f"Floresta-San Juan - {name}",
+            "route_type": 3,
+        })
+        new_stops, new_trips, new_stop_times, n_trips_built = build_arcgis_stop_route(
+            route_id, id_ruta, [], arcgis_rutas, arcgis_parada, suspicious_stops
+        )
+        stop_rows.extend(new_stops)
+        print(f"  {name}: {len(new_stops)} real stop(s), 0 trip(s) (no schedule)")
+
+    print("\nCircular Coonatra (spatial data only - no schedule source resolved; "
+          "route identity from official ArcGIS data directly, bypassing the "
+          "website's genuinely ambiguous page):")
+    for name, (id_ruta, nombre) in CIRCULAR_COONATRA_ROUTES.items():
+        route_id = f"circular_{name.replace(' ', '_')}"
+        route_rows.append({
+            "route_id": route_id, "agency_id": "coonatra",
+            "route_short_name": name, "route_long_name": f"{nombre} {name}",
+            "route_type": 3,
+        })
+        new_stops, new_trips, new_stop_times, n_trips_built = build_arcgis_stop_route(
+            route_id, id_ruta, [], arcgis_rutas, arcgis_parada, suspicious_stops
+        )
+        stop_rows.extend(new_stops)
+        print(f"  {name}: {len(new_stops)} real stop(s), 0 trip(s) (no schedule)")
 
     if skipped:
         print(f"\nSKIPPED {len(skipped)} branch(es):", file=sys.stderr)
