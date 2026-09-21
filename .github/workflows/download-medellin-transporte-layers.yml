@@ -1,0 +1,42 @@
+name: Download Medellín ArcGIS Transport Layers
+
+# Bulk-downloads ALL data (every record, every field, no operator
+# filter) from Medellín's official government ArcGIS public-transit
+# layers - see scripts/download_medellin_transporte_layers.py for the
+# full layer list and why this is split from operator-specific
+# analysis. Manual trigger for now; this is a natural candidate for a
+# monthly `schedule:` cron trigger once the data's real refresh rate
+# is known (uncomment the schedule block below when ready) - government
+# route/stop data presumably changes slowly, so a monthly cadence is a
+# reasonable starting guess, not a confirmed fact.
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 6 1 * *"  # 06:00 UTC on the 1st of each month
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download all layers
+        run: python scripts/download_medellin_transporte_layers.py
+
+      - name: Upload raw data
+        uses: actions/upload-artifact@v4
+        with:
+          name: medellin-transporte-raw
+          path: raw/medellin_raw/
+          retention-days: 90
+          if-no-files-found: error
