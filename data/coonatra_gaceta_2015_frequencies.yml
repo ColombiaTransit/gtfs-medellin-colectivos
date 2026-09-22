@@ -1,0 +1,70 @@
+# Real frequency data for 3 Coonatra 8A-system routes, transcribed from
+# Gaceta Oficial N°4325 (Resolución 1042 de 2015, "FICHA TÉCNICA" pages)
+# - see the conversation this came from for the source and full
+# verification. Paired with the CURRENT ArcGIS geometry/stops (already
+# built), per the project owner's explicit direction: ArcGIS length is
+# trusted over the Gaceta's stated length where they disagree, but the
+# Gaceta's real frequency numbers are still used for these routes.
+#
+# LENGTH DISCREPANCIES (informational only, not used to build anything -
+# ArcGIS's own geometry is what actually gets built):
+#   243-i:  Gaceta 4.07km  vs ArcGIS-calculated 3.4-4.5km  -> matches well
+#   243-iD: Gaceta 5.58km  vs ArcGIS-calculated 2.9-3.1km  -> real, unexplained gap
+#   311-ii: Gaceta 10.90km vs ArcGIS-calculated ~4.35km    -> real, unexplained gap
+#
+# Same "DÍA" (normal headway) vs "HMD" (likely peak headway) choice as
+# data/taxmaya_route_mapping.yml: only DÍA is used, since the Gaceta
+# never states clock-time boundaries for when peak hours apply.
+
+routes:
+  - id_ruta: "90322"
+    codigo_gaceta: "243-i"
+    nombre_gaceta: "Divisa-Estación Santa Lucía"
+    our_route_name: "243i Floresta"  # our existing ArcGIS-sourced name for this id_ruta
+    identity_confidence: confirmed  # Coonatra confirmed as empresa presta servicio;
+      # length matches our ArcGIS calculation well
+    horario_inicio: "03:30:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 19
+      sabado: 18
+      domingo: 34
+
+  - id_ruta: "90323"
+    codigo_gaceta: "243-iD"
+    nombre_gaceta: "Divisa-Estación San Javier"
+    our_route_name: "243iD Floresta Directa"
+    identity_confidence: provisional  # Coonatra confirmed, codigo matches, but
+      # length is a real, unexplained ~2x discrepancy (5.58km Gaceta vs
+      # 2.9-3.1km ArcGIS) - paired anyway per project owner's direction
+      # to trust ArcGIS geometry over Gaceta length, but this gap isn't
+      # fully explained and is worth revisiting
+    horario_inicio: "04:30:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 19
+      sabado: 18
+      domingo: 34
+
+  - id_ruta: "90361"
+    codigo_gaceta: "311-ii"
+    nombre_gaceta: "Calasania-Campo Verde-Estación Santa Lucía"
+    our_route_name: "Metro 311-ii"  # matched to ArcGIS codigo "311iiR" ("Rosales")
+    identity_confidence: provisional  # LOWER confidence than the other two: the
+      # Gaceta's own route NAME ("Calasania-Campo Verde") does not match
+      # our route's ArcGIS-derived identity ("Rosales") at all, and the
+      # length is also a real, unexplained gap (10.90km Gaceta vs
+      # ~4.35km ArcGIS). This pairing rests on codigo ("311-ii" here vs
+      # ArcGIS "311iiR") and operator (Coonatra) alone - it is possible
+      # this Gaceta entry actually describes the DIFFERENT, still-
+      # unbuilt base "311ii" route (ArcGIS id_ruta 90325, "Santa Lucia
+      # Directa") rather than our Rosales-identified "Metro 311-ii".
+      # Paired with the built route anyway since it's the one that
+      # currently exists and needs a schedule, per the project owner's
+      # direction - but this identity question is not resolved.
+    horario_inicio: "04:00:00"
+    horario_fin: "23:00:00"
+    headway_min:
+      dia_normal: 21
+      sabado: 20
+      domingo: 38
