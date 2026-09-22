@@ -2,25 +2,28 @@
 """
 Build a GTFS feed for Tax Maya from real official government data:
 route/stop geometry from Medellín's ArcGIS layers (raw/medellin_raw/,
-current), and real frequency/schedule data from Gaceta Oficial N°4325
-(data/taxmaya_route_mapping.yml, transcribed from official "FICHA
-TÉCNICA" pages - see the conversation this came from for the source
-document and full verification).
+current), and real frequency/schedule data from
+data/taxmaya_route_mapping.yml - two sources per route: Gaceta Oficial
+N°4325 (2015, official "FICHA TÉCNICA" pages) for most routes, or real
+current schedule-board photos (2026) for 195/195i specifically, which
+give richer real per-day-type hours, not just headway - see that
+file's docstring for which source each route uses and why.
 
 WHY frequencies.txt, not individual trips: unlike TRSC/Coonatra (built
-from literal PDF departure times), the Gaceta gives real HEADWAY data
-(minutes between buses) plus a service start/end time - the correct
-GTFS primitive for that shape of data is frequencies.txt, not one row
-per trip. Only the "DÍA" (general/normal) headway is used, not "HMD"
-(likely peak-hour) - see data/taxmaya_route_mapping.yml's docstring for
-why: the source doesn't give clock-time boundaries for when peak hours
-apply, and guessing them isn't this project's practice.
+from literal PDF departure times), both of this route's sources give
+real HEADWAY data (minutes between buses) plus a service start/end
+time - the correct GTFS primitive for that shape of data is
+frequencies.txt, not one row per trip. Only the general/off-peak
+headway is used, never a peak-hour figure - see
+data/taxmaya_route_mapping.yml's docstring for why: neither source
+gives clock-time boundaries for when peak hours apply, and guessing
+them isn't this project's practice.
 
 SERVICE PATTERN: 3 real weekly service days are built (weekday,
 Saturday, Sunday) via calendar.txt. "Festivo" (holidays) is NOT built
 as a separate service - it would need calendar_dates.txt with actual
 Colombian holiday dates, which isn't available, and its real values
-matched Sunday's exactly in every route observed anyway.
+matched Sunday's exactly in every Gaceta-sourced route observed.
 
 GEOMETRY: same per-direction ArcGIS approach validated for TRSC and
 Coonatra - each route has 2 directional records (Origen-Destino /
@@ -168,9 +171,10 @@ def main():
     for route_cfg in mapping:
         id_ruta = route_cfg["id_ruta"]
         route_id = f"taxmaya_{id_ruta}"
+        route_label = route_cfg["codigo_arcgis"]
         route_rows.append({
             "route_id": route_id, "agency_id": "taxmaya",
-            "route_short_name": route_cfg["codigo_pdf"],
+            "route_short_name": route_label,
             "route_long_name": route_cfg["nombre"], "route_type": 3,
         })
 
@@ -180,7 +184,7 @@ def main():
             dir_stops = arcgis_parada.get((id_ruta, recorrido), [])
             if not route_rec:
                 print(f"  WARNING: no {recorrido} ArcGIS geometry for "
-                      f"{route_cfg['codigo_pdf']!r} (id_ruta={id_ruta}) - "
+                      f"{route_label!r} (id_ruta={id_ruta}) - "
                       f"skipping this direction", file=sys.stderr)
                 continue
 
@@ -209,7 +213,7 @@ def main():
             ordered_stops.sort(key=lambda x: x["dist_along"])
 
             if not ordered_stops:
-                print(f"  WARNING: no {recorrido} stops for {route_cfg['codigo_pdf']!r} "
+                print(f"  WARNING: no {recorrido} stops for {route_label!r} "
                       f"(id_ruta={id_ruta}) - shape only, no stop_times/trips for this "
                       f"direction", file=sys.stderr)
                 continue
@@ -225,15 +229,18 @@ def main():
             running_time_s = total_len_m / (AVERAGE_SPEED_KMH * 1000 / 3600)
 
             # One trip + one frequencies.txt row per real weekly service
-            # day, using the PDF's real "DÍA" (normal) headway and real
-            # service start/end clock time. GTFS requires stop_times.txt
-            # even for frequency-based trips - it defines the template
-            # stop sequence/relative timing that frequencies.txt then
-            # repeats every headway_secs from start_time to end_time, so
-            # every trip still gets a full stop_times block, all
-            # starting from the same 00:00:00 base (a frequency-based
-            # trip's stop_times are relative, not real clock times).
+            # day, using that day-type's own real headway AND its own
+            # real service start/end clock time (they can genuinely
+            # differ by day-type - see 195/195i in the mapping file).
+            # GTFS requires stop_times.txt even for frequency-based
+            # trips - it defines the template stop sequence/relative
+            # timing that frequencies.txt then repeats every
+            # headway_secs from start_time to end_time, so every trip
+            # still gets a full stop_times block, all starting from the
+            # same 00:00:00 base (a frequency-based trip's stop_times
+            # are relative, not real clock times).
             for day_key, service_id in day_service_map:
+                day_schedule = route_cfg["schedule"][day_key]
                 trip_id = f"{route_id}_{dir_suffix}_{service_id}"
                 trip_rows.append({"route_id": route_id, "service_id": service_id,
                                    "trip_id": trip_id, "shape_id": shape_id})
@@ -244,17 +251,16 @@ def main():
                         "trip_id": trip_id, "stop_id": s["stop_id"], "stop_sequence": seq,
                         "arrival_time": t, "departure_time": t,
                     })
-                headway_min = route_cfg["headway_min"][day_key]
                 frequency_rows.append({
                     "trip_id": trip_id,
-                    "start_time": route_cfg["horario_inicio"],
-                    "end_time": route_cfg["horario_fin"],
-                    "headway_secs": headway_min * 60,
+                    "start_time": day_schedule["horario_inicio"],
+                    "end_time": day_schedule["horario_fin"],
+                    "headway_secs": day_schedule["headway_min"] * 60,
                 })
                 n_trips_built += 1
 
-        print(f"  {route_cfg['codigo_pdf']} ({route_cfg['nombre']}): "
-              f"{n_trips_built} frequency-based trip(s) built")
+        print(f"  {route_label} ({route_cfg['nombre']}): "
+              f"{n_trips_built} frequency-based trip(s) built [source: {route_cfg['source']}]")
 
     if suspicious_stops:
         print(f"\n{len(suspicious_stops)} stop(s) more than {SUSPICIOUS_SNAP_DIST_M}m "

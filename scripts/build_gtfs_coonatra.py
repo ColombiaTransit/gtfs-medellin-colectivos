@@ -71,6 +71,7 @@ from pyproj import Transformer
 ROUTES_PATH = Path("raw/coonatra_routes.json")
 KML_DIR = Path("raw/coonatra_kml")
 PDF_JSON_PATH = Path("raw/coonatra_pdf_Frecuencias-rutas-Calasanz.json")
+GACETA_FREQ_PATH = Path("data/coonatra_gaceta_2015_frequencies.yml")
 ARCGIS_RUTAS_PATH = Path("raw/medellin_raw/vc_transporte_rutas.json")
 ARCGIS_PARADA_PATH = Path("raw/medellin_raw/vc_transporte_parada.json")
 OUT_DIR = Path("gtfs-coonatra-out")
@@ -306,16 +307,36 @@ def load_coonatra_arcgis_data():
     return rutas_by_id_dir, parada_by_id_dir
 
 
-def build_arcgis_stop_route(route_id, id_ruta, pdf_times, arcgis_rutas, arcgis_parada, suspicious_stops):
-    """Builds stop_rows/trip_rows/stop_time_rows_regular for one route,
-    both directions, from real Medellín ArcGIS data. pdf_times may be
-    empty - real stops/shape are built regardless (spatial-data-only
-    policy), trips only when pdf_times is non-empty. Same
-    direction-symmetry assumption used throughout this project: one
-    departure-time list applied to both directions equally, since none
-    of this project's data sources give separate times per direction.
-    Returns (stop_rows, trip_rows, stop_time_rows, n_trips_built)."""
-    stop_rows, trip_rows, stop_time_rows = [], [], []
+def seconds_to_gtfs_time(total_seconds: float) -> str:
+    """Formats a relative offset (seconds from a trip's own 00:00:00
+    base) as HH:MM:SS - used for frequency-based trips' stop_times,
+    which are relative timing templates, not real clock times."""
+    total_seconds = round(total_seconds)
+    h, rem = divmod(total_seconds, 3600)
+    m, s = divmod(rem, 60)
+    return f"{h:02d}:{m:02d}:{s:02d}"
+
+
+DAY_SERVICE_MAP = [("dia_normal", "DiaHabil"), ("sabado", "Sabado"), ("domingo", "Domingo")]
+
+
+def build_arcgis_stop_route(route_id, id_ruta, pdf_times, arcgis_rutas, arcgis_parada,
+                             suspicious_stops, gaceta_freq=None):
+    """Builds stop_rows/trip_rows/stop_time_rows/frequency_rows for one
+    route, both directions, from real Medellín ArcGIS data. pdf_times
+    may be empty - real stops/shape are built regardless (spatial-
+    data-only policy). Two mutually exclusive ways to get real trips:
+    pdf_times (literal departure-time list, same as before) or
+    gaceta_freq (real headway data from Gaceta Oficial N°4325 - see
+    data/coonatra_gaceta_2015_frequencies.yml) which builds
+    frequencies.txt rows instead, one real weekly service pattern each
+    for weekday/Saturday/Sunday (DiaHabil/Sabado/Domingo), using only
+    the Gaceta's "DÍA" (normal) headway - see that file's docstring for
+    why "HMD" isn't used. Same direction-symmetry assumption used
+    throughout this project either way: one schedule applied to both
+    directions equally.
+    Returns (stop_rows, trip_rows, stop_time_rows, frequency_rows, n_trips_built)."""
+    stop_rows, trip_rows, stop_time_rows, frequency_rows = [], [], [], []
     n_trips_built = 0
 
     for recorrido, dir_suffix in [("Origen-Destino", "OD"), ("Destino-Origen", "DO")]:
@@ -354,19 +375,42 @@ def build_arcgis_stop_route(route_id, id_ruta, pdf_times, arcgis_rutas, arcgis_p
             stop_rows.append({"stop_id": s["stop_id"], "stop_name": s["name"],
                                "stop_lat": s["lat"], "stop_lon": s["lon"]})
 
-        for trip_idx, dep_time in enumerate(pdf_times):
-            trip_id = f"{route_id}_{dir_suffix}_{trip_idx}"
-            trip_rows.append({"route_id": route_id, "service_id": "Diario", "trip_id": trip_id})
-            for seq, s in enumerate(ordered):
-                fraction = s["dist_along"] / total_len_m if total_len_m > 0 else 0
-                t = add_seconds(dep_time, running_time_s * fraction)
-                stop_time_rows.append({
-                    "trip_id": trip_id, "stop_id": s["stop_id"], "stop_sequence": seq,
-                    "arrival_time": t, "departure_time": t,
+        if gaceta_freq:
+            # Frequency-based: stop_times is a relative timing template
+            # (starts at 00:00:00), one trip per real weekly service day.
+            for day_key, service_id in DAY_SERVICE_MAP:
+                trip_id = f"{route_id}_{dir_suffix}_{service_id}"
+                trip_rows.append({"route_id": route_id, "service_id": service_id, "trip_id": trip_id})
+                for seq, s in enumerate(ordered):
+                    fraction = s["dist_along"] / total_len_m if total_len_m > 0 else 0
+                    t = seconds_to_gtfs_time(running_time_s * fraction)
+                    stop_time_rows.append({
+                        "trip_id": trip_id, "stop_id": s["stop_id"], "stop_sequence": seq,
+                        "arrival_time": t, "departure_time": t,
+                    })
+                headway_min = gaceta_freq["headway_min"][day_key]
+                frequency_rows.append({
+                    "trip_id": trip_id,
+                    "start_time": gaceta_freq["horario_inicio"],
+                    "end_time": gaceta_freq["horario_fin"],
+                    "headway_secs": headway_min * 60,
                 })
-            n_trips_built += 1
+                n_trips_built += 1
+        else:
+            # Literal-departure-time trips (unchanged from before).
+            for trip_idx, dep_time in enumerate(pdf_times):
+                trip_id = f"{route_id}_{dir_suffix}_{trip_idx}"
+                trip_rows.append({"route_id": route_id, "service_id": "Diario", "trip_id": trip_id})
+                for seq, s in enumerate(ordered):
+                    fraction = s["dist_along"] / total_len_m if total_len_m > 0 else 0
+                    t = add_seconds(dep_time, running_time_s * fraction)
+                    stop_time_rows.append({
+                        "trip_id": trip_id, "stop_id": s["stop_id"], "stop_sequence": seq,
+                        "arrival_time": t, "departure_time": t,
+                    })
+                n_trips_built += 1
 
-    return stop_rows, trip_rows, stop_time_rows, n_trips_built
+    return stop_rows, trip_rows, stop_time_rows, frequency_rows, n_trips_built
 
 
 def main():
@@ -399,14 +443,37 @@ def main():
         "agency_url": "https://coonatra.com", "agency_timezone": "America/Bogota",
         "agency_lang": "es",
     }]
-    calendar_rows = [{
-        "service_id": "Diario", "monday": 1, "tuesday": 1, "wednesday": 1,
-        "thursday": 1, "friday": 1, "saturday": 1, "sunday": 1,
-        "start_date": "20260101", "end_date": "20271231",
-    }]
+    calendar_rows = [
+        {"service_id": "Diario", "monday": 1, "tuesday": 1, "wednesday": 1,
+         "thursday": 1, "friday": 1, "saturday": 1, "sunday": 1,
+         "start_date": "20260101", "end_date": "20271231"},
+        # Real weekday/Saturday/Sunday split, used only by routes with
+        # Gaceta-sourced frequency data (see
+        # data/coonatra_gaceta_2015_frequencies.yml) - everything else
+        # still uses "Diario" above.
+        {"service_id": "DiaHabil", "monday": 1, "tuesday": 1, "wednesday": 1,
+         "thursday": 1, "friday": 1, "saturday": 0, "sunday": 0,
+         "start_date": "20260101", "end_date": "20271231"},
+        {"service_id": "Sabado", "monday": 0, "tuesday": 0, "wednesday": 0,
+         "thursday": 0, "friday": 0, "saturday": 1, "sunday": 0,
+         "start_date": "20260101", "end_date": "20271231"},
+        {"service_id": "Domingo", "monday": 0, "tuesday": 0, "wednesday": 0,
+         "thursday": 0, "friday": 0, "saturday": 0, "sunday": 1,
+         "start_date": "20260101", "end_date": "20271231"},
+    ]
+
+    gaceta_freq_by_id_ruta = {}
+    if GACETA_FREQ_PATH.exists():
+        gaceta_routes = yaml.safe_load(GACETA_FREQ_PATH.read_text())["routes"]
+        gaceta_freq_by_id_ruta = {r["id_ruta"]: r for r in gaceta_routes}
+        print(f"Loaded {len(gaceta_freq_by_id_ruta)} Gaceta-sourced frequency "
+              f"route(s) from {GACETA_FREQ_PATH}")
+    else:
+        print(f"  NOTE: {GACETA_FREQ_PATH} not found - building without "
+              f"Gaceta-sourced frequencies.", file=sys.stderr)
 
     route_rows, stop_rows, trip_rows = [], [], []
-    stop_time_rows_regular, stop_time_rows_flex = [], []
+    stop_time_rows_regular, stop_time_rows_flex, frequency_rows = [], [], []
     location_features = []
     suspicious_stops, skipped = [], []
 
@@ -440,14 +507,23 @@ def main():
                 "route_type": 3,
             })
 
-            new_stops, new_trips, new_stop_times, n_trips_built = build_arcgis_stop_route(
-                route_id, id_ruta, pdf_times, arcgis_rutas, arcgis_parada, suspicious_stops
+            gaceta_freq = gaceta_freq_by_id_ruta.get(id_ruta)
+            if gaceta_freq and not pdf_times:
+                print(f"  NOTE: {name!r} has no resolved PDF header, but real "
+                      f"Gaceta-sourced frequency data exists (identity_confidence="
+                      f"{gaceta_freq['identity_confidence']!r}) - building "
+                      f"frequency-based trips.", file=sys.stderr)
+            new_stops, new_trips, new_stop_times, new_freqs, n_trips_built = build_arcgis_stop_route(
+                route_id, id_ruta, pdf_times, arcgis_rutas, arcgis_parada, suspicious_stops,
+                gaceta_freq=gaceta_freq if not pdf_times else None,
             )
             stop_rows.extend(new_stops)
             trip_rows.extend(new_trips)
             stop_time_rows_regular.extend(new_stop_times)
+            frequency_rows.extend(new_freqs)
 
-            print(f"  {name}: {n_trips_built} trip(s) built (stop-based, ArcGIS-sourced)")
+            kind = "frequency-based" if (gaceta_freq and not pdf_times) else "stop-based"
+            print(f"  {name}: {n_trips_built} trip(s) built ({kind}, ArcGIS-sourced)")
             continue
 
         if not pdf_times:
@@ -587,7 +663,8 @@ def main():
         else:
             print(f"  {name}: {len(pdf_times)} trip(s) built (flex)")
 
-    print("\nFloresta-San Juan (spatial data only - no schedule source exists):")
+    print("\nFloresta-San Juan (spatial data only, except 2 routes with real "
+          "Gaceta-sourced frequency data):")
     for name, id_ruta in FLORESTA_SAN_JUAN_ROUTES.items():
         route_id = f"floresta_{name.replace(' ', '_')}"
         route_rows.append({
@@ -595,11 +672,21 @@ def main():
             "route_short_name": name, "route_long_name": f"Floresta-San Juan - {name}",
             "route_type": 3,
         })
-        new_stops, new_trips, new_stop_times, n_trips_built = build_arcgis_stop_route(
-            route_id, id_ruta, [], arcgis_rutas, arcgis_parada, suspicious_stops
+        gaceta_freq = gaceta_freq_by_id_ruta.get(id_ruta)
+        new_stops, new_trips, new_stop_times, new_freqs, n_trips_built = build_arcgis_stop_route(
+            route_id, id_ruta, [], arcgis_rutas, arcgis_parada, suspicious_stops,
+            gaceta_freq=gaceta_freq,
         )
         stop_rows.extend(new_stops)
-        print(f"  {name}: {len(new_stops)} real stop(s), 0 trip(s) (no schedule)")
+        trip_rows.extend(new_trips)
+        stop_time_rows_regular.extend(new_stop_times)
+        frequency_rows.extend(new_freqs)
+        if gaceta_freq:
+            print(f"  {name}: {len(new_stops)} real stop(s), {n_trips_built} "
+                  f"frequency-based trip(s) (Gaceta-sourced, identity_confidence="
+                  f"{gaceta_freq['identity_confidence']!r})")
+        else:
+            print(f"  {name}: {len(new_stops)} real stop(s), 0 trip(s) (no schedule)")
 
     print("\nCircular Coonatra (spatial data only - no schedule source resolved; "
           "route identity from official ArcGIS data directly, bypassing the "
@@ -611,7 +698,7 @@ def main():
             "route_short_name": name, "route_long_name": f"{nombre} {name}",
             "route_type": 3,
         })
-        new_stops, new_trips, new_stop_times, n_trips_built = build_arcgis_stop_route(
+        new_stops, new_trips, new_stop_times, new_freqs, n_trips_built = build_arcgis_stop_route(
             route_id, id_ruta, [], arcgis_rutas, arcgis_parada, suspicious_stops
         )
         stop_rows.extend(new_stops)
@@ -639,6 +726,9 @@ def main():
     write_csv(OUT_DIR / "stops.txt", FIELDNAMES["stops.txt"], stop_rows)
     write_csv(OUT_DIR / "trips.txt", FIELDNAMES["trips.txt"], trip_rows)
     write_csv(OUT_DIR / "calendar.txt", FIELDNAMES["calendar.txt"], calendar_rows)
+    if frequency_rows:
+        write_csv(OUT_DIR / "frequencies.txt",
+                  ["trip_id", "start_time", "end_time", "headway_secs"], frequency_rows)
 
     # stop_times.txt needs BOTH regular (stop_id-based) and flex
     # (location_id-based) rows in the SAME file, per GTFS-Flex spec -
