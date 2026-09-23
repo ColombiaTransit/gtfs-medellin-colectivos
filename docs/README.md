@@ -15,3 +15,5 @@ it rather than duplicates.
 | [Coonatra](coonatra.md) | Regular GTFS | 17 routes, mix of literal-time/frequency-based/spatial-only |
 | [TRSC](trsc.md) | Regular GTFS | 21 routes, 554 trips |
 | [Tax Maya](taxmaya.md) | Regular GTFS | 11 routes, all frequency-based |
+| [Metrosán](metrosan.md) | Regular GTFS | 11 routes, all frequency-based (1 with a marked partial assumption) |
+| [Transacoop](transacoop.md) | Regular GTFS | 9 routes, 8 frequency-based (provisional number-order match), 1 spatial-only |
