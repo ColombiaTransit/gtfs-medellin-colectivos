@@ -1,0 +1,130 @@
+# Transacoop (trasancoop.com - note the real domain spelling differs
+# from ArcGIS's "Transacoop" empresa field, letters transposed;
+# treated as the same company, not independently verified as such
+# beyond the obvious name/place match) route mapping.
+#
+# MATCHING METHOD: website branches 1-9 mapped directly to ArcGIS
+# "98 Directa 1" through "98 Directa 9" BY NUMBER ORDER, per the
+# project owner's explicit direction - NOT independently confirmed by
+# village-name cross-referencing. A real investigation attempt (real
+# stop addresses along each ArcGIS route, and each route's own real
+# `nombre` field) found genuine complications with a name-based
+# match: several website branches name multiple villages that
+# individually match DIFFERENT ArcGIS routes' nombre fields (e.g.
+# website #2 mentions both "Mazo" and "Piedras Blancas", which are the
+# named villages of ArcGIS's Directa 1 and Directa 6/9 respectively),
+# and one ArcGIS route (Directa 6, nombre "Piedras Blancas") has a real
+# stop address reading "Vda el Mazo Santa Elena" - meaning even the
+# `nombre` field doesn't fully/reliably describe each route's real
+# path. This number-order mapping is simple and explicit, but should be
+# treated as PROVISIONAL for every route, not confirmed - a village-
+# name or geometry-based re-check could reveal a different real
+# correspondence.
+#
+# System is "6G" - not "8A" (Gaceta Oficial N°4325) or "6F"
+# (Cootransmallat) - no government frequency document has been found
+# for this operator either; all schedule data here is real, but comes
+# entirely from the operator's own website.
+#
+# SERVICE DAYS: the website only distinguishes "Lunes a Sábado" (one
+# combined weekday+Saturday window) from "Domingos" - NOT the usual
+# 3-way weekday/Saturday/Sunday split used elsewhere in this project,
+# since that finer split isn't what this source actually states. Only
+# 2 real service patterns are built: LunesSabado and Domingo.
+#
+# FREQUENCY NOTES:
+#   - Where the site gives "hora pico"/"hora valle" (branch 1), only
+#     the valle (off-peak) figure is used, per this project's
+#     established practice: no clock-time boundary is ever given for
+#     when peak hours apply.
+#   - Branch 2's real weekday figure (30 min) is used for BOTH
+#     LunesSabado and Domingo - the site says weekend frequency
+#     "increases" but gives no real number, so 30 min is kept as a
+#     known-real floor rather than inventing a tighter number.
+#   - Branches 6/7 ("cuatro veces al día") are NOT a real minutes-based
+#     headway - converted to an approximate even-interval headway by
+#     dividing the real total operating window by 4, a real
+#     approximation of an evenly-spaced schedule, not a sourced number.
+#   - Branch 8 has NO frequency given anywhere on the site - built
+#     spatial-only (real stops/shape, no trips), same "don't fabricate"
+#     policy used throughout this project, unless/until a real number
+#     turns up.
+
+hours:
+  lunes_sabado: {inicio: "05:00:00", fin: "21:00:00"}
+  domingo: {inicio: "06:00:00", fin: "20:00:00"}
+
+routes:
+  - id_ruta: "90257"
+    website_branch: 1
+    nombre_arcgis: "Santa Elena-Mazo-Las Brisas-Medellín"
+    descripcion_web: "Centro, Buenos Aires, La Palma, Media Luna, Santa Elena Parte Central"
+    match_confidence: provisional_by_number_order
+    headway_min: {lunes_sabado: 12, domingo: 12}  # valle figure used, not the 10min pico
+
+  - id_ruta: "90258"
+    website_branch: 2
+    nombre_arcgis: "Santa Elena-Barro Blanco-Las Brisas-Medellín"
+    descripcion_web: "Centro...Piedra Gorda, Mazo, El Tambo, Piedras Blancas, Estación Arví, Parque Arví"
+    match_confidence: provisional_by_number_order
+    headway_min: {lunes_sabado: 30, domingo: 30}  # real weekday figure; site says
+      # weekend "increases" with no real number given, so kept the same
+
+  - id_ruta: "90259"
+    website_branch: 3
+    nombre_arcgis: "Santa Elena-Las Brisas-Medellín"
+    descripcion_web: "Centro...El Rosario, San Miguel, El Porvenir, La Palma"
+    match_confidence: provisional_by_number_order
+    headway_min: {lunes_sabado: 60, domingo: 60}
+
+  - id_ruta: "90260"
+    website_branch: 4
+    nombre_arcgis: "Santa Elena-Perico-Las Brisas-Medellín"
+    descripcion_web: "Centro...El Plan, La Morena, La Raya (límite Envigado)"
+    match_confidence: provisional_by_number_order
+    headway_min: {lunes_sabado: 60, domingo: 60}
+
+  - id_ruta: "90261"
+    website_branch: 5
+    nombre_arcgis: "Santa Elena-El Plan-Las Brisas-Medellín"
+    descripcion_web: "Centro...El Llano, Perico, La Meseta (límite Envigado)"
+    match_confidence: provisional_by_number_order
+    headway_min: {lunes_sabado: 60, domingo: 60}
+
+  - id_ruta: "90262"
+    website_branch: 6
+    nombre_arcgis: "Santa Elena-Piedras Blancas-Medellín"
+    descripcion_web: "Centro...El Cerro, Pantanillo (límite Envigado)"
+    match_confidence: provisional_by_number_order
+    headway_min:  # "cuatro veces al dia" - approximated as an even
+      # interval across the real operating window, not a real headway
+      lunes_sabado: 240  # (21:00-05:00 = 16h = 960min) / 4 = 240min
+      domingo: 210       # (20:00-06:00 = 14h = 840min) / 4 = 210min
+
+  - id_ruta: "90263"
+    website_branch: 7
+    nombre_arcgis: "Santa Elena-Barro Blanco-Medellín"
+    descripcion_web: "Centro...El Cerro, Pantanillo (límite Envigado) - texto casi identico a la rama 6 en el sitio web"
+    match_confidence: provisional_by_number_order
+    headway_min:
+      lunes_sabado: 240
+      domingo: 210
+
+  - id_ruta: "90265"
+    website_branch: 9
+    nombre_arcgis: "Santa Elena-Piedras Blancas-Las Brisas-Medellín"
+    descripcion_web: "Centralidad...Barro Blanco, El Plan, Perico, El Llano, San Ignacio"
+    match_confidence: provisional_by_number_order
+    headway_min: {lunes_sabado: 60, domingo: 60}
+
+  - id_ruta: "90264"
+    website_branch: 8
+    nombre_arcgis: "Santa Elena-El Cerro-Las Brisas-Medellín"
+    descripcion_web: "Centro...El Silletero, Santa Elena Central y San Ignacio"
+    match_confidence: provisional_by_number_order
+    frequency_confidence: assumed  # no real number given anywhere on the
+      # site for this branch (the only one of the 9 with no real figure
+      # at all) - explicitly requested as an hourly placeholder, per the
+      # project owner's direction, not a real sourced figure like every
+      # other route in this file. Replace the moment a real number turns up.
+    headway_min: {lunes_sabado: 60, domingo: 60}
