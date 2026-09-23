@@ -1,0 +1,92 @@
+name: Build Transacoop GTFS
+
+# Stitches together everything built for Transacoop into one real GTFS
+# feed:
+#   - raw/medellin_raw/vc_transporte_rutas.json and
+#     vc_transporte_parada.json - Medellín's official government route
+#     geometry and stop data, already committed to the repo by
+#     download-medellin-transporte-layers.yml (run that workflow first,
+#     or whenever the underlying data needs refreshing - this workflow
+#     does NOT re-download it, just reads what's already checked out)
+#   - data/transacoop_route_mapping.yml - all 9 real ArcGIS routes for
+#     this operator (Santa Elena corregimiento), 8 mapped to real
+#     website-sourced frequency data (matched to the website's 9
+#     numbered branches BY NUMBER ORDER, explicitly marked provisional,
+#     not independently confirmed), the 9th built spatial-only since no
+#     frequency is given anywhere for it - see docs/transacoop.md for
+#     the full source breakdown and reasoning
+# Then validates the result with the real MobilityData validator.
+# Manual trigger only - see scripts/build_gtfs_transacoop.py's own
+# docstring for the full technical detail.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check required input data is present
+        run: |
+          missing=0
+          for f in raw/medellin_raw/vc_transporte_rutas.json raw/medellin_raw/vc_transporte_parada.json; do
+            if [ ! -f "$f" ]; then
+              echo "::error::$f not found. Run download-medellin-transporte-layers.yml first - it commits this file to the repo."
+              missing=1
+            fi
+          done
+          if [ ! -f data/transacoop_route_mapping.yml ]; then
+            echo "::error::data/transacoop_route_mapping.yml not found. This is a static file, not something any workflow generates - it needs to be committed into the repo directly."
+            missing=1
+          fi
+          if [ "$missing" = "1" ]; then
+            exit 1
+          fi
+
+      - name: Build GTFS feed
+        run: python scripts/build_gtfs_transacoop.py
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Resolve gtfs-validator-cli download URL
+        id: resolve_validator
+        run: |
+          URL=$(curl -sSL https://api.github.com/repos/MobilityData/gtfs-validator/releases/latest \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print(next(a['browser_download_url'] for a in d['assets'] if a['name'].endswith('-cli.jar')))")
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+
+      - name: Download gtfs-validator-cli.jar
+        run: curl -L -o gtfs-validator-cli.jar "${{ steps.resolve_validator.outputs.url }}"
+
+      - name: Validate
+        run: |
+          mkdir -p validation-report
+          java -Xmx4G -jar gtfs-validator-cli.jar \
+            -i gtfs-transacoop.zip \
+            -o validation-report
+
+      - name: Upload GTFS feed + validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: transacoop-gtfs
+          path: |
+            gtfs-transacoop.zip
+            validation-report/report.html
+            validation-report/report.json
+          retention-days: 30
+          if-no-files-found: error
