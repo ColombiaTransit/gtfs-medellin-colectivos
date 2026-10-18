@@ -867720,8 +867720,8 @@
         "codigo": 143228,
         "id_op": 7001170,
         "ancho_calzada": 3.4,
-        "area_calzada": 577.32,
-        "longitud_calzada": 169.8,
+        "area_calzada": null,
+        "longitud_calzada": 167.78,
         "pendiente": 3.0,
         "ruta_transporte": 0,
         "ESRI_OID": 20305
@@ -913530,8 +913530,8 @@
         "codigo": 144207,
         "id_op": 6000482,
         "ancho_calzada": 5.1,
-        "area_calzada": 192.27,
-        "longitud_calzada": 37.7,
+        "area_calzada": null,
+        "longitud_calzada": 34.15,
         "pendiente": 21.0,
         "ruta_transporte": 1,
         "ESRI_OID": 21283
@@ -913561,8 +913561,8 @@
         "codigo": 144208,
         "id_op": 6000481,
         "ancho_calzada": 5.1,
-        "area_calzada": 175.44,
-        "longitud_calzada": 34.4,
+        "area_calzada": null,
+        "longitud_calzada": 29.79,
         "pendiente": 2.0,
         "ruta_transporte": 1,
         "ESRI_OID": 21284
