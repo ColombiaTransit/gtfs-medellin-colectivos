@@ -188,7 +188,7 @@
     "Version": "3.5.0",
     "AntialiasingMode": "Fast",
     "TextAntialiasingMode": "Force",
-    "Keywords": "VC_Transporte,MapServer"
+    "Keywords": ""
   },
   "supportsQueryDomains": true,
   "capabilities": "Map,Query,Data",

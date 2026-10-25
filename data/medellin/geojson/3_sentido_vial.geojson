@@ -468209,13 +468209,13 @@
         "nombre": "Calle 71A",
         "jerarquia_op": 5,
         "oneway": "TF",
-        "nro_carriles": null,
+        "nro_carriles": 2,
         "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1771286400000,
-        "observ": null,
+        "observ": "Resolución 202650009559",
         "municipio": "Medellin",
         "st_length(shape)": 92.42469301961587
       },
@@ -735949,9 +735949,9 @@
         "paso_nivel": null,
         "f_elev": 0,
         "t_elev": 0,
-        "actualizado": 4,
+        "actualizado": null,
         "fecha_act": 1742515200000,
-        "observ": "Acatualización nomenclatura mayo 2022",
+        "observ": "Actualización nomenclatura mayo 2022",
         "municipio": "Medellin",
         "st_length(shape)": 69.14613750746996
       },
@@ -736277,9 +736277,9 @@
         "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
-        "actualizado": 1,
+        "actualizado": null,
         "fecha_act": 1741969305000,
-        "observ": "Resolució 45 de 2015       Actualización nomenclatura mayo 2022",
+        "observ": "Resolución 45 de 2015       Actualización nomenclatura mayo 2022",
         "municipio": "Medellín",
         "st_length(shape)": 104.52498818786431
       },
@@ -835947,7 +835947,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1787529600000,
-        "observ": "Resolución 202650062725 modifica parcialmente Resolución 202550040126",
+        "observ": "Resolución 202650062725 modifica parcialmente Art 1 Res 202550040126, modificada parcial por Res 202650013145",
         "municipio": "Medellin",
         "st_length(shape)": 107.47363144806924
       },
@@ -880621,9 +880621,9 @@
         "paso_nivel": 1,
         "f_elev": 0,
         "t_elev": 0,
-        "actualizado": 4,
+        "actualizado": null,
         "fecha_act": 1742515200000,
-        "observ": "Acatualizació nomenclatura mayo 2022",
+        "observ": "Actualización nomenclatura mayo 2022",
         "municipio": "Medellin",
         "st_length(shape)": 108.08598265419678
       },
@@ -918915,7 +918915,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1773619200000,
-        "observ": "Resolución 202650013145 Modifica Resolución 202550040126",
+        "observ": "Resolución 202650013145 Modifica Res 202550040126",
         "municipio": "Medellin",
         "st_length(shape)": 81.47016879941702
       },
@@ -935367,7 +935367,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1773619200000,
-        "observ": "Resolución 202650013145 Modifica Resolución 202550040126",
+        "observ": "Resolución 202650013145 Modifica Res 202550040126",
         "municipio": "Medellin",
         "st_length(shape)": 53.550922713702846
       },
@@ -954625,9 +954625,9 @@
         "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
-        "actualizado": 1,
+        "actualizado": null,
         "fecha_act": 1773619200000,
-        "observ": "Resolución 202650013145 Modifica Resolución 202550040126",
+        "observ": "Resolución 202650013145 Modifica Res 202550040126",
         "municipio": "Medellín",
         "st_length(shape)": 90.10252920884182
       },
@@ -964187,7 +964187,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1741910400000,
-        "observ": "Acatualización nomenclatura mayo 2022",
+        "observ": "Actualización nomenclatura mayo 2022",
         "municipio": "Medellin",
         "st_length(shape)": 21.91109760973381
       },
@@ -974603,7 +974603,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1773619200000,
-        "observ": "Resolución 202650013145 Modifica Resolución 202550040126",
+        "observ": "Resolución 202650013145 Modifica Res 202550040126",
         "municipio": "Medellin",
         "st_length(shape)": 104.4712307987666
       },
@@ -1020893,7 +1020893,7 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 12.749119508945338
+        "st_length(shape)": 7.420227209416096
       },
       "geometry": {
         "type": "LineString",
@@ -1020903,8 +1020903,8 @@
             2248163.5047999993
           ],
           [
-            4718776.6618,
-            2248153.4148999993
+            4718772.5922,
+            2248157.0865
           ]
         ]
       }
@@ -1027441,7 +1027441,7 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 85.94426959593346
+        "st_length(shape)": 76.99952741677612
       },
       "geometry": {
         "type": "LineString",
@@ -1027455,8 +1027455,8 @@
             2248167.5595999993
           ],
           [
-            4718844.2505,
-            2248204.731899999
+            4718832.9657,
+            2248206.1714999992
           ]
         ]
       }
@@ -1027881,14 +1027881,14 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 50.49688379532689
+        "st_length(shape)": 35.66885287937681
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            4718739.3599,
-            2248204.4825
+            4718748.0249,
+            2248192.4496999998
           ],
           [
             4718768.8686,
@@ -1036155,7 +1036155,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1780012800000,
-        "observ": "Resolución 390 de 2006-anterior Resolución 134 de 1997",
+        "observ": "Resolución 390 de 2006-anterior Res 134 de 1997",
         "municipio": "Medellin",
         "st_length(shape)": 55.69736790133514
       },
@@ -1036567,7 +1036567,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1780012800000,
-        "observ": "Resolución 390 de 2006-anterior Resolución 217 de 1998",
+        "observ": "Resolución 390 de 2006-anterior Res 217 de 1998",
         "municipio": "Medellin",
         "st_length(shape)": 76.10767505482319
       },
@@ -1036599,7 +1036599,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1780012800000,
-        "observ": "Resolución 1877 de 2010- Anteior Resolución 067 de 2000",
+        "observ": "Resolución 1877 de 2010- Anterior Res 067 de 2000",
         "municipio": "Medellin",
         "st_length(shape)": 82.6453470520014
       },
@@ -1042297,14 +1042297,14 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 377.54500139892093
+        "st_length(shape)": 380.37259068947833
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            4718568.2029,
-            2248027.6356000006
+            4718566.4047,
+            2248030.2721999995
           ],
           [
             4718572.593,
@@ -1042344,7 +1042344,7 @@
           ],
           [
             4718619.338981967,
-            2247893.5108285206
+            2247893.51082852
           ],
           [
             4718621.943279534,
@@ -1042367,20 +1042367,60 @@
             2247875.2457999997
           ],
           [
-            4718705.0693,
-            2247857.0878999997
+            4718697.6329,
+            2247859.7556
           ],
           [
-            4718721.5902,
-            2247854.0310999993
+            4718704.127074747,
+            2247857.6588692702
           ],
           [
-            4718743.4491,
-            2247856.0824999996
+            4718710.757191668,
+            2247856.042659188
           ],
           [
-            4718788.9615,
-            2247848.839299999
+            4718717.487747215,
+            2247854.9156243824
+          ],
+          [
+            4718724.2827,
+            2247854.2838000003
+          ],
+          [
+            4718731.4934,
+            2247854.9605
+          ],
+          [
+            4718743.868839813,
+            2247854.346307037
+          ],
+          [
+            4718756.2213221835,
+            2247853.374235617
+          ],
+          [
+            4718768.5405,
+            2247852.0450999998
+          ],
+          [
+            4718777.108869523,
+            2247851.0616054507
+          ],
+          [
+            4718785.5833137985,
+            2247849.459103647
+          ],
+          [
+            4718793.919173975,
+            2247847.2460394953
+          ],
+          [
+            4718802.072521512,
+            2247844.4340754603
+          ],
+          [
+            4718810.000389685,
+            2247841.0380301047
           ],
           [
             4718817.661,
@@ -1053839,7 +1053879,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1780012800000,
-        "observ": "Resolución 390 de 2006-Anterior Rsolución 217 de 1998",
+        "observ": "Resolución 390 de 2006-Anterior Res 217 de 1998",
         "municipio": "Medellin",
         "st_length(shape)": 94.63925288598062
       },
@@ -1060287,7 +1060327,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1780012800000,
-        "observ": "Resolución 390 de 2006-Anterior Resolución 217 de 1998",
+        "observ": "Resolución 390 de 2006-Anterior Res 217 de 1998",
         "municipio": "Medellin",
         "st_length(shape)": 76.45395975477948
       },
@@ -1110101,13 +1110141,13 @@
         "nombre": "Carrera 78 (anterior-Carrera 8)",
         "jerarquia_op": 6,
         "oneway": "DW",
-        "nro_carriles": null,
-        "paso_nivel": null,
+        "nro_carriles": 2,
+        "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1780012800000,
-        "observ": "Resolución 202650026357 de 2026",
+        "observ": "Resolución 202650026357",
         "municipio": "Medellin",
         "st_length(shape)": 60.36185954325078
       },
@@ -1110617,7 +1110657,7 @@
         "nombre": "Carrera 10",
         "jerarquia_op": 6,
         "oneway": "FT",
-        "nro_carriles": null,
+        "nro_carriles": 2,
         "paso_nivel": null,
         "f_elev": 0,
         "t_elev": 0,
@@ -1110715,7 +1110755,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1780012800000,
-        "observ": "Resolución 390 de 2006-anterior Resolución 134 de 1997",
+        "observ": "Resolución 390 de 2006-anterior Res 134 de 1997",
         "municipio": "Medellin",
         "st_length(shape)": 53.30029711456014
       },
@@ -1117667,7 +1117707,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1780012800000,
-        "observ": "Resolución 390 de 2006-anterior Resolución 134 de 1997",
+        "observ": "Resolución 390 de 2006-anterior Res 134 de 1997",
         "municipio": "Medellin",
         "st_length(shape)": 43.501720923766555
       },
@@ -1233297,13 +1233337,13 @@
         "nombre": "Carrera 33",
         "jerarquia_op": 5,
         "oneway": "FT",
-        "nro_carriles": null,
+        "nro_carriles": 2,
         "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1771286400000,
-        "observ": null,
+        "observ": "Resolución 202650009559",
         "municipio": "Medellin",
         "st_length(shape)": 83.2578674816628
       },
@@ -1233329,13 +1233369,13 @@
         "nombre": "Calle 71A",
         "jerarquia_op": 5,
         "oneway": "FT",
-        "nro_carriles": null,
+        "nro_carriles": 2,
         "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1771286400000,
-        "observ": null,
+        "observ": "Resolución 202650009559",
         "municipio": "Medellin",
         "st_length(shape)": 91.36404221989747
       },
@@ -1283321,7 +1283361,7 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 51.43341862833459
+        "st_length(shape)": 51.057890294737796
       },
       "geometry": {
         "type": "LineString",
@@ -1283331,8 +1283371,8 @@
             2248128.6469
           ],
           [
-            4718838.8631,
-            2248148.0156999994
+            4718835.4308,
+            2248154.180400001
           ]
         ]
       }
@@ -1283605,7 +1283645,7 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 105.47368173276206
+        "st_length(shape)": 106.8692081081339
       },
       "geometry": {
         "type": "LineString",
@@ -1283615,8 +1283655,16 @@
             2248089.2238
           ],
           [
-            4718776.6618,
-            2248153.4148999993
+            4718701.6434,
+            2248106.8954000007
+          ],
+          [
+            4718708.8146,
+            2248114.7389
+          ],
+          [
+            4718772.5922,
+            2248157.0865
           ]
         ]
       }
@@ -1283637,14 +1283685,14 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 28.727661958561647
+        "st_length(shape)": 33.99495219316441
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            4718776.6618,
-            2248153.4148999993
+            4718772.5922,
+            2248157.0865
           ],
           [
             4718791.216,
@@ -1294208,16 +1294256,16 @@
         "id_svial": 120816,
         "nombre": "Carrera 22",
         "jerarquia_op": 5,
-        "oneway": "DW",
+        "oneway": "N",
         "nro_carriles": null,
-        "paso_nivel": null,
+        "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
         "actualizado": null,
-        "fecha_act": null,
+        "fecha_act": 1792022400000,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 161.61724736158993
+        "st_length(shape)": 139.32441877291976
       },
       "geometry": {
         "type": "LineString",
@@ -1294227,24 +1294275,44 @@
             2248426.4779000003
           ],
           [
-            4718720.2308,
-            2248400.3001000006
+            4718749.6359,
+            2248416.7545999996
           ],
           [
-            4718663.3985,
-            2248373.7409000006
+            4718711.4245,
+            2248398.5286
+          ],
+          [
+            4718696.723568552,
+            2248392.1048199646
+          ],
+          [
+            4718682.290482294,
+            2248385.099939066
+          ],
+          [
+            4718668.1482,
+            2248377.5251
+          ],
+          [
+            4718663.765936886,
+            2248374.6396767152
+          ],
+          [
+            4718659.149642851,
+            2248372.1457386822
+          ],
+          [
+            4718654.334201173,
+            2248370.0621314803
           ],
           [
             4718649.356,
             2248368.4046
           ],
           [
-            4718640.29,
-            2248364.7975999992
-          ],
-          [
-            4718644.3214,
-            2248345.0939000007
+            4718642.3194,
+            2248365.6050000004
           ]
         ]
       }
@@ -1294265,14 +1294333,14 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 48.51167461050668
+        "st_length(shape)": 52.876362680129645
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            4718768.5367,
-            2248377.9782999996
+            4718768.0682,
+            2248373.6051000003
           ],
           [
             4718767.4544,
@@ -1296437,7 +1296505,7 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 117.64321214018628
+        "st_length(shape)": 61.454272661590956
       },
       "geometry": {
         "type": "LineString",
@@ -1296447,8 +1296515,8 @@
             2248323.9672999997
           ],
           [
-            4718768.5367,
-            2248377.9782999996
+            4718717.4703,
+            2248354.3022000007
           ]
         ]
       }
@@ -1296469,7 +1296537,7 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 61.93641961866122
+        "st_length(shape)": 57.538196058938105
       },
       "geometry": {
         "type": "LineString",
@@ -1296487,8 +1296555,8 @@
             2248354.7328999992
           ],
           [
-            4718768.5367,
-            2248377.9782999996
+            4718768.0682,
+            2248373.6051000003
           ]
         ]
       }
@@ -1297189,13 +1297257,13 @@
         "nombre": "Carrera 32",
         "jerarquia_op": 5,
         "oneway": "FT",
-        "nro_carriles": null,
+        "nro_carriles": 2,
         "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1771286400000,
-        "observ": null,
+        "observ": "Resolución 202650009559",
         "municipio": "Medellin",
         "st_length(shape)": 49.0872005522373
       },
@@ -1310721,7 +1310789,7 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 301.20813442888755
+        "st_length(shape)": 133.60128795670545
       },
       "geometry": {
         "type": "LineString",
@@ -1310753,30 +1310821,6 @@
           [
             4718630.582,
             2248238.8684
-          ],
-          [
-            4718632.1797,
-            2248215.1457
-          ],
-          [
-            4718633.0963,
-            2248187.596999999
-          ],
-          [
-            4718638.1799,
-            2248170.5361
-          ],
-          [
-            4718658.628,
-            2248132.3198000006
-          ],
-          [
-            4718675.4553,
-            2248110.1646
-          ],
-          [
-            4718692.9707,
-            2248089.2238
           ]
         ]
       }
@@ -1319961,13 +1320005,13 @@
         "nombre": "Carrera 33",
         "jerarquia_op": 5,
         "oneway": "TF",
-        "nro_carriles": null,
+        "nro_carriles": 2,
         "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1771286400000,
-        "observ": null,
+        "observ": "Resolución 202650009559",
         "municipio": "Medellin",
         "st_length(shape)": 47.07698668694277
       },
@@ -1320269,13 +1320313,13 @@
         "nombre": "Calle 72",
         "jerarquia_op": 5,
         "oneway": "TF",
-        "nro_carriles": null,
+        "nro_carriles": 2,
         "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1771286400000,
-        "observ": null,
+        "observ": "Resolución 202650009559",
         "municipio": "Medellin",
         "st_length(shape)": 131.53049350397492
       },
@@ -1343215,7 +1343259,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1742515200000,
-        "observ": "Acatualización nomenclatura mayo 2022",
+        "observ": "Actualización nomenclatura mayo 2022",
         "municipio": "Medellin",
         "st_length(shape)": 35.63873432091885
       },
@@ -1441251,7 +1441295,7 @@
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": null,
-        "observ": "resolución 941 de 2006",
+        "observ": "Resolución 941 de 2006",
         "municipio": "Medellin",
         "st_length(shape)": 83.57055739952565
       },
@@ -1477966,18 +1478010,18 @@
       "properties": {
         "objectid": 32821,
         "id_svial": 135899,
-        "nombre": null,
+        "nombre": "Calle 52A",
         "jerarquia_op": null,
         "oneway": "DW",
-        "nro_carriles": null,
-        "paso_nivel": null,
+        "nro_carriles": 2,
+        "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
         "actualizado": null,
-        "fecha_act": null,
+        "fecha_act": 1791331200000,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 172.42528534757002
+        "st_length(shape)": 174.63989528970149
       },
       "geometry": {
         "type": "LineString",
@@ -1478079,12 +1478123,16 @@
             2248022.317
           ],
           [
-            4718574.8394,
-            2248027.040100001
+            4718575.588946049,
+            2248025.6659254706
           ],
           [
-            4718568.2029,
-            2248027.6356000006
+            4718570.5826,
+            2248028.6712999996
+          ],
+          [
+            4718566.4047,
+            2248030.2721999995
           ]
         ]
       }
@@ -1489137,30 +1489185,14 @@
         "fecha_act": null,
         "observ": null,
         "municipio": "Medellin",
-        "st_length(shape)": 297.4690071000957
+        "st_length(shape)": 89.37186843561776
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            4718568.2029,
-            2248027.6356000006
-          ],
-          [
-            4718557.4848,
-            2248043.3505000006
-          ],
-          [
-            4718546.3435,
-            2248059.0672999993
-          ],
-          [
-            4718536.2861,
-            2248080.0703999996
-          ],
-          [
-            4718522.2888,
-            2248117.8136
+            4718521.0446,
+            2248122.6993000004
           ],
           [
             4718515.4351,
@@ -1489179,48 +1489211,8 @@
             2248203.5720000006
           ],
           [
-            4718480.7754,
-            2248220.794399999
-          ],
-          [
-            4718469.0937,
-            2248234.0610000007
-          ],
-          [
-            4718465.964137419,
-            2248236.819754086
-          ],
-          [
-            4718462.446129356,
-            2248239.0621869857
-          ],
-          [
-            4718458.62405953,
-            2248240.734511207
-          ],
-          [
-            4718454.589604959,
-            2248241.7966140094
-          ],
-          [
-            4718450.439536965,
-            2248242.22301956
-          ],
-          [
-            4718446.2734,
-            2248242.0034999996
-          ],
-          [
-            4718428.0455,
-            2248236.8007999994
-          ],
-          [
-            4718415.6295,
-            2248235.9114999995
-          ],
-          [
-            4718406.8884,
-            2248238.596999999
+            4718491.4545,
+            2248206.341600001
           ]
         ]
       }
@@ -1537230,16 +1537222,16 @@
       "properties": {
         "objectid": 33398,
         "id_svial": 135664,
-        "nombre": null,
+        "nombre": "Carrera 32",
         "jerarquia_op": null,
         "oneway": "FT",
-        "nro_carriles": null,
+        "nro_carriles": 1,
         "paso_nivel": 0,
         "f_elev": 0,
         "t_elev": 0,
         "actualizado": null,
         "fecha_act": 1771286400000,
-        "observ": null,
+        "observ": "Resolución 202650009559",
         "municipio": "Medellin",
         "st_length(shape)": 27.804159486280934
       },
@@ -1650624,6 +1650616,1074 @@
           [
             4713215.2508,
             2251932.5467000008
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58227,
+        "id_svial": 139601,
+        "nombre": "Calle  56A",
+        "jerarquia_op": 4,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 14.828030915955042
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718739.3599,
+            2248204.4825
+          ],
+          [
+            4718748.0249,
+            2248192.4496999998
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58228,
+        "id_svial": 139602,
+        "nombre": "Calle  56",
+        "jerarquia_op": 5,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 39.45384312678706
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718668.1043,
+            2248119.8430000003
+          ],
+          [
+            4718675.4553,
+            2248110.1646
+          ],
+          [
+            4718692.9707,
+            2248089.2238
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58229,
+        "id_svial": 139603,
+        "nombre": "Carrera 20",
+        "jerarquia_op": null,
+        "oneway": "N",
+        "nro_carriles": null,
+        "paso_nivel": 0,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": 1785888000000,
+        "observ": null,
+        "municipio": "Medellín",
+        "st_length(shape)": 107.72797654352014
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718658.118,
+            2248133.2729
+          ],
+          [
+            4718664.0914,
+            2248137.6415
+          ],
+          [
+            4718676.4281,
+            2248145.8071999997
+          ],
+          [
+            4718694.522,
+            2248156.3227999993
+          ],
+          [
+            4718710.971,
+            2248166.251
+          ],
+          [
+            4718730.416,
+            2248179.351399999
+          ],
+          [
+            4718740.5204,
+            2248186.8708999995
+          ],
+          [
+            4718748.0249,
+            2248192.4496999998
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58230,
+        "id_svial": 139604,
+        "nombre": "Carrera 19",
+        "jerarquia_op": null,
+        "oneway": "DW",
+        "nro_carriles": 1,
+        "paso_nivel": 0,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": 1791936000000,
+        "observ": null,
+        "municipio": "Medellín",
+        "st_length(shape)": 35.87366604543902
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718692.9707,
+            2248089.2238
+          ],
+          [
+            4718685.5082,
+            2248081.3479999993
+          ],
+          [
+            4718666.0116,
+            2248065.6611
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58231,
+        "id_svial": 139605,
+        "nombre": "Carrera 20",
+        "jerarquia_op": null,
+        "oneway": "N",
+        "nro_carriles": null,
+        "paso_nivel": 0,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": 1791331200000,
+        "observ": null,
+        "municipio": "Medellín",
+        "st_length(shape)": 79.52467608780086
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718596.7648,
+            2248085.3817999996
+          ],
+          [
+            4718612.4518,
+            2248095.018100001
+          ],
+          [
+            4718627.262183193,
+            2248101.0805614274
+          ],
+          [
+            4718642.257,
+            2248106.6712999996
+          ],
+          [
+            4718654.1089,
+            2248112.1064999998
+          ],
+          [
+            4718658.669279321,
+            2248114.0143875945
+          ],
+          [
+            4718663.0906,
+            2248116.2255000006
+          ],
+          [
+            4718668.1043,
+            2248119.8430000003
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58232,
+        "id_svial": 139606,
+        "nombre": "Calle  56",
+        "jerarquia_op": 5,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 16.748479381113384
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718658.118,
+            2248133.2729
+          ],
+          [
+            4718658.628,
+            2248132.3198000006
+          ],
+          [
+            4718668.1043,
+            2248119.8430000003
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58233,
+        "id_svial": 139607,
+        "nombre": "Calle  56",
+        "jerarquia_op": 5,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 18.47752255630456
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718649.4008,
+            2248149.5648999996
+          ],
+          [
+            4718658.118,
+            2248133.2729
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58234,
+        "id_svial": 139608,
+        "nombre": "Carrera 20A",
+        "jerarquia_op": null,
+        "oneway": "N",
+        "nro_carriles": null,
+        "paso_nivel": 0,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": 1791331200000,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 134.07009143086316
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718649.4008,
+            2248149.5648999996
+          ],
+          [
+            4718643.2952,
+            2248151.446900001
+          ],
+          [
+            4718638.6542,
+            2248153.1504999995
+          ],
+          [
+            4718637.222610252,
+            2248153.4905167962
+          ],
+          [
+            4718635.758246121,
+            2248153.634385896
+          ],
+          [
+            4718634.287856412,
+            2248153.5794793135
+          ],
+          [
+            4718632.8383,
+            2248153.3268
+          ],
+          [
+            4718628.315368244,
+            2248152.0093942303
+          ],
+          [
+            4718623.7326,
+            2248150.9181999993
+          ],
+          [
+            4718622.70746496,
+            2248151.047520786
+          ],
+          [
+            4718621.674543384,
+            2248151.021087236
+          ],
+          [
+            4718620.657364771,
+            2248150.839501492
+          ],
+          [
+            4718619.6791,
+            2248150.5068999995
+          ],
+          [
+            4718587.0162,
+            2248133.1180000007
+          ],
+          [
+            4718567.3949,
+            2248122.4848999996
+          ],
+          [
+            4718554.5882,
+            2248116.6689999998
+          ],
+          [
+            4718539.9603,
+            2248110.6768999994
+          ],
+          [
+            4718526.5187,
+            2248106.4078
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58235,
+        "id_svial": 139609,
+        "nombre": "Calle 52",
+        "jerarquia_op": 4,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 86.47288032037584
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718566.4047,
+            2248030.2721999995
+          ],
+          [
+            4718557.4848,
+            2248043.3505000006
+          ],
+          [
+            4718546.3435,
+            2248059.0672999993
+          ],
+          [
+            4718536.2861,
+            2248080.0703999996
+          ],
+          [
+            4718526.5187,
+            2248106.4078
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58236,
+        "id_svial": 139610,
+        "nombre": "Calle  56",
+        "jerarquia_op": 5,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 50.187572569077574
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718632.8103,
+            2248196.1931999996
+          ],
+          [
+            4718633.0963,
+            2248187.596999999
+          ],
+          [
+            4718638.1799,
+            2248170.5361
+          ],
+          [
+            4718649.4008,
+            2248149.5648999996
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58237,
+        "id_svial": 139611,
+        "nombre": "Carrera 20B",
+        "jerarquia_op": null,
+        "oneway": "N",
+        "nro_carriles": null,
+        "paso_nivel": 0,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": 1791331200000,
+        "observ": null,
+        "municipio": "Medellín",
+        "st_length(shape)": 105.21216276440452
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718632.8103,
+            2248196.1931999996
+          ],
+          [
+            4718625.8734,
+            2248194.8275000006
+          ],
+          [
+            4718620.4348718,
+            2248193.646315556
+          ],
+          [
+            4718615.0828,
+            2248192.1205
+          ],
+          [
+            4718607.031570705,
+            2248189.346245685
+          ],
+          [
+            4718599.1414,
+            2248186.1425
+          ],
+          [
+            4718581.7713,
+            2248180.615599999
+          ],
+          [
+            4718571.196832081,
+            2248177.4724323284
+          ],
+          [
+            4718560.5662,
+            2248174.5248000007
+          ],
+          [
+            4718556.141466557,
+            2248173.174336817
+          ],
+          [
+            4718551.6556,
+            2248172.043400001
+          ],
+          [
+            4718548.1295929,
+            2248170.9795964267
+          ],
+          [
+            4718544.7,
+            2248169.6371
+          ],
+          [
+            4718539.0979,
+            2248167.682
+          ],
+          [
+            4718535.55624659,
+            2248167.247796233
+          ],
+          [
+            4718531.992,
+            2248167.080499999
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58238,
+        "id_svial": 139612,
+        "nombre": "Calle  56",
+        "jerarquia_op": 5,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 42.73942883953216
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718630.582,
+            2248238.8684
+          ],
+          [
+            4718632.1797,
+            2248215.1457
+          ],
+          [
+            4718632.8103,
+            2248196.1931999996
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58239,
+        "id_svial": 139613,
+        "nombre": "Carrera 20C",
+        "jerarquia_op": null,
+        "oneway": "N",
+        "nro_carriles": null,
+        "paso_nivel": 0,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": 1791331200000,
+        "observ": null,
+        "municipio": "Medellín",
+        "st_length(shape)": 116.40691854155827
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718630.582,
+            2248238.8684
+          ],
+          [
+            4718621.9629,
+            2248235.6598000005
+          ],
+          [
+            4718608.745,
+            2248230.5195000004
+          ],
+          [
+            4718601.4935,
+            2248228.1328999996
+          ],
+          [
+            4718585.9808,
+            2248222.8090000004
+          ],
+          [
+            4718576.0673,
+            2248219.5045
+          ],
+          [
+            4718568.6873,
+            2248217.242799999
+          ],
+          [
+            4718553.2958,
+            2248211.955600001
+          ],
+          [
+            4718535.9656,
+            2248206.3159999996
+          ],
+          [
+            4718527.5061,
+            2248203.8486
+          ],
+          [
+            4718523.3351,
+            2248202.615
+          ],
+          [
+            4718520.2803,
+            2248201.7925000004
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58240,
+        "id_svial": 139614,
+        "nombre": "Calle 52",
+        "jerarquia_op": 4,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 73.02807415809036
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718474.0161,
+            2248228.4706999995
+          ],
+          [
+            4718469.0937,
+            2248234.0610000007
+          ],
+          [
+            4718465.964137419,
+            2248236.819754086
+          ],
+          [
+            4718462.446129356,
+            2248239.0621869857
+          ],
+          [
+            4718458.62405953,
+            2248240.734511207
+          ],
+          [
+            4718454.589604959,
+            2248241.7966140094
+          ],
+          [
+            4718450.439536965,
+            2248242.22301956
+          ],
+          [
+            4718446.2734,
+            2248242.0034999996
+          ],
+          [
+            4718428.0455,
+            2248236.8007999994
+          ],
+          [
+            4718415.6295,
+            2248235.9114999995
+          ],
+          [
+            4718406.8884,
+            2248238.596999999
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58241,
+        "id_svial": 139615,
+        "nombre": "Carrera 21",
+        "jerarquia_op": null,
+        "oneway": "N",
+        "nro_carriles": null,
+        "paso_nivel": 0,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": 1791331200000,
+        "observ": null,
+        "municipio": "Medellín",
+        "st_length(shape)": 29.81806163826908
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718474.0161,
+            2248228.4706999995
+          ],
+          [
+            4718479.7669,
+            2248232.2118999995
+          ],
+          [
+            4718492.2447,
+            2248240.1001999993
+          ],
+          [
+            4718499.1291,
+            2248244.5462999996
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58242,
+        "id_svial": 139616,
+        "nombre": "Calle 52",
+        "jerarquia_op": 4,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 28.19824350116935
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718491.4545,
+            2248206.341600001
+          ],
+          [
+            4718480.7754,
+            2248220.794399999
+          ],
+          [
+            4718474.0161,
+            2248228.4706999995
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58243,
+        "id_svial": 139617,
+        "nombre": "Carrera 20C",
+        "jerarquia_op": null,
+        "oneway": "N",
+        "nro_carriles": null,
+        "paso_nivel": 0,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": 1791331200000,
+        "observ": null,
+        "municipio": "Medellín",
+        "st_length(shape)": 23.662885552042447
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718491.4545,
+            2248206.341600001
+          ],
+          [
+            4718496.353772535,
+            2248205.7847926226
+          ],
+          [
+            4718501.2145,
+            2248204.9563999996
+          ],
+          [
+            4718505.495375333,
+            2248204.233248785
+          ],
+          [
+            4718509.8289,
+            2248203.969799999
+          ],
+          [
+            4718512.376745995,
+            2248204.2095856504
+          ],
+          [
+            4718514.858,
+            2248204.835999999
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58244,
+        "id_svial": 139618,
+        "nombre": "Calle 52",
+        "jerarquia_op": 4,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 17.20651736780275
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718526.5187,
+            2248106.4078
+          ],
+          [
+            4718522.2888,
+            2248117.8136
+          ],
+          [
+            4718521.0446,
+            2248122.6993000004
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58245,
+        "id_svial": 139619,
+        "nombre": "Calle 52",
+        "jerarquia_op": null,
+        "oneway": "N",
+        "nro_carriles": null,
+        "paso_nivel": 0,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": 1791331200000,
+        "observ": null,
+        "municipio": "Medellín",
+        "st_length(shape)": 43.63980023546995
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718521.0446,
+            2248122.6993000004
+          ],
+          [
+            4718524.0848,
+            2248131.5284
+          ],
+          [
+            4718527.3836,
+            2248146.7313
+          ],
+          [
+            4718530.3955,
+            2248165.232999999
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58627,
+        "id_svial": 139620,
+        "nombre": "Carrera 22",
+        "jerarquia_op": 5,
+        "oneway": "DW",
+        "nro_carriles": null,
+        "paso_nivel": null,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": null,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 22.572726183559904
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718642.3194,
+            2248365.6050000004
+          ],
+          [
+            4718641.941192389,
+            2248365.6016225303
+          ],
+          [
+            4718641.568491633,
+            2248365.537228803
+          ],
+          [
+            4718641.211076397,
+            2248365.413508336
+          ],
+          [
+            4718640.878324292,
+            2248365.2337072203
+          ],
+          [
+            4718640.578965833,
+            2248365.002542952
+          ],
+          [
+            4718640.320855383,
+            2248364.726080658
+          ],
+          [
+            4718640.1107650595,
+            2248364.4115739632
+          ],
+          [
+            4718639.954207067,
+            2248364.0672746743
+          ],
+          [
+            4718639.855289066,
+            2248363.7022162764
+          ],
+          [
+            4718639.816606398,
+            2248363.325976916
+          ],
+          [
+            4718639.839173989,
+            2248362.9484280995
+          ],
+          [
+            4718639.9223997295,
+            2248362.579475689
+          ],
+          [
+            4718640.0641,
+            2248362.2288000006
+          ],
+          [
+            4718644.3214,
+            2248345.0939000007
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid": 58628,
+        "id_svial": 139621,
+        "nombre": "Carrera 21",
+        "jerarquia_op": 5,
+        "oneway": "N",
+        "nro_carriles": null,
+        "paso_nivel": 0,
+        "f_elev": 0,
+        "t_elev": 0,
+        "actualizado": null,
+        "fecha_act": 1792022400000,
+        "observ": null,
+        "municipio": "Medellin",
+        "st_length(shape)": 54.45217919348543
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4718717.4703,
+            2248354.3022000007
+          ],
+          [
+            4718725.357120527,
+            2248358.7922181687
+          ],
+          [
+            4718733.503939477,
+            2248362.7911607986
+          ],
+          [
+            4718741.880216557,
+            2248366.2840368985
+          ],
+          [
+            4718750.454551292,
+            2248369.25775259
+          ],
+          [
+            4718759.194800743,
+            2248371.701160189
+          ],
+          [
+            4718768.0682,
+            2248373.6051000003
           ]
         ]
       }
