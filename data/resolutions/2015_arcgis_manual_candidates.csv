@@ -1,0 +1,45 @@
+arcgis_id_ruta,historical_system,historical_pdf_page,candidate_relation,review_note
+90212,6C,7,name_match_popular_centro,Popular Centro versus 6C2; old and current codes unrelated
+90214,6C,9,name_match_popular_ferrocarril,Popular Ferrocarril versus 6C3; old and current codes unrelated
+90223,6C,17,name_match_campo_valdes_oriental,Campo Valdés Oriental versus 6C7
+90220,6C,19,name_match_campo_valdes_centro,Campo Valdés Centro versus 6C8
+90222,6C,21,name_match_campo_valdes_ferrocarril,Campo Valdés Ferrocarril versus 6C9
+90227,6D,532,name_match_mansion,080 V-M is Mansion; historical 080
+90228,6D,532,family_extension_directa_oriental,080 V-O is a newer direct variant; not proved same timetable
+90226,6D,532,family_extension_directa_33,080 V-33 is a newer direct variant; not proved same timetable
+90230,6D,536,name_match_los_angeles,082 V-LA matches Los Ángeles base name
+90231,6D,536,family_extension_directa,082 V-LAD is direct variant; do not reuse old base frequency
+90370,6D,536,pilot_extension_not_legally_current,082 V-LA PILOTO may be temporary; no 2015 proof of pilot service
+90337,6D,538,family_extension_minorista,085 La Honda Minorista differs from base 085
+90209,6B,68,anillo_direction_split,041D Anillo derecha cannot be equated to historical 041A without amendment
+90210,6B,68,anillo_direction_split,041I Anillo izquierda cannot be equated to historical 041A without amendment
+90375,6B,132,same_place_missing_operator,"024 Barrial: Playón de los Comuneros, no operator in ArcGIS; not verified equivalent"
+90057,2A,320,feeder_blanco_code_family,246 Blanquizal versus historical 246 AL2; feeder may be distinct
+90075,2A,332,kennedy_name_family,252 Kennedy versus historical 252 AL8 Ferrini Kennedy
+90080,2A,336,picacho_name_family,254 Picacho versus historical 254 AL10 Picachito Edificios
+90074,2A,352,margaritas_name_multiple_fiches,251 Margaritas versus 251B Margaritas
+90074,2A,385,margaritas_name_multiple_fiches,251 Margaritas versus 251i Margaritas; competing 2015 fiche
+90071,2A,324,huerta_name_family,250AH La Huerta versus historical 250A AL4 Huerta
+90066,2A,381,tulipanes_huerta_name,250Aii Tulipanes La Huerta integrated; historical 250iii integrated
+90070,2A,347,robledo_villa_flora_name,250VF Robledo Villa Flora versus historical 250B Robledo-Villa Flora
+90068,2A,347,villa_flora_integrated_variant,250iVF Villa Flora integrada; historical 250B direct? distinct
+90072,2A,349,moravia_name_family,250M Moravia versus historical 250AT Moravia Huerta Tulipanes
+90073,2A,379,pajarito_name_family,250AP Pajarito versus historical 250ii Las Hamacas-Pajarito
+90065,2A,379,pajarito_integrated_variant,250AiP Pajarito integrada versus historical 250ii
+90067,2A,383,robledales_name,250R Robledales versus historical 250Ai Santa María-Robledales
+90069,2A,328,robledal_name,250iR Robledal integrada versus historical 250M AL6 Robledal
+90076,2A,334,aures_name_family,253D Aures derecha versus historical 253 AL9 Robledo Aures
+90078,2A,387,aures_integrated_variant,253iA Robledo Aures integrada versus historical 253i
+90079,2A,387,aures_integrated_branch,253iAR Ramal compared with historical 253i; branch may differ
+90318,8A,166,divisa_name_with_feeder_code,242 La Divisa versus historical 242 AL6 Alimentadora Divisa
+90319,8A,164,quiebra_name_with_feeder_code,242 La Quiebra versus historical 242 AL5 Alimentadora Quiebra
+90328,8A,224,left_direction_split,C23i izquierda and 2015 C23-i generic; direction split
+90355,8A,224,right_direction_split,C23i derecha and 2015 C23-i generic; direction split
+90329,8A,228,asomadera_veredal_name,C23i Asomadera versus historical C23iAV
+90330,8A,230,patio_veredal_name,C23i El Patio versus historical C23iPV
+90332,8A,232,playas_veredal_name,C23i Las Playas versus historical C23iLPV
+90333,8A,234,pedregal_alto_vs_bajo_conflict,Historical Pedregal Alto versus ArcGIS Pedregal Bajo: cannot approve
+90331,8A,236,palma_veredal_name,C23i La Palma versus historical C23iPALV
+90297,8A,156,santa_monica_feeder_vs_direct,202 Santa Mónica-Oriental versus historical 202 AL1 feeder
+90302,8A,158,san_javier_derecho_family,221A San Javier Derecho versus historical 221 AL2 feeder
+90305,8A,160,san_javier_niza_family,222 San Javier Niza versus historical 222 AL3 feeder
