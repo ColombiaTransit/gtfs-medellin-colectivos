@@ -120,6 +120,13 @@ See `priority_source_documents.csv`. Official individual PDFs have been located 
   not committed to the repo. Run manually with **Actions → Recover Medellín
   official resolution PDFs → Run workflow** if the first attempt fails.
 
+**Recovery run succeeded:** [GitHub Actions #44077028708](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44077028708) downloaded **4 of 4 official PDFs** (full Gaceta 4327, resolutions 1047 and 1169 in 4327, and resolution 1166 in 4326). Source archive bytes and SHA-256 checksums are recorded in \`pdf_recovery_provenance_2026-11-17.json\`. The ZIP artifact expires after 30 days; do not treat the artifact as a permanent substitute for the official PDF links.
+
+- \`gaceta_4327_res_1047_visual_verified.csv\`: **all 11 distinct printed technical-fiche occurrences** (ten route codes; 097 has two variants) checked **directly from the recovered original scanned PDF**. The source prints 2015 service windows for weekdays, Saturdays and Sundays/holidays and eight intervals per fiche. This register supersedes the provisional OCR candidate file for the same page.
+- The indexed text **misread** the Sunday start for route 097 El Vergel (source prints **05:00**) and the weekday HMD for route 112 (source prints **6 min**, not 5).
+- **Genuine printed anomalies, not OCR errors**: the first route 097 fiche prints weekday/saturday end **10:30** and weekday DÍA **48 min** while HMD is **4 min**; route 110 actually prints interval values **32,0,42,0,49,1,49,1**, including zero-minute HMD values. These must not be accepted as literal valid GTFS headways just because they are printed. Route 113M prints weekday HMD **2 min**. Route 113's header has **113M** while its technical \`CÓDIGO\` is **113**; retain the source conflict.
+- Printed values are verified **as historical source values**, not automatically current, operator-allocated, or GTFS-compatible. The shared SICO UT listing identifies participating companies but does not mean each runs every trip.
+
 **No source in this section is enabled as GTFS timetable input.**
 First review originals and later amendment chain for current applicability.
 
