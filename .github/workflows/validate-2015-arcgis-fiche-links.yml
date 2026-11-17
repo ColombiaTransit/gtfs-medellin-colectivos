@@ -1,0 +1,23 @@
+name: Validate historical 2015-to-ArcGIS route links
+
+# Research-only read-only route-link QA. Never writes source data or GTFS.
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'data/resolutions/**'
+      - 'scripts/validate_2015_arcgis_links.py'
+      - '.github/workflows/validate-2015-arcgis-fiche-links.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate 2015 source linkage provenance and no-GTFS-import safeguards
+        run: python scripts/validate_2015_arcgis_links.py
