@@ -1,0 +1,40 @@
+name: Probe Medellín 2025 official gazette archives
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/medellin-2025-resolution-amendments
+    paths:
+      - .github/workflows/probe-medellin-2025-gacetas.yml
+
+permissions:
+  contents: read
+
+jobs:
+  archive-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check Python syntax
+        run: python -m py_compile scripts/probe_medellin_2025_gacetas.py
+      - name: Inspect official archive URLs
+        run: python scripts/probe_medellin_2025_gacetas.py
+      - name: Upload temporary source discovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: medellin-2025-official-archive-probes
+          path: artifacts/medellin-2025-probe/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Summary
+        if: always()
+        run: |
+          if [[ -f artifacts/medellin-2025-probe/README.md ]]; then
+            cat artifacts/medellin-2025-probe/README.md >> "$GITHUB_STEP_SUMMARY"
+          fi
