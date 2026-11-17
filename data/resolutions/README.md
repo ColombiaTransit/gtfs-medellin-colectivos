@@ -268,6 +268,79 @@ status. For shared operation, one variant gets one service, with
 operator attributions as appropriate. **No active GTFS feed is changed
 by these research files.**
 
+## Route-level amendment review and uncovered systems (17 November 2026)
+
+### Current ArcGIS review queue, not a GTFS change
+
+`current_arcgis_legal_review_queue.csv` maps the existing **504 direction
+records** to **252 unique ArcGIS route IDs** and assigns *research order*
+(not route activity status or evidence of a specific schedule change):
+
+| Queue | ArcGIS IDs | Meaning |
+|---|---:|---|
+| P0 | 3 | Explicit route-code match in the 2025 gazette contents: Circular 301, 313, 315 |
+| P1 | 72 | Listed operator/systems potentially in scope of 2025 acts; exact affected variants not established |
+| P2 | 81 | 2017–2024 legal-change leads or 6F/SITRANSCO original text pending |
+| P3 | 96 | No direct relevant amendment in the current index, or older-source route matching still needed |
+
+Only **73/252** currently have a candidate exact normalized
+**route-code + system** match with a visually checked *2015* fiche.
+Even those 73 are **not legally validated as current**; three normalized
+route-code keys correspond to different historical route-title variants.
+Unmatched does not mean a route lacks legal authorization: system 6F,
+the 6G Santa Elena variants and other later routes are outside the
+verified 2015 source collections or have non-identical naming schemes.
+
+Every queue entry has `frequency_currently_legally_verified=no`.
+No row should be used to suppress a GTFS route, modify its departure
+headways, or claim an amendment actually affected it merely because its
+*operator* appears in a later act.
+
+### System 6F: SITRANSCO
+
+`system_6f_legal_chain.csv` identifies **14 historical act references**
+from 2009–2023 for **Cootransmallat, Cootranspinal and Copatra**.
+The official Secretaría de Movilidad report explicitly associates
+**087, 088, 090, 091, 105 and 106** with 6F; its 2021 act
+`202150041167` approves a joint-operation agreement for SITRANSCO.
+The later `202350086596` (Cootransmallat) and
+`202350089536` (Cootranspinal) modify/clarify operating conditions.
+The reported number `2023350087382` for a 2023 typo correction
+has an unusual format and **must be checked against the primary act**.
+
+A 2009 Cootransmallat act `005` is explicitly said to contain
+frequencies, but **none of its numerical tables has been obtained**.
+Do not sum independently duplicated 6F service if operators run
+the same variant together.
+
+### System 6G: Transacoop / Santa Elena
+
+`system_6g_transacoop_source_leads.csv` preserves three different
+kinds of evidence: a historical reference to a 1998 authorization;
+a **2024 Medellín tourism brochure** reporting buses from Placita de
+Flórez **from 06:00 at an advertised 30-minute interval** toward
+Santa Elena / Parque Arví; and a 2025 tariff-related legal reference.
+The brochure is *not* a technical operational authorization, and
+the cited 30 minutes **must not be applied to each of the nine
+distinct 98 Directa ArcGIS variants**. Fare acts are not schedules.
+
+### Source retrieval and 2026 monitoring
+
+- `docs/request-medellin-transport-resolutions-es.md`: prepared but
+  **unsent** request for the full 2025 Gacetas (5667 and 5671),
+  6F operating changes, 6G 098 frequency acts and later amendments,
+  including the original annexes in PDF/CSV if available.
+- The municipality publicly lists `publicacion.gacetaoficial@medellin.gov.co`
+  for Gazette publication and `atencion.ciudadana@medellin.gov.co`
+  for citizen requests. Sending requires an authorized person/action.
+- `scripts/index_medellin_gaceta_2026_transit_acts.py` and
+  `.github/workflows/index-medellin-2026-transit-acts.yml` scan
+  the new *official* public archive from **28 August 2026 onward**.
+  Only official **act titles** are indexed; no PDF is downloaded or
+  retained. This workflow uses a seven-day research artifact.
+  It does **not** establish that there were no earlier, unpublished,
+  or later changes, nor verify headways.
+
 ## Next source batches, ordered by expected yield
 
 - **Gacetas 5667/5671 (September 2025)**: retrieve the official full
