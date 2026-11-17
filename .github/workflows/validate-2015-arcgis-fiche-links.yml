@@ -1,0 +1,22 @@
+name: Validate historical 2015-to-ArcGIS route links
+
+# Research-only. Runs once when this workflow is created on the research branch.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/link-2015-fiches-to-arcgis-2026-11
+    paths:
+      - .github/workflows/validate-2015-arcgis-fiche-links.yml
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate 2015 source linkage provenance and no-GTFS-import safeguards
+        run: python scripts/validate_2015_arcgis_links.py
