@@ -1,0 +1,56 @@
+name: Recover Medellín official resolution PDFs
+
+# One research run on creation of this workflow branch; manual retry after merge.
+# The municipal PDF server sometimes times out from the Netherlands.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/gaceta-4327-6a-source-recovery
+    paths:
+      - .github/workflows/recover-medellin-resolution-pdfs.yml
+
+permissions:
+  contents: read
+
+jobs:
+  recover:
+    name: Recover municipal PDFs
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out source catalog and downloader
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate downloader syntax
+        run: python -m py_compile scripts/recover_medellin_pdfs.py
+
+      - name: Download official PDFs (HTML responses rejected)
+        run: |
+          python scripts/recover_medellin_pdfs.py \
+            --catalog data/resolutions/official_pdf_sources.json \
+            --output artifacts/resolutions
+
+      - name: Publish archive with PDFs, text and status report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: medellin-official-resolutions-recovery
+          path: artifacts/resolutions/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Publish summary of successes and failures
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f artifacts/resolutions/README.md ]]; then
+            cat artifacts/resolutions/README.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Downloader did not produce a report." >> "$GITHUB_STEP_SUMMARY"
+          fi
