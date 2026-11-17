@@ -82,8 +82,8 @@ def extract(item, label):
     raw = text_of(div)
     clean = re.sub(r"\n{3,}", "\n\n", raw)
     item["legal_body_chars"] = len(clean)
-    item["legal_body_excerpt"] = clean[:32000]
-    item["legal_body_truncated"] = len(clean) > 32000
+    item["legal_body_excerpt"] = clean[:100000]
+    item["legal_body_truncated"] = len(clean) > 100000
     item["term_hits"] = {}
     for term in TERMS:
         found = []
