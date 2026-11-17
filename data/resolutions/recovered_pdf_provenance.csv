@@ -1,0 +1,5 @@
+gaceta,resolution_or_scope,temporary_download_filename,original_pdf_bytes,original_pdf_sha256,download_run,download_date,retention_policy
+4327,complete,gaceta_4327.pdf,35853870,50bedd42ad90cc9b5ac665b09dc27f349577e4c3ccd2e5d127021540cfc72783,https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44077028708,2026-11-17,PDF artifact temporary; do not commit PDFs
+4327,1047,res_1047_2015.pdf,2678781,de02333b2f9ad94b85a19d47c514202f77009bd19eb7d86f4bf4e06b8f01a9d8,https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44077028708,2026-11-17,PDF artifact temporary; do not commit PDFs
+4326,1166,res_1166_2015.pdf,4811115,6a2aa991252390cca12c905c709dbbc7a10f57c5992429406b46d9d138f7b216,https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44077028708,2026-11-17,PDF artifact temporary; do not commit PDFs
+4327,1169,res_1169_2015.pdf,4951054,7d100fe9dfa0171a9ee47adbd235b9a8b8867b40251f4f48f09ee73cc2db2e89,https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44077028708,2026-11-17,PDF artifact temporary; do not commit PDFs
