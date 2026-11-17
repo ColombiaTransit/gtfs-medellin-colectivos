@@ -11,7 +11,7 @@ family (3 routes). 738 real stops, 66 trips, all `frequencies.txt`-based.
 |---|---|---|
 | `taxmaya.com` (scraped) | Route names/descriptions, first/last-departure hours for `C23`/`C23i` only | `scripts/scrape_taxmaya.py` |
 | Medellín ArcGIS transport layers (`VC_Transporte`) | Current official route geometry (per-direction) + stops (per-direction) for all 13 known Tax Maya `id_ruta`s | `scripts/download_medellin_transporte_layers.py`, `raw/medellin_raw/` |
-| Gaceta Oficial N°4325 (Resolución 1042 de 2015) | Real official headway/schedule data for 9 of the 11 built routes | `data/taxmaya_route_mapping.yml` |
+| Gaceta Oficial N°4325 (Resolución 1155 de 2015) | Real official headway/schedule data for 9 of the 11 built routes | `data/taxmaya_route_mapping.yml` |
 | Real schedule-board photos (shared directly) | Richer real per-day-type hours (not just headway) for `195`/`195i` specifically | `data/taxmaya_route_mapping.yml` |
 
 Unlike `trscsas.com`, `taxmaya.com`'s real content is present in the plain
