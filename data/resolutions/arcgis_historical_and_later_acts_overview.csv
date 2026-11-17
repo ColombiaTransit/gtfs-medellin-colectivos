@@ -16,7 +16,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90011,308,"Circular 304, 305, 308, 308D, 309, 309D",Coinvetrans,2025-08-14,no_2015_candidate,,186;201850066263,,202550076150,,,3,P1_2025_operator_scope,no,no
 90009,304,"Circular 304, 305, 308, 308D, 309, 309D",Invetrans,2025-08-14,no_2015_candidate,,186;201850066263;201950069342,,202550076150,,,4,P1_2025_operator_scope,no,no
 90012,308D,"Circular 304, 305, 308, 308D, 309, 309D",Coinvetrans,2025-08-14,no_2015_candidate,,186;201850066263,,202550076150,,,3,P1_2025_operator_scope,no,no
-90065,250AiP,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p379:250ii,,,,,,0,P3_unmatched_legal_source,no,no
+90065,250AiP,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p379:250ii,202250015351,,,,,1,P2_previous_amendment,no,no
 90014,309D,"Circular 304, 305, 308, 308D, 309, 309D",Coinvetrans,2025-08-14,no_2015_candidate,,186;201850066263;201950076641,,202550076150,,,4,P1_2025_operator_scope,no,no
 90066,250Aii,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p381:250iii,,,,,,0,P3_unmatched_legal_source,no,no
 90010,305,"Circular 304, 305, 308, 308D, 309, 309D",Invetrans,2025-08-14,no_2015_candidate,,186;201850066263,,202550076150,,,3,P1_2025_operator_scope,no,no
@@ -171,7 +171,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90285,193,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p176:193,202150064544;301,,,,,2,P2_previous_amendment,no,no
 90343,111,6A,Flota la Milagrosa,2025-08-14,code_variant_review,4327:p408:111,201950070736,,,,,1,P2_previous_amendment,no,no
 90286,193i,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p188:193-i,202150064544;301,,,,,2,P2_previous_amendment,no,no
-90073,250AP,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p379:250ii,,,,,,0,P3_unmatched_legal_source,no,no
+90073,250AP,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p379:250ii,202250015351,,,,,1,P2_previous_amendment,no,no
 90080,254,2A,Transporte Medellín Castilla,2025-08-14,possible_historical_family,4326:p336:254 AL10,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90288,195,8A,Tax Maya,2025-08-14,strong_2015_identity,4325:p178:195,201950094698,,,,,1,P2_previous_amendment,no,no
 90361,311iiR,8A,Coonatra,2025-08-14,no_2015_candidate,,172;201750008728;201950047211;202150129152;202150129154;389,,,,,6,P2_previous_amendment,no,no
