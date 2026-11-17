@@ -2,11 +2,6 @@ name: Probe Medellín 2025 official gazette archives
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/medellin-2025-resolution-amendments
-    paths:
-      - .github/workflows/probe-medellin-2025-gacetas.yml
 
 permissions:
   contents: read
