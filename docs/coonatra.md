@@ -18,7 +18,7 @@ government resolution. **17 routes** as of the last build: 768 real stops,
 | Coonatra KML exports | Real route geometry + named landmark stops, one line per route (not split by direction) | `scripts/fetch_coonatra_kml.py`, `raw/coonatra_kml/` |
 | `Frecuencias-rutas-Calasanz.pdf` | Real literal departure times for the Calasanz-Boston family (uploaded directly, not scraped) | `scripts/parse_coonatra_pdf.py` |
 | Medellín ArcGIS transport layers (`VC_Transporte`) | Current official route geometry (per-direction) + stops (per-direction), for routes matched to a real `id_ruta` | `scripts/download_medellin_transporte_layers.py`, `raw/medellin_raw/` |
-| Gaceta Oficial N°4325 (Resolución 1042 de 2015) | Real official headway/schedule data for 3 routes, from a 336-page municipal gazette uploaded directly (PDF, scanned/OCR'd) | `data/coonatra_gaceta_2015_frequencies.yml` |
+| Gaceta Oficial N°4325 (Resoluciones 1154/1155 de 2015) | Real official headway/schedule data for 3 routes, from a 336-page municipal gazette uploaded directly (PDF, scanned/OCR'd) | `data/coonatra_gaceta_2015_frequencies.yml` |
 
 ## Route families
 
@@ -74,7 +74,7 @@ spatial-only — no schedule source resolved for this family.
 ## Gaceta Oficial N°4325 (2015) — real frequency data for 3 routes
 
 A citizen uploaded this 336-page municipal gazette directly (containing
-Resolución 1042 de 2015, a system-wide route restructuring). It has
+Resoluciones 1154/1155 de 2015, documenting the 8A route system). It has
 individual "FICHA TÉCNICA" pages per route with real headway/schedule
 data — but it's **11 years older than the ArcGIS layers**, so per the
 project owner's explicit direction: **ArcGIS geometry is trusted over the
