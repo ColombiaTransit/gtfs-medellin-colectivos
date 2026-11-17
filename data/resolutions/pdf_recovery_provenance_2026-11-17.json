@@ -1,0 +1,37 @@
+{
+  "retrieved_at_utc": "2026-11-17",
+  "github_actions_run_id": 44077028708,
+  "github_actions_run_url": "https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44077028708",
+  "artifact_name": "medellin-official-resolutions-recovery",
+  "note": "Source archive and checksums only, not evidence that historical legal operating times remain current.",
+  "documents": [
+    {
+      "filename": "gaceta_4327.pdf",
+      "bytes": 35853870,
+      "sha256": "50bedd42ad90cc9b5ac665b09dc27f349577e4c3ccd2e5d127021540cfc72783",
+      "pages": 556,
+      "download_status": "verified_pdf_header_and_sha256"
+    },
+    {
+      "filename": "res_1047_2015.pdf",
+      "bytes": 2678781,
+      "sha256": "de02333b2f9ad94b85a19d47c514202f77009bd19eb7d86f4bf4e06b8f01a9d8",
+      "pages": 34,
+      "download_status": "verified_pdf_header_and_sha256"
+    },
+    {
+      "filename": "res_1166_2015.pdf",
+      "bytes": 4811115,
+      "sha256": "6a2aa991252390cca12c905c709dbbc7a10f57c5992429406b46d9d138f7b216",
+      "pages": 89,
+      "download_status": "verified_pdf_header_and_sha256"
+    },
+    {
+      "filename": "res_1169_2015.pdf",
+      "bytes": 4951054,
+      "sha256": "7d100fe9dfa0171a9ee47adbd235b9a8b8867b40251f4f48f09ee73cc2db2e89",
+      "pages": 89,
+      "download_status": "verified_pdf_header_and_sha256"
+    }
+  ]
+}
