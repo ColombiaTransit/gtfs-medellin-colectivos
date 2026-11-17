@@ -422,8 +422,8 @@ No PDF is committed or retained through this linkage process.
 
 ### Post-2015 legal amendment overlay (separate from the 2015 historical identity)
 
-`arcgis_post_2015_resolution_candidates.csv` now attaches **518
-candidate route-to-act references** to **238/252** ArcGIS IDs. The previous
+`arcgis_post_2015_resolution_candidates.csv` now attaches **540
+candidate route-to-act references** to **250/252** ArcGIS IDs. The previous
 96 without a post-2015 act lead were researched separately; 80 of those
 now have at least one *candidate* source, 16 remain unmatched.
 The underlying official municipality **report/contents references** are
@@ -460,8 +460,9 @@ matching method and explicit `original_act_read=no`,
 252-row research overview** joining the historic fiche status,
 Gaceta/page references and the later-act lists. Its review priority
 breakdown is P0=3 explicit 2025 title/code links; P1=72 operator-only
-2025 scope; P2=163 other later-act candidates; P3=14 without a found
-post-2015 act candidate in the sources checked. This is **not a classification of actually amended routes**.
+2025 scope; P2=153 other later-act candidates; P3=2 without a found
+post-2015 act candidate in the sources checked (P1=94 after adding
+22 Palenque operator-level candidate associations). This is **not a classification of actually amended routes**.
 
 `unresolved_16_after_missing96_search.csv` is the earlier **snapshot** of 16:
 **14 Palenque Robledal** variants, **Tax Maya 195ii**, and **Flota Nueva
@@ -534,6 +535,96 @@ a 2022 amendment title verifies a 2026 effective frequency, service
 window or even actual operation. The GTFS must not import these
 historical values. No PDF files are permanently retained; no PQRSD
 has been submitted.
+
+## Original ASTREA legal chain — Palenque Robledal 2025 restructuring
+
+**Primary municipal HTML:** [Resolución 202550088689 of 30 October 2025](https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_88689_2025.htm),
+published **11 November 2025**, Gaceta **5694**, p. 3 onward.
+This **operator-wide** restructuring of system **2A** supersedes earlier
+Palenque Robledal operating permissions including the verified **2015
+Resolución 1169**, **2017 201750021300**, and **2022 202250015351**.
+Article 7 expressly repeals **16 named acts**; those are indexed in
+\`palenque_2025_expressly_repealed_previous_acts.csv\`. Publication
+marks its legal start; its status against possible *later* 2026
+amendments has not yet been definitively audited.
+
+The original [2022 resolution](https://www.medellin.gov.co/normograma/docs/astrea/docs/R_SMMED_15351_2022.htm)
+is in **Gaceta 4933 (25 February 2022), p. 16**.
+It only modified **routing geometry** of **250AP and 250AiP** via
+Article 1 of **201750021300 (19 December 2017)**, keeping all
+other 2017 provisions unchanged. Original 2022 text has a typo
+\`250IP\` in a route header; the actual scope is \`250AIP\`.
+**Neither 2017 nor 2022 is the operative legal timetable after the
+2025-wide repeal.**
+
+### Extracted official 2025 timetable tables
+
+\`palenque_2025_official_route_service_intervals.csv\` contains **20
+official legal user codes** from Articles 2, 3 and 4 of the 2025
+resolution: **19 ordinary routes plus one conditional \`250-5i\`**
+which replaces \`250-3i\` **only when Línea J is suspended** for
+authorized maintenance/continuity. Never treat both as independent
+regular simultaneously active routes.
+
+For **each** route, the source CSV stores six first/last service clock
+values (weekday, Saturday, Sunday/holiday), plus **nine maximum dispatch
+intervals**: peak, extreme off-peak and midday off-peak for each of the
+three day types. These are legally published **maximum** intervals,
+not measured current headways or a timetable with an inferred peak
+clock period. Article 7 defines **extreme off-peak (PVE) before 04:30
+and after 20:30**, but does not fully define every peak clock boundary.
+Do not generate 24-hour GTFS frequencies by extrapolating these
+intervals without further period definitions and timetable logic.
+
+**Source anomalies preserved:**
+- Printed GTPC code **207050** occurs both for normal \`253-i\`
+  Aures Integrada and conditional \`250-5i\` Aurora integrada
+  continuidad; use **GTPC + user route code**, not GTPC alone.
+- Sunday/holiday \`251\` Margaritas ends at **11:50** in the original
+  source; recorded verbatim (not silently extended).
+- Article 7's final repeals clause is headed **ARTÍCULO SÉPTIMO**
+  again after Article 8; the duplication is a source editorial defect,
+  not a reason to discount the explicit repeal.
+
+**QA:** the read-only workflow
+\`.github/workflows/validate-palenque-2025-official-tables.yml\`
+retrieves the official ASTREA HTML in a GitHub runner, checks the
+**20 route-code pairs, every 6 service clock values and all 9 headway
+values** against its table text and rejects discrepancies. See
+[run 44115217984](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44115217984).
+The original HTML is read transiently; no PDF or full document is
+committed to Git or long-term artifact storage.
+
+### ArcGIS 2025 vs legally restructured 2A routes
+
+The earlier ArcGIS snapshot (14 August 2025) lists **22 Palenque
+Robledal route IDs** using *older* codes. The 2025 law was
+published **after** that snapshot and now has **19 regular newly
+coded services** (and the one Línea J contingency).
+It merges some older services, e.g. \`260C + 260T\` into
+\`260-1 Córdoba/Torres\` and \`260CL + 260BR\` into
+\`260-2 Clínica/Brisas\`, and changes user-code nomenclature.
+
+\`palenque_2025_old_arcgis_to_new_legal_route_candidates.csv\`
+preserves the **22 pre-restructure ArcGIS ID/code/name records** with
+**conservative possible 2025 legal replacements** and explicit
+\`automatic_GTFS_import_allowed=no\`. Several are one-to-many or
+many-to-one, and \`253iAR\` appears in the municipal rationale as a
+proposed removal, not as a separately authorized service in Article 2.
+Do not simply delete an ArcGIS ID or map a new legal route to an old
+shape before checking the official map annex. Every old ArcGIS ID has
+an **operator/scope** link to the official 2025 act
+\`202550088689\` (not a one-to-one legal variant match).
+
+After this original-act recovery, the project has **541?** legal act
+links placeholder (review counts before merge).
+The **only two ArcGIS IDs without any later-act candidate** are
+Tax Maya \`195ii\` and Flota Nueva Villa \`082 V-LA PILOTO\`, recorded in
+\`unresolved_2_after_palenque_2025_astrea.csv\`. This is *source
+discovery coverage*, not verification that each old route is active in
+November 2026. Original 2015 frequencies are kept as historical
+research data and are **not** used to override the newer 2025
+authorization. PQRSD has not been filed and is not currently planned.
 
 ## Next source batches, ordered by expected yield
 
