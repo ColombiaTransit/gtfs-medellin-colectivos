@@ -351,6 +351,75 @@ distinct 98 Directa ArcGIS variants**. Fare acts are not schedules.
   unpublished, pre-August-2026 or post-November-12 changes, nor verify
   actual headways.
 
+## ArcGIS 2025 ↔ historical 2015 fiche linkage (November 2026)
+
+**Policy:** the 2015 Gacetas are a historical **published** timetable baseline,
+not confirmation of currently authorized or actually operated service.
+ArcGIS is the source for **present-listed route identities / operators /
+itinerary geometry**, but it is not itself a published timetable and does not
+prove a route still operates in November 2026.
+
+The `data/medellin/routes.csv` transport-layer snapshot stores the same
+`from_date` and `fecha_actualizacion` value on **all 252 unique
+`id_ruta` values**: **2025-08-14T14:41:03.247Z** (504 direction rows).
+This is consistent with a **bulk import/update timestamp**, not 252
+independent last-modified observations, and predates the September 2025
+amendments. Do not label this layer "current as of November 2026".
+
+### Candidate registers
+
+- `2015_arcgis_fiche_candidate_links.csv`: one row for each 2015-source
+  candidate and one explicitly unmatched row for each current route without
+  any candidate. Each linkage records the actual current `id_ruta`,
+  `codigo`, current `nombre`, `sistema`, operator, and 2015
+  **Gaceta, resolution, PDF page, official route code and printed variant**.
+  Contains **267 rows**, including repeated/competing 2015 candidate pages.
+  These are research links; no route-specific frequency is enabled.
+- `2015_arcgis_route_link_status.csv`: **252 ArcGIS IDs, exactly one
+  row each** with the best source-link *research* confidence.
+  Count by category: **41 strong historical identity** (same normalized
+  code/system and high name agreement without code duplication),
+  **32 code/variant-review**, **38 name/family-only provisional
+  candidates**, **141 no fiche candidate**; thus **111** current route IDs
+  have at least one historical reference, **141** do not.
+- `2015_arcgis_manual_candidates.csv`: **44 human-reviewed proposals**
+  for 43 ArcGIS IDs whose modern route code differs from a printed
+  2015 code, or where a source code is shared by multiple directions/
+  variants. Every row includes a reason. The matching is **not**
+  established legal supersession, and some proposed links intentionally
+  conflict and must remain tentative.
+
+Examples of *candidate* changes: modern `031 P-C` ↔ historical
+`6C2 POPULAR-CENTRO`; `51-52 CV-O` ↔ `6C7 CAMPO VALDEZ-ORIENTAL`;
+`080 V-M` ↔ historical `080 MANSIÓN`; `252 Kennedy` ↔
+`252 AL8 Ferrini-Kennedy`. These support **historical route-family
+identification only**; a newer direct, integrated or special-service
+variant must NOT inherit the 2015 headway by default.
+
+Counterexamples explicitly held for review:
+- `C23i` maps to several **different** ArcGIS village names; the
+  Gaceta's generic `C23-i` is not interchangeable with `C23iAV`,
+  `C23iPV`, `C23iLPV`, `C23iPAV` or `C23iPALV`.
+  **ArcGIS Pedregal Bajo vs printed Pedregal Alto** is a known conflict.
+- `097` is two separately named original fiches, while several modern
+  `97` records repeat the code. `255A` and `111` have multiple
+  newer subvariants with one older base code.
+- `041D/041I` are separate modern anillo directions; the historical
+  `041A` fiche is merely a possible older family.
+- A pilot route, direct route, feeder `AL` or detour may have its own
+  timetable. No splitting, summing, averaging or copying of headways
+  is performed here.
+
+**No candidate is verified as the currently legal frequency in 2026.**
+Every mapping explicitly sets `verified_current_frequency=no` and
+`gtfs_import_allowed=no`. No old frequency may enter the GTFS solely
+due to a name or code match. Actual effectivity and modifications from
+2017–2026 remain separate research in
+`current_arcgis_legal_review_queue.csv` and the amendment registers.
+Validate the mapping integrity with
+`python scripts/validate_2015_arcgis_links.py`.
+No PDF is committed or retained through this linkage process.
+
 ## Next source batches, ordered by expected yield
 
 - **Gacetas 5667/5671 (September 2025)**: retrieve the official full
