@@ -157,6 +157,76 @@ def main():
     print(f"OK: {len(arc_by_id)} ArcGIS IDs; {len(links)} linkage rows; "
           f"{len(source_by_page)} 2015 fiche occurrences; status: {dict(status_counter)}")
     print("Every 2015 source is historical only; GTFS auto-import disabled.")
+    # Newer legal act references are a second evidence layer. Their existence
+    # does not establish an effective 2026 frequency or amended timetable.
+    later = load(RES / "arcgis_post_2015_resolution_candidates.csv")
+    joined = load(RES / "arcgis_historical_and_later_acts_overview.csv")
+    assert len(later) == 359, "Later-act candidate register changed; review scope"
+    assert len(joined) == len(arc_by_id), "Every current ArcGIS ID needs combined legal provenance"
+    assert_unique(joined, lambda x: x["arcgis_id_ruta"], "combined legal overview")
+    assert_unique(later, lambda x: (
+        x["arcgis_id_ruta"], x["resolution"], x["source_register"]
+    ), "post-2015 act links")
+
+    valid_sources = {
+        "2017_2024_act_chain_index.csv",
+        "2025_amendment_route_scopes.csv",
+        "system_6f_legal_chain.csv",
+        "shared_route_229_provenance.csv",
+    }
+    by_route = defaultdict(list)
+    for r in later:
+        assert r["arcgis_id_ruta"] in arc_by_id
+        current = arc_by_id[r["arcgis_id_ruta"]]
+        assert r["arcgis_code"] == current["codigo_ruta"]
+        assert r["arcgis_system"] == current["sistema"]
+        assert r["arcgis_operator"] == current["empresa"]
+        assert r["source_register"] in valid_sources
+        assert r["issued_on"] >= "2016-01-01"
+        assert r["original_act_read"] == "no"
+        assert r["revised_frequency_verified"] == "no"
+        assert r["effectivity_confirmed_as_of_2026"] == "unknown"
+        assert r["permit_gtfs_schedule_use"] == "no"
+        by_route[r["arcgis_id_ruta"]].append(r)
+
+    assert len(by_route) == 156, "Act-scope route count changed"
+    priorities = Counter()
+    explicit_2025 = 0
+    operator_2025 = 0
+    for x in joined:
+        route_id = x["arcgis_id_ruta"]
+        old = next(y for y in summary if y["arcgis_id_ruta"] == route_id)
+        assert x["historic_2015_match_status"] == old["best_historical_link_status"]
+        assert x["historic_2015_gaceta_and_page_refs"] == old["historical_fiche_refs"]
+        assert x["verified_latest_effective_frequency"] == "no"
+        assert x["2015_to_GTFS_automated_import_allowed"] == "no"
+        acts = by_route[route_id]
+        assert int(x["total_later_candidate_act_links"]) == len({
+            a["resolution"] for a in acts
+        })
+        has_explicit = bool(x["2025_explicit_route_act_numbers"])
+        has_operator = bool(x["2025_operator_scope_candidate_act_numbers"])
+        explicit_2025 += int(has_explicit)
+        operator_2025 += int(has_operator)
+        expected = (
+            "P0_explicit_2025" if has_explicit else
+            "P1_2025_operator_scope" if has_operator else
+            "P2_previous_amendment" if acts else
+            "P3_unmatched_legal_source"
+        )
+        assert x["priority_to_check"] == expected
+        priorities[expected] += 1
+    assert explicit_2025 == 3 and operator_2025 == 72
+    assert priorities == {
+        "P0_explicit_2025": 3, "P1_2025_operator_scope": 72,
+        "P2_previous_amendment": 81, "P3_unmatched_legal_source": 96
+    }, priorities
+    print(f"OK: {len(later)} post-2015 act candidates, "
+          f"{len(by_route)} connected ArcGIS routes, "
+          f"{len(joined)} integrated route summaries, "
+          f"priorities: {dict(priorities)}")
+    print("All later-act links are preliminary: no legally current timetable verified.")
+
     return 0
 
 
