@@ -10,7 +10,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90005,300,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,,172;201950047211;202150181337;202250071653,,,,,4,P2_previous_amendment,no,no
 90224,51-52 CV-SD,6C,Expreso Campo Valdés,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
 90063,246i,2A,Cootransblan,2025-08-14,strong_2015_identity,4326:p371:246i,,,,,,0,P3_unmatched_legal_source,no,no
-90254,106,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,005;1002;201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596;2098,,9,P2_previous_amendment,no,no
+90254,106,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
 90008,311,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,,172;201950047211;202150129152,,,,,3,P2_previous_amendment,no,no
 90007,310,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,,172;201950047211;202150129152,,,,,3,P2_previous_amendment,no,no
 90011,308,"Circular 304, 305, 308, 308D, 309, 309D",Coinvetrans,2025-08-14,no_2015_candidate,,186;201850066263,,202550076150,,,3,P1_2025_operator_scope,no,no
@@ -40,7 +40,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90077,253I,2A,Palenque Robledal,2025-08-14,strong_2015_identity,4326:p387:253i,,,,,,0,P3_unmatched_legal_source,no,no
 90184,102D,6A,Cootranscataluña,2025-08-14,no_2015_candidate,,201950070736,,,,,1,P2_previous_amendment,no,no
 90078,253iA,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p387:253i,,,,,,0,P3_unmatched_legal_source,no,no
-90239,87,6F,Cootranspinal,2025-08-14,no_2015_candidate,,,,,1002;201750005329;201850052586;201850062870;202150041167;202350089536;2098;2197;898,,9,P2_previous_amendment,no,no
+90239,87,6F,Cootranspinal,2025-08-14,no_2015_candidate,,,,,201750005329;201850052586;201850062870;202150041167;202350089536,,5,P2_previous_amendment,no,no
 90317,240,8A,Conducciones América,2025-08-14,no_2015_candidate,,201850015842;201950052919;202150044996,,,,,3,P2_previous_amendment,no,no
 90079,253iAR,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p387:253i,,,,,,0,P3_unmatched_legal_source,no,no
 90087,255V1,2A,Rápido San Cristóbal,2025-08-14,strong_2015_identity,4326:p360:255V1,,,202550079865,,,1,P1_2025_operator_scope,no,no
@@ -81,7 +81,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90130,Anillo 3H Carrera 65,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90131,Anillo 3H Carrera 65 Horario Esp,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90133,Anillo F2 Carrera 65,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
-90251,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,005;1002;201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596;2098,,9,P2_previous_amendment,no,no
+90251,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
 90134,Anillo F3 Carrera 65,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90135,Anillo 1 Carrera 73,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90136,Anillo 2 Carrera 73,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
@@ -99,7 +99,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90191,111,6A,Flota la Milagrosa,2025-08-14,code_variant_review,4327:p408:111,201950070736,,,,,1,P2_previous_amendment,no,no
 90217,37 - 39,6C,Autocol,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
 90193,111,6A,Flota la Milagrosa,2025-08-14,code_variant_review,4327:p408:111,201950070736,,,,,1,P2_previous_amendment,no,no
-90250,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,005;1002;201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596;2098,,9,P2_previous_amendment,no,no
+90250,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
 90199,113,6A,Flota la Milagrosa,2025-08-14,strong_2015_identity,4327:p416:113,201950070736,,,,,1,P2_previous_amendment,no,no
 90318,242,8A,Coonatra,2025-08-14,possible_historical_family,4325:p166:242 AL6,201750008728;201950047211;201950089585;389,,,,,4,P2_previous_amendment,no,no
 90319,242,8A,Coonatra,2025-08-14,possible_historical_family,4325:p164:242 AL5,201750008728;201950047211;201950089585;389,,,,,4,P2_previous_amendment,no,no
@@ -114,7 +114,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90222,51-52 CV-F,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p21:6C9,,,,,,0,P3_unmatched_legal_source,no,no
 90211,42,6B,Transporte Aranjuez Santa Cruz,2025-08-14,strong_2015_identity,4325:p70:042,,,,,,0,P3_unmatched_legal_source,no,no
 90236,57,6E,Coopetransa,2025-08-14,no_2015_candidate,,201750008183,,,,,1,P2_previous_amendment,no,no
-90255,106,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,005;1002;201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596;2098,,9,P2_previous_amendment,no,no
+90255,106,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
 90212,031 P-C,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p7:6C2,,,,,,0,P3_unmatched_legal_source,no,no
 90108,261i Der,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90214,031 P-F,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p9:6C3,,,,,,0,P3_unmatched_legal_source,no,no
@@ -131,12 +131,12 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90275,103,6H,Cootransi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
 90237,60,6E,Cootranscol,2025-08-14,no_2015_candidate,,201750008183,,,,,1,P2_previous_amendment,no,no
 90238,069,6E,Coopetransa,2025-08-14,no_2015_candidate,,201750008183;202350107467,,,,,2,P2_previous_amendment,no,no
-90240,087 Horario Esp,6F,Cootranspinal,2025-08-14,no_2015_candidate,,,,,1002;201750005329;201850052586;201850062870;202150041167;202350089536;2098;2197;898,,9,P2_previous_amendment,no,no
-90242,90,6F,Copatra,2025-08-14,no_2015_candidate,,,,,1002;201750005329;201850052586;201850062870;202150041167;2098,,6,P2_previous_amendment,no,no
-90243,91,6F,Copatra,2025-08-14,no_2015_candidate,,,,,1002;201750005329;201850052586;201850062870;202150041167;2098,,6,P2_previous_amendment,no,no
-90244,91,6F,Copatra,2025-08-14,no_2015_candidate,,,,,1002;201750005329;201850052586;201850062870;202150041167;2098,,6,P2_previous_amendment,no,no
-90247,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,005;1002;201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596;2098,,9,P2_previous_amendment,no,no
-90249,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,005;1002;201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596;2098,,9,P2_previous_amendment,no,no
+90240,087 Horario Esp,6F,Cootranspinal,2025-08-14,no_2015_candidate,,,,,201750005329;201850052586;201850062870;202150041167;202350089536,,5,P2_previous_amendment,no,no
+90242,90,6F,Copatra,2025-08-14,no_2015_candidate,,,,,201750005329;201850052586;201850062870;202150041167,,4,P2_previous_amendment,no,no
+90243,91,6F,Copatra,2025-08-14,no_2015_candidate,,,,,201750005329;201850052586;201850062870;202150041167,,4,P2_previous_amendment,no,no
+90244,91,6F,Copatra,2025-08-14,no_2015_candidate,,,,,201750005329;201850052586;201850062870;202150041167,,4,P2_previous_amendment,no,no
+90247,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
+90249,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
 90306,223,8A,Conducciones América,2025-08-14,no_2015_candidate,,201850015842;201950052919;202150006316,,,,,3,P2_previous_amendment,no,no
 90294,201B,8A,Conducciones América,2025-08-14,no_2015_candidate,,201850015842,,,,,1,P2_previous_amendment,no,no
 90266,93,6H,Copatra,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
@@ -230,7 +230,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90231,082 V-LAD,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p536:082,,,,,,0,P3_unmatched_legal_source,no,no
 90277,103,6H,Cootransi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
 90070,250VF,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p347:250B,,,,,,0,P3_unmatched_legal_source,no,no
-90256,106,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,005;1002;201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596;2098,,9,P2_previous_amendment,no,no
+90256,106,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
 90372,255iD Estacion Estadio,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90373,255i Estacion Estadio,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90274,103,6H,Cootransi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
@@ -249,5 +249,5 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90359,107,6H,Cootransvi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
 90363,310R,Circular 310Rosales,Coonatra,2025-08-14,no_2015_candidate,,172;201950047211;202150129152,,,,,3,P2_previous_amendment,no,no
 90376,069 Ramal,6E,Coopetransa,2025-08-14,no_2015_candidate,,201750008183,,,,,1,P2_previous_amendment,no,no
-90252,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,005;1002;201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596;2098,,9,P2_previous_amendment,no,no
-90241,88,6F,Cootranspinal,2025-08-14,no_2015_candidate,,,,,1002;201750005329;201850052586;201850062870;202150041167;202350089536;2098;2197;898,,9,P2_previous_amendment,no,no
+90252,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
+90241,88,6F,Cootranspinal,2025-08-14,no_2015_candidate,,,,,201750005329;201850052586;201850062870;202150041167;202350089536,,5,P2_previous_amendment,no,no
