@@ -1,0 +1,37 @@
+{
+  "notes": "Official municipal PDF source URLs; HTTP failures are network issues, not proof that documents do not exist.",
+  "sources": [
+    {
+      "id": "gaceta_4327",
+      "gaceta": 4327,
+      "resolution": null,
+      "filename": "gaceta_4327.pdf",
+      "url": "https://www.medellin.gov.co/irj/go/km/docs/pccdesign/SubportaldelCiudadano_2/PlandeDesarrollo_0_15/Publicaciones/Shared%20Content/GACETA%20OFICIAL/2015/Gaceta%204327/4327.pdf",
+      "purpose": "Complete official gazette with 2A, 6A and 6D resolutions"
+    },
+    {
+      "id": "res_1047_2015",
+      "gaceta": 4327,
+      "resolution": "1047",
+      "filename": "res_1047_2015.pdf",
+      "url": "https://www.medellin.gov.co/irj/go/km/docs/pccdesign/SubportaldelCiudadano_2/PlandeDesarrollo_0_15/Publicaciones/Shared%20Content/GACETA%20OFICIAL/2015/Gaceta%204327/RESOLUCION%201047%20DE%202015.pdf",
+      "purpose": "Sistema 6A - Flota La V / SICO UT"
+    },
+    {
+      "id": "res_1169_2015",
+      "gaceta": 4327,
+      "resolution": "1169",
+      "filename": "res_1169_2015.pdf",
+      "url": "https://www.medellin.gov.co/irj/go/km/docs/pccdesign/SubportaldelCiudadano_2/PlandeDesarrollo_0_15/Publicaciones/Shared%20Content/GACETA%20OFICIAL/2015/Gaceta%204327/RESOLUCION%201169%20DE%202015.pdf",
+      "purpose": "Sistema 2A - Palenque Robledal and shared-route fichas"
+    },
+    {
+      "id": "res_1166_2015",
+      "gaceta": 4326,
+      "resolution": "1166",
+      "filename": "res_1166_2015.pdf",
+      "url": "https://www.medellin.gov.co/irj/go/km/docs/pccdesign/SubportaldelCiudadano_2/PlandeDesarrollo_0_15/Publicaciones/Shared%20Content/GACETA%20OFICIAL/2015/Gaceta%204326/RESOLUCION%201166%20DE%202015.pdf",
+      "purpose": "Sistema 2A - Transporte Medellín Castilla"
+    }
+  ]
+}
