@@ -100,31 +100,31 @@ See `priority_source_documents.csv`. Official individual PDFs have been located 
 
 ## Gaceta 4327 recovery and 6A OCR-text candidate register (2026-11-17)
 
-- \`gaceta_4327_res_1047_text_candidates.csv\`: **11 indexed fiche occurrences**
+- `gaceta_4327_res_1047_text_candidates.csv`: **11 indexed fiche occurrences**
   from Resolución **1047/2015** (Sistema 6A, SICO UT; municipal PDF),
   including separate printed 097 variants. Text index supplies possible
   service windows and, for some fichas, eight DÍA/HMD dispatch intervals.
-  **Every row is \`indexed_pdf_text_unverified\`** until the original
+  **Every row is `indexed_pdf_text_unverified`** until the original
   PDF page image is checked. Blank interval cells for routes 110/111
   reflect demonstrably corrupted extracted text, *not zero service*.
 - Suspicious printed/indexed values are explicitly flagged: route 097
   weekday end 10:30, route 113M weekday HMD interval 2 minutes, and
   confusing 113B/113M OCR route labels. There is no automatic repair.
-- \`official_pdf_sources.json\`: four exact **official** PDF URLs for
+- `official_pdf_sources.json`: four exact **official** PDF URLs for
   complete Gaceta 4327 plus Resoluciones 1047, 1169 and 1166.
-- \`scripts/recover_medellin_pdfs.py\` with workflow
-  \`.github/workflows/recover-medellin-resolution-pdfs.yml\`: attempts
+- `scripts/recover_medellin_pdfs.py` with workflow
+  `.github/workflows/recover-medellin-resolution-pdfs.yml`: attempts
   bounded parallel retrieval on GitHub runners, rejects HTML error pages,
-  stores successful PDF bytes with SHA-256 and optional \`pdftotext\` output.
+  stores successful PDF bytes with SHA-256 and optional `pdftotext` output.
   The first successful run produced an **original 30-day Actions artifact**;
   later runs use **7-day artifact retention**. PDFs are never committed to Git. Run manually with **Actions → Recover Medellín
   official resolution PDFs → Run workflow** if the first attempt fails.
 
-**Recovery run succeeded:** [GitHub Actions #44077028708](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44077028708) downloaded **4 of 4 official PDFs** (full Gaceta 4327, resolutions 1047 and 1169 in 4327, and resolution 1166 in 4326). Source archive bytes and SHA-256 checksums are recorded in \`pdf_recovery_provenance_2026-11-17.json\`. The ZIP artifact expires after 30 days; do not treat the artifact as a permanent substitute for the official PDF links.
+**Recovery run succeeded:** [GitHub Actions #44077028708](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44077028708) downloaded **4 of 4 official PDFs** (full Gaceta 4327, resolutions 1047 and 1169 in 4327, and resolution 1166 in 4326). Source archive bytes and SHA-256 checksums are recorded in `pdf_recovery_provenance_2026-11-17.json`. The ZIP artifact expires after 30 days; do not treat the artifact as a permanent substitute for the official PDF links.
 
-- \`gaceta_4327_res_1047_visual_verified.csv\`: **all 11 distinct printed technical-fiche occurrences** (ten route codes; 097 has two variants) checked **directly from the recovered original scanned PDF**. The source prints 2015 service windows for weekdays, Saturdays and Sundays/holidays and eight intervals per fiche. This register supersedes the provisional OCR candidate file for the same page.
+- `gaceta_4327_res_1047_visual_verified.csv`: **all 11 distinct printed technical-fiche occurrences** (ten route codes; 097 has two variants) checked **directly from the recovered original scanned PDF**. The source prints 2015 service windows for weekdays, Saturdays and Sundays/holidays and eight intervals per fiche. This register supersedes the provisional OCR candidate file for the same page.
 - The indexed text **misread** the Sunday start for route 097 El Vergel (source prints **05:00**) and the weekday HMD for route 112 (source prints **6 min**, not 5).
-- **Genuine printed anomalies, not OCR errors**: the first route 097 fiche prints weekday/saturday end **10:30** and weekday DÍA **48 min** while HMD is **4 min**; route 110 actually prints interval values **32,0,42,0,49,1,49,1**, including zero-minute HMD values. These must not be accepted as literal valid GTFS headways just because they are printed. Route 113M prints weekday HMD **2 min**. Route 113's header has **113M** while its technical \`CÓDIGO\` is **113**; retain the source conflict.
+- **Genuine printed anomalies, not OCR errors**: the first route 097 fiche prints weekday/saturday end **10:30** and weekday DÍA **48 min** while HMD is **4 min**; route 110 actually prints interval values **32,0,42,0,49,1,49,1**, including zero-minute HMD values. These must not be accepted as literal valid GTFS headways just because they are printed. Route 113M prints weekday HMD **2 min**. Route 113's header has **113M** while its technical `CÓDIGO` is **113**; retain the source conflict.
 - Printed values are verified **as historical source values**, not automatically current, operator-allocated, or GTFS-compatible. The shared SICO UT listing identifies participating companies but does not mean each runs every trip.
 
 **No source in this section is enabled as GTFS timetable input.**
@@ -459,10 +459,9 @@ matching method and explicit `original_act_read=no`,
 `arcgis_historical_and_later_acts_overview.csv` is the **single
 252-row research overview** joining the historic fiche status,
 Gaceta/page references and the later-act lists. Its review priority
-breakdown is P0=3 explicit 2025 title/code links; P1=72 operator-only
-2025 scope; P2=153 other later-act candidates; P3=2 without a found
-post-2015 act candidate in the sources checked (P1=94 after adding
-22 Palenque operator-level candidate associations). This is **not a classification of actually amended routes**.
+breakdown is **P0=3** exact code matches for 2025 contents,
+**P1=94** operator/system-scope candidates, **P2=153** other later
+act leads and **P3=2** without later-act candidates. This is **not a classification of actually amended routes**.
 
 `unresolved_16_after_missing96_search.csv` is the earlier **snapshot** of 16:
 **14 Palenque Robledal** variants, **Tax Maya 195ii**, and **Flota Nueva
@@ -487,7 +486,7 @@ simply by taking the newest act. All integrated rows carry
 
 ### Focused follow-up: 14 formerly unlinked Palenque Robledal variants
 
-- \`palenque_14_post2015_source_evidence.csv\` audits **all 14**
+- `palenque_14_post2015_source_evidence.csv` audits **all 14**
   route IDs in the 2025-08-14 ArcGIS snapshot. The **official 2017
   Medellín transport plan for the papal visit** lists **nine exact
   current codes** (250M, 252, 260CL, 260C, 260BR, 260T, 250AH, 251,
@@ -501,20 +500,20 @@ simply by taking the newest act. All integrated rows carry
   **Resolución 202250015351 (2022-02-24)** as a partial amendment of
   operating conditions concerning both **250AP (ArcGIS 90073) and
   250AiP (ArcGIS 90065)**. The report truncates the 2017
-  antecedent's number as \`2017500213…\`; do not conflate it with
+  antecedent's number as `2017500213…`; do not conflate it with
   any other act or guess its missing digits.
   **No original 2022 resolution/annex or current headway has been
   read.** These are two **exact route-level act-reference leads**,
   not two newly verified timetables.
-- \`arcgis_post_2015_resolution_candidates.csv\` is updated from 516
-  to **518** route-to-act associations across **238/252** current
-  ArcGIS IDs. \`arcgis_historical_and_later_acts_overview.csv\`
-  and \`current_arcgis_legal_review_queue.csv\` now have P0=3,
+- Historical snapshot prior to finding the full 2025 act: the route
+  association register then contained **518** links across **238/252**
+  ArcGIS IDs. See the newer 2025 restructuring section for current counts. `arcgis_historical_and_later_acts_overview.csv`
+  and `current_arcgis_legal_review_queue.csv` now have P0=3,
   P1=72, P2=163, P3=14.
-- \`unresolved_14_after_palenque_search.csv\` is the **current
+- `unresolved_14_after_palenque_search.csv` is the **current
   research shortlist**: **12 distinct Palenque Robledal variants**
   plus Tax Maya 195ii and Flota Nueva Villa 082 V-LA PILOTO.
-  The old \`unresolved_16_after_missing96_search.csv\` is retained
+  The old `unresolved_16_after_missing96_search.csv` is retained
   for historical/audit purposes only.
 
 **Remaining Palenque questions:** 250M, 250Aii, 252, 253iAR, 260CL,
@@ -544,7 +543,7 @@ This **operator-wide** restructuring of system **2A** supersedes earlier
 Palenque Robledal operating permissions including the verified **2015
 Resolución 1169**, **2017 201750021300**, and **2022 202250015351**.
 Article 7 expressly repeals **16 named acts**; those are indexed in
-\`palenque_2025_expressly_repealed_previous_acts.csv\`. Publication
+`palenque_2025_expressly_repealed_previous_acts.csv`. Publication
 marks its legal start; its status against possible *later* 2026
 amendments has not yet been definitively audited.
 
@@ -553,16 +552,16 @@ is in **Gaceta 4933 (25 February 2022), p. 16**.
 It only modified **routing geometry** of **250AP and 250AiP** via
 Article 1 of **201750021300 (19 December 2017)**, keeping all
 other 2017 provisions unchanged. Original 2022 text has a typo
-\`250IP\` in a route header; the actual scope is \`250AIP\`.
+`250IP` in a route header; the actual scope is `250AIP`.
 **Neither 2017 nor 2022 is the operative legal timetable after the
 2025-wide repeal.**
 
 ### Extracted official 2025 timetable tables
 
-\`palenque_2025_official_route_service_intervals.csv\` contains **20
+`palenque_2025_official_route_service_intervals.csv` contains **20
 official legal user codes** from Articles 2, 3 and 4 of the 2025
-resolution: **19 ordinary routes plus one conditional \`250-5i\`**
-which replaces \`250-3i\` **only when Línea J is suspended** for
+resolution: **19 ordinary routes plus one conditional `250-5i`**
+which replaces `250-3i` **only when Línea J is suspended** for
 authorized maintenance/continuity. Never treat both as independent
 regular simultaneously active routes.
 
@@ -577,17 +576,17 @@ Do not generate 24-hour GTFS frequencies by extrapolating these
 intervals without further period definitions and timetable logic.
 
 **Source anomalies preserved:**
-- Printed GTPC code **207050** occurs both for normal \`253-i\`
-  Aures Integrada and conditional \`250-5i\` Aurora integrada
+- Printed GTPC code **207050** occurs both for normal `253-i`
+  Aures Integrada and conditional `250-5i` Aurora integrada
   continuidad; use **GTPC + user route code**, not GTPC alone.
-- Sunday/holiday \`251\` Margaritas ends at **11:50** in the original
+- Sunday/holiday `251` Margaritas ends at **11:50** in the original
   source; recorded verbatim (not silently extended).
 - Article 7's final repeals clause is headed **ARTÍCULO SÉPTIMO**
   again after Article 8; the duplication is a source editorial defect,
   not a reason to discount the explicit repeal.
 
 **QA:** the read-only workflow
-\`.github/workflows/validate-palenque-2025-official-tables.yml\`
+`.github/workflows/validate-palenque-2025-official-tables.yml`
 retrieves the official ASTREA HTML in a GitHub runner, checks the
 **20 route-code pairs, every 6 service clock values and all 9 headway
 values** against its table text and rejects discrepancies. See
@@ -601,30 +600,55 @@ The earlier ArcGIS snapshot (14 August 2025) lists **22 Palenque
 Robledal route IDs** using *older* codes. The 2025 law was
 published **after** that snapshot and now has **19 regular newly
 coded services** (and the one Línea J contingency).
-It merges some older services, e.g. \`260C + 260T\` into
-\`260-1 Córdoba/Torres\` and \`260CL + 260BR\` into
-\`260-2 Clínica/Brisas\`, and changes user-code nomenclature.
+It merges some older services, e.g. `260C + 260T` into
+`260-1 Córdoba/Torres` and `260CL + 260BR` into
+`260-2 Clínica/Brisas`, and changes user-code nomenclature.
 
-\`palenque_2025_old_arcgis_to_new_legal_route_candidates.csv\`
+`palenque_2025_old_arcgis_to_new_legal_route_candidates.csv`
 preserves the **22 pre-restructure ArcGIS ID/code/name records** with
 **conservative possible 2025 legal replacements** and explicit
-\`automatic_GTFS_import_allowed=no\`. Several are one-to-many or
-many-to-one, and \`253iAR\` appears in the municipal rationale as a
+`automatic_GTFS_import_allowed=no`. Several are one-to-many or
+many-to-one, and `253iAR` appears in the municipal rationale as a
 proposed removal, not as a separately authorized service in Article 2.
 Do not simply delete an ArcGIS ID or map a new legal route to an old
 shape before checking the official map annex. Every old ArcGIS ID has
 an **operator/scope** link to the official 2025 act
-\`202550088689\` (not a one-to-one legal variant match).
+`202550088689` (not a one-to-one legal variant match).
 
-After this original-act recovery, the project has **541?** legal act
-links placeholder (review counts before merge).
+After this original-act recovery, the project has **540** route-to-act
+candidate links across **250/252** ArcGIS route IDs.
 The **only two ArcGIS IDs without any later-act candidate** are
-Tax Maya \`195ii\` and Flota Nueva Villa \`082 V-LA PILOTO\`, recorded in
-\`unresolved_2_after_palenque_2025_astrea.csv\`. This is *source
+Tax Maya `195ii` and Flota Nueva Villa `082 V-LA PILOTO`, recorded in
+`unresolved_2_after_palenque_2025_astrea.csv`. This is *source
 discovery coverage*, not verification that each old route is active in
 November 2026. Original 2015 frequencies are kept as historical
 research data and are **not** used to override the newer 2025
 authorization. PQRSD has not been filed and is not currently planned.
+
+### Focused 2026 ASTREA source-index cross-check
+
+On **17 November 2026**, a bounded GitHub-runner scan of the public
+**Secretaría de Movilidad / ASTREA 2026** legal-act index read **25 of
+25 available 2026 resolution texts** with no failed fetches. None
+mentioned **Conducciones Palenque Robledal** in the returned text.
+This is evidence only for the **25 indexed acts**, not an exhaustive
+claim about all 2026 legal sources or a judicial determination that
+the 2025 timetable is still in force. The reproducible script is
+`scripts/scan_astrea_2026_palenque_acts.py`, with concise retained
+metadata in `astrea_2026_palenque_latest_act_index_audit.json`.
+[2026 index audit workflow](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44117111899).
+
+A separate **2026 official original** was found for the jointly
+operated **229i** Barrio Nuevo, in **Resolución 202650039611**
+(Gaceta 5830, 14 May 2026, p. 14), which *pre-dates* the public
+Gaceta portal period scanned earlier. The original Article 1/2
+incorrectly spells `299i` while Article 3 and other references
+give `229i`; source figures were preserved in
+`route_229i_2026_official_intervals.csv`. Original tables list
+two direction codes (899010 / 899020) but numeric clock/interval
+cells only appear on the first direction row, likely due merged
+cells; **do not double-count** the shared service. This research
+finding must be route-reconciled separately before use in GTFS.
 
 ## Next source batches, ordered by expected yield
 
