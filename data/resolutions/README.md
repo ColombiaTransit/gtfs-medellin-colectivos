@@ -149,15 +149,23 @@ research datasets. See `recovered_pdf_provenance.csv`.
   inside operator-specific legal acts: **never treat 211 as distinct GTFS routes**.
   Raw interval text and original-page numbers are preserved only as
   `source_pdf_text_index_only_not_visual_validation` candidates.
-- `gacetas_4326_4327_visual_verified_2a_6d.csv`: **12 additional
-  uniquely identified official route fichas**, eight in the 2A system
-  (Resolución 1166/2015, original Gaceta 4326) and four in the 6D
-  system (Resolución 1019/2015, original Gaceta 4327).
-  All eight official DÍA/HMD intervals and the general service window
-  were checked on the page images; the dataset explicitly states that
-  later legal applicability is not yet established.
+- `gacetas_4326_4327_visual_verified_2a_6d.csv`: **42 visually
+  verified official route fichas**, covering **all 38 unique 2A route
+  positions** under Resolución 1166/2015 (Gaceta 4326) and all four
+  6D route positions under Resolución 1019/2015 (Gaceta 4327).
+  Every record includes the official service window and eight checked
+  DÍA/HMD dispatch intervals. Cross-act copies of the 2A fichas in
+  Gaceta 4327 are *not* claimed visually verified merely because their
+  route identities match; source modifications remain to be reviewed.
+  Later legal applicability is not yet established.
 - Already verified separately: `gaceta_4327_res_1047_visual_verified.csv`
   covers 11 6A fiche occurrences under Resolución 1047/2015.
+
+**Aggregate historical research coverage:** `verified_2015_system_coverage.csv`
+now summarizes **116 verified fiche occurrences / 114 unique system-route
+positions** across 6C, 6B, 8A, 2A, 6A and 6D. These are the 2015 source
+positions, **not** a count of active/current GTFS routes or a guarantee
+that every one of the 32 contemporary operators is fully covered.
 
 **Important finding for 6D:** the actual holiday DÍA headway differs from
 Sunday on three fichas: route 081 has **8 vs 15 minutes**, route 082
@@ -167,8 +175,9 @@ Sunday service. The 085 service span ends at `24:00`, which is not
 an invalid printed timetable time. All values remain historical 2015 sources.
 
 **2A operator association:** the same 2A route-system fichas appear in
-several acts (1166, 1167, 1168, 1169 and 1170). The latest validated
-record for each route should eventually be deduplicated by route identity,
+several acts (1166, 1167, 1168, 1169 and 1170). The 38 unique 2A source fichas are now visually checked in Resolución
+1166. The latest applicable legal value for each route must eventually be
+selected and deduplicated by route identity,
 with participating companies recorded as attributions when shared, not
 by creating multiple copies of the same route. Compare amended versions
 field by field before deciding whether their values are identical. The
