@@ -16,9 +16,9 @@ published legal schedule data from OCR candidates and from uncertain ArcGIS matc
   mistaken figures, missing frequency cells, and wrong time readings.
   Even `ocr_candidate_complete` means *all fields were OCR-extracted*, not validated.
   Indexed route codes are positional references pending comparison against actual page headings.
-- `gaceta_4325_visual_verified.csv`: ten fichas whose eight
+- `gaceta_4325_visual_verified.csv`: 47 fichas whose eight
   `INTERVALO DE DESPACHO` values and printed `HORARIO DE SERVICIO`
-  have been read directly from the page images. Each record contains its PDF page
+  have been read directly from the page images (10 in the first research pass; 37 in the second). Each record contains its PDF page
   and the resolution number. These are **verified as historical official values**,
   not proof that the same timetable was still in force in November 2026.
   Where the source says only a general service window, Saturday and
@@ -62,6 +62,14 @@ The 8A route fichas in this document appear under **1154/2015**
 **1155/2015** (Tax Maya act, starting p. 241). Existing comments
 assigning the Tax Maya / Coonatra 8A fichas to resolution 1042
 should be corrected, without modifying any actual schedule values.
+
+## Source inventory for 2015/2025 amendments
+
+See `priority_source_documents.csv`. Official individual PDFs have been located for 2015 resolutions 1047 (Flota La V, 34 pages), 1166 (Medellín Castilla, 89 pages), and 1169 (Palenque Robledal, 89 pages); their timetables remain **unextracted**. The contents of Gacetas 5667 and 5671 locate six 2025 route-restructuring/modification acts (the official full PDF and their route-level timing tables are not yet recovered). These later acts must be reviewed before interpreting 2015 values as current.
+
+**OCR QA example:** the first raw OCR pass read the weekday DÍA interval for Gaceta 4325 p. 172, route 191, as 5 minutes; the printed dispatch table shows **6 minutes**. The visually verified record uses 6. OCR candidates are never approved merely because their eight numeric fields appear complete.
+
+**Interpretation for the 2015 system 6B:** some route fichas explicitly have different published service windows for weekday, Saturday and Sunday/holidays, all recorded in their respective columns, whereas most 6C and 8A fichas state only a general window. Do not infer a day-specific first/last departure when the source does not specify it.
 
 ## Next source batches, ordered by expected yield
 
