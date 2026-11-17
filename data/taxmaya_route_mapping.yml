@@ -1,7 +1,7 @@
 # Tax Maya route mapping: official ArcGIS route identity (Medellín
 # government transport layers, current) cross-referenced against real
 # frequency/technical data. Two sources, per route:
-#   - Gaceta Oficial N°4325 (Resolución 1042 de 2015, "FICHA TÉCNICA"
+#   - Gaceta Oficial N°4325 (Resolución 1155 de 2015, "FICHA TÉCNICA"
 #     pages) - covers the whole C23 family plus 195/195i/195ii, but is
 #     11 years older than the ArcGIS layers, so ArcGIS is used for
 #     GEOMETRY/STOPS regardless of which schedule source a route uses.
@@ -228,7 +228,7 @@ routes:
 #     and 90327 "C23" (San Cristóbal-San Javier-La Loma-Centro): these
 #     are the website's "Rutas urbanas" category (plain C23 / C23
 #     alterna asomadera), distinct from the "Rutas integradas"
-#     (C23i/C23ii) family the Gaceta documented under Resolución 1042
+#     (C23i/C23ii) family the Gaceta documented under Resolución 1155
 #     de 2015. Plausibly these didn't exist in their current form yet
 #     in 2015, or existed under a different code this resolution
 #     didn't capture - not confirmed either way, but a more likely
