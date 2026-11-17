@@ -1,0 +1,43 @@
+name: Extract Palenque public ASTREA legal chain
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/palenque-2022-original-astrea-audit
+    paths:
+      - .github/workflows/extract-palenque-astrea-legal-chain.yml
+      - scripts/extract_palenque_astrea_legal_chain.py
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install HTML parser
+        run: pip install beautifulsoup4
+      - name: Check script syntax
+        run: python -m py_compile scripts/extract_palenque_astrea_legal_chain.py
+      - name: Collect public-source legal article texts
+        run: python scripts/extract_palenque_astrea_legal_chain.py
+      - name: Preserve research metadata for seven days
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: palenque-astrea-legal-chain-temporary
+          path: artifacts/medellin-palenque-legal-chain/
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Report
+        if: always()
+        run: |
+          if [[ -f artifacts/medellin-palenque-legal-chain/README.md ]]; then
+            cat artifacts/medellin-palenque-legal-chain/README.md >> "$GITHUB_STEP_SUMMARY"
+          fi

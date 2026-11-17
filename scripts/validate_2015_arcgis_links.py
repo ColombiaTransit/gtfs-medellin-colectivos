@@ -161,7 +161,7 @@ def main():
     # does not establish an effective 2026 frequency or amended timetable.
     later = load(RES / "arcgis_post_2015_resolution_candidates.csv")
     joined = load(RES / "arcgis_historical_and_later_acts_overview.csv")
-    assert len(later) == 518, "Later-act candidate register changed; review scope"
+    assert len(later) == 540, "Later-act candidate register changed; review scope"
     assert len(joined) == len(arc_by_id), "Every current ArcGIS ID needs combined legal provenance"
     assert_unique(joined, lambda x: x["arcgis_id_ruta"], "combined legal overview")
     assert_unique(later, lambda x: (
@@ -175,6 +175,7 @@ def main():
         "shared_route_229_provenance.csv",
         "recovered_acts_for_original_96.csv",
         "palenque_14_post2015_source_evidence.csv",
+        "palenque_2025_official_route_service_intervals.csv",
     }
     by_route = defaultdict(list)
     for r in later:
@@ -185,13 +186,17 @@ def main():
         assert r["arcgis_operator"] == current["empresa"]
         assert r["source_register"] in valid_sources
         assert r["issued_on"] >= "2016-01-01"
-        assert r["original_act_read"] == "no"
-        assert r["revised_frequency_verified"] == "no"
-        assert r["effectivity_confirmed_as_of_2026"] == "unknown"
+        official2025 = r["resolution"] == "202550088689" and r["source_register"] == "palenque_2025_official_route_service_intervals.csv"
+        earlier2022 = r["resolution"] == "202250015351" and r["arcgis_id_ruta"] in {"90065", "90073"}
+        assert r["original_act_read"] == ("yes" if (official2025 or earlier2022) else "no")
+        assert r["revised_frequency_verified"] == "no"  # ArcGIS old-variant mapping never verified
+        assert r["effectivity_confirmed_as_of_2026"] == (
+            "repealed_by_202550088689_from_2025-11-11" if earlier2022 else "unknown"
+        )
         assert r["permit_gtfs_schedule_use"] == "no"
         by_route[r["arcgis_id_ruta"]].append(r)
 
-    assert len(by_route) == 238, "Act-scope route count changed"
+    assert len(by_route) == 250, "Act-scope route count changed"
     priorities = Counter()
     explicit_2025 = 0
     operator_2025 = 0
@@ -218,10 +223,10 @@ def main():
         )
         assert x["priority_to_check"] == expected
         priorities[expected] += 1
-    assert explicit_2025 == 3 and operator_2025 == 72
+    assert explicit_2025 == 3 and operator_2025 == 94
     assert priorities == {
-        "P0_explicit_2025": 3, "P1_2025_operator_scope": 72,
-        "P2_previous_amendment": 163, "P3_unmatched_legal_source": 14
+        "P0_explicit_2025": 3, "P1_2025_operator_scope": 94,
+        "P2_previous_amendment": 153, "P3_unmatched_legal_source": 2
     }, priorities
     print(f"OK: {len(later)} post-2015 act candidates, "
           f"{len(by_route)} connected ArcGIS routes, "
@@ -233,12 +238,14 @@ def main():
     # continuing authorization or current departure frequencies.
     recovered = load(RES / "recovered_acts_for_original_96.csv")
     previous_unresolved = load(RES / "unresolved_16_after_missing96_search.csv")
-    unresolved = load(RES / "unresolved_14_after_palenque_search.csv")
+    previous_unresolved_14 = load(RES / "unresolved_14_after_palenque_search.csv")
+    unresolved = load(RES / "unresolved_2_after_palenque_2025_astrea.csv")
     palenque = load(RES / "palenque_14_post2015_source_evidence.csv")
     assert len(recovered) == 157
     assert len({r["arcgis_id_ruta"] for r in recovered}) == 80
     assert len(previous_unresolved) == 16  # Historical snapshot for audit
-    assert len(unresolved) == 14
+    assert len(previous_unresolved_14) == 14
+    assert len(unresolved) == 2
     assert len(palenque) == 14
     assert_unique(unresolved, lambda x: x["arcgis_id_ruta"], "remaining unresolved")
     assert_unique(palenque, lambda x: x["arcgis_id_ruta"], "Palenque evidence")
@@ -255,7 +262,9 @@ def main():
     assert len(direct) == 2
     assert {x["arcgis_route_code"] for x in direct} == {"250AP", "250AiP"}
     for x in palenque:
-        assert x["later_original_resolution_read"] == "no"
+        expected_legal_text_state = ("yes_2022_and_2025_original_ASTREA_text"
+            if x["2022_official_resolution_reference"] == "202250015351" else "no")
+        assert x["later_original_resolution_read"] == expected_legal_text_state
         assert x["frequency_or_service_hours_verified_as_current"] == "no"
     for x in direct:
         assert any(
@@ -268,8 +277,25 @@ def main():
         assert r["original_resolution_text_checked"] == "no"
         assert r["frequency_or_service_hours_verified"] == "no"
         assert r["current_legal_effectivity"] == "unknown"
-    print("Missing-96 research: 80 previously recovered + 2 Palenque exact act links; "
-          "14 remain unresolved. No timetable activated.")
+    palenque_2025 = load(RES / "palenque_2025_official_route_service_intervals.csv")
+    palenque_repealed = load(RES / "palenque_2025_expressly_repealed_previous_acts.csv")
+    crosswalk = load(RES / "palenque_2025_old_arcgis_to_new_legal_route_candidates.csv")
+    assert len(palenque_2025) == 20
+    assert len(palenque_repealed) == 16
+    assert len(crosswalk) == 22
+    assert_unique(palenque_2025, lambda r: r["legal_user_route_code"], "new 2025 legal route codes")
+    assert_unique(crosswalk, lambda r: r["arcgis_id_ruta"], "2025 Palenque route crosswalk")
+    assert all(r["allow_direct_gtfs_build"] == "no" for r in palenque_2025)
+    assert all(r["automatic_GTFS_import_allowed"] == "no" for r in crosswalk)
+    legal_2025_ids = {
+        r["arcgis_id_ruta"] for r in later
+        if r["resolution"] == "202550088689"
+    }
+    assert len(legal_2025_ids) == 22
+    assert legal_2025_ids == {r["arcgis_id_ruta"] for r in crosswalk}
+    print("Official 2025 2A restructure: 20 legal route/code records (19 regular, "
+          "one conditional), 16 prior acts repealed, 22 legacy ArcGIS IDs queued "
+          "for variant-level legal crosswalk. Two unmatched routes remain.")
 
 
     return 0
