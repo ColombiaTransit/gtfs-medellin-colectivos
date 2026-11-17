@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-11-17",
+  "source_url": "https://www.medellin.gov.co/normograma/docs/astrea/nddnddptyedord_secretaria_movilidad.html",
+  "source": "official indexed ASTREA Secretaría de Movilidad 2026 acts",
+  "indexed_2026_acts": 25,
+  "successfully_read": 25,
+  "failed": 0,
+  "acts_mentioning_palenque_robledal": 0,
+  "related_transport_found": [
+    {
+      "resolution": "202650039611",
+      "date": "2026-05-06",
+      "gaceta": "5830",
+      "gaceta_date": "2026-05-14",
+      "route": "229i",
+      "url": "https://www.medellin.gov.co/normograma/docs/astrea/docs/R_SMMED_39611_2026.htm"
+    }
+  ],
+  "scope_caveat": "No Palenque in 25 indexed 2026 Secretaría de Movilidad ASTREA legal act texts; not proof no later unindexed/amended act exists",
+  "original_palenque_2025_effectivity_in_2026": "not_exhaustively_proven",
+  "workflow_run": "https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44117111899",
+  "contains_pdf_bytes": false,
+  "pqrds_submitted": false
+}
