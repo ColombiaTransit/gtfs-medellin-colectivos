@@ -1,0 +1,43 @@
+name: Index late-2026 Medellín public transit acts
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/medellin-6f-and-current-legal-priorities-2026-11
+    paths:
+      - .github/workflows/index-medellin-2026-transit-acts.yml
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install lightweight HTML parsing
+        run: pip install requests beautifulsoup4
+      - name: Validate Python syntax
+        run: python -m py_compile scripts/index_medellin_gaceta_2026_transit_acts.py
+      - name: Index official Gaceta details without PDFs
+        run: python scripts/index_medellin_gaceta_2026_transit_acts.py
+      - name: Upload research results, no PDF
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: medellin-2026-transport-act-index
+          path: artifacts/medellin-gaceta-2026/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Summary
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f artifacts/medellin-gaceta-2026/README.md ]]; then
+            cat artifacts/medellin-gaceta-2026/README.md >> "$GITHUB_STEP_SUMMARY"
+          fi
