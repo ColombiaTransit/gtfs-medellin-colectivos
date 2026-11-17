@@ -1,13 +1,8 @@
 name: Validate historical 2015-to-ArcGIS route links
 
-# Research-only. Runs once when this workflow is created on the research branch.
+# Research-only manual verification. Never writes source data or GTFS.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/link-2015-fiches-to-arcgis-2026-11
-    paths:
-      - .github/workflows/validate-2015-arcgis-fiche-links.yml
 
 permissions:
   contents: read
