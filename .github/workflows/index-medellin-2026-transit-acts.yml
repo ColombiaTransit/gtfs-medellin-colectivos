@@ -2,11 +2,6 @@ name: Index late-2026 Medellín public transit acts
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/medellin-6f-and-current-legal-priorities-2026-11
-    paths:
-      - .github/workflows/index-medellin-2026-transit-acts.yml
 
 permissions:
   contents: read
