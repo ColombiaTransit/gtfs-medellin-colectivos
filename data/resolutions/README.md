@@ -422,14 +422,16 @@ No PDF is committed or retained through this linkage process.
 
 ### Post-2015 legal amendment overlay (separate from the 2015 historical identity)
 
-`arcgis_post_2015_resolution_candidates.csv` now attaches **359
-candidate route-to-act references** to **156/252** current ArcGIS IDs.
+`arcgis_post_2015_resolution_candidates.csv` now attaches **516
+candidate route-to-act references** to **236/252** ArcGIS IDs. The previous
+96 without a post-2015 act lead were researched separately; 80 of those
+now have at least one *candidate* source, 16 remain unmatched.
 The underlying official municipality **report/contents references** are
 retained, with act number, issued date, reported effect, route-vs-operator
 matching method and explicit `original_act_read=no`,
 `revised_frequency_verified=no`, `permit_gtfs_schedule_use=no`.
 
-- **206 candidate links** to the report-indexed **2017–2024 acts**.
+- **206 existing candidate links** to the report-indexed **2017–2024 acts**.
   The report's route-code lists are **reported or related families**,
   not necessarily verbatim from the original resolution.
 - **75 links** to the six distinct **2025 Gaceta act numbers**:
@@ -441,6 +443,15 @@ matching method and explicit `original_act_read=no`,
   The older 2009 and 2015 predecessor decisions remain in
   `system_6f_legal_chain.csv` and are intentionally **not** counted
   as post-2015 modifications.
+- **157 newly recovered leads** from 36 report/Gaceta resolution numbers,
+  covering 80 of the former 96 unlinked IDs. These are stored in
+  `recovered_acts_for_original_96.csv`: official secondary municipal
+  resolution references, not individually reviewed legal text. This batch
+  explicitly separates restructurings and operational amendments from
+  temporary road works, capacity changes, shared-operation agreements
+  and appeals. In particular, the 2019 acts for Tax Maya C23 and 195,
+  Copatra 093–095 and Transacoop 098 are primarily **temporary geometry**
+  and must not be treated as continuing schedule authorization.
 - **Three links** for the joint route 229 (2023/2024) are explicitly
   **provisional** for ArcGIS `229i`; the three companies must not
   produce duplicate trips.
@@ -449,8 +460,20 @@ matching method and explicit `original_act_read=no`,
 252-row research overview** joining the historic fiche status,
 Gaceta/page references and the later-act lists. Its review priority
 breakdown is P0=3 explicit 2025 title/code links; P1=72 operator-only
-2025 scope; P2=81 other later-act candidates; P3=96 without a known
-later act. This is **not a classification of actually amended routes**.
+2025 scope; P2=161 other later-act candidates; P3=16 without a found
+post-2015 act candidate in the sources checked. This is **not a classification of actually amended routes**.
+
+`unresolved_16_after_missing96_search.csv` lists the residual 16:
+**14 Palenque Robledal** variants, **Tax Maya 195ii**, and **Flota Nueva
+Villa 082 V-LA PILOTO**. In 2019, several 250/253 Palenque routes had
+specific temporary road diversions, but those do not prove other 250,
+251, 252, 253 or 260 variants had the same act. Similarly the 2019
+Tax Maya 195/195i act is **not** evidence for 195ii, and a base 082
+act cannot authorize a later pilot without an explicit validity period.
+
+**Do not initiate PQRSD at this stage:** the project owner deferred a
+formal records request. Continue checking already-public Gazette act
+indexes, official operator references and municipal documents instead.
 
 **No 2017–2025 original timetable table has been visually verified
 in this overlay**, and there is no general rule that the latest legal
@@ -464,7 +487,7 @@ simply by taking the newest act. All integrated rows carry
 ## Next source batches, ordered by expected yield
 
 - **Gacetas 5667/5671 (September 2025)**: retrieve the official full
-  documents through a working municipal archive or records request,
+  documents through publicly accessible municipal sources,
   extract any revised schedules, confirm affected variants and field-level
   precedence over the historical 2015 baseline.
 - **2017–2024 operating-condition changes**: prioritize the eight
