@@ -116,8 +116,8 @@ See `priority_source_documents.csv`. Official individual PDFs have been located 
   \`.github/workflows/recover-medellin-resolution-pdfs.yml\`: attempts
   bounded parallel retrieval on GitHub runners, rejects HTML error pages,
   stores successful PDF bytes with SHA-256 and optional \`pdftotext\` output.
-  A download report and source PDFs are kept as a **30-day Actions artifact**,
-  not committed to the repo. Run manually with **Actions → Recover Medellín
+  The first successful run produced an **original 30-day Actions artifact**;
+  later runs use **7-day artifact retention**. PDFs are never committed to Git. Run manually with **Actions → Recover Medellín
   official resolution PDFs → Run workflow** if the first attempt fails.
 
 **Recovery run succeeded:** [GitHub Actions #44077028708](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44077028708) downloaded **4 of 4 official PDFs** (full Gaceta 4327, resolutions 1047 and 1169 in 4327, and resolution 1166 in 4326). Source archive bytes and SHA-256 checksums are recorded in \`pdf_recovery_provenance_2026-11-17.json\`. The ZIP artifact expires after 30 days; do not treat the artifact as a permanent substitute for the official PDF links.
@@ -183,19 +183,105 @@ by creating multiple copies of the same route. Compare amended versions
 field by field before deciding whether their values are identical. The
 cross-act text layer is not a substitute for final page-image QA.
 
+## Post-2015 legal amendments: 2017–2025 (research on 17 November 2026)
+
+**These registers DO NOT contain new verified frequency or first/last
+departure figures.** They identify which previously verified **2015**
+schedule fichas require a more recent legal-source check.
+
+- `2017_2024_act_chain_index.csv`: **38 indexed acts** reported in the
+  official Secretaría de Movilidad management handover document (source
+  URL stored per row), distinguishing operating/service conditions,
+  explicit geometry/stop changes, appeals, repeals and joint-operation
+  grants. The route-code field is **reported or related**, not guaranteed
+  to be verbatim from every original resolution. **None of the 38
+  original individual resolutions has been fully reviewed in this batch**;
+  citation of their number/subject is not verification of new headways.
+- `2025_amendment_route_scopes.csv`: **six numbered acts** from the
+  official Gaceta contents for **5667 (2025-09-24)** and **5671
+  (2025-09-30)**, represented in **seven rows** because resolution
+  202550076174 describes two separate circular routes. Only routes
+  313 (Combuses), 301 (Coonatra), 315 (Santra) are matched by **explicit
+  code/operator**; the 2A/2B, Salud-Hotelera, Metrosan and Rápido
+  San Cristóbal rows list **operator or system candidate** ArcGIS ids
+  rather than confirmed route-level amendments.
+- `shared_route_229_provenance.csv`: official 2023/2024 sequence
+  for the **joint route 229** (Metrosan / Tax Maya / Conducciones América),
+  with tentative match to the current ArcGIS **229i, id_ruta 90377**.
+  There is no proof yet that every 229 variant or trip should be assigned
+  to all three agencies; do not duplicate GTFS service.
+
+### Prioritize original documents that can change GTFS schedules
+
+1. **Gaceta 5671, 202550079848 and 202550079865**:
+   Metrosan and Rápido San Cristóbal operating restructurings; do not
+   claim their 2015 schedule values remain active without reading these.
+2. **Gaceta 5671, 202550076150 and 202550076162**:
+   Salud-Hotelera Coinvetrans/Invetrans, and Castilla/Conaltracoop
+   system 2A/2B changes. Some candidate ArcGIS routes belong to these
+   operators, but the exact affected variants still need confirmation.
+3. **Gaceta 5667, 202550076168**: Circular 313 joint operation and
+   route restructuring; source is not yet sufficient to derive frequency.
+   **202550076174** concerns route paths of Coonatra 301 / Santra 315;
+   do not overwrite frequency schedules solely because it is newer.
+4. **Cootrabel 202350107412/2023**: explicitly **repeals**
+   202150163403/2021 and adjusts the services for **170/172/178**.
+   Strong supersession lead, but no new headway/timing table extracted.
+5. **Conducciones América 201850015842/2018 and
+   201950052919/2019**: service/operating conditions and selected 8A
+   routes need review before the corresponding 2015 8A values are used.
+6. Follow up historical amendments for **Coonatra**, **Metrosan 229**
+   joint operator identities, **6E Coopetransa**, **6H Cootransi/Cootransvi**,
+   and **6A SICO UT**.
+
+### Attempted recovery of 2025 primary source PDFs
+
+The manually triggerable `.github/workflows/probe-medellin-2025-gacetas.yml`
+and `scripts/probe_medellin_2025_gacetas.py` test **municipal domains
+only** for official Gaceta 5667/5671 files. On
+[GitHub Actions run 44083111487](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44083111487):
+
+- The municipal **historico-mercurio** landing page was reachable (HTTP 200).
+- The historical **Mercurio IndiceServlet and Gacetas.jsp** services
+  returned server errors (HTTP 500), including a blocked-URL response.
+- The guessed direct 2025 PDF URLs and 2026-style public Gaceta endpoints
+  returned HTTP 404. **No 2025 original PDFs were recovered.**
+- The new `consulta-publica` archive explicitly says it hosts Gacetas
+  **from 28 August 2026 onward**, so it is not a source for 2025.
+
+The repository does not retain the downloaded HTML responses or PDFs:
+this Action writes a **seven-day temporary artifact** with a probe
+summary and response metadata. Its `workflow_dispatch` trigger is now
+**manual-only**, avoiding wasted periodic requests to a known broken
+archive. The official 2025 decisions can also be requested from the
+Alcaldía's original publication/records custodians; do not use the
+secondary contents excerpt as evidence of specific frequencies.
+
+### Source precedence
+
+For the GTFS generator, **only after** independent route-code
+reconciliation and source table QA: use the latest legally applicable
+act *for the particular field modified*; retain earlier untouched
+operating-window or frequency fields when newer acts only change road
+geometry; record the new act's effective date and old act's supersession
+status. For shared operation, one variant gets one service, with
+operator attributions as appropriate. **No active GTFS feed is changed
+by these research files.**
+
 ## Next source batches, ordered by expected yield
 
-- **Gaceta 4327 (2015)**: multiple 6A/6D and 2A operator-specific
-  restructuring acts, including Flota La V, Flota La Milagrosa, Copatra,
-  Coopcerquin, Cootranscataluña, Cootracovi, Flota Nueva Villa, Palenque Robledal,
-  Cootransblan, and Rápido San Cristóbal.
-- **Gaceta 4326 (2015)**: Transporte Medellín Castilla (1166/2015).
-- **Gacetas 5667/5671 (September 2025)**: Circular 301/313/315 and
-  more recent routes for Coinvetrans/Invetrans, Transporte Medellín Castilla,
-  Metrosan and Rápido San Cristóbal.
-- **2017–2026 later individual acts**: search using the exact resolution
-  numbers already indexed in `operator_coverage.csv`, then capture
-  changes relative to the 2015 base and verify current applicability.
+- **Gacetas 5667/5671 (September 2025)**: retrieve the official full
+  documents through a working municipal archive or records request,
+  extract any revised schedules, confirm affected variants and field-level
+  precedence over the historical 2015 baseline.
+- **2017–2024 operating-condition changes**: prioritize the eight
+  service-impact leads in `2017_2024_act_chain_index.csv`, plus Cootrabel's
+  explicit repeal and joint operation for 229.
+- **Historical duplicate QA**: if needed, compare the repeated technical
+  fichas in other operator-specific 2015 resolutions for actual textual
+  changes; do not blindly duplicate them in the GTFS.
+- **2026 follow-up**: search for acts after September 2025 that amend the
+  same operators before claiming legal currentness.
 
 For each new resolution, store: unique act reference, publication date, effective date,
 source URL, PDF page, system, printed route code, printed operator,
