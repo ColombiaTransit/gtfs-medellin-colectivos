@@ -161,7 +161,7 @@ def main():
     # does not establish an effective 2026 frequency or amended timetable.
     later = load(RES / "arcgis_post_2015_resolution_candidates.csv")
     joined = load(RES / "arcgis_historical_and_later_acts_overview.csv")
-    assert len(later) == 516, "Later-act candidate register changed; review scope"
+    assert len(later) == 518, "Later-act candidate register changed; review scope"
     assert len(joined) == len(arc_by_id), "Every current ArcGIS ID needs combined legal provenance"
     assert_unique(joined, lambda x: x["arcgis_id_ruta"], "combined legal overview")
     assert_unique(later, lambda x: (
@@ -174,6 +174,7 @@ def main():
         "system_6f_legal_chain.csv",
         "shared_route_229_provenance.csv",
         "recovered_acts_for_original_96.csv",
+        "palenque_14_post2015_source_evidence.csv",
     }
     by_route = defaultdict(list)
     for r in later:
@@ -190,7 +191,7 @@ def main():
         assert r["permit_gtfs_schedule_use"] == "no"
         by_route[r["arcgis_id_ruta"]].append(r)
 
-    assert len(by_route) == 236, "Act-scope route count changed"
+    assert len(by_route) == 238, "Act-scope route count changed"
     priorities = Counter()
     explicit_2025 = 0
     operator_2025 = 0
@@ -220,7 +221,7 @@ def main():
     assert explicit_2025 == 3 and operator_2025 == 72
     assert priorities == {
         "P0_explicit_2025": 3, "P1_2025_operator_scope": 72,
-        "P2_previous_amendment": 161, "P3_unmatched_legal_source": 16
+        "P2_previous_amendment": 163, "P3_unmatched_legal_source": 14
     }, priorities
     print(f"OK: {len(later)} post-2015 act candidates, "
           f"{len(by_route)} connected ArcGIS routes, "
@@ -231,24 +232,44 @@ def main():
     # References to temporary road diversions are NOT evidence of a
     # continuing authorization or current departure frequencies.
     recovered = load(RES / "recovered_acts_for_original_96.csv")
-    unresolved = load(RES / "unresolved_16_after_missing96_search.csv")
+    previous_unresolved = load(RES / "unresolved_16_after_missing96_search.csv")
+    unresolved = load(RES / "unresolved_14_after_palenque_search.csv")
+    palenque = load(RES / "palenque_14_post2015_source_evidence.csv")
     assert len(recovered) == 157
     assert len({r["arcgis_id_ruta"] for r in recovered}) == 80
-    assert len(unresolved) == 16
+    assert len(previous_unresolved) == 16  # Historical snapshot for audit
+    assert len(unresolved) == 14
+    assert len(palenque) == 14
     assert_unique(unresolved, lambda x: x["arcgis_id_ruta"], "remaining unresolved")
+    assert_unique(palenque, lambda x: x["arcgis_id_ruta"], "Palenque evidence")
     assert {
         r["arcgis_id_ruta"] for r in unresolved
     } == {
         x["arcgis_id_ruta"] for x in joined
         if x["priority_to_check"] == "P3_unmatched_legal_source"
     }
+    direct = [
+        x for x in palenque
+        if x["2022_official_resolution_reference"] == "202250015351"
+    ]
+    assert len(direct) == 2
+    assert {x["arcgis_route_code"] for x in direct} == {"250AP", "250AiP"}
+    for x in palenque:
+        assert x["later_original_resolution_read"] == "no"
+        assert x["frequency_or_service_hours_verified_as_current"] == "no"
+    for x in direct:
+        assert any(
+            a["resolution"] == "202250015351"
+            and a["source_register"] == "palenque_14_post2015_source_evidence.csv"
+            for a in by_route[x["arcgis_id_ruta"]]
+        )
     for r in recovered:
         assert r["arcgis_id_ruta"] in arc_by_id
         assert r["original_resolution_text_checked"] == "no"
         assert r["frequency_or_service_hours_verified"] == "no"
         assert r["current_legal_effectivity"] == "unknown"
-    print("Missing-96 research: 80 have official document candidate leads, "
-          "16 remain unresolved; no timetable activated.")
+    print("Missing-96 research: 80 previously recovered + 2 Palenque exact act links; "
+          "14 remain unresolved. No timetable activated.")
 
 
     return 0
