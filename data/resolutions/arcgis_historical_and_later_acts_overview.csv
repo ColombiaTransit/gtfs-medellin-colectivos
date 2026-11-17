@@ -1,15 +1,15 @@
 arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_date,historic_2015_match_status,historic_2015_gaceta_and_page_refs,2017_2024_candidate_act_numbers,2025_explicit_route_act_numbers,2025_operator_scope_candidate_act_numbers,6F_candidate_act_numbers,joint_229_candidate_act_numbers,total_later_candidate_act_links,priority_to_check,verified_latest_effective_frequency,2015_to_GTFS_automated_import_allowed
-90223,51-52 CV-O,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p17:6C7,,,,,,0,P3_unmatched_legal_source,no,no
+90223,51-52 CV-O,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p17:6C7,201750007548;202050058821;392,,,,,3,P2_previous_amendment,no,no
 90323,243iD,8A,Coonatra,2025-08-14,code_variant_review,4325:p218:243-iD,201750008728;201950047211;389,,,,,3,P2_previous_amendment,no,no
 90314,227iB-2,8A,Metrosan,2025-08-14,strong_2015_identity,4325:p210:227-iB2,201750009600;202150044995;305,,202550079848,,,4,P1_2025_operator_scope,no,no
-90002,286,Circular 286,Combuses,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90003,302,Circular Izquierda 302,Autobuses Poblado Laureles,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
+90002,286,Circular 286,Combuses,2025-08-14,no_2015_candidate,,185;201750021301;201950056339,,,,,3,P2_previous_amendment,no,no
+90003,302,Circular Izquierda 302,Autobuses Poblado Laureles,2025-08-14,no_2015_candidate,,201750014724,,,,,1,P2_previous_amendment,no,no
 90004,313,Circular 313,Combuses,2025-08-14,no_2015_candidate,,,202550076168,,,,1,P0_explicit_2025,no,no
 90006,301,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,,172;201950047211;202150181337;202250071653,202550076174,,,,5,P0_explicit_2025,no,no
 90072,250M,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p349:250AT,,,,,,0,P3_unmatched_legal_source,no,no
 90005,300,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,,172;201950047211;202150181337;202250071653,,,,,4,P2_previous_amendment,no,no
-90224,51-52 CV-SD,6C,Expreso Campo Valdés,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90063,246i,2A,Cootransblan,2025-08-14,strong_2015_identity,4326:p371:246i,,,,,,0,P3_unmatched_legal_source,no,no
+90224,51-52 CV-SD,6C,Expreso Campo Valdés,2025-08-14,no_2015_candidate,,201750007548;201850024822;202050058821;392,,,,,4,P2_previous_amendment,no,no
+90063,246i,2A,Cootransblan,2025-08-14,strong_2015_identity,4326:p371:246i,175;201950024605,,,,,2,P2_previous_amendment,no,no
 90254,106,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
 90008,311,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,,172;201950047211;202150129152,,,,,3,P2_previous_amendment,no,no
 90007,310,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,,172;201950047211;202150129152,,,,,3,P2_previous_amendment,no,no
@@ -20,26 +20,26 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90014,309D,"Circular 304, 305, 308, 308D, 309, 309D",Coinvetrans,2025-08-14,no_2015_candidate,,186;201850066263;201950076641,,202550076150,,,4,P1_2025_operator_scope,no,no
 90066,250Aii,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p381:250iii,,,,,,0,P3_unmatched_legal_source,no,no
 90010,305,"Circular 304, 305, 308, 308D, 309, 309D",Invetrans,2025-08-14,no_2015_candidate,,186;201850066263,,202550076150,,,3,P1_2025_operator_scope,no,no
-90016,316,Circular 315 Y 316,Santra,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90057,246,2A,Cootransblan,2025-08-14,possible_historical_family,4326:p320:246 AL2,,,,,,0,P3_unmatched_legal_source,no,no
-90059,246D,2A,Cootransblan,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
+90016,316,Circular 315 Y 316,Santra,2025-08-14,no_2015_candidate,,188;201850002198;201950090339,,,,,3,P2_previous_amendment,no,no
+90057,246,2A,Cootransblan,2025-08-14,possible_historical_family,4326:p320:246 AL2,175;201850002198,,,,,2,P2_previous_amendment,no,no
+90059,246D,2A,Cootransblan,2025-08-14,no_2015_candidate,,175,,,,,1,P2_previous_amendment,no,no
 90315,227i-C,8A,Metrosan,2025-08-14,strong_2015_identity,4325:p212:227-iC,201750009600;305,,202550079848,,,3,P1_2025_operator_scope,no,no
-90061,246C,2A,Cootransblan,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90064,246ii,2A,Cootransblan,2025-08-14,code_variant_review,4326:p373:246ii,,,,,,0,P3_unmatched_legal_source,no,no
+90061,246C,2A,Cootransblan,2025-08-14,no_2015_candidate,,175,,,,,1,P2_previous_amendment,no,no
+90064,246ii,2A,Cootransblan,2025-08-14,code_variant_review,4326:p373:246ii,175;201950024605,,,,,2,P2_previous_amendment,no,no
 90235,56,6E,Cootranscol,2025-08-14,no_2015_candidate,,201750008183,,,,,1,P2_previous_amendment,no,no
-90068,250iVF,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p347:250B,,,,,,0,P3_unmatched_legal_source,no,no
+90068,250iVF,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p347:250B,201950062158,,,,,1,P2_previous_amendment,no,no
 90291,200,8A,Conducciones América,2025-08-14,no_2015_candidate,,201850015842,,,,,1,P2_previous_amendment,no,no
-90069,250iR,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p328:250M AL6,,,,,,0,P3_unmatched_legal_source,no,no
+90069,250iR,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p328:250M AL6,201950062158,,,,,1,P2_previous_amendment,no,no
 90013,309,"Circular 304, 305, 308, 308D, 309, 309D",Coinvetrans,2025-08-14,no_2015_candidate,,186;201850066263;201950076641,,202550076150,,,4,P1_2025_operator_scope,no,no
 90075,252,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p332:252 AL8,,,,,,0,P3_unmatched_legal_source,no,no
 90102,255V,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
-90076,253D,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p334:253 AL9,,,,,,0,P3_unmatched_legal_source,no,no
-90228,080 V-O,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p532:080,,,,,,0,P3_unmatched_legal_source,no,no
+90076,253D,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p334:253 AL9,201950058084,,,,,1,P2_previous_amendment,no,no
+90228,080 V-O,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p532:080,201950013910;201950017591;225,,,,,3,P2_previous_amendment,no,no
 90316,228i,8A,Metrosan,2025-08-14,strong_2015_identity,4325:p214:228-i,201750009600;305,,202550079848,,,3,P1_2025_operator_scope,no,no
-90229,81,6D,Flota Nueva Villa,2025-08-14,strong_2015_identity,4327:p534:081,,,,,,0,P3_unmatched_legal_source,no,no
-90077,253I,2A,Palenque Robledal,2025-08-14,strong_2015_identity,4326:p387:253i,,,,,,0,P3_unmatched_legal_source,no,no
+90229,81,6D,Flota Nueva Villa,2025-08-14,strong_2015_identity,4327:p534:081,225,,,,,1,P2_previous_amendment,no,no
+90077,253I,2A,Palenque Robledal,2025-08-14,strong_2015_identity,4326:p387:253i,201950058084,,,,,1,P2_previous_amendment,no,no
 90184,102D,6A,Cootranscataluña,2025-08-14,no_2015_candidate,,201950070736,,,,,1,P2_previous_amendment,no,no
-90078,253iA,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p387:253i,,,,,,0,P3_unmatched_legal_source,no,no
+90078,253iA,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p387:253i,201950058084,,,,,1,P2_previous_amendment,no,no
 90239,87,6F,Cootranspinal,2025-08-14,no_2015_candidate,,,,,201750005329;201850052586;201850062870;202150041167;202350089536,,5,P2_previous_amendment,no,no
 90317,240,8A,Conducciones América,2025-08-14,no_2015_candidate,,201850015842;201950052919;202150044996,,,,,3,P2_previous_amendment,no,no
 90079,253iAR,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p387:253i,,,,,,0,P3_unmatched_legal_source,no,no
@@ -52,7 +52,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90097,260BR,2A,Palenque Robledal,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
 90188,110,6A,Flota la Milagrosa,2025-08-14,strong_2015_identity,4327:p406:110,201950070736,,,,,1,P2_previous_amendment,no,no
 90098,260T,2A,Palenque Robledal,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90099,267,2A,Palenque Robledal,2025-08-14,code_variant_review,4326:p369:267,,,,,,0,P3_unmatched_legal_source,no,no
+90099,267,2A,Palenque Robledal,2025-08-14,code_variant_review,4326:p369:267,201950058084,,,,,1,P2_previous_amendment,no,no
 90104,261A,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90106,254iB_TV 73,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90107,261,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
@@ -87,7 +87,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90136,Anillo 2 Carrera 73,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90137,Anillo 3ah Carrera 73,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90140,Anillo F3 Carrera 73,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
-90172,287,5A,Autobuses Poblado Laureles,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
+90172,287,5A,Autobuses Poblado Laureles,2025-08-14,no_2015_candidate,,202150129293;220,,,,,2,P2_previous_amendment,no,no
 90074,251,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p352:251B;4326:p385:251i,,,,,,0,P3_unmatched_legal_source,no,no
 90141,170,3A,Cootrabel,2025-08-14,no_2015_candidate,,189;202050048359;202150163403;202350107412,,,,,4,P2_previous_amendment,no,no
 90176,97,6A,Flota la V,2025-08-14,code_variant_review,4327:p396:097;4327:p398:097,201950070736,,,,,1,P2_previous_amendment,no,no
@@ -97,7 +97,7 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90175,97,6A,Flota la V,2025-08-14,code_variant_review,4327:p396:097;4327:p398:097,201950070736,,,,,1,P2_previous_amendment,no,no
 90181,099 Horario Esp,6A,Coopcerquin,2025-08-14,no_2015_candidate,,201950070736,,,,,1,P2_previous_amendment,no,no
 90191,111,6A,Flota la Milagrosa,2025-08-14,code_variant_review,4327:p408:111,201950070736,,,,,1,P2_previous_amendment,no,no
-90217,37 - 39,6C,Autocol,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
+90217,37 - 39,6C,Autocol,2025-08-14,no_2015_candidate,,201750007548;202350001334;392,,,,,3,P2_previous_amendment,no,no
 90193,111,6A,Flota la Milagrosa,2025-08-14,code_variant_review,4327:p408:111,201950070736,,,,,1,P2_previous_amendment,no,no
 90250,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
 90199,113,6A,Flota la Milagrosa,2025-08-14,strong_2015_identity,4327:p416:113,201950070736,,,,,1,P2_previous_amendment,no,no
@@ -105,29 +105,29 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90319,242,8A,Coonatra,2025-08-14,possible_historical_family,4325:p164:242 AL5,201750008728;201950047211;201950089585;389,,,,,4,P2_previous_amendment,no,no
 90320,243,8A,Coonatra,2025-08-14,no_2015_candidate,,201750008728;201950047211;389,,,,,3,P2_previous_amendment,no,no
 90321,243,8A,Coonatra,2025-08-14,no_2015_candidate,,201750008728;201950047211;389,,,,,3,P2_previous_amendment,no,no
-90202,6,6B,Transconor,2025-08-14,strong_2015_identity,4325:p60:006,,,,,,0,P3_unmatched_legal_source,no,no
-90203,22,6B,Transporte Aranjuez Santa Cruz,2025-08-14,strong_2015_identity,4325:p62:022,,,,,,0,P3_unmatched_legal_source,no,no
-90205,23,6B,Transporte Aranjuez Santa Cruz,2025-08-14,strong_2015_identity,4325:p64:023,,,,,,0,P3_unmatched_legal_source,no,no
-90220,51-52 CV-C,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p19:6C8,,,,,,0,P3_unmatched_legal_source,no,no
-90206,24,6B,Transporte Aranjuez Santa Cruz,2025-08-14,code_variant_review,4325:p132:024,,,,,,0,P3_unmatched_legal_source,no,no
-90207,24,6B,Transporte Aranjuez Santa Cruz,2025-08-14,code_variant_review,4325:p132:024,,,,,,0,P3_unmatched_legal_source,no,no
-90222,51-52 CV-F,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p21:6C9,,,,,,0,P3_unmatched_legal_source,no,no
-90211,42,6B,Transporte Aranjuez Santa Cruz,2025-08-14,strong_2015_identity,4325:p70:042,,,,,,0,P3_unmatched_legal_source,no,no
+90202,6,6B,Transconor,2025-08-14,strong_2015_identity,4325:p60:006,201750006872;202050037299;202050065694,,,,,3,P2_previous_amendment,no,no
+90203,22,6B,Transporte Aranjuez Santa Cruz,2025-08-14,strong_2015_identity,4325:p62:022,201750006872;202050037299;202050065694;202150040743,,,,,4,P2_previous_amendment,no,no
+90205,23,6B,Transporte Aranjuez Santa Cruz,2025-08-14,strong_2015_identity,4325:p64:023,201750006872;202050037299;202050065694,,,,,3,P2_previous_amendment,no,no
+90220,51-52 CV-C,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p19:6C8,201750007548;201850024822;202050058821;392,,,,,4,P2_previous_amendment,no,no
+90206,24,6B,Transporte Aranjuez Santa Cruz,2025-08-14,code_variant_review,4325:p132:024,201750006872;202050037299;202050065694;202150040743,,,,,4,P2_previous_amendment,no,no
+90207,24,6B,Transporte Aranjuez Santa Cruz,2025-08-14,code_variant_review,4325:p132:024,201750006872;202050037299;202050065694;202150040743,,,,,4,P2_previous_amendment,no,no
+90222,51-52 CV-F,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p21:6C9,201750007548;202050058821;392,,,,,3,P2_previous_amendment,no,no
+90211,42,6B,Transporte Aranjuez Santa Cruz,2025-08-14,strong_2015_identity,4325:p70:042,201750006872;202050037299;202050065694;202150040743,,,,,4,P2_previous_amendment,no,no
 90236,57,6E,Coopetransa,2025-08-14,no_2015_candidate,,201750008183,,,,,1,P2_previous_amendment,no,no
 90255,106,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
-90212,031 P-C,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p7:6C2,,,,,,0,P3_unmatched_legal_source,no,no
+90212,031 P-C,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p7:6C2,201750007548;201850024822;392,,,,,3,P2_previous_amendment,no,no
 90108,261i Der,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
-90214,031 P-F,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p9:6C3,,,,,,0,P3_unmatched_legal_source,no,no
+90214,031 P-F,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,4325:p9:6C3,201750007548;392,,,,,2,P2_previous_amendment,no,no
 90103,255V,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
-90218,37 - 39,6C,Autocol,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90215,031 P-SD,6C,Expreso Campo Valdés,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90219,37 - 39,6C,Autocol,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90226,080 V-33,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p532:080,,,,,,0,P3_unmatched_legal_source,no,no
-90227,080 V-M,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p532:080,,,,,,0,P3_unmatched_legal_source,no,no
+90218,37 - 39,6C,Autocol,2025-08-14,no_2015_candidate,,201750007548;202350001334;392,,,,,3,P2_previous_amendment,no,no
+90215,031 P-SD,6C,Expreso Campo Valdés,2025-08-14,no_2015_candidate,,201750007548;201850024822;392,,,,,3,P2_previous_amendment,no,no
+90219,37 - 39,6C,Autocol,2025-08-14,no_2015_candidate,,201750007548;202350001334;392,,,,,3,P2_previous_amendment,no,no
+90226,080 V-33,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p532:080,201950013910;201950017591;225,,,,,3,P2_previous_amendment,no,no
+90227,080 V-M,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p532:080,201950017591;225,,,,,2,P2_previous_amendment,no,no
 90195,112,6A,Copatra,2025-08-14,strong_2015_identity,4327:p414:112,201950070736,,,,,1,P2_previous_amendment,no,no
-90230,082 V-LA,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p536:082,,,,,,0,P3_unmatched_legal_source,no,no
-90232,085,6D,Cootracovi,2025-08-14,strong_2015_identity,4327:p538:085,,,,,,0,P3_unmatched_legal_source,no,no
-90328,C23i IZQUIERA,8A,Tax Maya,2025-08-14,possible_historical_family,4325:p224:C23-i,,,,,,0,P3_unmatched_legal_source,no,no
+90230,082 V-LA,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p536:082,201950013910;201950017591;201950072634;202250106966;225,,,,,5,P2_previous_amendment,no,no
+90232,085,6D,Cootracovi,2025-08-14,strong_2015_identity,4327:p538:085,201850054980;202150164824;202250106964,,,,,3,P2_previous_amendment,no,no
+90328,C23i IZQUIERA,8A,Tax Maya,2025-08-14,possible_historical_family,4325:p224:C23-i,201950016535,,,,,1,P2_previous_amendment,no,no
 90275,103,6H,Cootransi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
 90237,60,6E,Cootranscol,2025-08-14,no_2015_candidate,,201750008183,,,,,1,P2_previous_amendment,no,no
 90238,069,6E,Coopetransa,2025-08-14,no_2015_candidate,,201750008183;202350107467,,,,,2,P2_previous_amendment,no,no
@@ -139,45 +139,45 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90249,105,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
 90306,223,8A,Conducciones América,2025-08-14,no_2015_candidate,,201850015842;201950052919;202150006316,,,,,3,P2_previous_amendment,no,no
 90294,201B,8A,Conducciones América,2025-08-14,no_2015_candidate,,201850015842,,,,,1,P2_previous_amendment,no,no
-90266,93,6H,Copatra,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90267,93,6H,Copatra,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
+90266,93,6H,Copatra,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90267,93,6H,Copatra,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
 90278,107,6H,Cootransvi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
-90268,93,6H,Copatra,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
+90268,93,6H,Copatra,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
 90311,227i-1,8A,Metrosan,2025-08-14,strong_2015_identity,4325:p204:227-i1,201750009600;305,,202550079848,,,3,P1_2025_operator_scope,no,no
 90307,225i-1,8A,Metrosan,2025-08-14,code_variant_review,4325:p292:225-i1;4325:p196:225-i1,201750009600;305,,202550079848,,,3,P1_2025_operator_scope,no,no
-90269,94,6H,Copatra,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90270,95,6H,Copatra,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90326,C23_Alterna,8A,Tax Maya,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90327,C23,8A,Tax Maya,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
+90269,94,6H,Copatra,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90270,95,6H,Copatra,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90326,C23_Alterna,8A,Tax Maya,2025-08-14,no_2015_candidate,,201950016535,,,,,1,P2_previous_amendment,no,no
+90327,C23,8A,Tax Maya,2025-08-14,no_2015_candidate,,201950016535,,,,,1,P2_previous_amendment,no,no
 90324,311i,8A,Coonatra,2025-08-14,strong_2015_identity,4325:p222:311-i,172;201750008728;201950047211;202150129152;202150129154;389,,,,,6,P2_previous_amendment,no,no
 90365,250VF_C,2A,Palenque Robledal,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90271,95,6H,Copatra,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90272,95,6H,Copatra,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
+90271,95,6H,Copatra,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90272,95,6H,Copatra,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
 90325,311ii,8A,Coonatra,2025-08-14,code_variant_review,4325:p220:311-ii,172;201750008728;201950047211;202150129152;202150129154;389,,,,,6,P2_previous_amendment,no,no
-90273,95,6H,Copatra,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
+90273,95,6H,Copatra,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
 90279,107,6H,Cootransvi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
 90280,107,6H,Cootransvi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
-90287,193ii,8A,Autobuses Poblado Laureles,2025-08-14,code_variant_review,4325:p190:193-ii,,,,,,0,P3_unmatched_legal_source,no,no
+90287,193ii,8A,Autobuses Poblado Laureles,2025-08-14,code_variant_review,4325:p190:193-ii,202150064544;301,,,,,2,P2_previous_amendment,no,no
 90281,107,6H,Cootransvi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
-90289,195i,8A,Tax Maya,2025-08-14,strong_2015_identity,4325:p192:195-i,,,,,,0,P3_unmatched_legal_source,no,no
-90282,190,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p266:190,,,,,,0,P3_unmatched_legal_source,no,no
+90289,195i,8A,Tax Maya,2025-08-14,strong_2015_identity,4325:p192:195-i,201950094698,,,,,1,P2_previous_amendment,no,no
+90282,190,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p266:190,202150064544;301,,,,,2,P2_previous_amendment,no,no
 90113,263i,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
-90283,191,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p172:191,,,,,,0,P3_unmatched_legal_source,no,no
+90283,191,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p172:191,202150064544;301,,,,,2,P2_previous_amendment,no,no
 90371,254iB_TV 75,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90114,263ii,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90115,265,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
-90284,192,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p174:192,,,,,,0,P3_unmatched_legal_source,no,no
-90375,024 Barrial,6B,,2025-08-14,possible_historical_family,4325:p132:024,,,,,,0,P3_unmatched_legal_source,no,no
-90285,193,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p176:193,,,,,,0,P3_unmatched_legal_source,no,no
+90284,192,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p174:192,301,,,,,1,P2_previous_amendment,no,no
+90375,024 Barrial,6B,,2025-08-14,possible_historical_family,4325:p132:024,201750006872;202050037299;202050065694,,,,,3,P2_previous_amendment,no,no
+90285,193,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p176:193,202150064544;301,,,,,2,P2_previous_amendment,no,no
 90343,111,6A,Flota la Milagrosa,2025-08-14,code_variant_review,4327:p408:111,201950070736,,,,,1,P2_previous_amendment,no,no
-90286,193i,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p188:193-i,,,,,,0,P3_unmatched_legal_source,no,no
+90286,193i,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,4325:p188:193-i,202150064544;301,,,,,2,P2_previous_amendment,no,no
 90073,250AP,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p379:250ii,,,,,,0,P3_unmatched_legal_source,no,no
 90080,254,2A,Transporte Medellín Castilla,2025-08-14,possible_historical_family,4326:p336:254 AL10,,,202550076162,,,1,P1_2025_operator_scope,no,no
-90288,195,8A,Tax Maya,2025-08-14,strong_2015_identity,4325:p178:195,,,,,,0,P3_unmatched_legal_source,no,no
+90288,195,8A,Tax Maya,2025-08-14,strong_2015_identity,4325:p178:195,201950094698,,,,,1,P2_previous_amendment,no,no
 90361,311iiR,8A,Coonatra,2025-08-14,no_2015_candidate,,172;201750008728;201950047211;202150129152;202150129154;389,,,,,6,P2_previous_amendment,no,no
 90290,195ii,8A,Tax Maya,2025-08-14,strong_2015_identity,4325:p194:195-ii,,,,,,0,P3_unmatched_legal_source,no,no
 90351,255i,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,4326:p389:255i,,,202550079865,,,1,P1_2025_operator_scope,no,no
-90355,C23i DERECHA,8A,Tax Maya,2025-08-14,possible_historical_family,4325:p224:C23-i,,,,,,0,P3_unmatched_legal_source,no,no
+90355,C23i DERECHA,8A,Tax Maya,2025-08-14,possible_historical_family,4325:p224:C23-i,201950016535,,,,,1,P2_previous_amendment,no,no
 90292,201,8A,Conducciones América,2025-08-14,code_variant_review,4325:p180:201,201850015842,,,,,1,P2_previous_amendment,no,no
 90308,225i-2,8A,Metrosan,2025-08-14,code_variant_review,4325:p198:225-i2,201750009600;305,,202550079848,,,3,P1_2025_operator_scope,no,no
 90302,221A,8A,Conducciones América,2025-08-14,possible_historical_family,4325:p158:221 AL2,201850015842,,,,,1,P2_previous_amendment,no,no
@@ -189,15 +189,15 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90370,082 V-LA PILOTO,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p536:082,,,,,,0,P3_unmatched_legal_source,no,no
 90298,202i,8A,Conducciones América,2025-08-14,strong_2015_identity,4325:p184:202-i,201850015842;201950052919;202350001335,,,,,3,P2_previous_amendment,no,no
 90374,172-178 FUSION,3A,Cootrabel,2025-08-14,no_2015_candidate,,189;202050048359;202150163403;202350107412,,,,,4,P2_previous_amendment,no,no
-90257,98 Directa 1,6G,Transacoop,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90258,98 Directa 2,6G,Transacoop,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90259,98 Directa 3,6G,Transacoop,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90260,98 Directa 4,6G,Transacoop,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90261,98 Directa 5,6G,Transacoop,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90262,98 Directa 6,6G,Transacoop,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90263,98 Directa 7,6G,Transacoop,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90264,98 Directa 8,6G,Transacoop,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90265,98 Directa 9,6G,Transacoop,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
+90257,98 Directa 1,6G,Transacoop,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90258,98 Directa 2,6G,Transacoop,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90259,98 Directa 3,6G,Transacoop,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90260,98 Directa 4,6G,Transacoop,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90261,98 Directa 5,6G,Transacoop,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90262,98 Directa 6,6G,Transacoop,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90263,98 Directa 7,6G,Transacoop,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90264,98 Directa 8,6G,Transacoop,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
+90265,98 Directa 9,6G,Transacoop,2025-08-14,no_2015_candidate,,201950087943,,,,,1,P2_previous_amendment,no,no
 90300,203 Corazón,8A,Conducciones América,2025-08-14,no_2015_candidate,,201850015842,,,,,1,P2_previous_amendment,no,no
 90301,220,8A,Conducciones América,2025-08-14,no_2015_candidate,,201850015842;201950052919,,,,,2,P2_previous_amendment,no,no
 90312,227i-A,8A,Metrosan,2025-08-14,strong_2015_identity,4325:p206:227-iA,201750009600;202150044995;305,,202550079848,,,4,P1_2025_operator_scope,no,no
@@ -208,42 +208,42 @@ arcgis_id_ruta,arcgis_route_code,arcgis_system,arcgis_operator,arcgis_timestamp_
 90015,315,Circular 315 Y 316,Santra,2025-08-14,no_2015_candidate,,,202550076174,,,,1,P0_explicit_2025,no,no
 90086,255P,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,4326:p357:255P,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90084,255i,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,4326:p389:255i,,,202550079865,,,1,P1_2025_operator_scope,no,no
-90067,250R,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p383:250Ai,,,,,,0,P3_unmatched_legal_source,no,no
+90067,250R,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p383:250Ai,201950062158,,,,,1,P2_previous_amendment,no,no
 90138,Anillo 3h Carrera 73,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90085,255iD,2A,Rápido San Cristóbal,2025-08-14,strong_2015_identity,4326:p391:255iD,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90139,Anillo F1 Carrera 73,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90353,255 V3 HOR ESP,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
-90331,C23i,8A,Tax Maya,2025-08-14,code_variant_review,4325:p320:C23-i;4325:p224:C23-i;4325:p236:C23iPALV,,,,,,0,P3_unmatched_legal_source,no,no
+90331,C23i,8A,Tax Maya,2025-08-14,code_variant_review,4325:p320:C23-i;4325:p224:C23-i;4325:p236:C23iPALV,201950016535,,,,,1,P2_previous_amendment,no,no
 90349,255V5,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
-90209,041D,6B,Transporte Aranjuez Santa Cruz,2025-08-14,possible_historical_family,4325:p68:041A,,,,,,0,P3_unmatched_legal_source,no,no
+90209,041D,6B,Transporte Aranjuez Santa Cruz,2025-08-14,possible_historical_family,4325:p68:041A,201750006872;201950088890;202050037299;202050065694,,,,,4,P2_previous_amendment,no,no
 90105,254i,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,,,,202550076162,,,1,P1_2025_operator_scope,no,no
 90081,255A,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,4326:p366:255A,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90092,255A,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,4326:p366:255A,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90089,255V2,2A,Rápido San Cristóbal,2025-08-14,strong_2015_identity,4326:p362:255V2,,,202550079865,,,1,P1_2025_operator_scope,no,no
-90210,041I,6B,Transporte Aranjuez Santa Cruz,2025-08-14,possible_historical_family,4325:p68:041A,,,,,,0,P3_unmatched_legal_source,no,no
+90210,041I,6B,Transporte Aranjuez Santa Cruz,2025-08-14,possible_historical_family,4325:p68:041A,201750006872;201950088890;202050037299;202050065694,,,,,4,P2_previous_amendment,no,no
 90082,255D,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
-90334,C23ii,8A,Tax Maya,2025-08-14,strong_2015_identity,4325:p226:C23-ii,,,,,,0,P3_unmatched_legal_source,no,no
+90334,C23ii,8A,Tax Maya,2025-08-14,strong_2015_identity,4325:p226:C23-ii,201950016535,,,,,1,P2_previous_amendment,no,no
 90276,103,6H,Cootransi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
 90088,255V1D,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90083,255,2A,Rápido San Cristóbal,2025-08-14,strong_2015_identity,4326:p354:255,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90377,229i,8A,Metrosan,2025-08-14,no_2015_candidate,,201750009600;202350074448;202350102349;202450030616,,202550079848,,202350074448;202350102349;202450030616,5,P1_2025_operator_scope,no,no
-90231,082 V-LAD,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p536:082,,,,,,0,P3_unmatched_legal_source,no,no
+90231,082 V-LAD,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,4327:p536:082,201950013910;201950017591;201950072634;202250106966;225,,,,,5,P2_previous_amendment,no,no
 90277,103,6H,Cootransi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
-90070,250VF,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p347:250B,,,,,,0,P3_unmatched_legal_source,no,no
+90070,250VF,2A,Palenque Robledal,2025-08-14,possible_historical_family,4326:p347:250B,201950062158,,,,,1,P2_previous_amendment,no,no
 90256,106,6F,Cootransmallat,2025-08-14,no_2015_candidate,,,,,201750005329;201950020664;202050081986;202150041167;2023350087382;202350086596,,6,P2_previous_amendment,no,no
 90372,255iD Estacion Estadio,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90373,255i Estacion Estadio,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90274,103,6H,Cootransi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
-90332,C23i,8A,Tax Maya,2025-08-14,code_variant_review,4325:p320:C23-i;4325:p224:C23-i;4325:p232:C23iLPV,,,,,,0,P3_unmatched_legal_source,no,no
+90332,C23i,8A,Tax Maya,2025-08-14,code_variant_review,4325:p320:C23-i;4325:p224:C23-i;4325:p232:C23iLPV,201950016535,,,,,1,P2_previous_amendment,no,no
 90367,300 DIR-80,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,,172;201950047211;202150181337;202250071653,,,,,4,P2_previous_amendment,no,no
 90091,255V3,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,4326:p364:255V3,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90313,227i-B,8A,Metrosan,2025-08-14,strong_2015_identity,4325:p208:227-iB,201750009600;202150044995;305,,202550079848,,,4,P1_2025_operator_scope,no,no
-90330,C23i,8A,Tax Maya,2025-08-14,code_variant_review,4325:p320:C23-i;4325:p224:C23-i;4325:p230:C23iPV,,,,,,0,P3_unmatched_legal_source,no,no
-90333,C23i,8A,Tax Maya,2025-08-14,code_variant_review,4325:p320:C23-i;4325:p224:C23-i;4325:p234:C23iPAV,,,,,,0,P3_unmatched_legal_source,no,no
+90330,C23i,8A,Tax Maya,2025-08-14,code_variant_review,4325:p320:C23-i;4325:p224:C23-i;4325:p230:C23iPV,201950016535,,,,,1,P2_previous_amendment,no,no
+90333,C23i,8A,Tax Maya,2025-08-14,code_variant_review,4325:p320:C23-i;4325:p224:C23-i;4325:p234:C23iPAV,201950016535,,,,,1,P2_previous_amendment,no,no
 90090,255V3,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,4326:p364:255V3,,,202550079865,,,1,P1_2025_operator_scope,no,no
-90329,C23i,8A,Tax Maya,2025-08-14,code_variant_review,4325:p320:C23-i;4325:p224:C23-i;4325:p228:C23iAV,,,,,,0,P3_unmatched_legal_source,no,no
-90335,085 L C,6D,Cootracovi,2025-08-14,no_2015_candidate,,,,,,,0,P3_unmatched_legal_source,no,no
-90337,085 L H MINO,6D,Cootracovi,2025-08-14,possible_historical_family,4327:p538:085,,,,,,0,P3_unmatched_legal_source,no,no
+90329,C23i,8A,Tax Maya,2025-08-14,code_variant_review,4325:p320:C23-i;4325:p224:C23-i;4325:p228:C23iAV,201950016535,,,,,1,P2_previous_amendment,no,no
+90335,085 L C,6D,Cootracovi,2025-08-14,no_2015_candidate,,201850054980;202150164824;202250106964,,,,,3,P2_previous_amendment,no,no
+90337,085 L H MINO,6D,Cootracovi,2025-08-14,possible_historical_family,4327:p538:085,201850054980;202150164824;202250106964,,,,,3,P2_previous_amendment,no,no
 90347,255V4,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,,,,202550079865,,,1,P1_2025_operator_scope,no,no
 90357,107,6H,Cootransvi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
 90359,107,6H,Cootransvi,2025-08-14,no_2015_candidate,,201750022231;201950077279;202050056226;202350008449,,,,,4,P2_previous_amendment,no,no
