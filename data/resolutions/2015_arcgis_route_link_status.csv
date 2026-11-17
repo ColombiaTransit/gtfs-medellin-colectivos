@@ -1,0 +1,253 @@
+arcgis_id_ruta,current_route_code,current_route_name,current_system,current_operator,arcgis_uniform_attribute_date,best_historical_link_status,number_of_historical_source_candidates,has_exact_2015_code_and_system,has_manual_historical_family_candidate,current_route_code_repeated_across_arcgis_ids,historical_fiche_refs,legal_applicability,verified_as_current_service,allow_2015_schedule_auto_import
+90223,51-52 CV-O,Campo Valdés Oriental,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,1,false,true,no,4325:p17:6C7,2015_historical_reference_not_operationally_current,no,no
+90323,243iD,Floresta Directa,8A,Coonatra,2025-08-14,code_variant_review,1,true,false,no,4325:p218:243-iD,2015_historical_reference_not_operationally_current,no,no
+90314,227iB-2,Socorro,8A,Metrosan,2025-08-14,strong_2015_identity,1,true,false,no,4325:p210:227-iB2,2015_historical_reference_not_operationally_current,no,no
+90002,286,Circular 286,Circular 286,Combuses,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90003,302,Circular Antihorario 302,Circular Izquierda 302,Autobuses Poblado Laureles,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90004,313,Terminal del Norte-Terminal del Sur,Circular 313,Combuses,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90006,301,Circular,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90072,250M,Moravia,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p349:250AT,2015_historical_reference_not_operationally_current,no,no
+90005,300,Circular,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90224,51-52 CV-SD,Campo Valdés San Diego,6C,Expreso Campo Valdés,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90063,246i,Blanquizal integrada,2A,Cootransblan,2025-08-14,strong_2015_identity,1,true,false,no,4326:p371:246i,2015_historical_reference_not_operationally_current,no,no
+90254,106,Tres Esquinas,6F,Cootransmallat,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90008,311,Directa Circular,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90007,310,Directa Circular,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90011,308,Ruta de la Salud derecha,"Circular 304, 305, 308, 308D, 309, 309D",Coinvetrans,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90009,304,Comercial Hotelera derecha,"Circular 304, 305, 308, 308D, 309, 309D",Invetrans,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90012,308D,Ruta de la Salud derecha directa,"Circular 304, 305, 308, 308D, 309, 309D",Coinvetrans,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90065,250AiP,Pajarito integrada,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p379:250ii,2015_historical_reference_not_operationally_current,no,no
+90014,309D,Ruta de la Salud izquierda directa,"Circular 304, 305, 308, 308D, 309, 309D",Coinvetrans,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90066,250Aii,Tulipanes La Huerta integrada,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p381:250iii,2015_historical_reference_not_operationally_current,no,no
+90010,305,Comercial Hotelera izquierda,"Circular 304, 305, 308, 308D, 309, 309D",Invetrans,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90016,316,Circular 316,Circular 315 Y 316,Santra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90057,246,Blanquizal,2A,Cootransblan,2025-08-14,possible_historical_family,1,false,true,no,4326:p320:246 AL2,2015_historical_reference_not_operationally_current,no,no
+90059,246D,Blanquizal Calazanía directa,2A,Cootransblan,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90315,227i-C,Caseta,8A,Metrosan,2025-08-14,strong_2015_identity,1,true,false,no,4325:p212:227-iC,2015_historical_reference_not_operationally_current,no,no
+90061,246C,Blanquizal Calazanía,2A,Cootransblan,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90064,246ii,Blanquizal integrada,2A,Cootransblan,2025-08-14,code_variant_review,1,true,false,no,4326:p373:246ii,2015_historical_reference_not_operationally_current,no,no
+90235,56,La Esperanza,6E,Cootranscol,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90068,250iVF,Villa Flora integrada,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p347:250B,2015_historical_reference_not_operationally_current,no,no
+90291,200,Barrio Cristóbal-Oriental,8A,Conducciones América,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90069,250iR,Robledal integrada,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p328:250M AL6,2015_historical_reference_not_operationally_current,no,no
+90013,309,Ruta de la Salud izquierda,"Circular 304, 305, 308, 308D, 309, 309D",Coinvetrans,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90075,252,Kennedy,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p332:252 AL8,2015_historical_reference_not_operationally_current,no,no
+90102,255V,Vereda La Suiza-La Frisola-La Guayabala-La Volcana,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90076,253D,Aures derecha,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p334:253 AL9,2015_historical_reference_not_operationally_current,no,no
+90228,080 V-O,Villa Hermosa - La Mansión-Directa Oriental,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,1,false,true,no,4327:p532:080,2015_historical_reference_not_operationally_current,no,no
+90316,228i,Conquistadores,8A,Metrosan,2025-08-14,strong_2015_identity,1,true,false,no,4325:p214:228-i,2015_historical_reference_not_operationally_current,no,no
+90229,81,Villa Hermosa - Derecho,6D,Flota Nueva Villa,2025-08-14,strong_2015_identity,1,true,false,no,4327:p534:081,2015_historical_reference_not_operationally_current,no,no
+90077,253I,Aures izquierda,2A,Palenque Robledal,2025-08-14,strong_2015_identity,1,true,false,no,4326:p387:253i,2015_historical_reference_not_operationally_current,no,no
+90184,102D,Ávila-Iglesia Cataluña,6A,Cootranscataluña,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90078,253iA,Robledo Aures integrada,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p387:253i,2015_historical_reference_not_operationally_current,no,no
+90239,87,Pinar Torres,6F,Cootranspinal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90317,240,Floresta Estadio-Oriental,8A,Conducciones América,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90079,253iAR,Robledo Aures integrada Ramal,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p387:253i,2015_historical_reference_not_operationally_current,no,no
+90087,255V1,Vereda El Llano - Parque San Cristóbal,2A,Rápido San Cristóbal,2025-08-14,strong_2015_identity,1,true,false,no,4326:p360:255V1,2015_historical_reference_not_operationally_current,no,no
+90094,260CL,Clínica,2A,Palenque Robledal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90095,260C,Córdoba,2A,Palenque Robledal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90187,102A,Pablo Escobar-Cataluña,6A,Cootranscataluña,2025-08-14,strong_2015_identity,1,true,false,no,4327:p404:102A,2015_historical_reference_not_operationally_current,no,no
+90322,243i,Floresta,8A,Coonatra,2025-08-14,code_variant_review,1,true,false,no,4325:p216:243-i,2015_historical_reference_not_operationally_current,no,no
+90096,260i,Seminario integrada,2A,Palenque Robledal,2025-08-14,strong_2015_identity,1,true,false,no,4326:p393:260i,2015_historical_reference_not_operationally_current,no,no
+90097,260BR,Brisas,2A,Palenque Robledal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90188,110,La Milagrosa,6A,Flota la Milagrosa,2025-08-14,strong_2015_identity,1,true,false,no,4327:p406:110,2015_historical_reference_not_operationally_current,no,no
+90098,260T,Torres,2A,Palenque Robledal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90099,267,Éxito,2A,Palenque Robledal,2025-08-14,code_variant_review,1,true,false,no,4326:p369:267,2015_historical_reference_not_operationally_current,no,no
+90104,261A,Alfonso López - Viejo Terminal,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90106,254iB_TV 73,Pilarica,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90107,261,Alfonso López Calle 94,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90109,261i Izq,Izquierda Castilla - Estación Universidad,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90110,261ii,Estación Tricentenario,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90111,263,12 de Octubre - Calle 90,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90197,113B,Ávila,6A,Flota la Milagrosa,2025-08-14,strong_2015_identity,1,true,false,no,4327:p420:113B,2015_historical_reference_not_operationally_current,no,no
+90198,113M,Pablo E.,6A,Flota la Milagrosa,2025-08-14,code_variant_review,1,true,false,no,4327:p418:113M,2015_historical_reference_not_operationally_current,no,no
+90116,270i,Gratamira-Estación Acevedo,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90117,280,Santander - Carrera 73,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90128,Anillo 1 Carrera 65,Carabobo - Av. de Greiff,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90118,280 Directa,Santander - Carrera 73,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90179,97,Quintalinda-El Vergel,6A,Flota la V,2025-08-14,code_variant_review,2,true,false,yes,4327:p396:097;4327:p398:097,2015_historical_reference_not_operationally_current,no,no
+90132,Anillo F1 Carrera 65,Av. Greiff - Puente Horacio Toro,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90119,281,Florencia,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90122,283i,Florencia-estación Acevedo,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90124,289,Pilarica Calle 96,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90125,306A,Izquierda - Circular Noroccidental,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90126,306B,Derecha - Circular Noroccidental,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90071,250AH,La Huerta,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p324:250A AL4,2015_historical_reference_not_operationally_current,no,no
+90093,255A,Las Flores-Moravia-Centro,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,1,true,false,yes,4326:p366:255A,2015_historical_reference_not_operationally_current,no,no
+90299,203 Belencito,Belencito-Corazón-Oriental,8A,Conducciones América,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90369,301 DIR-80,Circular,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90180,99,Cerros de Quintalinda,6A,Coopcerquin,2025-08-14,strong_2015_identity,1,true,false,no,4327:p400:099,2015_historical_reference_not_operationally_current,no,no
+90129,Anillo 3AH Carrera 65,Alpujarra - Oriental sentido antihorario,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90130,Anillo 3H Carrera 65,Alpujarra - Oriental sentido horario,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90131,Anillo 3H Carrera 65 Horario Esp,Alpujarra - Oriental sentido horario,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90133,Anillo F2 Carrera 65,Av. Regional - San Diego,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90251,105,Golondrinas horario nocturno,6F,Cootransmallat,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90134,Anillo F3 Carrera 65,Parque Los Periodistas,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90135,Anillo 1 Carrera 73,Carabobo - Av. Greiff,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90136,Anillo 2 Carrera 73,El Hueco - Parque Berrío,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90137,Anillo 3ah Carrera 73,Alpujarra - Oriental sentido antihorario,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90140,Anillo F3 Carrera 73,Parque Los Periodistas,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90172,287,Terminal de Transporte Norte,5A,Autobuses Poblado Laureles,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90074,251,Margaritas,2A,Palenque Robledal,2025-08-14,possible_historical_family,2,false,true,no,4326:p352:251B;4326:p385:251i,2015_historical_reference_not_operationally_current,no,no
+90141,170,Belén Las Playas,3A,Cootrabel,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90176,97,Cauces-Quintalinda,6A,Flota la V,2025-08-14,code_variant_review,2,true,false,yes,4327:p396:097;4327:p398:097,2015_historical_reference_not_operationally_current,no,no
+90183,102,Ávila-Iglesia Cataluña,6A,Cootranscataluña,2025-08-14,strong_2015_identity,1,true,false,no,4327:p402:102,2015_historical_reference_not_operationally_current,no,no
+90173,96,Buenos Aires,6A,Flota la V,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90174,096 Horario Esp,Buenos Aires,6A,Flota la V,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90175,97,Cauces-Quintalinda,6A,Flota la V,2025-08-14,code_variant_review,2,true,false,yes,4327:p396:097;4327:p398:097,2015_historical_reference_not_operationally_current,no,no
+90181,099 Horario Esp,Cerros de Quintalinda,6A,Coopcerquin,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90191,111,El Salvador derecho,6A,Flota la Milagrosa,2025-08-14,code_variant_review,1,true,false,yes,4327:p408:111,2015_historical_reference_not_operationally_current,no,no
+90217,37 - 39,Hueco,6C,Autocol,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90193,111,El Salvador,6A,Flota la Milagrosa,2025-08-14,code_variant_review,1,true,false,yes,4327:p408:111,2015_historical_reference_not_operationally_current,no,no
+90250,105,Golondrinas horario especial,6F,Cootransmallat,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90199,113,Ávila - Cataluña,6A,Flota la Milagrosa,2025-08-14,strong_2015_identity,1,true,false,no,4327:p416:113,2015_historical_reference_not_operationally_current,no,no
+90318,242,La Divisa,8A,Coonatra,2025-08-14,possible_historical_family,1,false,true,yes,4325:p166:242 AL6,2015_historical_reference_not_operationally_current,no,no
+90319,242,La Quiebra,8A,Coonatra,2025-08-14,possible_historical_family,1,false,true,yes,4325:p164:242 AL5,2015_historical_reference_not_operationally_current,no,no
+90320,243,La Divisa,8A,Coonatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90321,243,La Quiebra,8A,Coonatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90202,6,La Francia,6B,Transconor,2025-08-14,strong_2015_identity,1,true,false,no,4325:p60:006,2015_historical_reference_not_operationally_current,no,no
+90203,22,Santa Cruz - Terminal,6B,Transporte Aranjuez Santa Cruz,2025-08-14,strong_2015_identity,1,true,false,no,4325:p62:022,2015_historical_reference_not_operationally_current,no,no
+90205,23,Popular N° 1,6B,Transporte Aranjuez Santa Cruz,2025-08-14,strong_2015_identity,1,true,false,no,4325:p64:023,2015_historical_reference_not_operationally_current,no,no
+90220,51-52 CV-C,Campo Valdés Centro,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,1,false,true,no,4325:p19:6C8,2015_historical_reference_not_operationally_current,no,no
+90206,24,Playón de los Comuneros,6B,Transporte Aranjuez Santa Cruz,2025-08-14,code_variant_review,1,true,false,yes,4325:p132:024,2015_historical_reference_not_operationally_current,no,no
+90207,24,Playón de los Comuneros - Oriental,6B,Transporte Aranjuez Santa Cruz,2025-08-14,code_variant_review,1,true,false,yes,4325:p132:024,2015_historical_reference_not_operationally_current,no,no
+90222,51-52 CV-F,Campo Valdés Ferrocarril,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,1,false,true,no,4325:p21:6C9,2015_historical_reference_not_operationally_current,no,no
+90211,42,Aranjuez intermedia,6B,Transporte Aranjuez Santa Cruz,2025-08-14,strong_2015_identity,1,true,false,no,4325:p70:042,2015_historical_reference_not_operationally_current,no,no
+90236,57,Bello Oriente,6E,Coopetransa,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90255,106,Tres Esquinas - Minorista,6F,Cootransmallat,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90212,031 P-C,Popular Centro,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,1,false,true,no,4325:p7:6C2,2015_historical_reference_not_operationally_current,no,no
+90108,261i Der,Derecha Castilla - Estación Universidad,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90214,031 P-F,Popular Ferrocarril,6C,Expreso Campo Valdés,2025-08-14,possible_historical_family,1,false,true,no,4325:p9:6C3,2015_historical_reference_not_operationally_current,no,no
+90103,255V,Vereda La Aldea,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90218,37 - 39,Ferrocarril Minorista,6C,Autocol,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90215,031 P-SD,Popular Centro San Diego,6C,Expreso Campo Valdés,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90219,37 - 39,Villanueva,6C,Autocol,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90226,080 V-33,Villa Hermosa - La Mansión-Directa La 33,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,1,false,true,no,4327:p532:080,2015_historical_reference_not_operationally_current,no,no
+90227,080 V-M,Villa Hermosa - La Mansión,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,1,false,true,no,4327:p532:080,2015_historical_reference_not_operationally_current,no,no
+90195,112,Las Palmas,6A,Copatra,2025-08-14,strong_2015_identity,1,true,false,no,4327:p414:112,2015_historical_reference_not_operationally_current,no,no
+90230,082 V-LA,Villa Hermosa - Los Ángeles,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,1,false,true,no,4327:p536:082,2015_historical_reference_not_operationally_current,no,no
+90232,085,La Honda,6D,Cootracovi,2025-08-14,strong_2015_identity,1,true,false,no,4327:p538:085,2015_historical_reference_not_operationally_current,no,no
+90328,C23i IZQUIERA,San Cristóbal-estación San Javier,8A,Tax Maya,2025-08-14,possible_historical_family,1,false,true,no,4325:p224:C23-i,2015_historical_reference_not_operationally_current,no,no
+90275,103,Sierra Minorista,6H,Cootransi,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90237,60,Santo Domingo,6E,Cootranscol,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90238,069,El Jardín,6E,Coopetransa,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90240,087 Horario Esp,Pinar Torres horario esp,6F,Cootranspinal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90242,90,Pinal,6F,Copatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90243,91,Alcázares de Sucre,6F,Copatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90244,91,Llanadas,6F,Copatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90247,105,Golondrinas,6F,Cootransmallat,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90249,105,Golondrinas - Minorista,6F,Cootransmallat,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90306,223,San Javier La Loma-Minorista,8A,Conducciones América,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90294,201B,Corazón-Plaza Minorista,8A,Conducciones América,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90266,93,Caicedo La Toma,6H,Copatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90267,93,Caicedo,6H,Copatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90278,107,Perlas,6H,Cootransvi,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90268,93,Caicedo La Toma Minorista,6H,Copatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90311,227i-1,Quintas,8A,Metrosan,2025-08-14,strong_2015_identity,1,true,false,no,4325:p204:227-i1,2015_historical_reference_not_operationally_current,no,no
+90307,225i-1,20 de Julio,8A,Metrosan,2025-08-14,code_variant_review,2,true,false,no,4325:p292:225-i1;4325:p196:225-i1,2015_historical_reference_not_operationally_current,no,no
+90269,94,Santa Lucía,6H,Copatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90270,95,Perlas,6H,Copatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90326,C23_Alterna,San Cristóbal-La Asomadera-Centro,8A,Tax Maya,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90327,C23,San Cristóbal-San Javier-La Loma-Centro,8A,Tax Maya,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90324,311i,Santa Lucia,8A,Coonatra,2025-08-14,strong_2015_identity,1,true,false,no,4325:p222:311-i,2015_historical_reference_not_operationally_current,no,no
+90365,250VF_C,Villa Flora-Curazao,2A,Palenque Robledal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90271,95,Perlas Minorista,6H,Copatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90272,95,Villatina,6H,Copatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90325,311ii,Santa Lucia Directa,8A,Coonatra,2025-08-14,code_variant_review,1,true,false,no,4325:p220:311-ii,2015_historical_reference_not_operationally_current,no,no
+90273,95,Villatina Minorista,6H,Copatra,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90279,107,San Antonio-Minorista,6H,Cootransvi,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90280,107,Ratón Pelao,6H,Cootransvi,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90287,193ii,Estadio-Laureles Santa Teresita,8A,Autobuses Poblado Laureles,2025-08-14,code_variant_review,1,true,false,no,4325:p190:193-ii,2015_historical_reference_not_operationally_current,no,no
+90281,107,San Antonio,6H,Cootransvi,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90289,195i,Simón Bolívar-Unicentro-estación Santa Lucía,8A,Tax Maya,2025-08-14,strong_2015_identity,1,true,false,no,4325:p192:195-i,2015_historical_reference_not_operationally_current,no,no
+90282,190,Laureles Parque,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,1,true,false,no,4325:p266:190,2015_historical_reference_not_operationally_current,no,no
+90113,263i,12 de Octubre - Estación Tricentenario,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90283,191,Laureles Éxito,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,1,true,false,no,4325:p172:191,2015_historical_reference_not_operationally_current,no,no
+90371,254iB_TV 75,Pilarica,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90114,263ii,12 de Octubre - Estación Tricentenario,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90115,265,Castillita,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90284,192,Laureles Nogal # 1,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,1,true,false,no,4325:p174:192,2015_historical_reference_not_operationally_current,no,no
+90375,024 Barrial,Playon de los Comuneros_Barrial,6B,,2025-08-14,possible_historical_family,1,false,true,no,4325:p132:024,2015_historical_reference_not_operationally_current,no,no
+90285,193,Laureles Nogal # 2,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,1,true,false,no,4325:p176:193,2015_historical_reference_not_operationally_current,no,no
+90343,111,El Salvador Barrio Nacional,6A,Flota la Milagrosa,2025-08-14,code_variant_review,1,true,false,yes,4327:p408:111,2015_historical_reference_not_operationally_current,no,no
+90286,193i,Estadio-Bolivariana-Laureles,8A,Autobuses Poblado Laureles,2025-08-14,strong_2015_identity,1,true,false,no,4325:p188:193-i,2015_historical_reference_not_operationally_current,no,no
+90073,250AP,Pajarito,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p379:250ii,2015_historical_reference_not_operationally_current,no,no
+90080,254,Picacho,2A,Transporte Medellín Castilla,2025-08-14,possible_historical_family,1,false,true,no,4326:p336:254 AL10,2015_historical_reference_not_operationally_current,no,no
+90288,195,Simón Bolívar-Unicentro-Centro,8A,Tax Maya,2025-08-14,strong_2015_identity,1,true,false,no,4325:p178:195,2015_historical_reference_not_operationally_current,no,no
+90361,311iiR,Rosales,8A,Coonatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90290,195ii,Laureles Campestre-estación Santa Lucía - estación Floresta,8A,Tax Maya,2025-08-14,strong_2015_identity,1,true,false,no,4325:p194:195-ii,2015_historical_reference_not_operationally_current,no,no
+90351,255i,El Llano,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,1,true,false,yes,4326:p389:255i,2015_historical_reference_not_operationally_current,no,no
+90355,C23i DERECHA,San Cristóbal-estación San Javier,8A,Tax Maya,2025-08-14,possible_historical_family,1,false,true,no,4325:p224:C23-i,2015_historical_reference_not_operationally_current,no,no
+90292,201,Éxito Corazón,8A,Conducciones América,2025-08-14,code_variant_review,1,true,false,yes,4325:p180:201,2015_historical_reference_not_operationally_current,no,no
+90308,225i-2,Colinas,8A,Metrosan,2025-08-14,code_variant_review,1,true,false,no,4325:p198:225-i2,2015_historical_reference_not_operationally_current,no,no
+90302,221A,San Javier Derecho-La Caseta-Oriental,8A,Conducciones América,2025-08-14,possible_historical_family,1,false,true,no,4325:p158:221 AL2,2015_historical_reference_not_operationally_current,no,no
+90293,201,Éxito Corazón,8A,Conducciones América,2025-08-14,code_variant_review,1,true,false,yes,4325:p180:201,2015_historical_reference_not_operationally_current,no,no
+90296,201i,Los Tanques-El Volcán-El Corazón-San Javier,8A,Conducciones América,2025-08-14,strong_2015_identity,1,true,false,no,4325:p182:201-i,2015_historical_reference_not_operationally_current,no,no
+90309,226i,Salado,8A,Metrosan,2025-08-14,strong_2015_identity,1,true,false,no,4325:p202:226-i,2015_historical_reference_not_operationally_current,no,no
+90310,226i-D,Depósito,8A,Metrosan,2025-08-14,strong_2015_identity,1,true,false,no,4325:p200:226-iD,2015_historical_reference_not_operationally_current,no,no
+90297,202,Santa Mónica-Oriental,8A,Conducciones América,2025-08-14,possible_historical_family,1,false,true,no,4325:p156:202 AL1,2015_historical_reference_not_operationally_current,no,no
+90370,082 V-LA PILOTO,Villa Hermosa-Los Angeles-Hospital la Piloto,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,1,false,true,no,4327:p536:082,2015_historical_reference_not_operationally_current,no,no
+90298,202i,El Morro-Travesías-Corazón-Santa Lucía,8A,Conducciones América,2025-08-14,strong_2015_identity,1,true,false,no,4325:p184:202-i,2015_historical_reference_not_operationally_current,no,no
+90374,172-178 FUSION,Belen la Gloria,3A,Cootrabel,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90257,98 Directa 1,Santa Elena-Mazo-Las Brisas-Medellín,6G,Transacoop,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90258,98 Directa 2,Santa Elena-Barro Blanco-Las Brisas-Medellín,6G,Transacoop,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90259,98 Directa 3,Santa Elena-Las Brisas-Medellín,6G,Transacoop,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90260,98 Directa 4,Santa Elena-Perico-Las Brisas-Medellín,6G,Transacoop,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90261,98 Directa 5,Santa Elena-El Plan-Las Brisas-Medellín,6G,Transacoop,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90262,98 Directa 6,Santa Elena-Piedras Blancas-Medellín,6G,Transacoop,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90263,98 Directa 7,Santa Elena-Barro Blanco-Medellín,6G,Transacoop,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90264,98 Directa 8,Santa Elena-El Cerro-Las Brisas-Medellín,6G,Transacoop,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90265,98 Directa 9,Santa Elena-Piedras Blancas-Las Brisas-Medellín,6G,Transacoop,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90300,203 Corazón,Corazón-Oriental,8A,Conducciones América,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90301,220,San Javier-Eduardo Santos-Oriental,8A,Conducciones América,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90312,227i-A,Peñitas,8A,Metrosan,2025-08-14,strong_2015_identity,1,true,false,no,4325:p206:227-iA,2015_historical_reference_not_operationally_current,no,no
+90303,221B,San Javier Derecho-Cuatro Esquinas-Oriental,8A,Conducciones América,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90304,221i,Villa Laura-San Javier,8A,Conducciones América,2025-08-14,strong_2015_identity,1,true,false,no,4325:p186:221-i,2015_historical_reference_not_operationally_current,no,no
+90305,222,San Javier Niza - Oriental,8A,Conducciones América,2025-08-14,possible_historical_family,1,false,true,no,4325:p160:222 AL3,2015_historical_reference_not_operationally_current,no,no
+90001,303,Circular Horario 303,Circular Derecha 303,Coonatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90015,315,Circular 315,Circular 315 Y 316,Santra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90086,255P,Palmitas-Centro,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,1,true,false,no,4326:p357:255P,2015_historical_reference_not_operationally_current,no,no
+90084,255i,Metrocable Aurora-Cárcel,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,1,true,false,yes,4326:p389:255i,2015_historical_reference_not_operationally_current,no,no
+90067,250R,Robledales,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p383:250Ai,2015_historical_reference_not_operationally_current,no,no
+90138,Anillo 3h Carrera 73,Alpujarra - Oriental sentido horario,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90085,255iD,Metrocable La Aurora,2A,Rápido San Cristóbal,2025-08-14,strong_2015_identity,1,true,false,no,4326:p391:255iD,2015_historical_reference_not_operationally_current,no,no
+90139,Anillo F1 Carrera 73,Av. Greiff - Puente Horacio Toro,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90353,255 V3 HOR ESP,Boqueron Centro Horario Especial,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90331,C23i,La Palma-estación San Javier,8A,Tax Maya,2025-08-14,code_variant_review,3,true,true,yes,4325:p320:C23-i;4325:p224:C23-i;4325:p236:C23iPALV,2015_historical_reference_not_operationally_current,no,no
+90349,255V5,La Cuchilla,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90209,041D,Aranjuez anillo derecha,6B,Transporte Aranjuez Santa Cruz,2025-08-14,possible_historical_family,1,false,true,no,4325:p68:041A,2015_historical_reference_not_operationally_current,no,no
+90105,254i,Pilarica integrada,2B,Transporte Medellín Castilla,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90081,255A,Nuevo Occidente-Las Flores,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,1,true,false,yes,4326:p366:255A,2015_historical_reference_not_operationally_current,no,no
+90092,255A,Nuevo Occidente El Tirol,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,1,true,false,yes,4326:p366:255A,2015_historical_reference_not_operationally_current,no,no
+90089,255V2,Vereda Yolombó - Parque San Cristóbal,2A,Rápido San Cristóbal,2025-08-14,strong_2015_identity,1,true,false,no,4326:p362:255V2,2015_historical_reference_not_operationally_current,no,no
+90210,041I,Aranjuez anillo izquierda,6B,Transporte Aranjuez Santa Cruz,2025-08-14,possible_historical_family,1,false,true,no,4325:p68:041A,2015_historical_reference_not_operationally_current,no,no
+90082,255D,San Cristóbal -Conexión vial,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90334,C23ii,San Cristóbal-Calle Negra-estación Aurora,8A,Tax Maya,2025-08-14,strong_2015_identity,1,true,false,no,4325:p226:C23-ii,2015_historical_reference_not_operationally_current,no,no
+90276,103,Mirlas,6H,Cootransi,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90088,255V1D,Vereda El Llano - Centro,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90083,255,San Cristóbal - Doña María,2A,Rápido San Cristóbal,2025-08-14,strong_2015_identity,1,true,false,no,4326:p354:255,2015_historical_reference_not_operationally_current,no,no
+90377,229i,Barrio Nuevo,8A,Metrosan,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90231,082 V-LAD,Villa Hermosa - Los Ángeles - Directa,6D,Flota Nueva Villa,2025-08-14,possible_historical_family,1,false,true,no,4327:p536:082,2015_historical_reference_not_operationally_current,no,no
+90277,103,Mirlas Minorista,6H,Cootransi,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90070,250VF,Robledo Villa Flora,2A,Palenque Robledal,2025-08-14,possible_historical_family,1,false,true,no,4326:p347:250B,2015_historical_reference_not_operationally_current,no,no
+90256,106,Tres Esquinas - Minorista horario especial,6F,Cootransmallat,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90372,255iD Estacion Estadio,Metrocable La Aurora Estacion Estadio,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90373,255i Estacion Estadio,Metrocable La Aurora Estacion Estadio,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90274,103,Sierra,6H,Cootransi,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90332,C23i,Las Playas-estación San Javier,8A,Tax Maya,2025-08-14,code_variant_review,3,true,true,yes,4325:p320:C23-i;4325:p224:C23-i;4325:p232:C23iLPV,2015_historical_reference_not_operationally_current,no,no
+90367,300 DIR-80,Circular,"Circular Coonatra 300, 301, 310, 311",Coonatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90091,255V3,Izquierda Vereda Boquerón - Parque San Cristóbal,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,1,true,false,yes,4326:p364:255V3,2015_historical_reference_not_operationally_current,no,no
+90313,227i-B,Gabriela,8A,Metrosan,2025-08-14,strong_2015_identity,1,true,false,no,4325:p208:227-iB,2015_historical_reference_not_operationally_current,no,no
+90330,C23i,El Patio-estación San Javier,8A,Tax Maya,2025-08-14,code_variant_review,3,true,true,yes,4325:p320:C23-i;4325:p224:C23-i;4325:p230:C23iPV,2015_historical_reference_not_operationally_current,no,no
+90333,C23i,Pedregal Bajo-estación San Javier,8A,Tax Maya,2025-08-14,code_variant_review,3,true,true,yes,4325:p320:C23-i;4325:p224:C23-i;4325:p234:C23iPAV,2015_historical_reference_not_operationally_current,no,no
+90090,255V3,Derecha Vereda Boquerón - Parque San Cristóbal,2A,Rápido San Cristóbal,2025-08-14,code_variant_review,1,true,false,yes,4326:p364:255V3,2015_historical_reference_not_operationally_current,no,no
+90329,C23i,La Asomadera-estación San Javier,8A,Tax Maya,2025-08-14,code_variant_review,3,true,true,yes,4325:p320:C23-i;4325:p224:C23-i;4325:p228:C23iAV,2015_historical_reference_not_operationally_current,no,no
+90335,085 L C,La Cruz,6D,Cootracovi,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90337,085 L H MINO,La Honda Minorista,6D,Cootracovi,2025-08-14,possible_historical_family,1,false,true,no,4327:p538:085,2015_historical_reference_not_operationally_current,no,no
+90347,255V4,Las Playas,2A,Rápido San Cristóbal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90357,107,Perlas Minorista,6H,Cootransvi,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90359,107,Raton Pelao Minorista,6H,Cootransvi,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90363,310R,Rosales,Circular 310Rosales,Coonatra,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90376,069 Ramal,El Jardin-La Cima,6E,Coopetransa,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
+90252,105,El Faro,6F,Cootransmallat,2025-08-14,no_2015_candidate,0,false,false,yes,,2015_historical_reference_not_operationally_current,no,no
+90241,88,Pinar Torres,6F,Cootranspinal,2025-08-14,no_2015_candidate,0,false,false,no,,2015_historical_reference_not_operationally_current,no,no
