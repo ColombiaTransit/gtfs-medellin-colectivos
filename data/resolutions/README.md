@@ -98,6 +98,31 @@ See `priority_source_documents.csv`. Official individual PDFs have been located 
 
 **Interpretation for the 2015 system 6B:** some route fichas explicitly have different published service windows for weekday, Saturday and Sunday/holidays, all recorded in their respective columns, whereas most 6C and 8A fichas state only a general window. Do not infer a day-specific first/last departure when the source does not specify it.
 
+## Gaceta 4327 recovery and 6A OCR-text candidate register (2026-11-17)
+
+- \`gaceta_4327_res_1047_text_candidates.csv\`: **11 indexed fiche occurrences**
+  from Resolución **1047/2015** (Sistema 6A, SICO UT; municipal PDF),
+  including separate printed 097 variants. Text index supplies possible
+  service windows and, for some fichas, eight DÍA/HMD dispatch intervals.
+  **Every row is \`indexed_pdf_text_unverified\`** until the original
+  PDF page image is checked. Blank interval cells for routes 110/111
+  reflect demonstrably corrupted extracted text, *not zero service*.
+- Suspicious printed/indexed values are explicitly flagged: route 097
+  weekday end 10:30, route 113M weekday HMD interval 2 minutes, and
+  confusing 113B/113M OCR route labels. There is no automatic repair.
+- \`official_pdf_sources.json\`: four exact **official** PDF URLs for
+  complete Gaceta 4327 plus Resoluciones 1047, 1169 and 1166.
+- \`scripts/recover_medellin_pdfs.py\` with workflow
+  \`.github/workflows/recover-medellin-resolution-pdfs.yml\`: attempts
+  bounded parallel retrieval on GitHub runners, rejects HTML error pages,
+  stores successful PDF bytes with SHA-256 and optional \`pdftotext\` output.
+  A download report and source PDFs are kept as a **30-day Actions artifact**,
+  not committed to the repo. Run manually with **Actions → Recover Medellín
+  official resolution PDFs → Run workflow** if the first attempt fails.
+
+**No source in this section is enabled as GTFS timetable input.**
+First review originals and later amendment chain for current applicability.
+
 ## Next source batches, ordered by expected yield
 
 - **Gaceta 4327 (2015)**: multiple 6A/6D and 2A operator-specific
