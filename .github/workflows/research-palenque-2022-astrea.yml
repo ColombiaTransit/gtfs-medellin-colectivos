@@ -1,0 +1,41 @@
+name: Research Palenque 2022 resolution in ASTREA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/palenque-2022-original-astrea-audit
+    paths:
+      - .github/workflows/research-palenque-2022-astrea.yml
+
+permissions:
+  contents: read
+
+jobs:
+  astrea-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate script syntax
+        run: python -m py_compile scripts/probe_palenque_2022_astrea.py
+      - name: Search official public ASTREA index and source candidates
+        run: python scripts/probe_palenque_2022_astrea.py
+      - name: Store short-lived research evidence only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: palenque-2022-astrea-source-probe
+          path: artifacts/medellin-palenque-2022/
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Summary
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f artifacts/medellin-palenque-2022/README.md ]]; then
+            cat artifacts/medellin-palenque-2022/README.md >> "$GITHUB_STEP_SUMMARY"
+          fi
