@@ -1,0 +1,32 @@
+name: Validate 2025 Palenque original legal tables
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/palenque-2022-original-astrea-audit
+    paths:
+      - .github/workflows/validate-palenque-2025-official-tables.yml
+  pull_request:
+    branches: [main]
+    paths:
+      - 'data/resolutions/palenque_2025_official_route_service_intervals.csv'
+      - 'scripts/validate_palenque_2025_official_tables.py'
+      - '.github/workflows/validate-palenque-2025-official-tables.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-legal-tables:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install HTML parser
+        run: pip install beautifulsoup4
+      - name: Recompare all 2025 legal figures with ASTREA original
+        run: python scripts/validate_palenque_2025_official_tables.py
