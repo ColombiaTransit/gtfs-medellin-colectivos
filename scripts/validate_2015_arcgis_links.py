@@ -262,7 +262,9 @@ def main():
     assert len(direct) == 2
     assert {x["arcgis_route_code"] for x in direct} == {"250AP", "250AiP"}
     for x in palenque:
-        assert x["later_original_resolution_read"] == "no"
+        expected_legal_text_state = ("yes_2022_and_2025_original_ASTREA_text"
+            if x["2022_official_resolution_reference"] == "202250015351" else "no")
+        assert x["later_original_resolution_read"] == expected_legal_text_state
         assert x["frequency_or_service_hours_verified_as_current"] == "no"
     for x in direct:
         assert any(
