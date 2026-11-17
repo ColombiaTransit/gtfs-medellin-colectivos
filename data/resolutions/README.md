@@ -330,16 +330,26 @@ distinct 98 Directa ArcGIS variants**. Fare acts are not schedules.
   **unsent** request for the full 2025 Gacetas (5667 and 5671),
   6F operating changes, 6G 098 frequency acts and later amendments,
   including the original annexes in PDF/CSV if available.
-- The municipality publicly lists `publicacion.gacetaoficial@medellin.gov.co`
-  for Gazette publication and `atencion.ciudadana@medellin.gov.co`
-  for citizen requests. Sending requires an authorized person/action.
+- The **official citizen intake channel** is the [PQRSD request form](https://www.medellin.gov.co/es/pqrsd/),
+  selecting **Solicitud de copia** or **Solicitud de información**.
+  Medellín lists **10 business days** for these requests. The 2025
+  citizen-service manual explicitly says `atencion.ciudadana@medellin.gov.co`
+  serves *internal* intake, not the official citizen filing channel.
+  `publicacion.gacetaoficial@medellin.gov.co` is a municipal **publication
+  process** address, not a replacement for PQRSD. The draft was **not sent**.
 - `scripts/index_medellin_gaceta_2026_transit_acts.py` and
   `.github/workflows/index-medellin-2026-transit-acts.yml` scan
   the new *official* public archive from **28 August 2026 onward**.
   Only official **act titles** are indexed; no PDF is downloaded or
   retained. This workflow uses a seven-day research artifact.
-  It does **not** establish that there were no earlier, unpublished,
-  or later changes, nor verify headways.
+  A successful [official scan on 17 November 2026](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44090270994)
+  reviewed **68 of 68** listed Gaceta detail pages from **28 August to
+  12 November 2026** with **zero direct TPC operator/route restructuring
+  title matches**. This is title-level negative evidence only:
+  `late_2026_public_gaceta_scan.json` preserves the exact scope and
+  method. It does **not** establish that there were no relevant
+  unpublished, pre-August-2026 or post-November-12 changes, nor verify
+  actual headways.
 
 ## Next source batches, ordered by expected yield
 
