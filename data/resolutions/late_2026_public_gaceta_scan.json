@@ -1,0 +1,18 @@
+{
+  "scan_date": "2026-11-17",
+  "official_portal": "https://www.medellin.gov.co/statements/innovaciondigital/gacetas/consulta-publica",
+  "period_start": "2026-08-28",
+  "period_end": "2026-11-12",
+  "first_gaceta_number": 5915,
+  "last_gaceta_number": 5983,
+  "official_detail_pages_found": 68,
+  "official_detail_pages_read": 68,
+  "failed_details": 0,
+  "specific_bus_route_restructuring_act_title_matches": 0,
+  "scope": "Indexed public municipal act descriptions only; no attached resolution PDFs inspected",
+  "method": "Bounded Python requests/BeautifulSoup listing+detail scan; keywords identifying TPC operators and restructuring",
+  "limitation": "No match in public titles does not prove that no relevant act exists, nor that a 2025 schedule remains current; sources before 2026-08-28 are absent from this portal",
+  "full_run": "https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44090270994",
+  "artifact_retention": "7 days (transient raw scan report and empty candidate CSV)",
+  "gtfs_changes": "none"
+}

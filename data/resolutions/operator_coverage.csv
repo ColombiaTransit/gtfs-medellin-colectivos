@@ -1,33 +1,33 @@
 operator_name_arcgis,arcgis_unique_id_ruta,gaceta_4325_system,indexed_official_act_refs_to_verify,2025_acts_to_review,research_status
-Autobuses Poblado Laureles,8,8A,1154/2015;1155/2015 (system-wide fichas),202550076168/2025 (Circular 313),gaceta_4325_fichas_indexed_not_fully_verified
-Autocol,3,6C,1041/2015;1044/2015;1042/2015;1043/2015 (system),,gaceta_4325_fichas_indexed_not_fully_verified
+Autobuses Poblado Laureles,8,8A,1154/2015;1155/2015 (system-wide fichas),202550076168/2025 (Circular 313),2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
+Autocol,3,6C,1041/2015;1044/2015;1042/2015;1043/2015 (system),,2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
 Coinvetrans,4,,,202550076150/2025 (Salud-Hotelera);202550076168/2025 (Circular 313),official_act_indexed_not_extracted
-Combuses,2,6B,1161/2015;1160/2015;1162/2015 (system),202550076168/2025 (Circular 313),gaceta_4325_fichas_indexed_not_fully_verified
-Conducciones América,16,8A,1170/2015;1154/2015;1155/2015 (system-wide fichas),,gaceta_4325_fichas_indexed_not_fully_verified
-Coonatra,17,8A,1154/2015;1155/2015 (system-wide fichas);389/2017,202550076174/2025 (Circular 301),gaceta_4325_fichas_indexed_not_fully_verified
-Coopcerquin,2,,1046/2015,,official_act_indexed_not_extracted
+Combuses,2,6B,1161/2015;1160/2015;1162/2015 (system),202550076168/2025 (Circular 313),2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
+Conducciones América,16,8A,1170/2015;1154/2015;1155/2015 (system-wide fichas),,2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
+Coonatra,17,8A,1154/2015;1155/2015 (system-wide fichas);389/2017,202550076174/2025 (Circular 301),2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
+Coopcerquin,2,,1046/2015,,2015_system_fichas_visually_verified_later_acts_and_mapping_pending
 Coopetransa,3,,201750008183/2017;202350107467/2023,,official_act_indexed_not_extracted
 Cootrabel,2,,189/2017,,official_act_indexed_not_extracted
-Cootracovi,3,,1019/2015,,official_act_indexed_not_extracted
-Cootransblan,5,,1168/2015;2981/2015,,official_act_indexed_not_extracted
-Cootranscataluña,3,,1151/2015,,official_act_indexed_not_extracted
+Cootracovi,3,,1019/2015,,2015_system_fichas_visually_verified_later_acts_and_mapping_pending
+Cootransblan,5,,1168/2015;2981/2015,,2015_system_fichas_visually_verified_later_acts_and_mapping_pending
+Cootranscataluña,3,,1151/2015,,2015_system_fichas_visually_verified_later_acts_and_mapping_pending
 Cootranscol,2,,"446/2011 (company authorization, not timetable)",,official_act_indexed_not_extracted
 Cootransi,4,,201750022231/2017;202050056226/2020;202350008449/2023,,official_act_indexed_not_extracted
-Cootransmallat,8,,,,official_document_not_identified
-Cootranspinal,3,,896/2015,,official_act_indexed_not_extracted
+Cootransmallat,8,,005/2009 (original headways);201750005329/2017 (6F);202150041167/2021;202350086596/2023;2023350087382/2023 (unverified reference number),,6f_legal_chain_indexed_original_frequencies_pending
+Cootranspinal,3,,896/2015;898/2015;1002/2015;201750005329/2017;202150041167/2021;202350089536/2023,,6f_legal_chain_indexed_original_frequencies_pending
 Cootransvi,6,,201750022231/2017;201950077279/2019,,official_act_indexed_not_extracted
-Copatra,12,,1049/2015,,official_act_indexed_not_extracted
-Expreso Campo Valdés,7,6C,1043/2015;1042/2015 (system);1044/2015,,gaceta_4325_fichas_indexed_not_fully_verified
-Flota la Milagrosa,7,,1048/2015,,official_act_indexed_not_extracted
-Flota la V,5,,1047/2015;201950070736/2019;202350064269/2023,,official_act_indexed_not_extracted
-Flota Nueva Villa,7,,1020/2015,,official_act_indexed_not_extracted
+Copatra,12,,1049/2015 (6A);1002/2015 (6F);201750005329/2017 (6F);201850052586/2018 (6F);202150041167/2021 (6F),,2015_6a_source_checked_6f_later_amendments_pending
+Expreso Campo Valdés,7,6C,1043/2015;1042/2015 (system);1044/2015,,2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
+Flota la Milagrosa,7,,1048/2015,,2015_system_fichas_visually_verified_later_acts_and_mapping_pending
+Flota la V,5,,1047/2015;201950070736/2019;202350064269/2023,,2015_system_fichas_visually_verified_later_acts_and_mapping_pending
+Flota Nueva Villa,7,,1020/2015,,2015_system_fichas_visually_verified_later_acts_and_mapping_pending
 Invetrans,2,,,202550076150/2025 (Salud-Hotelera),official_act_indexed_not_extracted
-Metrosan,11,8A,1154/2015;1155/2015 (system-wide fichas);305/2017;202150044995/2021,202550079848/2025,gaceta_4325_fichas_indexed_not_fully_verified
-Palenque Robledal,22,,1169/2015,,official_act_indexed_not_extracted
-Rápido San Cristóbal,21,,1167/2015,202550079865/2025,official_act_indexed_not_extracted
+Metrosan,11,8A,1154/2015;1155/2015 (system-wide fichas);305/2017;202150044995/2021,202550079848/2025,2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
+Palenque Robledal,22,,1169/2015,,2015_system_fichas_visually_verified_later_acts_and_mapping_pending
+Rápido San Cristóbal,21,,1167/2015,202550079865/2025,2015_system_fichas_visually_verified_later_acts_and_mapping_pending
 Santra,2,,,202550076174/2025 (Circular 315),official_act_indexed_not_extracted
-Tax Maya,13,8A,1154/2015;1155/2015 (system-wide fichas);202150159197/2021,,gaceta_4325_fichas_indexed_not_fully_verified
+Tax Maya,13,8A,1154/2015;1155/2015 (system-wide fichas);202150159197/2021,,2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
 Transacoop,9,,,,official_document_not_identified
-Transconor,1,6C;6B,1042/2015;1043/2015 (6C system);1162/2015;1160/2015;1161/2015 (6B system),,gaceta_4325_fichas_indexed_not_fully_verified
-Transporte Aranjuez Santa Cruz,7,6B,1160/2015;1161/2015;1162/2015 (system),,gaceta_4325_fichas_indexed_not_fully_verified
-Transporte Medellín Castilla,34,,1166/2015,202550076162/2025 (2A/2B),official_act_indexed_not_extracted
+Transconor,1,6C;6B,1042/2015;1043/2015 (6C system);1162/2015;1160/2015;1161/2015 (6B system),,2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
+Transporte Aranjuez Santa Cruz,7,6B,1160/2015;1161/2015;1162/2015 (system),,2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
+Transporte Medellín Castilla,34,,1166/2015,202550076162/2025 (2A/2B),2015_system_fichas_visually_verified_later_acts_and_mapping_pending
