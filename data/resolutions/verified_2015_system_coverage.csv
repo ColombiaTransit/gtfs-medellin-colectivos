@@ -1,0 +1,7 @@
+gaceta,system,primary_verified_act,visually_verified_fiche_occurrences,unique_system_route_positions,limitations
+4325,6C,1042,9,9,route identity not reconciled to current ArcGIS; later acts unchecked
+4325,6B,1160;1162,7,7,route identity not reconciled to current ArcGIS; later acts unchecked
+4325,8A,1154;1155,47,45,two duplicate route keys across acts; later amendments unchecked
+4326,2A,1166,38,38,other 2A acts in Gaceta 4327 repeat technical fichas; compare amendments
+4327,6A,1047,11,11,two 097 variants share base code; several source anomalies flagged
+4327,6D,1019,4,4,holidays explicitly differ from Sundays on 081/082/085
