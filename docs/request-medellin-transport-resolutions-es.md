@@ -2,8 +2,9 @@
 
 **Asunto sugerido:** Solicitud de copias digitales — Gacetas Oficiales 5667 y 5671 de 2025 y resoluciones de operación del transporte colectivo
 
-**Destinatario recomendado:** publicacion.gacetaoficial@medellin.gov.co
-**Copia opcional / canal de información pública:** atencion.ciudadana@medellin.gov.co
+**Canal formal recomendado:** [Portal PQRSD de la Alcaldía de Medellín](https://www.medellin.gov.co/es/pqrsd/) → **Solicitud de copia / Solicitud de información**. La Alcaldía publica un plazo máximo de respuesta de **10 días hábiles** para estas categorías.
+
+**Nota sobre correos electrónicos:** `publicacion.gacetaoficial@medellin.gov.co` es un buzón relacionado con el proceso institucional de publicación; `atencion.ciudadana@medellin.gov.co` se describe en el manual de servicio 2025 como canal de radicación interna, **no como canal formal de presentación por ciudadanos**. Por ello, no se recomienda sustituir la radicación PQRSD por un correo.
 
 > Este texto es un borrador de solicitud pública. **No se ha enviado**.
 > The addresses are published by the Alcaldía; this file does not include user contact details.
@@ -48,7 +49,8 @@ Atentamente,
 ## Reference / usage notes
 
 - Original Gaceta content indexes: https://vlex.com.co/vid/decreto-n-0728-gaceta-1092145026 and https://vlex.com.co/vid/resolucion-n-202550079865-gaceta-1092328445 (secondary public excerpts; not full original acts)
-- Official municipal notice identifying the Gaceta publication contact: https://www.medellin.gov.co/es/preve-nota/las-circulares-municipales/
-- Official municipal citizen-information email on same page: atencion.ciudadana@medellin.gov.co
+- Official citizen PQRSD intake: https://www.medellin.gov.co/es/pqrsd/ (copy/information requests: 10 business days)
+- Official 2025 service manual, virtual-channel section: https://www.medellin.gov.co/es/wp-content/uploads/2025/06/MA-SECI-011-Manual-de-servicio-a-la-ciudadania-2025.pdf
+- Municipal Gazette publication process (internal mailbox, not the recommended citizen filing channel): https://www.medellin.gov.co/es/preve-nota/las-circulares-municipales/
 - Internal route-level research queue: `data/resolutions/current_arcgis_legal_review_queue.csv`
 - **Do not commit retrieved original PDFs to Git.** Keep only extracted datasets, citation pages, URLs, SHA-256 of source, evidence state and effective date. Use short-lived Action artifacts for source recovery.
