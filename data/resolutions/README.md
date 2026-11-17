@@ -16,9 +16,12 @@ published legal schedule data from OCR candidates and from uncertain ArcGIS matc
   mistaken figures, missing frequency cells, and wrong time readings.
   Even `ocr_candidate_complete` means *all fields were OCR-extracted*, not validated.
   Indexed route codes are positional references pending comparison against actual page headings.
-- `gaceta_4325_visual_verified.csv`: 47 fichas whose eight
-  `INTERVALO DE DESPACHO` values and printed `HORARIO DE SERVICIO`
-  have been read directly from the page images (10 in the first research pass; 37 in the second). Each record contains its PDF page
+- `gaceta_4325_visual_verified.csv`: **63** fiche occurrences, covering all **61 unique
+  system/route positions** indexed for Gaceta 4325; the eight `INTERVALO DE DESPACHO`
+  values and printed `HORARIO DE SERVICIO` have been read directly from page images
+  (10 initial, 37 second pass, 16 third pass). The remaining **66** OCR candidate occurrences
+  are repeat appearances in other resolutions; these repeated source pages still require QA
+  if they are to be cited independently. Each verified record contains its PDF page
   and the resolution number. These are **verified as historical official values**,
   not proof that the same timetable was still in force in November 2026.
   Where the source says only a general service window, Saturday and
@@ -62,6 +65,30 @@ The 8A route fichas in this document appear under **1154/2015**
 **1155/2015** (Tax Maya act, starting p. 241). Existing comments
 assigning the Tax Maya / Coonatra 8A fichas to resolution 1042
 should be corrected, without modifying any actual schedule values.
+
+## Cross-checks and original-source anomalies
+
+- **Gaceta 4325, p. 154**: subsection heading explicitly identifies route
+  `CSJ22`, but the table's `CÓDIGO` cell prints `CSJ21`, identical to
+  p. 152. Registry uses subsection identifier `CSJ22` and records the printed
+  conflict in `caveat`. These are distinct route variants, not licence to
+  duplicate one timetable.
+- **Gaceta 4325, pp. 148/150/152/154**: all four CSJ trunk fichas
+  print **03:50–10:40** as the service window. This unusual early end
+  has been transcribed as printed, and is explicitly marked for contextual
+  investigation before using in GTFS. Do not silently change it to 22:40.
+- **Gaceta 4325, pp. 228–236**: five different C23i rural variants show
+  an unusually high **weekday HMD interval (60 min) versus DÍA (58 min)**.
+  This is how the official tables are printed; avoid correcting it by
+  intuition. Their printed `CÓDIGO` cells are used to differentiate
+  variants, rather than the common C23i family label.
+- **Gaceta 4327**: the official table of contents identifies **13 acts**
+  (including 2A, 6A and 6D). See `gaceta_4327_act_index.csv`.
+  The individual PDF of resolution 1169 includes technical fichas for
+  *several* companies under the 2A system, so an act's title/operator
+  must not be assigned to every route fiche inside it. Its timetable
+  values have not been visually accepted because image retrieval from the
+  municipal server is intermittently timing out.
 
 ## Source inventory for 2015/2025 amendments
 
