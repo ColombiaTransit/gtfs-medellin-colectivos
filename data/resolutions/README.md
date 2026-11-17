@@ -422,8 +422,8 @@ No PDF is committed or retained through this linkage process.
 
 ### Post-2015 legal amendment overlay (separate from the 2015 historical identity)
 
-`arcgis_post_2015_resolution_candidates.csv` now attaches **516
-candidate route-to-act references** to **236/252** ArcGIS IDs. The previous
+`arcgis_post_2015_resolution_candidates.csv` now attaches **518
+candidate route-to-act references** to **238/252** ArcGIS IDs. The previous
 96 without a post-2015 act lead were researched separately; 80 of those
 now have at least one *candidate* source, 16 remain unmatched.
 The underlying official municipality **report/contents references** are
@@ -460,10 +460,10 @@ matching method and explicit `original_act_read=no`,
 252-row research overview** joining the historic fiche status,
 Gaceta/page references and the later-act lists. Its review priority
 breakdown is P0=3 explicit 2025 title/code links; P1=72 operator-only
-2025 scope; P2=161 other later-act candidates; P3=16 without a found
+2025 scope; P2=163 other later-act candidates; P3=14 without a found
 post-2015 act candidate in the sources checked. This is **not a classification of actually amended routes**.
 
-`unresolved_16_after_missing96_search.csv` lists the residual 16:
+`unresolved_16_after_missing96_search.csv` is the earlier **snapshot** of 16:
 **14 Palenque Robledal** variants, **Tax Maya 195ii**, and **Flota Nueva
 Villa 082 V-LA PILOTO**. In 2019, several 250/253 Palenque routes had
 specific temporary road diversions, but those do not prove other 250,
@@ -483,6 +483,57 @@ headway/service span must be resolved **per field and variant**, not
 simply by taking the newest act. All integrated rows carry
 `verified_latest_effective_frequency=no` and
 `2015_to_GTFS_automated_import_allowed=no`.
+
+### Focused follow-up: 14 formerly unlinked Palenque Robledal variants
+
+- \`palenque_14_post2015_source_evidence.csv\` audits **all 14**
+  route IDs in the 2025-08-14 ArcGIS snapshot. The **official 2017
+  Medellín transport plan for the papal visit** lists **nine exact
+  current codes** (250M, 252, 260CL, 260C, 260BR, 260T, 250AH, 251,
+  250AP). It also mentions family codes 250VF and 253IZQ/253DER,
+  which do **not** establish the current variants 250VF_C and 253iAR.
+  Codes 250AiP, 250Aii and 260i are not explicitly in this 2017
+  list. This document is historical proof of *published route
+  identification*, **not a route-operating resolution or timetable**.
+- The municipal Secretaría de Movilidad's official **2023
+  management handover report**, entry 239, explicitly references
+  **Resolución 202250015351 (2022-02-24)** as a partial amendment of
+  operating conditions concerning both **250AP (ArcGIS 90073) and
+  250AiP (ArcGIS 90065)**. The report truncates the 2017
+  antecedent's number as \`2017500213…\`; do not conflate it with
+  any other act or guess its missing digits.
+  **No original 2022 resolution/annex or current headway has been
+  read.** These are two **exact route-level act-reference leads**,
+  not two newly verified timetables.
+- \`arcgis_post_2015_resolution_candidates.csv\` is updated from 516
+  to **518** route-to-act associations across **238/252** current
+  ArcGIS IDs. \`arcgis_historical_and_later_acts_overview.csv\`
+  and \`current_arcgis_legal_review_queue.csv\` now have P0=3,
+  P1=72, P2=163, P3=14.
+- \`unresolved_14_after_palenque_search.csv\` is the **current
+  research shortlist**: **12 distinct Palenque Robledal variants**
+  plus Tax Maya 195ii and Flota Nueva Villa 082 V-LA PILOTO.
+  The old \`unresolved_16_after_missing96_search.csv\` is retained
+  for historical/audit purposes only.
+
+**Remaining Palenque questions:** 250M, 250Aii, 252, 253iAR, 260CL,
+260C, 260i, 260BR, 260T, 250AH, 251, and 250VF_C.
+Some had exact 2017 public-route-list mentions; **that cannot replace
+a route-specific operating act**. A 2019 temporary detour decision
+for the 250 family or 253iA is not authority to assign a new timetable
+to 250VF_C or 253iAR.
+
+2017 municipal route list:
+https://www.medellin.gov.co/irj/go/km/docs/pccdesign/medellin/Temas/ElPapaenMedelln/Publicaciones/Shared%20Content/Publicaciones/2017/Indicaciones%20Movilidad%20por%20visita%20del%20Papa.pdf
+
+Official 2023 handover / 2022 act reference:
+https://www.medellin.gov.co/es/wp-content/uploads/2023/08/AIG-Mateo-Gonzalez-Benitez-Sec-Movilidad.pdf
+
+All matching remains *research-only*. Neither a 2017 route notice nor
+a 2022 amendment title verifies a 2026 effective frequency, service
+window or even actual operation. The GTFS must not import these
+historical values. No PDF files are permanently retained; no PQRSD
+has been submitted.
 
 ## Next source batches, ordered by expected yield
 
