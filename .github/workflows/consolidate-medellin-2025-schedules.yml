@@ -28,7 +28,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/resolutions/2025_official_service_windows_and_headways_by_day.csv data/resolutions/2025_official_schedule_exceptions.csv
+          git add data/resolutions/2025_official_service_windows_and_headways_by_day.csv data/resolutions/2025_official_schedule_exceptions.csv data/resolutions/2025_official_extreme_valley_windows_derived.csv
           if ! git diff --cached --quiet; then
             git commit -m 'research: publish source-preserving 2025 service spans by day'
             git push
