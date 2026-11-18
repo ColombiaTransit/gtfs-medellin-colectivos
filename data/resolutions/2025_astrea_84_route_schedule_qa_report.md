@@ -48,3 +48,12 @@ An example from the official Salud-Hotelera timetable: `308-1` operates **04:15‚
 **Still open:** source page-level numeric acceptance across all acts, actual applicability of later modifying resolutions (post-September 2025 through 2026), precise peak/midday period boundaries, shape/stop/agency mapping, and whether the 9 window-only entries have other legally defined timetable annexes. Do not treat the 48 three-day entries as 48 fully validated present-day GTFS routes.
 
 **No modifications** to GTFS production generation, frequencies, calendar, or services. Resoluci√≥n 202250106966 and 082 PILOTO remain parked pending a direct original source.
+
+
+## Existing TRSC operator-website departure schedules (reconciliation note, 18 November 2026)
+
+**Do not re-extract or synthesize departures from the 2025 count tables before checking existing project assets.** The independent operator website `https://trscsas.com/horarios/` was previously researched. Existing assets are `data/trsc_schedule_photos.json` (already transcribed departure lists from photographed timetables), `data/trsc_route_mapping.yml` (route/photo/ArcGIS mapping with confidence indicators), `scripts/build_gtfs_trsc.py` and `docs/trsc.md`. Earlier TRSC GTFS builder results: 21 routes, 978 stops and 554 trips. These historic build totals are not proof every new 2025 legal route has its own independently matched schedule.
+
+**Known limits:** three complex schedule photos remain untranscribed; some schedule-photo assignments are provisional; departure lists are assigned symmetrically to both directions in the older generator, which is an assumption rather than confirmed two-direction timetable data. The previously transcribed images are not automatically exact schedules for every legal `255-2v` through `255-8v` or `256-*` code. Keep the 2025 legal source counts separately from website departure lists and compare only defensible route/direction matches.
+
+The next TRSC task is a **crosswalk** between official 2025 `GTPC + user_route_code`, old ArcGIS `id_ruta`, and existing schedule-photo IDs, recording match confidence and timetable coverage; do not write new GTFS trips or manufacture departures.
