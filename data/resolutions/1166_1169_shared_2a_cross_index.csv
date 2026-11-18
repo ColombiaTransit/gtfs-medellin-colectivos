@@ -1,39 +1,39 @@
-resolution_1166_pdf_page,resolution_1166_gaceta_printed_page,resolution_1169_pdf_page,resolution_1169_gaceta_printed_page,route_code_visually_verified,route_name_visually_verified,operator_visually_verified,cross_document_relationship,pdf_1169_text_detection,interval_qa_status,automatic_gtfs_import
-5,314,5,182,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-7,316,7,184,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-9,318,9,186,240 AL1,Floresta-Calasanz,Conducciones América,same_position_shared_2a_fiche_candidate,detected,visually_verified_both_originals,no
-11,320,11,188,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-13,322,13,190,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-15,324,15,192,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-17,326,17,194,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-19,328,19,196,250M AL6,Robledal,Palenque Robledal,same_position_shared_2a_fiche_candidate,false_negative_visual_source_present,visually_verified_both_originals,no
-21,330,21,198,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-23,332,23,200,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-25,334,25,202,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-27,336,27,204,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-29,338,29,206,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-32,341,32,209,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-34,343,34,211,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-36,345,36,213,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-38,347,38,215,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-40,349,40,217,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-43,352,43,220,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-45,354,45,222,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-48,357,48,225,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-51,360,51,228,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-53,362,53,230,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-55,364,55,232,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-57,366,57,234,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-60,369,60,237,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-62,371,62,239,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-64,373,64,241,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-66,375,66,243,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-68,377,68,245,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-70,379,70,247,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-72,381,72,249,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-74,383,74,251,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-76,385,76,253,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-78,387,78,255,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-80,389,80,257,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-82,391,82,259,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
-84,393,84,261,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no
+resolution_1166_pdf_page,resolution_1166_gaceta_printed_page,resolution_1169_pdf_page,resolution_1169_gaceta_printed_page,route_code_visually_verified,route_name_visually_verified,operator_visually_verified,cross_document_relationship,pdf_1169_text_detection,interval_qa_status,automatic_gtfs_import,route_code_candidate_text_normalized,route_name_candidate_text,identity_qa_status
+5,314,5,182,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,COL1,,text_candidate_not_visually_checked
+7,316,7,184,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,COL2,Anillo antihorario El Palo hasta Colombia,text_candidate_not_visually_checked
+9,318,9,186,240 AL1,Floresta-Calasanz,Conducciones América,same_position_shared_2a_fiche_candidate,detected,visually_verified_both_originals,no,240AL1,Floresta Calasanz,visual_originals_checked
+11,320,11,188,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,245 AL2,Blanquizal,text_candidate_not_visually_checked
+13,322,13,190,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250AAL3,Campiña Las Hamacas,text_candidate_not_visually_checked
+15,324,15,192,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250AAL4,Huerta,text_candidate_not_visually_checked
+17,326,17,194,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250MAL5,Curazao,text_candidate_not_visually_checked
+19,328,19,196,250M AL6,Robledal,Palenque Robledal,same_position_shared_2a_fiche_candidate,false_negative_visual_source_present,visually_verified_both_originals,no,250M AL6,Robledal,visual_originals_checked
+21,330,21,198,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250MAL7,La Pola,text_candidate_not_visually_checked
+23,332,23,200,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,252 ALS,Ferrini Kennedy,text_candidate_not_visually_checked
+25,334,25,202,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,253AL9,Robledo Aures,text_candidate_not_visually_checked
+27,336,27,204,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,254 AL10,Picachito Edificios,text_candidate_not_visually_checked
+29,338,29,206,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,255AL11,San Cristóbal,text_candidate_not_visually_checked
+32,341,32,209,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,260MAL12,López de Mesa,text_candidate_not_visually_checked
+34,343,34,211,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,285AL13,Doce de Octubre,text_candidate_not_visually_checked
+36,345,36,213,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,288AL14,Doce de Octubre,text_candidate_not_visually_checked
+38,347,38,215,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250B,Robledo Villa Flora,text_candidate_not_visually_checked
+40,349,40,217,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250AT,Moravia Huerta Tulipanes,text_candidate_not_visually_checked
+43,352,43,220,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,251B,Margaritas,text_candidate_not_visually_checked
+45,354,45,222,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,255,,text_candidate_not_visually_checked
+48,357,48,225,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,255P,San Sebastián de Palmitas,text_candidate_not_visually_checked
+51,360,51,228,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,255V1,,text_candidate_not_visually_checked
+53,362,53,230,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,255V2,Vereda Volombolo,text_candidate_not_visually_checked
+55,364,55,232,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,255V3,,text_candidate_not_visually_checked
+57,366,57,234,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,255A,Las Flores Moravia Centro,text_candidate_not_visually_checked
+60,369,60,237,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,267,Bello Horizonte,text_candidate_not_visually_checked
+62,371,62,239,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,246I,Blanquizal,text_candidate_not_visually_checked
+64,373,64,241,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,246II,Olaya,text_candidate_not_visually_checked
+66,375,66,243,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250M1,Huerta Pascual,text_candidate_not_visually_checked
+68,377,68,245,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250I,Santa Clara Mirador,text_candidate_not_visually_checked
+70,379,70,247,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250II,Las Hamacas Pajarito,text_candidate_not_visually_checked
+72,381,72,249,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250III,Tulipanes La Huerta,text_candidate_not_visually_checked
+74,383,74,251,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,250A1,Santa María Robledales,text_candidate_not_visually_checked
+76,385,76,253,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,251i,Margaritas,text_candidate_not_visually_checked
+78,387,78,255,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,253i,Robledo Aures,text_candidate_not_visually_checked
+80,389,80,257,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,255i,,text_candidate_not_visually_checked
+82,391,82,259,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,255iD,,text_candidate_not_visually_checked
+84,393,84,261,,,,same_position_shared_2a_fiche_candidate,detected,pending_visual_QA,no,260i,Seminario,text_candidate_not_visually_checked
