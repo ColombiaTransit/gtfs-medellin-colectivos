@@ -1,0 +1,33 @@
+name: Check official Medellín 2025 route acts
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/check_medellin_2025_official_acts.py'
+      - '.github/workflows/check-medellin-2025-official-acts.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install HTML dependencies
+        run: pip install requests beautifulsoup4
+      - name: Check official ASTREA candidates and official Gaceta index
+        run: python scripts/check_medellin_2025_official_acts.py
+      - name: Publish source verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: medellin-2025-official-acts-check
+          path: artifacts/medellin-2025-official-acts/
+          if-no-files-found: warn
+          retention-days: 7
