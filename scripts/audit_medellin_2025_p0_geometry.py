@@ -27,6 +27,12 @@ def paths_of(geometry):
  return []
 
 fields=["arcgis_id_ruta","arcgis_code","arcgis_route_name","arcgis_direction_label","geometry_source_crs","geometry_type","part_count","vertex_count","arcgis_shape_length_km","legal_reference_length_km","length_difference_km","length_difference_pct","first_vertex_x_9377","first_vertex_y_9377","last_vertex_x_9377","last_vertex_y_9377","length_within_10pct_of_legal","geometry_present","official_direction_match_verified","official_annex_geometry_match_verified","legal_2025_source","source_scope","qa_notes"]
+# The layer's GeoJSON may not contain all presentation properties. Join the
+# preserved route CSV instead of leaving the route code and name blank.
+route_names={}
+with Path("data/medellin/routes.csv").open(encoding="utf-8",newline="") as file:
+ for record in csv.DictReader(file):
+  route_names[(record["id_ruta"],record["recorrido"])]=record
 found=defaultdict(list)
 for f in source["features"]:
  p=f.get("properties") or {}
@@ -39,8 +45,9 @@ for f in source["features"]:
  last=legs[-1][-1] if legs and legs[-1] else [None,None]
  ref=TARGET[rid][1]; diff=round(length-ref,3) if ref else None
  ratio=round(100*(length-ref)/ref,2) if ref else None
+ old=route_names.get((rid,str(p.get("recorrido",""))),{})
  found[rid].append([
- rid,str(p.get("codigo_ruta","")),str(p.get("nombre_ruta","")),str(p.get("recorrido","")),crs,(f.get("geometry") or {}).get("type",""),len(legs),v,
+ rid,str(p.get("codigo_ruta") or old.get("codigo_ruta") or ""),str(p.get("nombre_ruta") or old.get("nombre_ruta") or ""),str(p.get("recorrido","")),crs,(f.get("geometry") or {}).get("type",""),len(legs),v,
  round(length,3),ref,diff,ratio,*first[:2],*last[:2],
  ("yes" if abs(length-ref)/ref<=.1 else "no") if ref else "not_applicable", "yes" if v>1 else "no", "no","no",
  ("202550076168" if rid=="90004" else "202550076174" if rid in ("90006","90015") else "202550076162"),
