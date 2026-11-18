@@ -650,6 +650,18 @@ cells only appear on the first direction row, likely due merged
 cells; **do not double-count** the shared service. This research
 finding must be route-reconciled separately before use in GTFS.
 
+## Tax Maya 195ii: historical legal fiche, 2021 official contextual map and newer operator schedule
+
+The official [Gaceta **4911**](https://www.medellin.gov.co/irj/go/km/docs/pccdesign/medellin/Temas/NuestroGobierno/Publicaciones/Shared%20Content/Documentos/2022/4911.pdf), published **30 December 2021**, includes **Resolución 202150181337** dated **6 December 2021** (pp. 32–35). Its **p. 34** map and reasons name route **195ii** alongside 195i, 250iVF, 250iR, 253iAR, 246i and 246ii as *already existing integrated services* sharing corridors with Coonatra 300/301. The operative decision authorizes **Coonatra 300/301** integration and validators, **not Tax Maya 195ii operating permission, headway or hours**. The official PDF text was inspected; web PDF screenshot service timed out, so detailed page-image QA remains pending.
+
+For ArcGIS ID **90290**, actual historical **Gaceta 4325**, **Resolución 1154/2015, PDF page 194**, fiche `195-ii` is already visually verified: **04:30–23:00** general operation; weekday **14 min DÍA / 12 min HMD**; Saturday **14 / 12**; Sunday/holiday **26 / 20**. These are **2015 historical**, not automatically a valid timetable in 2026.
+
+The operator's [public official route page](https://www.taxmaya.com/ruta-c23-san-cristobal-san-javier-centro) continues to identify **195ii** as **Santa Lucía → Floresta → Carrera 80 → Laureles Campestre → San Juan → Santa Lucía**. [Moovit's current published route schedule](https://moovitapp.com/index/es-419/transporte_p%C3%BAblico-time-195ii-Medellin-1642-2304926-47604481-7759294-0) shows **05:15–19:55 daily at 20-minute intervals**, but an older Moovit PDF reports approximately **04:30–22:54**. Keep this discrepancy open. **Moovit is a third-party timetable, not a legal operator authorization**.
+
+All five distinct source classifications are registered in `taxmaya_195ii_2015_2026_source_evidence.csv`. A 2021 municipal management-report act **202150159197** concerns **195i** (single i), not **195ii**; do not merge them.
+
+**Research status:** route identity and public timetable evidence substantially corroborated, **but no independently verified post-2015 route-specific authorization for 195ii has been found**. The route stays in the two-item *legal-decision gap*, alongside Flota Nueva Villa `082 V-LA PILOTO`. No GTFS frequency or production file changes; no PQRSD request.
+
 ## Next source batches, ordered by expected yield
 
 - **Gacetas 5667/5671 (September 2025)**: retrieve the official full
