@@ -69,7 +69,7 @@ def make_base(act,code,gtpc,name,origin,day,window,interval,daily="",fixed="",co
   maximum_peak_minutes=vals[0],maximum_extreme_valley_minutes=vals[1],
   maximum_midday_valley_minutes=vals[2],max_interval_status=status,
   number_of_daily_services=daily,fixed_departures_raw=fixed,service_condition=condition,
-  source_qc_level=qc,source_url=url,period_clock_boundaries="PVE_before_04:30_after_20:30_only_if_Circular313;PP_PVM_unknown",
+  source_qc_level=qc,source_url=url,period_clock_boundaries=("PVE_before_04:30_after_20:30_visually_verified_in_original_2025_Gaceta;PP_PVM_unknown" if act in {"202550076150","202550076162","202550079848","202550079865","202550076168"} else "PP_PVE_PVM_boundaries_not_verified_for_this_act"),
   current_2026_effectivity_verified="no",gtfs_generation_approved="no",interpretation_note=note))
 with ASTREA.open(newline="",encoding="utf-8-sig") as f:
  rows=list(csv.DictReader(f))
@@ -158,4 +158,38 @@ with out.open("w",newline="",encoding="utf-8") as file:
  w=csv.DictWriter(file,fieldnames=FIELDS+["source_exception_tags"])
  w.writeheader();w.writerows(exceptions)
 print("Exceptions",len(exceptions),"source-day records",dict(Counter(tag for r in exceptions for tag in r["source_exception_tags"].split(";"))))
+# Determine only the part of each published service window that overlaps
+# the explicitly defined PVE clock hours (before 04:30 / after 20:30).
+# The PDF gives no departure slots, terminal offsets or PP/PVM boundaries.
+PVE_ACT_PAGES={"202550076150":"5671:p13","202550076162":"5671:p27",
+               "202550079848":"5671:p40","202550079865":"5671:p57",
+               "202550076168":"5667:p56"}
+pve=[]
+def minutes(clock):
+ h,m=map(int,clock.split(":"));return h*60+m
+def clock(n):return f"{n//60:02d}:{n%60:02d}"
+for r in records:
+ if r["resolution"] not in PVE_ACT_PAGES:continue
+ if r["window_status"]!="published_operating_span":continue
+ if r["max_interval_status"] not in ("three_maximum_interval_periods","partially_not_operating_interval_periods","invalid_or_zero_interval_source"):continue
+ vmax=r["maximum_extreme_valley_minutes"]
+ if not vmax:continue
+ a=minutes(r["published_window_start"]);b=minutes(r["published_window_end"])
+ if b<=a:continue  # no guess for midnight-spanning services
+ for lower,upper,period in [(0,270,"PVE_before_04_30"),(1230,1440,"PVE_after_20_30")]:
+  start,end=max(lower,a),min(upper,b)
+  if end<=start:continue
+  pve.append(dict(resolution=r["resolution"],legal_route_code=r["legal_route_code"],gtpc=r["gtpc"],route_name=r["route_name"],day_type=r["day_type"],period=period,
+   overlap_start=clock(start),overlap_end=clock(end),published_maximum_headway_minutes=vmax,original_period_definition_page=PVE_ACT_PAGES[r["resolution"]],
+   source_url=r["source_url"],legally_defined_interval_boundary="before_04:30_after_20:30;exact_boundary_inclusivity_not_specified",
+   current_effectivity_verified="no",gtfs_frequency_approved="no",
+   caution="Derived intersection of a generic legal service span and PVE; not exact terminal departure windows or independent direction frequency"))
+PVEFIELDS=["resolution","legal_route_code","gtpc","route_name","day_type","period","overlap_start","overlap_end",
+"published_maximum_headway_minutes","original_period_definition_page","source_url",
+"legally_defined_interval_boundary","current_effectivity_verified","gtfs_frequency_approved","caution"]
+pvefile=ROOT/"2025_official_extreme_valley_windows_derived.csv"
+with pvefile.open("w",newline="",encoding="utf8") as f:
+ w=csv.DictWriter(f,fieldnames=PVEFIELDS);w.writeheader();w.writerows(pve)
+assert pve and not any(x["gtfs_frequency_approved"]=="yes" for x in pve)
+print("PVE source-clipped time segments:",len(pve),dict(Counter(x["resolution"] for x in pve)))
 
