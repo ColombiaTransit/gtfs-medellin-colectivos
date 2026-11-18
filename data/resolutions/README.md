@@ -2,11 +2,14 @@
 
 ## Latest consolidated register (18 November 2026)
 
+**New original recovered:** [Gaceta 5667 Circular 313 and 301/315 original audit](gaceta_5667_2025_circular313_301_315_original_visual_audit.md) closes previously open 202550076168 source gap. Circular 313's one shared 4-operator service uses validated official 2025 maxima and GTPC direction pair; frequencies/hours of 301 and 315 are expressly unchanged in 202550076174 Art1 para3. Precise GTFS period/shape mapping and current 2026 applicability still require separate checks.
+
+
 **Read first:** [CONSOLIDATED_RESEARCH_STATUS_2026-11-18.md](CONSOLIDATED_RESEARCH_STATUS_2026-11-18.md) and [2025_legal_to_arcgis_consolidated_register.csv](2025_legal_to_arcgis_consolidated_register.csv). The latter has **86 source records from four official 2025 ASTREA resolutions**, keeping legal GTPC, route code, service windows, original day-specific intervals/counts/fixed departures, historical ArcGIS candidates, confidence and `automatic_gtfs_import=no`. These are research records, not 86 independent currently operative GTFS routes.
 
 The [Castilla 34-variant reverse check](2025_castilla_34_legacy_arcgis_reverse_review.csv) conservatively flags code/name mismatch `289`, ambiguous variants and cases without defensible links. [Metrosan](2025_metrosan_legal_to_arcgis_crosswalk.csv) and [Salud-Hotelera](2025_salud_hotelera_arcgis_code_mapping.csv) retain their own historical ID mappings. [Coonatra/Santra 301/315](2025_coonatra_santra_301_315_geometry_legal_register.csv) identifies geometry-only 2025 route amendments without new inferred headways. Original ASTREA links replace secondary Gazette index URLs in `priority_source_documents.csv` and `2025_amendment_route_scopes.csv`; the legacy ArcGIS legal-review action queue has also been updated to stop requesting already recovered acts. Existing TRSC website schedule photos are not to be re-researched; their 2025 crosswalk is tracked in [GitHub issue #18](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/issues/18).
 
-The targeted official 2026 ASTREA scan read 25 indexed Movilidad acts; it is **not exhaustive proof** that a 2025 authorization remains unamended. Original 2015 fichas remain historical, 2025 period boundaries and modern shape/direction matching require review, and the original text for Combuses 202550076168 remains missing. Flota Nueva Villa 082 PILOTO 202250106966 remains parked by user instruction.
+The targeted official 2026 ASTREA scan read 25 indexed Movilidad acts; it is **not exhaustive proof** that a 2025 authorization remains unamended. Original 2015 fichas remain historical, 2025 period boundaries and modern shape/direction matching require review, and the 2025 Circular 313 original (202550076168) has now been recovered and visually verified from Gaceta 5667. Flota Nueva Villa 082 PILOTO 202250106966 remains parked by user instruction.
 
 
 This research directory is **not consumed by any GTFS generator**. It intentionally separates
@@ -101,7 +104,7 @@ should be corrected, without modifying any actual schedule values.
 
 ## Source inventory for 2015/2025 amendments
 
-See `priority_source_documents.csv`. Official individual PDFs have been located for 2015 resolutions 1047 (Flota La V, 34 pages), 1166 (Medellín Castilla, 89 pages), and 1169 (Palenque Robledal, 89 pages); their timetables remain **unextracted**. The contents of Gacetas 5667 and 5671 locate six 2025 route-restructuring/modification acts (the official full PDF and their route-level timing tables are not yet recovered). These later acts must be reviewed before interpreting 2015 values as current.
+See `priority_source_documents.csv`. Official individual PDFs have been located for 2015 resolutions 1047 (Flota La V, 34 pages), 1166 (Medellín Castilla, 89 pages), and 1169 (Palenque Robledal, 89 pages); their historical timetable fiches have since been extracted and visually verified (see 1166/1169 cross-index and 1047 visual register). Gaceta 5667's original official PDF is now recovered (202550076168 Circular 313 and 202550076174 geometry-only 301/315); the five other 2025 original ASTREA texts for Gacetas 5667/5671 are also available and extracted in source registers. Current legal numeric QA remains separate. These later acts must be reviewed before interpreting 2015 values as current.
 
 **OCR QA example:** the first raw OCR pass read the weekday DÍA interval for Gaceta 4325 p. 172, route 191, as 5 minutes; the printed dispatch table shows **6 minutes**. The visually verified record uses 6. OCR candidates are never approved merely because their eight numeric fields appear complete.
 
@@ -673,10 +676,7 @@ All five distinct source classifications are registered in `taxmaya_195ii_2015_2
 
 ## Next source batches, ordered by expected yield
 
-- **Gacetas 5667/5671 (September 2025)**: retrieve the official full
-  documents through publicly accessible municipal sources,
-  extract any revised schedules, confirm affected variants and field-level
-  precedence over the historical 2015 baseline.
+- **Gacetas 5667/5671 (September 2025)**: originals for all six prioritized acts are now recovered (five official ASTREA full texts and Gaceta 5667 PDF for Circular 313); continue source period/geometry QA, not original-retrieval work.
 - **2017–2024 operating-condition changes**: prioritize the eight
   service-impact leads in `2017_2024_act_chain_index.csv`, plus Cootrabel's
   explicit repeal and joint operation for 229.
