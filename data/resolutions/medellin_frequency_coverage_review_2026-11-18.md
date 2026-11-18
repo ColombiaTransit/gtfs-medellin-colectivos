@@ -74,3 +74,8 @@ The detailed operator table lists the lower-count operators and exact ArcGIS IDs
 5. Only after route identity and window/interval coverage meets the chosen model-acceptance thresholds, connect the schedule output to GTFS generation.
 
 **No separate approvals or repeated broad 2015/2025 document acquisition required to continue this research sequence.**
+
+
+## First truly uncovered operator source recovered: Coonatra (18 November 2026)
+
+A [direct Coonatra original 2024–2027 presentation](https://coonatra.com/wp-content/uploads/2023/09/POLITICA-PUBLICA-COONATRA.pdf) was visually checked, capturing **six family-level average headways and operating windows**: Circular Coonatra **4min 04:00–21:30**; Circular Sur **3min 04:00–21:30**; Calasanz Intermedia **5min 04:10–21:30**; Calasanz Integrada **7min 04:00–23:00**; Floresta–San Juan **6min 03:45–21:30**; Floresta Integrada **8min 04:00–23:15**. See [source table](coonatra_2024_2027_operator_published_family_windows_frequencies.csv) and [visually checked operator document review](coonatra_2024_2027_operator_source_frequency_review.md). The actual Coonatra Circular website adds **04:10 first / 21:30 last dispatch** for 300/301 variants. **Do not multiply average headway by the number of ramales, copy the same hours indiscriminately to each route or treat family Circ. Sur as Santra's 315**; detailed source-to-ArcGIS crosswalk still open. Therefore the 252 individual legacy route coverage totals do not mechanically change.
