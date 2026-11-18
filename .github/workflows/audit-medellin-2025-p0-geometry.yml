@@ -1,0 +1,32 @@
+name: Audit Medellín 2025 priority route geometry
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/audit_medellin_2025_p0_geometry.py'
+      - '.github/workflows/audit-medellin-2025-p0-geometry.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compare source ArcGIS projected geometry to legal route identity
+        run: python scripts/audit_medellin_2025_p0_geometry.py
+      - name: Commit source geometry evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/resolutions/2025_p0_arcgis_direction_geometry_audit.csv
+          if ! git diff --cached --quiet; then
+            git commit -m 'research: record measured 2025 P0 ArcGIS route geometry evidence'
+            git push
+          fi
