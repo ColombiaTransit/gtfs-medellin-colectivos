@@ -1,0 +1,3 @@
+act,date,operator,official_route_code,arcgis_route_id,arcgis_code,arcgis_direction_coverage,legal_change_scope,frequency_change_evidence,historical_act_chain,identity_match_quality,gtfs_import,official_original
+202550076174,2025-09-19,Coonatra,301,90006,301,both_directions_present_in_arcgis,route_geometry_amendment,no_verified_new_frequency,2017_res_172;2021_202150181337;2022_202250071653,route_code_and_operator_exact,no,https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_76174_2025.htm
+202550076174,2025-09-19,Santra,315,90015,315,both_directions_present_in_arcgis,route_geometry_amendment,no_verified_new_frequency,legacy_315_316_circular,route_code_and_operator_exact,no,https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_76174_2025.htm
