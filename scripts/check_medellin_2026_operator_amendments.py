@@ -21,13 +21,13 @@ operators={
 }
 refs=set(operators)
 html=fetch(INDEX);a=Anchors();a.feed(html)
-urls=sorted(set(urljoin(INDEX,x) for x in a.links if re.search(r"/(?:r|R)_SMMED_\\d+_2026\\.htm",x,re.I)))
+urls=sorted(set(urljoin(INDEX,x) for x in a.links if re.search(r"/(?:r|R)_SMMED_\d+_2026\.htm",x,re.I)))
 if not (15<=len(urls)<=60):raise RuntimeError(f"2026 ASTREA index changed unexpectedly: {len(urls)}")
 rows=[];errors=[]
 for url in urls:
  try:
   body=fetch(url)
-  clean=re.sub(r"\\s+"," ",re.sub(r"<[^>]*>"," ",body))
+  clean=re.sub(r"\s+"," ",re.sub(r"<[^>]*>"," ",body))
   normalized=norm(clean)
   found=[act for act in refs if act in normalized]
   hits={act:[k for k in keys if norm(k) in normalized] for act,keys in operators.items()}
@@ -39,6 +39,6 @@ for url in urls:
 with (out/"candidate_amendments.csv").open("w",newline="",encoding="utf-8") as f:
  w=csv.DictWriter(f,fieldnames=["url","linked_2025_acts","operator_groups","keyword_matches","evidence_status"]);w.writeheader();w.writerows(rows)
 report={"checked_at":datetime.now(timezone.utc).isoformat(),"source":INDEX,"indexed_2026_act_count":len(urls),"read_success":len(urls)-len(errors),"read_failure":len(errors),"candidate_count":len(rows),"matching_pages":rows,"errors":errors,"caveat":"Index-limited textual screen, hits may be incidental mentions; no proof of lack of 2026 amendments outside index."}
-(out/"report.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+(out/"report.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print(f"RESULT: {len(rows)} candidate pages / {len(urls)} indexed; {len(errors)} errors")
 if errors:raise RuntimeError("2026 act screen incomplete; do not claim exhaustive coverage")
