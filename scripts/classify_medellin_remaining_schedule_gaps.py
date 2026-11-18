@@ -15,7 +15,7 @@ PAL=ROOT/"palenque_2025_old_arcgis_to_new_legal_route_candidates.csv"
 ENRICH=ROOT/"medellin_252_coverage_with_historical_fallback.csv"
 UNLINK=ROOT/"medellin_unlinked_official_2025_schedule_candidates.csv"
 def read(p):
- with p.open(encoding="utf8-sig",newline="") as f:return list(csv.DictReader(f))
+ with p.open(encoding="utf-8-sig",newline="") as f:return list(csv.DictReader(f))
 def v(r,k):return (r.get(k) or "").strip()
 base=read(MAIN);historic={v(x,"arcgis_id_ruta"):x for x in read(HIST)}
 cross=read(CROSS);pal=read(PAL);off=read(OFFICIAL)
