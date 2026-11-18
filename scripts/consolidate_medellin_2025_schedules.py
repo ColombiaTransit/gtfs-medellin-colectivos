@@ -82,16 +82,18 @@ for r in rows:
   start,end=(fields[i*2:i*2+2] if fields else ("",""))
   interval=r[{"weekday":"interval_weekday","saturday":"interval_saturday","sunday_holiday":"interval_sunday_holiday"}[day]]
   counts=clean(r[{"weekday":"weekday_services_per_day","saturday":"saturday_services_per_day","sunday_holiday":"sunday_holiday_services_per_day"}[day]])
-  fixed=clean(r["fixed_departures_master_table"] or "")
-  # Master-table fixed services are day-specific: never copy them to every day.
-  fixedDay=fixed if (("lunes a viernes" in fixed.lower() and day=="weekday") or ("domingo" in fixed.lower() and day=="sunday_holiday")) else ""
-  if r["hours_table_5"]:
-   # Table 5 includes rural descriptions and exact-day departures. Preserve raw
-   # source only on its designated day when identifiable; not universal trips.
-   fixedDay = fixedDay or clean(r["hours_table_5"]) if day=="weekday" else fixedDay
+  fixed=clean(r["fixed_departures_master_table"] or r["hours_table_5"])
+  # Preserve original service-day scope; 'Domingo' alone does not establish
+  # holiday departures and 'Lunes a Domingo' must not imply holiday service.
+  lower=fixed.lower()
+  if "lunes a viernes" in lower: active_days={"weekday"}
+  elif "lunes a domingo" in lower: active_days={"weekday","saturday","sunday_holiday"}
+  elif "domingo" in lower: active_days={"sunday_holiday"}
+  else: active_days=set()
+  fixedDay=fixed if day in active_days else ""
   make_base(r["act_number"],r["user_route_code"],r["gtpc"],r["route_name"],
    ASTREA.name,day,(start,end),interval,counts,fixedDay,
-   "Rural departure provenance requires exact printed operating-day assignment" if fixedDay else "",
+   ("Source fixed departures explicitly state "+fixed.split("|")[-2]+"; Sunday-only does not prove holiday operation" if fixedDay and "|" in fixed else "Verify printed operating-day scope" if fixedDay else ""),
    "ASTREA_html_structural_QA_partial_Gaceta_visual_spotcheck",
    {"202550076150":"https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_76150_2025.htm",
     "202550076162":"https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_76162_2025.htm",
