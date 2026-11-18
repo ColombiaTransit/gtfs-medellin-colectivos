@@ -4,6 +4,10 @@ name: Recover Medellín official resolution PDFs
 # The municipal PDF server sometimes times out from the Netherlands.
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'data/resolutions/official_pdf_sources.json'
+      - '.github/workflows/recover-medellin-resolution-pdfs.yml'
 
 permissions:
   contents: read
