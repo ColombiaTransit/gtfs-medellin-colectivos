@@ -60,7 +60,7 @@ for index, table_no in enumerate((6,7,8)):
  for cells in T["202550079865"][table_no]:
   if len(cells) < 4 or cells[0].strip() not in {"23711","23712","23713","23714","23715","23716","23717"}:
    continue
-  match=re.fullmatch(r"\\s*(\\d+)\\s+servicios\\s+en\\s+el\\s+d[ií]a\\s*",cells[3],re.I)
+  match=re.fullmatch(r"\s*(\d+)\s+servicios\s+en\s+el\s+d[ií]a\s*",cells[3],re.I)
   if not match:
    raise RuntimeError(f"Unexpected source count for {cells[0]} on table {table_no}: {cells[3]!r}")
   key=("202550079865",cells[0].strip(),cells[1].strip())
