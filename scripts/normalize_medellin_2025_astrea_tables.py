@@ -44,6 +44,28 @@ for act,S in spec.items():
    key=(act,cells[0].strip(),cells[1].strip())
    r=D.setdefault(key,{"act_number":act,"gtpc":key[1],"user_route_code":key[2]})
    r["interval_"+("weekday","saturday","sunday_holiday")[i]]="|".join(cells[3:])
+# PDF-source QA: the original Gaceta 5671 pp25-26 visibly publishes three
+# day-type interval triples for TRONCAL 65/73. Keep these source rows and fail
+# loudly on an extraction mismatch instead of silently marking them missing.
+trunk_source_checks = {
+    ("23607", "TRONCAL 65"): ("8|15|10", "10|18|12", "13|16|20"),
+    ("23609", "TRONCAL 73"): ("4|8|6", "5|10|8", "6|10|13"),
+}
+for (gtpc, route_code), expected_by_day in trunk_source_checks.items():
+    key=("202550076162", gtpc, route_code)
+    if key not in D:
+        raise RuntimeError(f"Official route missing from 2025 Castilla master: {key}")
+    for table_no, field, expected in zip((5, 6, 7),
+            ("interval_weekday", "interval_saturday", "interval_sunday_holiday"),
+            expected_by_day):
+        matches=[cells for cells in T["202550076162"][table_no]
+                 if len(cells)>=6 and cells[0].strip()==gtpc and cells[1].strip()==route_code]
+        if len(matches)!=1:
+            raise RuntimeError(f"Missing/duplicate 2025 original trunk interval {key}, table {table_no}")
+        actual="|".join(x.strip() for x in matches[0][3:6])
+        if actual!=expected:
+            raise RuntimeError(f"Visual original p25-26 mismatch for {key}: {actual!r} != {expected!r}")
+        D[key][field]=actual
 # Some Palmitas corregimental services publish fixed departures in master table 3,
 # not in the separate table 5 or periodic interval tables.
 for cells in T["202550079865"][3]:
