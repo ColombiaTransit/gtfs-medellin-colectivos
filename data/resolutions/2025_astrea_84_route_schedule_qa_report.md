@@ -2,18 +2,18 @@
 
 ## Scope and source integrity
 
-The official original ASTREA texts for 202550076150, 202550076162, 202550079848 and 202550079865 were fetched and their timetable tables extracted in GitHub Actions #44268129743 and #44268663729. The source register holds 84 resolution + GTPC + user-code entries. This review distinguishes source semantics from true missing timetable data and avoids treating modern route aliases or direction rows as duplicated GTFS services.
+The official original ASTREA texts for 202550076150, 202550076162, 202550079848 and 202550079865 were fetched and their timetable tables extracted in GitHub Actions #44268129743 and #44268663729. The source register holds 86 resolution + GTPC + user-code entries. This review distinguishes source semantics from true missing timetable data and avoids treating modern route aliases or direction rows as duplicated GTFS services.
 
 The row-by-row classification is stored in `2025_astrea_route_schedule_qa_classification.csv`. The original values remain in `2025_astrea_official_route_timetable_candidates.csv` and are **not production approved**.
 
 | Official act / system | Total source entries | Three-day interval tables | Other source treatment |
 |---|---:|---:|---|
 | 202550076150 Salud-Hotelera | 6 | 6 | `308-2` and `309-2` explicitly do not operate on Saturdays or Sundays/holidays |
-| 202550076162 Castilla / Conaltracoop | 28 | 18 | 8 trunk-corridor entries lack standalone times and intervals; TRONCAL 65 and TRONCAL 73 have hours but no interval rows |
+| 202550076162 Castilla / Conaltracoop | 30 | 18 | 10 trunk-corridor entries lack standalone times and intervals; TRONCAL 65 and TRONCAL 73 have hours but no interval rows |
 | 202550079848 Metrosan | 16 | 8 | 8 return-direction rows have empty cells paired with populated outbound direction records; no doubling |
 | 202550079865 Rápido San Cristóbal | 34 | 16 | 7 veredal services have hours without intervals; 11 corregimental services have explicit fixed departure lists (8 in table 5, 3 in source master table 3) |
 
-**Total: 48** records with three sets of published interval cells, **8** paired Metrosan direction rows without repeated figures, **11** corregimental fixed-departure records, **8** trunk-corridor records with no standalone times, and **9** entries with a published service window but no extracted interval (2 troncal and 7 veredal). These categories are not mutually identical to route counts.
+**Total: 48** records with three sets of published interval cells, **8** paired Metrosan direction rows without repeated figures, **11** corregimental fixed-departure records, **10** trunk-corridor records with no standalone times, and **9** entries with a published service window but no extracted interval (2 troncal and 7 veredal). These categories are not mutually identical to route counts.
 
 ## Specific recovered source evidence
 
@@ -57,3 +57,7 @@ An example from the official Salud-Hotelera timetable: `308-1` operates **04:15�
 **Known limits:** three complex schedule photos remain untranscribed; some schedule-photo assignments are provisional; departure lists are assigned symmetrically to both directions in the older generator, which is an assumption rather than confirmed two-direction timetable data. The previously transcribed images are not automatically exact schedules for every legal `255-2v` through `255-8v` or `256-*` code. Keep the 2025 legal source counts separately from website departure lists and compare only defensible route/direction matches.
 
 The next TRSC task is a **crosswalk** between official 2025 `GTPC + user_route_code`, old ArcGIS `id_ruta`, and existing schedule-photo IDs, recording match confidence and timetable coverage; do not write new GTFS trips or manufacture departures.
+
+## Correction: two additional 2025 Castilla trunk corridors (18 November 2026)
+
+An improved full-GTPC table-row extractor uncovered two previously omitted route codes, `TRONCAL-5` (GTPC `23611`) and `TRONCAL-6` (GTPC `23612`), in the same original 2025 Castilla resolution. Both have corridor identities but no standalone numeric timetable in the extracted source. This raises the candidate count **84 → 86**, Castilla **28 → 30**, and no-schedule trunk-corridor category **8 → 10**. The research workflow [#44273498768](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44273498768) completed successfully and published the corrected register. The 48 records with interval triples, 11 fixed-departure routes, and 8 Metrosan paired blank-direction rows are unchanged. No GTFS production update.
