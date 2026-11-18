@@ -1,5 +1,14 @@
 # Medellín urban bus resolutions: source-first evidence register
 
+## Latest consolidated register (18 November 2026)
+
+**Read first:** [CONSOLIDATED_RESEARCH_STATUS_2026-11-18.md](CONSOLIDATED_RESEARCH_STATUS_2026-11-18.md) and [2025_legal_to_arcgis_consolidated_register.csv](2025_legal_to_arcgis_consolidated_register.csv). The latter has **86 source records from four official 2025 ASTREA resolutions**, keeping legal GTPC, route code, service windows, original day-specific intervals/counts/fixed departures, historical ArcGIS candidates, confidence and `automatic_gtfs_import=no`. These are research records, not 86 independent currently operative GTFS routes.
+
+The [Castilla 34-variant reverse check](2025_castilla_34_legacy_arcgis_reverse_review.csv) conservatively flags code/name mismatch `289`, ambiguous variants and cases without defensible links. [Metrosan](2025_metrosan_legal_to_arcgis_crosswalk.csv) and [Salud-Hotelera](2025_salud_hotelera_arcgis_code_mapping.csv) retain their own historical ID mappings. [Coonatra/Santra 301/315](2025_coonatra_santra_301_315_geometry_legal_register.csv) identifies geometry-only 2025 route amendments without new inferred headways. Original ASTREA links replace secondary Gazette index URLs in `priority_source_documents.csv` and `2025_amendment_route_scopes.csv`; the legacy ArcGIS legal-review action queue has also been updated to stop requesting already recovered acts. Existing TRSC website schedule photos are not to be re-researched; their 2025 crosswalk is tracked in [GitHub issue #18](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/issues/18).
+
+The targeted official 2026 ASTREA scan read 25 indexed Movilidad acts; it is **not exhaustive proof** that a 2025 authorization remains unamended. Original 2015 fichas remain historical, 2025 period boundaries and modern shape/direction matching require review, and the original text for Combuses 202550076168 remains missing. Flota Nueva Villa 082 PILOTO 202250106966 remains parked by user instruction.
+
+
 This research directory is **not consumed by any GTFS generator**. It intentionally separates
 published legal schedule data from OCR candidates and from uncertain ArcGIS matches.
 
