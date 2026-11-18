@@ -69,7 +69,7 @@ def make_base(act,code,gtpc,name,origin,day,window,interval,daily="",fixed="",co
   maximum_peak_minutes=vals[0],maximum_extreme_valley_minutes=vals[1],
   maximum_midday_valley_minutes=vals[2],max_interval_status=status,
   number_of_daily_services=daily,fixed_departures_raw=fixed,service_condition=condition,
-  source_qc_level=qc,source_url=url,period_clock_boundaries=("PVE_before_04:30_after_20:30_visually_verified_in_original_2025_Gaceta;PP_PVM_unknown" if act in {"202550076150","202550076162","202550079848","202550079865","202550076168"} else "PP_PVE_PVM_boundaries_not_verified_for_this_act"),
+  source_qc_level=qc,source_url=url,period_clock_boundaries=("PVE_before_04:30_after_20:30_visually_verified_in_original_2025_Gaceta;PP_PVM_unknown" if act in {"202550076150","202550076162","202550079848","202550079865","202550076168","202550088689"} else "PP_PVE_PVM_boundaries_not_verified_for_this_act"),
   current_2026_effectivity_verified="no",gtfs_generation_approved="no",interpretation_note=note))
 with ASTREA.open(newline="",encoding="utf-8-sig") as f:
  rows=list(csv.DictReader(f))
@@ -163,7 +163,7 @@ print("Exceptions",len(exceptions),"source-day records",dict(Counter(tag for r i
 # The PDF gives no departure slots, terminal offsets or PP/PVM boundaries.
 PVE_ACT_PAGES={"202550076150":"5671:p13","202550076162":"5671:p27",
                "202550079848":"5671:p40","202550079865":"5671:p57",
-               "202550076168":"5667:p56"}
+               "202550076168":"5667:p56","202550088689":"5694:official_ASTREA_Art7"}
 pve=[]
 def minutes(clock):
  h,m=map(int,clock.split(":"));return h*60+m
