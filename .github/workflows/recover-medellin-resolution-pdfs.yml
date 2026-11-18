@@ -36,6 +36,9 @@ jobs:
             --catalog data/resolutions/official_pdf_sources.json \
             --output artifacts/resolutions
 
+      - name: Install PDF text extraction utility
+        run: sudo apt-get update -qq && sudo apt-get install -y poppler-utils
+
       - name: Index 2015 route fiche pages for manual QA
         run: python scripts/index_recovered_medellin_fiches.py
 
