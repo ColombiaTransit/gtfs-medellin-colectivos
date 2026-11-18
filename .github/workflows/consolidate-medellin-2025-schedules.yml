@@ -1,0 +1,35 @@
+name: Consolidate official Medellín 2025 service windows and headways
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/consolidate_medellin_2025_schedules.py'
+      - 'data/resolutions/2025_astrea_official_route_timetable_candidates.csv'
+      - 'data/resolutions/palenque_2025_official_route_service_intervals.csv'
+      - 'data/resolutions/2025_circular_313_official_joint_service.csv'
+      - '.github/workflows/consolidate-medellin-2025-schedules.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Normalize with guardrails
+        run: python scripts/consolidate_medellin_2025_schedules.py
+      - name: Commit research-only daily table
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/resolutions/2025_official_service_windows_and_headways_by_day.csv
+          if ! git diff --cached --quiet; then
+            git commit -m 'research: publish source-preserving 2025 service spans by day'
+            git push
+          fi
