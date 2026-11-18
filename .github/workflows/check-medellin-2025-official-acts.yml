@@ -6,10 +6,11 @@ on:
     paths:
       - 'scripts/check_medellin_2025_official_acts.py'
       - 'scripts/extract_medellin_2025_official_tables.py'
+      - 'scripts/normalize_medellin_2025_astrea_tables.py'
       - '.github/workflows/check-medellin-2025-official-acts.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   check:
@@ -26,6 +27,17 @@ jobs:
         run: python scripts/check_medellin_2025_official_acts.py
       - name: Extract confirmed original route tables and operative articles
         run: python scripts/extract_medellin_2025_official_tables.py
+      - name: Write source-only normalized research register
+        run: python scripts/normalize_medellin_2025_astrea_tables.py
+      - name: Commit research register only when changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/resolutions/2025_astrea_official_route_timetable_candidates.csv
+          if ! git diff --cached --quiet; then
+            git commit -m 'research: index official 2025 ASTREA route timetable candidates'
+            git push
+          fi
       - name: Publish table and article candidates
         if: always()
         uses: actions/upload-artifact@v4
