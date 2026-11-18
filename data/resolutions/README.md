@@ -696,3 +696,14 @@ transcription QA status, and ArcGIS route-link confidence.
 frequency and service window once transcription and route identification
 are checked. They must not be represented as field-observed real-time
 operations or automatically assumed to remain current forever.
+
+
+## Historical 2017–2024 direct-source audit and Coopetransa 069 (18 November 2026)
+
+A bounded official ASTREA URL-pattern audit checked **38 previously indexed administrative acts**: **2** original full-text candidates were confirmed, **36** not retrieved via tested URLs. The direct source and retrieval outcome are recorded on each row of `2017_2024_act_chain_index.csv`. The two confirmed originals are Coonatra 202150181337/2021 (already reviewed, affects 300/301; not Tax Maya 195ii), and 202450030616/2024 for joint route 229i.
+
+**Important precedence:** 202450030616/2024 is *expressly repealed* by Art. 11 of the recovered 202650039611/2026 act. Its published `FRECUENCIAS DE OPERACIÓN` figures **118/10 weekday/Saturday** and **59/5 Sunday/holiday** are counts of services, not minute intervals. The current 2026 authorized interval source remains in `route_229i_2026_official_intervals.csv`; historical counts are not imported or combined.
+
+A new operator-published primary-source report was visually reviewed: Coopetransa's 2023 management report, printed p23 (PDF p22), reproduces the 2023 official technical fiche for **069 El Jardín** and confirms **069 El Jardín–La Cima** as an alternate ramal. Old ArcGIS IDs **90238** and **90376** respectively. The parent service window is **03:00–23:00**, and the published operations-count table is **228/24 weekday and Saturday, 137/15 Sunday and holiday**; **these are not minutes or a separate ramal timetable**. Three-member `TRESCOOP 6E` convenio is named, but Coopetransa is the operator printed for 069; no triple-agency duplication. Original municipal act **202350107467/2023** is *still missing* despite its fiche being reproduced by the operator.
+
+All details and QA are in [historic_2017_2024_originals_and_coopetransa_069_review.md](historic_2017_2024_originals_and_coopetransa_069_review.md) and [coopetransa_069_2023_operator_report_legal_fiche.csv](coopetransa_069_2023_operator_report_legal_fiche.csv). The remaining original act retrieval work should prioritize actual service-altering decisions, not already verified geometry-only changes. No GTFS generator modifications.
