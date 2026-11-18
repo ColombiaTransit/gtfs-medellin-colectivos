@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/audit_medellin_frequency_coverage.py'
       - 'scripts/classify_medellin_remaining_schedule_gaps.py'
+      - 'scripts/rank_medellin_operator_schedule_gaps.py'
       - '.github/workflows/audit-medellin-frequency-coverage.yml'
 permissions:
   contents: write
@@ -26,11 +27,13 @@ jobs:
         run: python scripts/audit_medellin_frequency_coverage.py
       - name: Classify historical and ambiguous official schedule leftovers
         run: python scripts/classify_medellin_remaining_schedule_gaps.py
+      - name: Rank uncovered routes per operator
+        run: python scripts/rank_medellin_operator_schedule_gaps.py
       - name: Publish research registries
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/resolutions/medellin_252_route_schedule_coverage.csv data/resolutions/medellin_252_route_schedule_daytypes.csv data/resolutions/medellin_missing_frequency_windows_worklist.csv data/resolutions/medellin_252_coverage_with_historical_fallback.csv data/resolutions/medellin_unlinked_official_2025_schedule_candidates.csv
+          git add data/resolutions/medellin_252_route_schedule_coverage.csv data/resolutions/medellin_252_route_schedule_daytypes.csv data/resolutions/medellin_missing_frequency_windows_worklist.csv data/resolutions/medellin_252_coverage_with_historical_fallback.csv data/resolutions/medellin_unlinked_official_2025_schedule_candidates.csv data/resolutions/medellin_operator_frequency_gap_priorities.csv
           if ! git diff --cached --quiet; then
             git commit -m 'research: publish frequency coverage and gaps for 252 Medellín ArcGIS routes'
             git pull --rebase origin main
