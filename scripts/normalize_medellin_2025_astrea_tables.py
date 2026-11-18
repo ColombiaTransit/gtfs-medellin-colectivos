@@ -52,7 +52,24 @@ for cells in T["202550079865"][3]:
   if key not in D:
    raise RuntimeError("Original Palmitas route missing from master register: "+str(key))
   D[key]["fixed_departures_master_table"]="|".join(cells[6:8])
-fields=["act_number","gtpc","user_route_code","route_type","route_name","route_table_number","hours_table_2","hours_table_4","hours_table_5","interval_weekday","interval_saturday","interval_sunday_holiday","source_QA","gtfs_import","fixed_departures_master_table"]
+# Veredal rows in the source interval tables contain service COUNTS, not
+# numeric headways. Keep them as per-day counts and never interpolate trips.
+import re
+for index, table_no in enumerate((6,7,8)):
+ field=("weekday_services_per_day","saturday_services_per_day","sunday_holiday_services_per_day")[index]
+ for cells in T["202550079865"][table_no]:
+  if len(cells) < 4 or cells[0].strip() not in {"23711","23712","23713","23714","23715","23716","23717"}:
+   continue
+  match=re.fullmatch(r"\\s*(\\d+)\\s+servicios\\s+en\\s+el\\s+d[ií]a\\s*",cells[3],re.I)
+  if not match:
+   raise RuntimeError(f"Unexpected source count for {cells[0]} on table {table_no}: {cells[3]!r}")
+  key=("202550079865",cells[0].strip(),cells[1].strip())
+  if key not in D: raise RuntimeError(f"Count belongs to absent route: {key}")
+  D[key][field]=match.group(1)
+counts_by_route={r["gtpc"]:r for r in D.values() if r["act_number"]=="202550079865" and r["gtpc"] in {"23711","23712","23713","23714","23715","23716","23717"}}
+if len(counts_by_route)!=7 or any(not all(r.get(k) for k in ("weekday_services_per_day","saturday_services_per_day","sunday_holiday_services_per_day")) for r in counts_by_route.values()):
+ raise RuntimeError("Seven veredal route daily counts not fully recovered")
+fields=["act_number","gtpc","user_route_code","route_type","route_name","route_table_number","hours_table_2","hours_table_4","hours_table_5","interval_weekday","interval_saturday","interval_sunday_holiday","source_QA","gtfs_import","fixed_departures_master_table","weekday_services_per_day","saturday_services_per_day","sunday_holiday_services_per_day"]
 for r in D.values():
  r.update(source_QA="official_astrea_html_extracted_not_visually_accepted",gtfs_import="no")
 out.parent.mkdir(parents=True,exist_ok=True)
