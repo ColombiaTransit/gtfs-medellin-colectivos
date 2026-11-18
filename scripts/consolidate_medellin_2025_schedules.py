@@ -136,3 +136,26 @@ print("Wrote",OUTPUT,"records",len(records),"source family/day entities",len(rec
 print("Interval status:",dict(counts))
 print("Window status:",dict(Counter(r["window_status"] for r in records)))
 print("GTFS approvals:",Counter(r["gtfs_generation_approved"] for r in records))
+# Separate actionable source exceptions from ordinary complete timetable rows.
+exceptions=[]
+for r in records:
+ reason=[]
+ if r["max_interval_status"] in ("invalid_or_zero_interval_source","partially_not_operating_interval_periods"):
+  reason.append("zero_or_nonoperating_interval_source_cell")
+ if r["window_status"]=="published_no_service":
+  reason.append("explicit_no_service_day")
+ if r["window_status"]=="fixed_departure_schedule_only":
+  reason.append("fixed_departures_not_headways")
+ if r["number_of_daily_services"]:
+  reason.append("daily_service_count_not_headway")
+ if r["window_status"]=="no_published_window_in_source_table" and not r["number_of_daily_services"]:
+  reason.append("no_independent_service_window_or_paired_direction")
+ if r["service_condition"].lower().find("suspension of sitva")>=0:
+  reason.append("temporary_rail_suspension_contingency_only")
+ if reason:exceptions.append({**r,"source_exception_tags":";".join(reason)})
+out=ROOT/"2025_official_schedule_exceptions.csv"
+with out.open("w",newline="",encoding="utf-8") as file:
+ w=csv.DictWriter(file,fieldnames=FIELDS+["source_exception_tags"])
+ w.writeheader();w.writerows(exceptions)
+print("Exceptions",len(exceptions),"source-day records",dict(Counter(tag for r in exceptions for tag in r["source_exception_tags"].split(";"))))
+
