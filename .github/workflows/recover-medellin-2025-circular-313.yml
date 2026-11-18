@@ -1,0 +1,32 @@
+name: Recover original Circular 313 from historic Gaceta
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/recover_medellin_2025_historic_gaceta.py'
+      - '.github/workflows/recover-medellin-2025-circular-313.yml'
+permissions:
+  contents: read
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source and PDF utilities
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
+          pip install requests beautifulsoup4
+      - name: Official 2025 Gaceta lookups and missing original PDF recovery
+        run: python scripts/recover_medellin_2025_historic_gaceta.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: medellin-2025-original-gaceta-circular-313
+          path: artifacts/medellin-2025-historic-gaceta-originals/
+          if-no-files-found: warn
+          retention-days: 7
