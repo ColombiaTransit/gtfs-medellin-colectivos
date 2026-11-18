@@ -12,7 +12,7 @@ The previous secondary Gaceta contents references for the following five acts ha
 | 202550079848 (2025-09-26) | 5671, p29 | Metrosan integrated feeders | https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_79848_2025.htm |
 | 202550079865 (2025-09-26) | 5671, p42 | Rápido San Cristóbal, urban/integrated/corregimental routes | https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_79865_2025.htm |
 
-**Not recovered:** 202550076168/2025 (Combuses, Circular 313) did not exist at the two tested ASTREA name variants (HTTP 404); this is not evidence that the act does not exist. The Gaceta 5667/5671 public detail URL pattern likewise returned 404 for those historic numbers. Do not synthesize a PDF URL or presume an act's detailed scope.
+**Original recovered after ASTREA search (18 November 2026):** 202550076168/2025 (Circular 313) was recovered as the official 67-page **Gaceta 5667 PDF** by searching the municipality's historical Gaceta portal for the act number, retrieving its actual document ID `202000087050` and downloading the original. Its Article 1–11 terms, joint operation and maximum intervals are visually checked on pp55–57; see [the original-publication audit](gaceta_5667_2025_circular313_301_315_original_visual_audit.md) and [source CSV](2025_circular_313_official_joint_service.csv). The historic ASTREA URL guesses remain 404, but the valid official original now exists.
 
 ## Structured tables discovered in official originals
 
@@ -35,3 +35,5 @@ The Coonatra/Santra act **202550076174** concerns the route paths of 301 and 315
 **Generator policy:** do not change any current routes, agency mapping, trips, shapes, frequency period boundaries, or GTFS production data based solely on these extracted 2025 table candidates. Review later legal amendments, source anomalies and ArcGIS alignment by operator before promoting any values.
 
 **2026-11-18 extraction correction:** expanded GTPC row recognition recovered `TRONCAL-5` and `TRONCAL-6` in Castilla's original act. Validated in workflow [#44273498768](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44273498768); source total is 86. Earlier 84-record counts are superseded.
+
+**Gaceta 5667 Article 1 paragraph 3 (202550076174):** the original PDF has also been visually reviewed; 301/315 are geometry-only amendments, and the act expressly leaves frequencies/hours unchanged. Source: [Gaceta 5667 audit](gaceta_5667_2025_circular313_301_315_original_visual_audit.md).
