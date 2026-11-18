@@ -16,9 +16,9 @@ The previous secondary Gaceta contents references for the following five acts ha
 
 ## Structured tables discovered in official originals
 
-The source-only normalization counts **84 distinct (resolution, GTPC, user route-code) records** in four source acts:
+The source-only normalization counts **86 distinct (resolution, GTPC, user route-code) records** in four source acts:
 - Salud-Hotelera: **6** route-code entries. Route 304 and 305 share a GTPC code but are separate user route codes.
-- Medellín Castilla / Conaltracoop: **28** route/GTPC entries, including trunk entries without an ordinary schedule table.
+- Medellín Castilla / Conaltracoop: **30** route/GTPC entries, including ten trunk-corridor entries without ordinary numeric interval tables.
 - Metrosan: **16** direction-level entries, corresponding to pairs within the integrated route families. Numeric service figures in the first direction row must not simply be doubled for the blank return-direction row.
 - Rápido San Cristóbal: **34** route/GTPC entries, including corregimental routes with specific departures rather than a periodic headway. A printed zero-minute interval is **not** a GTFS frequency value.
 
@@ -33,3 +33,5 @@ The Coonatra/Santra act **202550076174** concerns the route paths of 301 and 315
 - `2025_astrea_official_route_timetable_candidates.csv`: source-level normalized route/timetable candidates, **not automatically approved GTFS data**. Key by resolution + GTPC + user-code, not GTPC alone.
 
 **Generator policy:** do not change any current routes, agency mapping, trips, shapes, frequency period boundaries, or GTFS production data based solely on these extracted 2025 table candidates. Review later legal amendments, source anomalies and ArcGIS alignment by operator before promoting any values.
+
+**2026-11-18 extraction correction:** expanded GTPC row recognition recovered `TRONCAL-5` and `TRONCAL-6` in Castilla's original act. Validated in workflow [#44273498768](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44273498768); source total is 86. Earlier 84-record counts are superseded.
