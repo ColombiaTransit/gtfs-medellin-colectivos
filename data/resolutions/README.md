@@ -2,6 +2,9 @@
 
 ## Latest consolidated register (18 November 2026)
 
+**Original Gaceta 5671 confirmed:** [verified 62-page original and selected visual QA](gaceta_5671_2025_original_pdf_visual_spotcheck.md) include all four 2025 acts; `TRONCAL 65` and `TRONCAL 73` have legally published maximum interval triples (not missing), with script assertions and corrected central registers. Seven veredal route records publish services per day rather than minutes. Source-only 86 ASTREA records now classify as **50 maximum-headway, 8 Metrosan paired return rows, 11 fixed rural departures, 10 standalone corridor entries without headway tables, 7 veredal daily-service counts**. Including the two separate joint Circular313 GTPC directions, the central consolidated register has **88 source records**, not 88 independent GTFS services. [Issue #12](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/issues/12) tracks remaining old originals and legal applicability; both original 2025 Gacetas are now recovered.
+
+
 **New original recovered:** [Gaceta 5667 Circular 313 and 301/315 original audit](gaceta_5667_2025_circular313_301_315_original_visual_audit.md) closes previously open 202550076168 source gap. Circular 313's one shared 4-operator service uses validated official 2025 maxima and GTPC direction pair; frequencies/hours of 301 and 315 are expressly unchanged in 202550076174 Art1 para3. Precise GTFS period/shape mapping and current 2026 applicability still require separate checks.
 
 
