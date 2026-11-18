@@ -2,7 +2,7 @@
 
 This is an **evidence ledger**, not a GTFS timetable or a confirmation that every 2025 route is still legally operative in late 2026. No GTFS generation or import is authorized from this report.
 
-## Registered original 2025 permits (official ASTREA)
+## Registered original 2025 permits (official ASTREA and Gaceta 5667)
 The following official full-text sources have been recovered, their route tables extracted, and the current research identities and exceptions preserved in [`2025_legal_to_arcgis_consolidated_register.csv`](2025_legal_to_arcgis_consolidated_register.csv).
 
 | Legal act | Operator scope | Legal GTPC+code records | ArcGIS match status |
@@ -11,6 +11,7 @@ The following official full-text sources have been recovered, their route tables
 | [202550076162](https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_76162_2025.htm) | Transportes Medellín Castilla / Conaltracoop | 30 | 34 historic Castilla ArcGIS IDs checked separately; 3 strong code+name, 1 code/name conflict, 4 ambiguous, 4 route-family candidates, 22 without defensible one-to-one linkage |
 | [202550079848](https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_79848_2025.htm) | Metrosan | 16 direction records / 8 service families | 8 name/family candidates to historical ArcGIS; direction GTPC rows retained without doubling |
 | [202550079865](https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_79865_2025.htm) | Rápido San Cristóbal | 34 | Reconcile with existing operator website images and mapping under [issue #18](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/issues/18); avoid duplicated schedule research |
+| [202550076168](https://www.medellin.gov.co/statements/innovaciondigital/gacetas/historico-mercurio/descargar/202000087050) | Joint Circular 313 (Combuses/Coometropol/Coinvetrans/Autobuses El Poblado Laureles) | 2 GTPC direction rows / 1 jointly operated service | Original Gaceta 5667 pp55–57 visually verified: legal service windows, maximum intervals, 177/2017 repeal; ArcGIS 90004 geometry still requires comparison |
 
 **Total 88 legal direction/source records in the consolidated register (86 from four ASTREA originals plus 2 Circular 313 direction GTPC rows), NOT 88 independent GTFS services.** Other 2025 original [202550076174](https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_76174_2025.htm) relates to Coonatra's 301 and Santra's 315 geometry and belongs to the legal-act index; no extra frequency records should be inferred from its contextual table. **202550076168/2025 Circular 313 now has an original municipal Gaceta 5667 PDF visually verified**: joint 4-operator service, GTPC 29903/49904, 2025 service hours and maximum intervals, express repeal of Resolución 177/2017 (see `2025_circular_313_official_joint_service.csv`).
 
