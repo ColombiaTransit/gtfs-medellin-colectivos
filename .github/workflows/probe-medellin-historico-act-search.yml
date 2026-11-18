@@ -1,0 +1,28 @@
+name: Probe official historic Medellín act lookup
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/probe_medellin_historico_act_search.py'
+      - '.github/workflows/probe-medellin-historico-act-search.yml'
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests beautifulsoup4
+      - name: Query seven known official resolution numbers
+        run: python scripts/probe_medellin_historico_act_search.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: medellin-historico-act-lookup-pilot
+          path: artifacts/medellin-historico-lookups/
+          if-no-files-found: warn
+          retention-days: 7
