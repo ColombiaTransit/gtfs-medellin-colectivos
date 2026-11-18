@@ -9,7 +9,7 @@ out=R/"medellin_operator_frequency_gap_priorities.csv"
 with inp.open(newline="",encoding="utf-8") as f: rows=list(csv.DictReader(f))
 assert len(rows)==252
 by=defaultdict(list)
-for row in rows:by[row["operator"]].append(row)
+for row in rows:by[row["operator"] or "UNKNOWN_OPERATOR_IN_ARCGIS"].append(row)
 result=[]
 for operator,rs in by.items():
  statuses=Counter(x["coverage_status"] for x in rs)
@@ -33,9 +33,11 @@ for operator,rs in by.items():
   source_policy="official_first_then_existing_operator_then_provisional_2015_then_third_party",
   generator_changed="no"))
 result.sort(key=lambda x:(-x["genuinely_needs_new_route_source"],-x["no_recent_timetable"],x["operator"]))
-assert len(result)==32
+assert len(result)==33 and sum(x["operator"]!="UNKNOWN_OPERATOR_IN_ARCGIS" for x in result)==32
+# The 33rd bucket is ArcGIS route 90375 with a blank enterprise name;
+# never pretend it belongs to any of the 32 identified operators.
 with out.open("w",newline="",encoding="utf-8") as f:
  w=csv.DictWriter(f,fieldnames=list(result[0]));w.writeheader();w.writerows(result)
-print("Operator prioritization:",len(result),"operators")
+print("Operator prioritization:",len(result)-1,"named operators + 1 unknown-operator route")
 print("Top genuinely missing route sources:",[(x["operator"],x["genuinely_needs_new_route_source"]) for x in result[:12]])
 print("Operator counts sum:",sum(x["arcgis_route_ids"] for x in result))
