@@ -29,7 +29,7 @@ for act,short in ACTS.items():
    cells=[" ".join(td.stripped_strings) for td in tr.find_all(["td","th"],recursive=False)]
    if not cells: continue
    compact=" | ".join(cells)
-   if not re.search(r"(ruta|c[oó]digo|interval|frecuencia|hora|despacho|servicio|operaci[oó]n|\d{2}:\d{2}|\b\d{3}[a-z]?\b)",compact,re.I):
+   if not re.search(r"(ruta|c[oó]digo|interval|frecuencia|hora|despacho|servicio|operaci[oó]n|\d{2}:\d{2}|\b\d{3,7}[a-z]?\b)",compact,re.I):
     continue
    rows.append(dict(act_number=act,url=url,table_number=table_no,row_number=ri,cells=json.dumps(cells,ensure_ascii=False),review_status="unverified_original_html_extraction"))
  for m in re.finditer(r"ART[ÍI]CULO\s+(?:PRIMERO|SEGUNDO|TERCERO|CUARTO|QUINTO|SEXTO|S[ÉE]PTIMO|OCTAVO|NOVENO|D[ÉE]CIMO|\d+)",text,re.I):
