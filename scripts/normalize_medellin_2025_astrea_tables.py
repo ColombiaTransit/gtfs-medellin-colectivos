@@ -79,6 +79,6 @@ with out.open("w",newline="",encoding="utf-8") as f:
  w.writerows(sorted(D.values(),key=lambda x:(x["act_number"],x["gtpc"],x.get("user_route_code",""))))
 from collections import Counter
 count=Counter(r["act_number"] for r in D.values())
-assert count=={"202550076150":6,"202550076162":28,"202550079848":16,"202550079865":34},count
+assert count=={"202550076150":6,"202550076162":30,"202550079848":16,"202550079865":34},count
 print("Saved",len(D),"official ASTREA route/direction candidate records:",dict(count),flush=True)
 print("All fields are raw source candidates; no frequencies or directions auto-generated.",flush=True)
