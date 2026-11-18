@@ -1,0 +1,757 @@
+arcgis_id_ruta,arcgis_route_code,operator,day_type,coverage_grade,frequency_status,window_status,selected_window_start,selected_window_end,window_source_tier,headway_PP,headway_PVE,headway_PVM,published_flat_headway,headway_source_tier,count_per_day,exact_departures_count,operator_photo_available,source_route_codes,selected_sources,mapping_status,notes,gtfs_automatic_import
+90001,303,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90001,303,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90001,303,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90002,286,Combuses,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90002,286,Combuses,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90002,286,Combuses,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90003,302,Autobuses Poblado Laureles,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90003,302,Autobuses Poblado Laureles,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90003,302,Autobuses Poblado Laureles,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90004,313,Combuses,weekday,official_candidate,official_period_headways,operating_window,04:00,22:00,official_2025,7,15,8,,official_2025,,0,no,313,202550076168:313,candidate_only,One coordinated four-operator service; the numeric source spans the two directions without repeating the headway.,no
+90004,313,Combuses,saturday,official_candidate,official_period_headways,operating_window,04:00,22:00,official_2025,7,15,8,,official_2025,,0,no,313,202550076168:313,candidate_only,One coordinated four-operator service; the numeric source spans the two directions without repeating the headway.,no
+90004,313,Combuses,sunday_holiday,official_candidate,official_period_headways,operating_window,04:45,21:00,official_2025,12,15,12,,official_2025,,0,no,313,202550076168:313,candidate_only,One coordinated four-operator service; the numeric source spans the two directions without repeating the headway.,no
+90005,300,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90005,300,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90005,300,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90006,301,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90006,301,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90006,301,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90007,310,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90007,310,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90007,310,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90008,311,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90008,311,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90008,311,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90009,304,Invetrans,weekday,official_candidate,official_period_headways,operating_window,04:25,20:00,official_2025,10,20,15,,official_2025,,0,no,304,202550076150:304,candidate_only,,no
+90009,304,Invetrans,saturday,official_candidate,official_period_headways,operating_window,04:25,19:00,official_2025,12,20,18,,official_2025,,0,no,304,202550076150:304,candidate_only,,no
+90009,304,Invetrans,sunday_holiday,official_candidate,official_period_headways,operating_window,06:00,18:00,official_2025,16,30,24,,official_2025,,0,no,304,202550076150:304,candidate_only,,no
+90010,305,Invetrans,weekday,official_candidate,official_period_headways,operating_window,04:30,20:00,official_2025,10,20,15,,official_2025,,0,no,305,202550076150:305,candidate_only,,no
+90010,305,Invetrans,saturday,official_candidate,official_period_headways,operating_window,04:30,19:00,official_2025,12,20,18,,official_2025,,0,no,305,202550076150:305,candidate_only,,no
+90010,305,Invetrans,sunday_holiday,official_candidate,official_period_headways,operating_window,06:00,18:00,official_2025,16,30,24,,official_2025,,0,no,305,202550076150:305,candidate_only,,no
+90011,308,Coinvetrans,weekday,official_candidate,official_period_headways,operating_window,04:15,20:00,official_2025,8,15,8,,official_2025,,0,no,308-1,202550076150:308-1,candidate_only,,no
+90011,308,Coinvetrans,saturday,official_candidate,official_period_headways,operating_window,04:15,19:00,official_2025,10,18,10,,official_2025,,0,no,308-1,202550076150:308-1,candidate_only,,no
+90011,308,Coinvetrans,sunday_holiday,official_candidate,official_period_headways,operating_window,05:55,17:55,official_2025,13,24,13,,official_2025,,0,no,308-1,202550076150:308-1,candidate_only,,no
+90012,308D,Coinvetrans,weekday,official_candidate,missing_frequency,operating_window,16:00,19:00,official_2025,,,,,,,0,no,308-2,202550076150:308-2,candidate_only,,no
+90012,308D,Coinvetrans,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90012,308D,Coinvetrans,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90013,309,Coinvetrans,weekday,official_candidate,official_period_headways,operating_window,04:15,20:00,official_2025,8,15,8,,official_2025,,0,no,309-1,202550076150:309-1,candidate_only,,no
+90013,309,Coinvetrans,saturday,official_candidate,official_period_headways,operating_window,04:20,19:05,official_2025,10,18,10,,official_2025,,0,no,309-1,202550076150:309-1,candidate_only,,no
+90013,309,Coinvetrans,sunday_holiday,official_candidate,official_period_headways,operating_window,06:00,18:00,official_2025,13,24,13,,official_2025,,0,no,309-1,202550076150:309-1,candidate_only,,no
+90014,309D,Coinvetrans,weekday,official_candidate,missing_frequency,operating_window,16:00,19:00,official_2025,,,,,,,0,no,309-2,202550076150:309-2,candidate_only,,no
+90014,309D,Coinvetrans,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90014,309D,Coinvetrans,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90015,315,Santra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90015,315,Santra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90015,315,Santra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90016,316,Santra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90016,316,Santra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90016,316,Santra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90057,246,Cootransblan,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90057,246,Cootransblan,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90057,246,Cootransblan,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90059,246D,Cootransblan,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90059,246D,Cootransblan,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90059,246D,Cootransblan,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90061,246C,Cootransblan,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90061,246C,Cootransblan,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90061,246C,Cootransblan,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90063,246i,Cootransblan,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90063,246i,Cootransblan,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90063,246i,Cootransblan,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90064,246ii,Cootransblan,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90064,246ii,Cootransblan,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90064,246ii,Cootransblan,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90065,250AiP,Palenque Robledal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90065,250AiP,Palenque Robledal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90065,250AiP,Palenque Robledal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90066,250Aii,Palenque Robledal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90066,250Aii,Palenque Robledal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90066,250Aii,Palenque Robledal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90067,250R,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:10,22:10,official_2025,8,15,8,,official_2025,,0,no,250-3,202550088689:250-3,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90067,250R,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:10,22:10,official_2025,10,18,10,,official_2025,,0,no,250-3,202550088689:250-3,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90067,250R,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:40,19:20,official_2025,13,24,13,,official_2025,,0,no,250-3,202550088689:250-3,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90068,250iVF,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:00,23:20,official_2025,6,15,6,,official_2025,,0,no,250-1i,202550088689:250-1i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90068,250iVF,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:00,23:20,official_2025,7,18,7,,official_2025,,0,no,250-1i,202550088689:250-1i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90068,250iVF,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:40,21:50,official_2025,10,24,10,,official_2025,,0,no,250-1i,202550088689:250-1i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90069,250iR,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:00,23:30,official_2025,7,20,8,,official_2025,,0,no,250-2i,202550088689:250-2i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90069,250iR,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:00,23:30,official_2025,8,20,10,,official_2025,,0,no,250-2i,202550088689:250-2i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90069,250iR,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:40,22:00,official_2025,11,30,13,,official_2025,,0,no,250-2i,202550088689:250-2i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90070,250VF,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:00,22:10,official_2025,8,15,9,,official_2025,,0,no,250-1,202550088689:250-1,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90070,250VF,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:00,22:10,official_2025,10,18,11,,official_2025,,0,no,250-1,202550088689:250-1,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90070,250VF,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:30,19:15,official_2025,13,24,14,,official_2025,,0,no,250-1,202550088689:250-1,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90071,250AH,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:20,22:10,official_2025,9,20,9,,official_2025,,0,no,250-4,202550088689:250-4,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90071,250AH,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:20,22:10,official_2025,11,20,11,,official_2025,,0,no,250-4,202550088689:250-4,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90071,250AH,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:40,19:20,official_2025,14,30,14,,official_2025,,0,no,250-4,202550088689:250-4,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90072,250M,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:00,23:20,official_2025,9,25,10,,official_2025,,0,no,250-4i,202550088689:250-4i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90072,250M,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:00,23:20,official_2025,11,20,12,,official_2025,,0,no,250-4i,202550088689:250-4i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90072,250M,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:25,22:00,official_2025,14,30,16,,official_2025,,0,no,250-4i,202550088689:250-4i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90073,250AP,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:00,22:10,official_2025,8,15,9,,official_2025,,0,no,250-5,202550088689:250-5,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90073,250AP,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:00,22:10,official_2025,10,18,11,,official_2025,,0,no,250-5,202550088689:250-5,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90073,250AP,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:30,19:20,official_2025,13,24,14,,official_2025,,0,no,250-5,202550088689:250-5,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90074,251,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,03:50,20:00,official_2025,15,15,15,,official_2025,,0,no,251,202550088689:251,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90074,251,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,03:50,20:00,official_2025,18,18,18,,official_2025,,0,no,251,202550088689:251,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90074,251,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:00,11:50,official_2025,24,24,24,,official_2025,,0,no,251,202550088689:251,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90075,252,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:15,20:50,official_2025,8,10,8,,official_2025,,0,no,252,202550088689:252,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90075,252,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:15,20:50,official_2025,10,12,10,,official_2025,,0,no,252,202550088689:252,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90075,252,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,05:00,18:40,official_2025,13,16,13,,official_2025,,0,no,252,202550088689:252,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90076,253D,Palenque Robledal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90076,253D,Palenque Robledal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90076,253D,Palenque Robledal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90077,253I,Palenque Robledal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90077,253I,Palenque Robledal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90077,253I,Palenque Robledal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90078,253iA,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:00,23:20,official_2025,7,15,8,,official_2025,,0,no,253-i,202550088689:253-i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90078,253iA,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:00,23:20,official_2025,8,18,10,,official_2025,,0,no,253-i,202550088689:253-i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90078,253iA,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:40,22:00,official_2025,11,24,13,,official_2025,,0,no,253-i,202550088689:253-i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90079,253iAR,Palenque Robledal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90079,253iAR,Palenque Robledal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90079,253iAR,Palenque Robledal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90080,254,Transporte Medellín Castilla,weekday,official_candidate,official_period_headways,operating_window,03:40,21:25,official_2025,6,10,8,,official_2025,,0,no,254,202550076162:254,candidate_only,,no
+90080,254,Transporte Medellín Castilla,saturday,official_candidate,official_period_headways,operating_window,03:40,21:25,official_2025,7,12,10,,official_2025,,0,no,254,202550076162:254,candidate_only,,no
+90080,254,Transporte Medellín Castilla,sunday_holiday,official_candidate,official_period_headways,operating_window,04:10,20:30,official_2025,10,16,13,,official_2025,,0,no,254,202550076162:254,candidate_only,,no
+90081,255A,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90081,255A,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90081,255A,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90082,255D,Rápido San Cristóbal,weekday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255D,trsc_photo:255_D_DIRECTO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90082,255D,Rápido San Cristóbal,saturday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255D,trsc_photo:255_D_DIRECTO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90082,255D,Rápido San Cristóbal,sunday_holiday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255D,trsc_photo:255_D_DIRECTO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90083,255,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90083,255,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90083,255,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90084,255i,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90084,255i,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90084,255i,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90085,255iD,Rápido San Cristóbal,weekday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255iD,trsc_photo:HUECO_PAJARITO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90085,255iD,Rápido San Cristóbal,saturday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255iD,trsc_photo:HUECO_PAJARITO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90085,255iD,Rápido San Cristóbal,sunday_holiday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255iD,trsc_photo:HUECO_PAJARITO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90086,255P,Rápido San Cristóbal,weekday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255P,trsc_photo:255_PALMITAS,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90086,255P,Rápido San Cristóbal,saturday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255P,trsc_photo:255_PALMITAS,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90086,255P,Rápido San Cristóbal,sunday_holiday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255P,trsc_photo:255_PALMITAS,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90087,255V1,Rápido San Cristóbal,weekday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255V1,trsc_photo:255_LLANO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90087,255V1,Rápido San Cristóbal,saturday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255V1,trsc_photo:255_LLANO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90087,255V1,Rápido San Cristóbal,sunday_holiday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255V1,trsc_photo:255_LLANO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90088,255V1D,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90088,255V1D,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90088,255V1D,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90089,255V2,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90089,255V2,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90089,255V2,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90090,255V3,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90090,255V3,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90090,255V3,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90091,255V3,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90091,255V3,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90091,255V3,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90092,255A,Rápido San Cristóbal,weekday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255A,trsc_photo:255_A_MORAVIA,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90092,255A,Rápido San Cristóbal,saturday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255A,trsc_photo:255_A_MORAVIA,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90092,255A,Rápido San Cristóbal,sunday_holiday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255A,trsc_photo:255_A_MORAVIA,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90093,255A,Rápido San Cristóbal,weekday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255A,trsc_photo:255_A_MORAVIA,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90093,255A,Rápido San Cristóbal,saturday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255A,trsc_photo:255_A_MORAVIA,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90093,255A,Rápido San Cristóbal,sunday_holiday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255A,trsc_photo:255_A_MORAVIA,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90094,260CL,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:40,21:00,official_2025,9,15,9,,official_2025,,0,no,260-2,202550088689:260-2,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90094,260CL,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:40,21:00,official_2025,11,18,11,,official_2025,,0,no,260-2,202550088689:260-2,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90094,260CL,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,06:00,17:00,official_2025,14,24,14,,official_2025,,0,no,260-2,202550088689:260-2,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90095,260C,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:00,22:20,official_2025,6,20,7,,official_2025,,0,no,260-1,202550088689:260-1,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90095,260C,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:00,22:20,official_2025,7,20,8,,official_2025,,0,no,260-1,202550088689:260-1,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90095,260C,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:45,20:40,official_2025,10,30,11,,official_2025,,0,no,260-1,202550088689:260-1,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90096,260i,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:00,23:30,official_2025,3,15,5,,official_2025,,0,no,260-i,202550088689:260-i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90096,260i,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:00,23:30,official_2025,4,18,6,,official_2025,,0,no,260-i,202550088689:260-i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90096,260i,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:40,22:00,official_2025,5,24,8,,official_2025,,0,no,260-i,202550088689:260-i,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90097,260BR,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:40,21:00,official_2025,9,15,9,,official_2025,,0,no,260-2,202550088689:260-2,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90097,260BR,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:40,21:00,official_2025,11,18,11,,official_2025,,0,no,260-2,202550088689:260-2,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90097,260BR,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,06:00,17:00,official_2025,14,24,14,,official_2025,,0,no,260-2,202550088689:260-2,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90098,260T,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:00,22:20,official_2025,6,20,7,,official_2025,,0,no,260-1,202550088689:260-1,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90098,260T,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:00,22:20,official_2025,7,20,8,,official_2025,,0,no,260-1,202550088689:260-1,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90098,260T,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,04:45,20:40,official_2025,10,30,11,,official_2025,,0,no,260-1,202550088689:260-1,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90099,267,Palenque Robledal,weekday,official_candidate,official_period_headways,operating_window,04:45,20:10,official_2025,13,15,12,,official_2025,,0,no,267,202550088689:267,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90099,267,Palenque Robledal,saturday,official_candidate,official_period_headways,operating_window,04:45,20:10,official_2025,16,18,14,,official_2025,,0,no,267,202550088689:267,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90099,267,Palenque Robledal,sunday_holiday,official_candidate,official_period_headways,operating_window,06:00,15:30,official_2025,21,24,19,,official_2025,,0,no,267,202550088689:267,candidate_only,No automatic extrapolation of unspecified peak clock periods,no
+90102,255V,Rápido San Cristóbal,weekday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255V,trsc_photo:255_COMBINADO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90102,255V,Rápido San Cristóbal,saturday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255V,trsc_photo:255_COMBINADO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90102,255V,Rápido San Cristóbal,sunday_holiday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255V,trsc_photo:255_COMBINADO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90103,255V,Rápido San Cristóbal,weekday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255V,trsc_photo:255_COMBINADO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90103,255V,Rápido San Cristóbal,saturday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255V,trsc_photo:255_COMBINADO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90103,255V,Rápido San Cristóbal,sunday_holiday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255V,trsc_photo:255_COMBINADO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90104,261A,Transporte Medellín Castilla,weekday,official_candidate,official_period_headways,operating_window,05:00,20:30,official_2025,15,20,15,,official_2025,,0,no,261-2,202550076162:261-2,candidate_only,,no
+90104,261A,Transporte Medellín Castilla,saturday,official_candidate,official_period_headways,operating_window,05:00,20:30,official_2025,15,20,15,,official_2025,,0,no,261-2,202550076162:261-2,candidate_only,,no
+90104,261A,Transporte Medellín Castilla,sunday_holiday,official_candidate,official_period_headways,operating_window,05:40,19:30,official_2025,20,20,20,,official_2025,,0,no,261-2,202550076162:261-2,candidate_only,,no
+90105,254i,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90105,254i,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90105,254i,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90106,254iB_TV 73,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90106,254iB_TV 73,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90106,254iB_TV 73,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90107,261,Transporte Medellín Castilla,weekday,official_candidate,official_period_headways,operating_window,04:00,21:30,official_2025,6,12,8,,official_2025,,0,no,261-1,202550076162:261-1,candidate_only,,no
+90107,261,Transporte Medellín Castilla,saturday,official_candidate,official_period_headways,operating_window,04:00,21:30,official_2025,7,14,10,,official_2025,,0,no,261-1,202550076162:261-1,candidate_only,,no
+90107,261,Transporte Medellín Castilla,sunday_holiday,official_candidate,official_period_headways,operating_window,04:00,20:00,official_2025,10,19,13,,official_2025,,0,no,261-1,202550076162:261-1,candidate_only,,no
+90108,261i Der,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90108,261i Der,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90108,261i Der,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90109,261i Izq,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90109,261i Izq,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90109,261i Izq,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90110,261ii,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90110,261ii,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90110,261ii,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90111,263,Transporte Medellín Castilla,weekday,official_candidate,official_period_headways,operating_window,04:00,21:30,official_2025,6,10,8,,official_2025,,0,no,263,202550076162:263,candidate_only,,no
+90111,263,Transporte Medellín Castilla,saturday,official_candidate,official_period_headways,operating_window,04:00,21:30,official_2025,7,12,10,,official_2025,,0,no,263,202550076162:263,candidate_only,,no
+90111,263,Transporte Medellín Castilla,sunday_holiday,official_candidate,official_period_headways,operating_window,04:00,20:00,official_2025,12,16,14,,official_2025,,0,no,263,202550076162:263,candidate_only,,no
+90113,263i,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90113,263i,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90113,263i,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90114,263ii,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90114,263ii,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90114,263ii,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90115,265,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90115,265,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90115,265,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90116,270i,Transporte Medellín Castilla,weekday,official_candidate,official_period_headways,operating_window,04:00,23:00,official_2025,12,20,15,,official_2025,,0,no,270-i,202550076162:270-i,candidate_only,,no
+90116,270i,Transporte Medellín Castilla,saturday,official_candidate,official_period_headways,operating_window,04:00,23:00,official_2025,15,20,15,,official_2025,,0,no,270-i,202550076162:270-i,candidate_only,,no
+90116,270i,Transporte Medellín Castilla,sunday_holiday,official_candidate,official_period_headways,operating_window,04:30,22:20,official_2025,15,20,20,,official_2025,,0,no,270-i,202550076162:270-i,candidate_only,,no
+90117,280,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90117,280,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90117,280,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90118,280 Directa,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90118,280 Directa,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90118,280 Directa,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90119,281,Transporte Medellín Castilla,weekday,official_candidate,official_period_headways,operating_window,04:00,21:30,official_2025,6,10,8,,official_2025,,0,no,281,202550076162:281,candidate_only,,no
+90119,281,Transporte Medellín Castilla,saturday,official_candidate,official_period_headways,operating_window,04:00,21:30,official_2025,7,12,10,,official_2025,,0,no,281,202550076162:281,candidate_only,,no
+90119,281,Transporte Medellín Castilla,sunday_holiday,official_candidate,official_period_headways,operating_window,04:30,20:00,official_2025,10,16,13,,official_2025,,0,no,281,202550076162:281,candidate_only,,no
+90122,283i,Transporte Medellín Castilla,weekday,official_candidate,official_period_headways,operating_window,04:00,23:00,official_2025,8,15,10,,official_2025,,0,no,283-i,202550076162:283-i,candidate_only,,no
+90122,283i,Transporte Medellín Castilla,saturday,official_candidate,official_period_headways,operating_window,04:00,23:00,official_2025,10,18,12,,official_2025,,0,no,283-i,202550076162:283-i,candidate_only,,no
+90122,283i,Transporte Medellín Castilla,sunday_holiday,official_candidate,official_period_headways,operating_window,04:30,22:20,official_2025,13,15,20,,official_2025,,0,no,283-i,202550076162:283-i,candidate_only,,no
+90124,289,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90124,289,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90124,289,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90125,306A,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90125,306A,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90125,306A,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90126,306B,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90126,306B,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90126,306B,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90128,Anillo 1 Carrera 65,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90128,Anillo 1 Carrera 65,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90128,Anillo 1 Carrera 65,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90129,Anillo 3AH Carrera 65,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90129,Anillo 3AH Carrera 65,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90129,Anillo 3AH Carrera 65,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90130,Anillo 3H Carrera 65,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90130,Anillo 3H Carrera 65,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90130,Anillo 3H Carrera 65,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90131,Anillo 3H Carrera 65 Horario Esp,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90131,Anillo 3H Carrera 65 Horario Esp,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90131,Anillo 3H Carrera 65 Horario Esp,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90132,Anillo F1 Carrera 65,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90132,Anillo F1 Carrera 65,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90132,Anillo F1 Carrera 65,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90133,Anillo F2 Carrera 65,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90133,Anillo F2 Carrera 65,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90133,Anillo F2 Carrera 65,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90134,Anillo F3 Carrera 65,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90134,Anillo F3 Carrera 65,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90134,Anillo F3 Carrera 65,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90135,Anillo 1 Carrera 73,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90135,Anillo 1 Carrera 73,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90135,Anillo 1 Carrera 73,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90136,Anillo 2 Carrera 73,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90136,Anillo 2 Carrera 73,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90136,Anillo 2 Carrera 73,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90137,Anillo 3ah Carrera 73,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90137,Anillo 3ah Carrera 73,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90137,Anillo 3ah Carrera 73,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90138,Anillo 3h Carrera 73,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90138,Anillo 3h Carrera 73,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90138,Anillo 3h Carrera 73,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90139,Anillo F1 Carrera 73,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90139,Anillo F1 Carrera 73,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90139,Anillo F1 Carrera 73,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90140,Anillo F3 Carrera 73,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90140,Anillo F3 Carrera 73,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90140,Anillo F3 Carrera 73,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90141,170,Cootrabel,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90141,170,Cootrabel,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90141,170,Cootrabel,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90172,287,Autobuses Poblado Laureles,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90172,287,Autobuses Poblado Laureles,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90172,287,Autobuses Poblado Laureles,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90173,96,Flota la V,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90173,96,Flota la V,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90173,96,Flota la V,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90174,096 Horario Esp,Flota la V,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90174,096 Horario Esp,Flota la V,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90174,096 Horario Esp,Flota la V,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90175,97,Flota la V,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90175,97,Flota la V,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90175,97,Flota la V,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90176,97,Flota la V,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90176,97,Flota la V,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90176,97,Flota la V,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90179,97,Flota la V,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90179,97,Flota la V,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90179,97,Flota la V,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90180,99,Coopcerquin,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90180,99,Coopcerquin,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90180,99,Coopcerquin,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90181,099 Horario Esp,Coopcerquin,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90181,099 Horario Esp,Coopcerquin,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90181,099 Horario Esp,Coopcerquin,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90183,102,Cootranscataluña,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90183,102,Cootranscataluña,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90183,102,Cootranscataluña,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90184,102D,Cootranscataluña,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90184,102D,Cootranscataluña,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90184,102D,Cootranscataluña,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90187,102A,Cootranscataluña,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90187,102A,Cootranscataluña,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90187,102A,Cootranscataluña,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90188,110,Flota la Milagrosa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90188,110,Flota la Milagrosa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90188,110,Flota la Milagrosa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90191,111,Flota la Milagrosa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90191,111,Flota la Milagrosa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90191,111,Flota la Milagrosa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90193,111,Flota la Milagrosa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90193,111,Flota la Milagrosa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90193,111,Flota la Milagrosa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90195,112,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90195,112,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90195,112,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90197,113B,Flota la Milagrosa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90197,113B,Flota la Milagrosa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90197,113B,Flota la Milagrosa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90198,113M,Flota la Milagrosa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90198,113M,Flota la Milagrosa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90198,113M,Flota la Milagrosa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90199,113,Flota la Milagrosa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90199,113,Flota la Milagrosa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90199,113,Flota la Milagrosa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90202,6,Transconor,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90202,6,Transconor,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90202,6,Transconor,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90203,22,Transporte Aranjuez Santa Cruz,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90203,22,Transporte Aranjuez Santa Cruz,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90203,22,Transporte Aranjuez Santa Cruz,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90205,23,Transporte Aranjuez Santa Cruz,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90205,23,Transporte Aranjuez Santa Cruz,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90205,23,Transporte Aranjuez Santa Cruz,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90206,24,Transporte Aranjuez Santa Cruz,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90206,24,Transporte Aranjuez Santa Cruz,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90206,24,Transporte Aranjuez Santa Cruz,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90207,24,Transporte Aranjuez Santa Cruz,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90207,24,Transporte Aranjuez Santa Cruz,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90207,24,Transporte Aranjuez Santa Cruz,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90209,041D,Transporte Aranjuez Santa Cruz,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90209,041D,Transporte Aranjuez Santa Cruz,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90209,041D,Transporte Aranjuez Santa Cruz,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90210,041I,Transporte Aranjuez Santa Cruz,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90210,041I,Transporte Aranjuez Santa Cruz,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90210,041I,Transporte Aranjuez Santa Cruz,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90211,42,Transporte Aranjuez Santa Cruz,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90211,42,Transporte Aranjuez Santa Cruz,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90211,42,Transporte Aranjuez Santa Cruz,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90212,031 P-C,Expreso Campo Valdés,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90212,031 P-C,Expreso Campo Valdés,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90212,031 P-C,Expreso Campo Valdés,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90214,031 P-F,Expreso Campo Valdés,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90214,031 P-F,Expreso Campo Valdés,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90214,031 P-F,Expreso Campo Valdés,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90215,031 P-SD,Expreso Campo Valdés,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90215,031 P-SD,Expreso Campo Valdés,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90215,031 P-SD,Expreso Campo Valdés,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90217,37 - 39,Autocol,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90217,37 - 39,Autocol,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90217,37 - 39,Autocol,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90218,37 - 39,Autocol,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90218,37 - 39,Autocol,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90218,37 - 39,Autocol,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90219,37 - 39,Autocol,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90219,37 - 39,Autocol,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90219,37 - 39,Autocol,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90220,51-52 CV-C,Expreso Campo Valdés,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90220,51-52 CV-C,Expreso Campo Valdés,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90220,51-52 CV-C,Expreso Campo Valdés,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90222,51-52 CV-F,Expreso Campo Valdés,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90222,51-52 CV-F,Expreso Campo Valdés,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90222,51-52 CV-F,Expreso Campo Valdés,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90223,51-52 CV-O,Expreso Campo Valdés,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90223,51-52 CV-O,Expreso Campo Valdés,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90223,51-52 CV-O,Expreso Campo Valdés,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90224,51-52 CV-SD,Expreso Campo Valdés,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90224,51-52 CV-SD,Expreso Campo Valdés,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90224,51-52 CV-SD,Expreso Campo Valdés,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90226,080 V-33,Flota Nueva Villa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90226,080 V-33,Flota Nueva Villa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90226,080 V-33,Flota Nueva Villa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90227,080 V-M,Flota Nueva Villa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90227,080 V-M,Flota Nueva Villa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90227,080 V-M,Flota Nueva Villa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90228,080 V-O,Flota Nueva Villa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90228,080 V-O,Flota Nueva Villa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90228,080 V-O,Flota Nueva Villa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90229,81,Flota Nueva Villa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90229,81,Flota Nueva Villa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90229,81,Flota Nueva Villa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90230,082 V-LA,Flota Nueva Villa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90230,082 V-LA,Flota Nueva Villa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90230,082 V-LA,Flota Nueva Villa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90231,082 V-LAD,Flota Nueva Villa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90231,082 V-LAD,Flota Nueva Villa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90231,082 V-LAD,Flota Nueva Villa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90232,085,Cootracovi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90232,085,Cootracovi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90232,085,Cootracovi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90235,56,Cootranscol,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90235,56,Cootranscol,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90235,56,Cootranscol,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90236,57,Coopetransa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90236,57,Coopetransa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90236,57,Coopetransa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90237,60,Cootranscol,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90237,60,Cootranscol,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90237,60,Cootranscol,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90238,069,Coopetransa,weekday,operator_reference,daily_count_not_headway,operating_window,03:00,23:00,operator_reproduced_legal_fiche,,,,,,228,0,no,069 El Jardín,coopetransa_fiche_069,candidate_only,"DIA/HMD are service counts, not minute headways; avoid duplicating with TRESCOOP partners",no
+90238,069,Coopetransa,saturday,operator_reference,daily_count_not_headway,operating_window,03:00,23:00,operator_reproduced_legal_fiche,,,,,,228,0,no,069 El Jardín,coopetransa_fiche_069,candidate_only,"DIA/HMD are service counts, not minute headways; avoid duplicating with TRESCOOP partners",no
+90238,069,Coopetransa,sunday_holiday,operator_reference,daily_count_not_headway,operating_window,03:00,23:00,operator_reproduced_legal_fiche,,,,,,137,0,no,069 El Jardín,coopetransa_fiche_069,candidate_only,"DIA/HMD are service counts, not minute headways; avoid duplicating with TRESCOOP partners",no
+90239,87,Cootranspinal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90239,87,Cootranspinal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90239,87,Cootranspinal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90240,087 Horario Esp,Cootranspinal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90240,087 Horario Esp,Cootranspinal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90240,087 Horario Esp,Cootranspinal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90241,88,Cootranspinal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90241,88,Cootranspinal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90241,88,Cootranspinal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90242,90,Copatra,weekday,external_reference,published_scalar_headway,missing_window,,,,,,,9,external_provisional,,0,no,090,moovit:090:Los_Mangos_loop,candidate_only,Moovit says last 04:56 next day; do not treat as verified 24h operations,no
+90242,90,Copatra,saturday,external_reference,published_scalar_headway,operating_window,05:03,21:24,external_provisional,,,,9,external_provisional,,0,no,090,moovit:090:Calle56_loop;moovit:090:Los_Mangos_loop,candidate_only,Moovit says last 04:56 next day; do not treat as verified 24h operations; Saturday plausible shorter explicit span; independent direction verification pending,no
+90242,90,Copatra,sunday_holiday,external_reference,published_scalar_headway,missing_window,,,,,,,9,external_provisional,,0,no,090,moovit:090:Los_Mangos_loop,candidate_only,Sunday interval range 9-15; last 04:56 ambiguous,no
+90243,91,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90243,91,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90243,91,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90244,91,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90244,91,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90244,91,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90247,105,Cootransmallat,weekday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90247,105,Cootransmallat,saturday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90247,105,Cootransmallat,sunday_holiday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90249,105,Cootransmallat,weekday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90249,105,Cootransmallat,saturday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90249,105,Cootransmallat,sunday_holiday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90250,105,Cootransmallat,weekday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90250,105,Cootransmallat,saturday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90250,105,Cootransmallat,sunday_holiday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90251,105,Cootransmallat,weekday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90251,105,Cootransmallat,saturday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90251,105,Cootransmallat,sunday_holiday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_Golondrinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90252,105,Cootransmallat,weekday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_El_Faro,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90252,105,Cootransmallat,saturday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_El_Faro,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90252,105,Cootransmallat,sunday_holiday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,105,cootransmallat:105_El_Faro,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90254,106,Cootransmallat,weekday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,106,cootransmallat:106_Tres_Esquinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90254,106,Cootransmallat,saturday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,106,cootransmallat:106_Tres_Esquinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90254,106,Cootransmallat,sunday_holiday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,106,cootransmallat:106_Tres_Esquinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90255,106,Cootransmallat,weekday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,106,cootransmallat:106_Tres_Esquinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90255,106,Cootransmallat,saturday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,106,cootransmallat:106_Tres_Esquinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90255,106,Cootransmallat,sunday_holiday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,106,cootransmallat:106_Tres_Esquinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90256,106,Cootransmallat,weekday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,106,cootransmallat:106_Tres_Esquinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90256,106,Cootransmallat,saturday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,106,cootransmallat:106_Tres_Esquinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90256,106,Cootransmallat,sunday_holiday,operator_reference,missing_frequency,operating_window,04:00,23:30,operator_family_window,,,,,,,0,no,106,cootransmallat:106_Tres_Esquinas,candidate_only,Minorista destination replaced by Bolivia after 18:00; variants NOT independent full-day services,no
+90257,98 Directa 1,Transacoop,weekday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,12,operator_with_caveats,,0,no,1,transacoop_website:1,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90257,98 Directa 1,Transacoop,saturday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,12,operator_with_caveats,,0,no,1,transacoop_website:1,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90257,98 Directa 1,Transacoop,sunday_holiday,operator_reference,published_scalar_headway,operating_window,06:00,20:00,operator_with_caveats,,,,12,operator_with_caveats,,0,no,1,transacoop_website:1,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90258,98 Directa 2,Transacoop,weekday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,30,operator_with_caveats,,0,no,2,transacoop_website:2,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90258,98 Directa 2,Transacoop,saturday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,30,operator_with_caveats,,0,no,2,transacoop_website:2,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90258,98 Directa 2,Transacoop,sunday_holiday,operator_reference,published_scalar_headway,operating_window,06:00,20:00,operator_with_caveats,,,,30,operator_with_caveats,,0,no,2,transacoop_website:2,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90259,98 Directa 3,Transacoop,weekday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,3,transacoop_website:3,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90259,98 Directa 3,Transacoop,saturday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,3,transacoop_website:3,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90259,98 Directa 3,Transacoop,sunday_holiday,operator_reference,published_scalar_headway,operating_window,06:00,20:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,3,transacoop_website:3,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90260,98 Directa 4,Transacoop,weekday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,4,transacoop_website:4,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90260,98 Directa 4,Transacoop,saturday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,4,transacoop_website:4,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90260,98 Directa 4,Transacoop,sunday_holiday,operator_reference,published_scalar_headway,operating_window,06:00,20:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,4,transacoop_website:4,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90261,98 Directa 5,Transacoop,weekday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,5,transacoop_website:5,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90261,98 Directa 5,Transacoop,saturday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,5,transacoop_website:5,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90261,98 Directa 5,Transacoop,sunday_holiday,operator_reference,published_scalar_headway,operating_window,06:00,20:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,5,transacoop_website:5,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90262,98 Directa 6,Transacoop,weekday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,240,operator_with_caveats,,0,no,6,transacoop_website:6,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90262,98 Directa 6,Transacoop,saturday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,240,operator_with_caveats,,0,no,6,transacoop_website:6,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90262,98 Directa 6,Transacoop,sunday_holiday,operator_reference,published_scalar_headway,operating_window,06:00,20:00,operator_with_caveats,,,,210,operator_with_caveats,,0,no,6,transacoop_website:6,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90263,98 Directa 7,Transacoop,weekday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,240,operator_with_caveats,,19,no,098-7;7,098-7_exact;transacoop_website:7,candidate_only,19 exact origin departures 03:30-21:30; one direction; public listing says Diariamente but holiday status unknown; Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90263,98 Directa 7,Transacoop,saturday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,240,operator_with_caveats,,19,no,098-7;7,098-7_exact;transacoop_website:7,candidate_only,19 exact origin departures 03:30-21:30; one direction; public listing says Diariamente but holiday status unknown; Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90263,98 Directa 7,Transacoop,sunday_holiday,operator_reference,published_scalar_headway,operating_window,06:00,20:00,operator_with_caveats,,,,210,operator_with_caveats,,19,no,098-7;7,098-7_exact;transacoop_website:7,candidate_only,19 exact origin departures 03:30-21:30; one direction; public listing says Diariamente but holiday status unknown; Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90264,98 Directa 8,Transacoop,weekday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,8,transacoop_website:8,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90264,98 Directa 8,Transacoop,saturday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,8,transacoop_website:8,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90264,98 Directa 8,Transacoop,sunday_holiday,operator_reference,published_scalar_headway,operating_window,06:00,20:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,8,transacoop_website:8,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90265,98 Directa 9,Transacoop,weekday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,9,transacoop_website:9,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90265,98 Directa 9,Transacoop,saturday,operator_reference,published_scalar_headway,operating_window,05:00,21:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,9,transacoop_website:9,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90265,98 Directa 9,Transacoop,sunday_holiday,operator_reference,published_scalar_headway,operating_window,06:00,20:00,operator_with_caveats,,,,60,operator_with_caveats,,0,no,9,transacoop_website:9,candidate_only,Branch ID by website order is provisional. Some website headways are derived approximations in mapping file.,no
+90266,93,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90266,93,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90266,93,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90267,93,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90267,93,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90267,93,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90268,93,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90268,93,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90268,93,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90269,94,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90269,94,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90269,94,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90270,95,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90270,95,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90270,95,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90271,95,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90271,95,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90271,95,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90272,95,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90272,95,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90272,95,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90273,95,Copatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90273,95,Copatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90273,95,Copatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90274,103,Cootransi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90274,103,Cootransi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90274,103,Cootransi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90275,103,Cootransi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90275,103,Cootransi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90275,103,Cootransi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90276,103,Cootransi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90276,103,Cootransi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90276,103,Cootransi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90277,103,Cootransi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90277,103,Cootransi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90277,103,Cootransi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90278,107,Cootransvi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90278,107,Cootransvi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90278,107,Cootransvi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90279,107,Cootransvi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90279,107,Cootransvi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90279,107,Cootransvi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90280,107,Cootransvi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90280,107,Cootransvi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90280,107,Cootransvi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90281,107,Cootransvi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90281,107,Cootransvi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90281,107,Cootransvi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90282,190,Autobuses Poblado Laureles,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90282,190,Autobuses Poblado Laureles,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90282,190,Autobuses Poblado Laureles,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90283,191,Autobuses Poblado Laureles,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90283,191,Autobuses Poblado Laureles,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90283,191,Autobuses Poblado Laureles,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90284,192,Autobuses Poblado Laureles,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90284,192,Autobuses Poblado Laureles,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90284,192,Autobuses Poblado Laureles,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90285,193,Autobuses Poblado Laureles,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90285,193,Autobuses Poblado Laureles,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90285,193,Autobuses Poblado Laureles,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90286,193i,Autobuses Poblado Laureles,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90286,193i,Autobuses Poblado Laureles,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90286,193i,Autobuses Poblado Laureles,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90287,193ii,Autobuses Poblado Laureles,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90287,193ii,Autobuses Poblado Laureles,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90287,193ii,Autobuses Poblado Laureles,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90288,195,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90288,195,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90288,195,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90289,195i,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90289,195i,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90289,195i,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90290,195ii,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90290,195ii,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90290,195ii,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90291,200,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90291,200,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90291,200,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90292,201,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90292,201,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90292,201,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90293,201,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90293,201,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90293,201,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90294,201B,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90294,201B,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90294,201B,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90296,201i,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90296,201i,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90296,201i,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90297,202,Conducciones América,weekday,external_reference,published_scalar_headway,operating_window,05:00,20:00,external_provisional,,,,10,external_provisional,,0,no,202,moovit:202:Corazon_circular,candidate_only,Official old ArcGIS 202 Santa Monica; Moovit page labels Santa Monica No 2 and El Corazon terminal; geometry not verified,no
+90297,202,Conducciones América,saturday,external_reference,published_scalar_headway,operating_window,05:00,20:00,external_provisional,,,,10,external_provisional,,0,no,202,moovit:202:Corazon_circular,candidate_only,Official old ArcGIS 202 Santa Monica; Moovit page labels Santa Monica No 2 and El Corazon terminal; geometry not verified,no
+90297,202,Conducciones América,sunday_holiday,external_reference,published_scalar_headway,operating_window,06:00,19:00,external_provisional,,,,20,external_provisional,,0,no,202,moovit:202:Corazon_circular,candidate_only,Not necessarily 2025 original operator-authorized day type,no
+90298,202i,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90298,202i,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90298,202i,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90299,203 Belencito,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90299,203 Belencito,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90299,203 Belencito,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90300,203 Corazón,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90300,203 Corazón,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90300,203 Corazón,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90301,220,Conducciones América,weekday,external_reference,published_scalar_headway,operating_window,05:00,20:00,external_provisional,,,,10,external_provisional,,0,no,220,moovit:220:20_Julio_to_20_Julio_terminal,candidate_only,Moovit describes San Javier-20 de Julio; old GIS Eduardo Santos-Oriente; route variant match pending,no
+90301,220,Conducciones América,saturday,external_reference,published_scalar_headway,operating_window,05:00,20:00,external_provisional,,,,10,external_provisional,,0,no,220,moovit:220:20_Julio_to_20_Julio_terminal,candidate_only,Moovit describes San Javier-20 de Julio; old GIS Eduardo Santos-Oriente; route variant match pending,no
+90301,220,Conducciones América,sunday_holiday,external_reference,published_scalar_headway,operating_window,06:00,19:00,external_provisional,,,,20,external_provisional,,0,no,220,moovit:220:20_Julio_to_20_Julio_terminal,candidate_only,No confirmation holiday same as Sunday,no
+90302,221A,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90302,221A,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90302,221A,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90303,221B,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90303,221B,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90303,221B,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90304,221i,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90304,221i,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90304,221i,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90305,222,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90305,222,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90305,222,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90306,223,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90306,223,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90306,223,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90307,225i-1,Metrosan,weekday,official_candidate,official_period_headways,operating_window,04:15,23:25,official_2025,5,10,8,,official_2025,,0,no,225-i,202550079848:225-i,candidate_only,,no
+90307,225i-1,Metrosan,saturday,official_candidate,official_period_headways,operating_window,04:16,23:28,official_2025,6,12,10,,official_2025,,0,no,225-i,202550079848:225-i,candidate_only,,no
+90307,225i-1,Metrosan,sunday_holiday,official_candidate,official_period_headways,operating_window,04:45,22:30,official_2025,8,16,13,,official_2025,,0,no,225-i,202550079848:225-i,candidate_only,,no
+90308,225i-2,Metrosan,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90308,225i-2,Metrosan,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90308,225i-2,Metrosan,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90309,226i,Metrosan,weekday,official_candidate,official_period_headways,operating_window,04:07,23:25,official_2025,5,10,8,,official_2025,,0,no,226-1i,202550079848:226-1i,candidate_only,,no
+90309,226i,Metrosan,saturday,official_candidate,official_period_headways,operating_window,04:13,23:28,official_2025,6,12,10,,official_2025,,0,no,226-1i,202550079848:226-1i,candidate_only,,no
+90309,226i,Metrosan,sunday_holiday,official_candidate,official_period_headways,operating_window,04:39,22:30,official_2025,8,16,13,,official_2025,,0,no,226-1i,202550079848:226-1i,candidate_only,,no
+90310,226i-D,Metrosan,weekday,official_candidate,official_period_headways,operating_window,04:46,23:00,official_2025,13,15,15,,official_2025,,0,no,226-2i,202550079848:226-2i,candidate_only,,no
+90310,226i-D,Metrosan,saturday,official_candidate,official_period_headways,operating_window,04:46,20:00,official_2025,16,18,18,,official_2025,,0,no,226-2i,202550079848:226-2i,candidate_only,,no
+90310,226i-D,Metrosan,sunday_holiday,official_candidate,official_period_headways,operating_window,05:15,20:00,official_2025,21,24,24,,official_2025,,0,no,226-2i,202550079848:226-2i,candidate_only,,no
+90311,227i-1,Metrosan,weekday,official_candidate,official_period_headways,operating_window,04:07,23:25,official_2025,5,10,8,,official_2025,,0,no,227-4i,202550079848:227-4i,candidate_only,,no
+90311,227i-1,Metrosan,saturday,official_candidate,official_period_headways,operating_window,04:13,23:28,official_2025,6,12,10,,official_2025,,0,no,227-4i,202550079848:227-4i,candidate_only,,no
+90311,227i-1,Metrosan,sunday_holiday,official_candidate,official_period_headways,operating_window,04:39,22:30,official_2025,8,16,13,,official_2025,,0,no,227-4i,202550079848:227-4i,candidate_only,,no
+90312,227i-A,Metrosan,weekday,official_candidate,official_period_headways,operating_window,04:07,23:25,official_2025,6,10,8,,official_2025,,0,no,227-1i,202550079848:227-1i,candidate_only,,no
+90312,227i-A,Metrosan,saturday,official_candidate,official_period_headways,operating_window,04:10,23:28,official_2025,7,12,10,,official_2025,,0,no,227-1i,202550079848:227-1i,candidate_only,,no
+90312,227i-A,Metrosan,sunday_holiday,official_candidate,official_period_headways,operating_window,04:39,22:30,official_2025,10,16,13,,official_2025,,0,no,227-1i,202550079848:227-1i,candidate_only,,no
+90313,227i-B,Metrosan,weekday,official_candidate,official_period_headways,operating_window,04:30,23:25,official_2025,11,15,15,,official_2025,,0,no,227-2i,202550079848:227-2i,candidate_only,,no
+90313,227i-B,Metrosan,saturday,official_candidate,official_period_headways,operating_window,04:31,23:28,official_2025,13,18,18,,official_2025,,0,no,227-2i,202550079848:227-2i,candidate_only,,no
+90313,227i-B,Metrosan,sunday_holiday,official_candidate,official_period_headways,operating_window,05:30,22:30,official_2025,18,24,24,,official_2025,,0,no,227-2i,202550079848:227-2i,candidate_only,,no
+90314,227iB-2,Metrosan,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90314,227iB-2,Metrosan,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90314,227iB-2,Metrosan,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90315,227i-C,Metrosan,weekday,official_candidate,official_period_headways,operating_window,04:10,23:25,official_2025,5,10,8,,official_2025,,0,no,227-3i,202550079848:227-3i,candidate_only,,no
+90315,227i-C,Metrosan,saturday,official_candidate,official_period_headways,operating_window,04:10,23:28,official_2025,6,12,10,,official_2025,,0,no,227-3i,202550079848:227-3i,candidate_only,,no
+90315,227i-C,Metrosan,sunday_holiday,official_candidate,official_period_headways,operating_window,04:39,22:30,official_2025,8,16,13,,official_2025,,0,no,227-3i,202550079848:227-3i,candidate_only,,no
+90316,228i,Metrosan,weekday,official_candidate,official_period_headways,operating_window,04:15,23:25,official_2025,5,10,8,,official_2025,,0,no,228-i,202550079848:228-i,candidate_only,,no
+90316,228i,Metrosan,saturday,official_candidate,official_period_headways,operating_window,04:16,23:28,official_2025,6,12,10,,official_2025,,0,no,228-i,202550079848:228-i,candidate_only,,no
+90316,228i,Metrosan,sunday_holiday,official_candidate,official_period_headways,operating_window,04:39,22:30,official_2025,8,16,13,,official_2025,,0,no,228-i,202550079848:228-i,candidate_only,,no
+90317,240,Conducciones América,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90317,240,Conducciones América,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90317,240,Conducciones América,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90318,242,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90318,242,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90318,242,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90319,242,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90319,242,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90319,242,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90320,243,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90320,243,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90320,243,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90321,243,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90321,243,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90321,243,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90322,243i,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90322,243i,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90322,243i,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90323,243iD,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90323,243iD,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90323,243iD,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90324,311i,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90324,311i,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90324,311i,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90325,311ii,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90325,311ii,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90325,311ii,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90326,C23_Alterna,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90326,C23_Alterna,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90326,C23_Alterna,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90327,C23,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90327,C23,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90327,C23,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90328,C23i IZQUIERA,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90328,C23i IZQUIERA,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90328,C23i IZQUIERA,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90329,C23i,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90329,C23i,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90329,C23i,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90330,C23i,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90330,C23i,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90330,C23i,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90331,C23i,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90331,C23i,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90331,C23i,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90332,C23i,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90332,C23i,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90332,C23i,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90333,C23i,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90333,C23i,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90333,C23i,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90334,C23ii,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90334,C23ii,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90334,C23ii,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90335,085 L C,Cootracovi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90335,085 L C,Cootracovi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90335,085 L C,Cootracovi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90337,085 L H MINO,Cootracovi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90337,085 L H MINO,Cootracovi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90337,085 L H MINO,Cootracovi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90343,111,Flota la Milagrosa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90343,111,Flota la Milagrosa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90343,111,Flota la Milagrosa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90347,255V4,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90347,255V4,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90347,255V4,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90349,255V5,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90349,255V5,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90349,255V5,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90351,255i,Rápido San Cristóbal,weekday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255i,trsc_photo:255_LLANO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90351,255i,Rápido San Cristóbal,saturday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255i,trsc_photo:255_LLANO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90351,255i,Rápido San Cristóbal,sunday_holiday,operator_reference,operator_photo_unverified_day_scope,missing_window,,,,,,,,,,0,yes_unverified_day_direction,255i,trsc_photo:255_LLANO,candidate_only,PHOTO TIMES ARE UNASSIGNED TO DAY TYPES / DIRECTION HERE; existing builder and photo QA must be consulted. Not approved as full-day schedule.,no
+90353,255 V3 HOR ESP,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90353,255 V3 HOR ESP,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90353,255 V3 HOR ESP,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90355,C23i DERECHA,Tax Maya,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90355,C23i DERECHA,Tax Maya,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90355,C23i DERECHA,Tax Maya,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90357,107,Cootransvi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90357,107,Cootransvi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90357,107,Cootransvi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90359,107,Cootransvi,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90359,107,Cootransvi,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90359,107,Cootransvi,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90361,311iiR,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90361,311iiR,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90361,311iiR,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90363,310R,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90363,310R,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90363,310R,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90365,250VF_C,Palenque Robledal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90365,250VF_C,Palenque Robledal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90365,250VF_C,Palenque Robledal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90367,300 DIR-80,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90367,300 DIR-80,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90367,300 DIR-80,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90369,301 DIR-80,Coonatra,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90369,301 DIR-80,Coonatra,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90369,301 DIR-80,Coonatra,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90370,082 V-LA PILOTO,Flota Nueva Villa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90370,082 V-LA PILOTO,Flota Nueva Villa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90370,082 V-LA PILOTO,Flota Nueva Villa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90371,254iB_TV 75,Transporte Medellín Castilla,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90371,254iB_TV 75,Transporte Medellín Castilla,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90371,254iB_TV 75,Transporte Medellín Castilla,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90372,255iD Estacion Estadio,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90372,255iD Estacion Estadio,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90372,255iD Estacion Estadio,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90373,255i Estacion Estadio,Rápido San Cristóbal,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90373,255i Estacion Estadio,Rápido San Cristóbal,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90373,255i Estacion Estadio,Rápido San Cristóbal,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90374,172-178 FUSION,Cootrabel,weekday,external_reference,published_scalar_headway,operating_window,05:00,20:00,external_provisional,,,,10,external_provisional,,0,no,172,moovit:172:Altavista_to_Centro,candidate_only,Moovit direction exists; old ArcGIS 90374 is 172-178 FUSION not exact 2026 variant,no
+90374,172-178 FUSION,Cootrabel,saturday,external_reference,published_scalar_headway,operating_window,05:00,20:00,external_provisional,,,,10,external_provisional,,0,no,172,moovit:172:Altavista_to_Centro,candidate_only,Moovit direction exists; old ArcGIS 90374 is 172-178 FUSION not exact 2026 variant,no
+90374,172-178 FUSION,Cootrabel,sunday_holiday,external_reference,published_scalar_headway,operating_window,06:00,19:00,external_provisional,,,,20,external_provisional,,0,no,172,moovit:172:Altavista_to_Centro,candidate_only,Do not assume Sunday schedule on holidays,no
+90375,024 Barrial,,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90375,024 Barrial,,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90375,024 Barrial,,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90376,069 Ramal,Coopetransa,weekday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90376,069 Ramal,Coopetransa,saturday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90376,069 Ramal,Coopetransa,sunday_holiday,missing,missing_frequency,missing_window,,,,,,,,,,0,no,,,none,,no
+90377,229i,Metrosan,weekday,official_candidate,official_period_headways,operating_window,4:07,23:25,official_2026,6,10,8,,official_2026,,0,no,229-i,202650039611:229-i,candidate_only,ONE shared service; 2024 act repealed; 2026 GTPC paired direction not extra frequency,no
+90377,229i,Metrosan,saturday,official_candidate,official_period_headways,operating_window,4:10,23:25,official_2026,7,12,10,,official_2026,,0,no,229-i,202650039611:229-i,candidate_only,ONE shared service; 2024 act repealed; 2026 GTPC paired direction not extra frequency,no
+90377,229i,Metrosan,sunday_holiday,official_candidate,official_period_headways,operating_window,4:39,22:30,official_2026,10,20,15,,official_2026,,0,no,229-i,202650039611:229-i,candidate_only,ONE shared service; 2024 act repealed; 2026 GTPC paired direction not extra frequency,no
