@@ -1,0 +1,7 @@
+resolution,legal_code_2025,arcgis_route_id_2025_snapshot,arcgis_legacy_code,operator,route_identity_evidence,match_basis,geometric_alignment_verified,frequency_source_validated,automatic_gtfs_import
+202550076150,304,90009,304,Invetrans,Comercial Hotelera horario,exact_code_and_direction_name,no,structural_original_table_only,no
+202550076150,305,90010,305,Invetrans,Comercial Hotelera izquierda,exact_code_and_direction_name,no,structural_original_table_only,no
+202550076150,308-1,90011,308,Coinvetrans,Salud horario,legacy_308_to_308_1_title_match,no,structural_original_table_only,no
+202550076150,308-2,90012,308D,Coinvetrans,Salud horario directa,legacy_308D_to_308_2_title_match,no,structural_original_table_only,no
+202550076150,309-1,90013,309,Coinvetrans,Salud antihorario,legacy_309_to_309_1_title_match,no,structural_original_table_only,no
+202550076150,309-2,90014,309D,Coinvetrans,Salud antihorario directa,legacy_309D_to_309_2_title_match,no,structural_original_table_only,no
