@@ -76,7 +76,9 @@ with ASTREA.open(newline="",encoding="utf-8-sig") as f:
 assert len(rows)==86,len(rows)
 for r in rows:
  hours=clean(r["hours_table_2"] or r["hours_table_4"])
- fields=hours.split("|") if hours else []
+ # Original merged Metrosan return rows encode missing clock cells as delimiters.
+ # Empty components do NOT establish no-service or new separate times.
+ fields=[] if not hours or not any(x.strip() for x in hours.split("|")) else hours.split("|")
  if fields and len(fields)!=6:raise ValueError(f"Unexpected six source hour fields {r['act_number']} {r['user_route_code']} {hours!r}")
  for i,day in enumerate(DAYS):
   start,end=(fields[i*2:i*2+2] if fields else ("",""))
