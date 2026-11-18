@@ -8,6 +8,7 @@ on:
     paths:
       - 'data/resolutions/official_pdf_sources.json'
       - '.github/workflows/recover-medellin-resolution-pdfs.yml'
+      - 'scripts/index_recovered_medellin_fiches.py'
 
 permissions:
   contents: read
@@ -34,6 +35,9 @@ jobs:
           python scripts/recover_medellin_pdfs.py \
             --catalog data/resolutions/official_pdf_sources.json \
             --output artifacts/resolutions
+
+      - name: Index 2015 route fiche pages for manual QA
+        run: python scripts/index_recovered_medellin_fiches.py
 
       - name: Publish archive with PDFs, text and status report
         if: always()
