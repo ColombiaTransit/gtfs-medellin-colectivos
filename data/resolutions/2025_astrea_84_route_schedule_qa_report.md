@@ -9,11 +9,11 @@ The row-by-row classification is stored in `2025_astrea_route_schedule_qa_classi
 | Official act / system | Total source entries | Three-day interval tables | Other source treatment |
 |---|---:|---:|---|
 | 202550076150 Salud-Hotelera | 6 | 6 | `308-2` and `309-2` explicitly do not operate on Saturdays or Sundays/holidays |
-| 202550076162 Castilla / Conaltracoop | 30 | 18 | 10 trunk-corridor entries lack standalone times and intervals; TRONCAL 65 and TRONCAL 73 have hours but no interval rows |
+| 202550076162 Castilla / Conaltracoop | 30 | 20 | 10 separately listed trunk corridors lack standalone numeric timetables; TRONCAL 65/73 have original maximum headway tables on Gaceta 5671 pp25–26 |
 | 202550079848 Metrosan | 16 | 8 | 8 return-direction rows have empty cells paired with populated outbound direction records; no doubling |
-| 202550079865 Rápido San Cristóbal | 34 | 16 | 7 veredal services have hours without intervals; 11 corregimental services have explicit fixed departure lists (8 in table 5, 3 in source master table 3) |
+| 202550079865 Rápido San Cristóbal | 34 | 16 | 7 veredal services publish service counts per day (not minute headways); 11 corregimental services have explicit fixed departure lists (8 in table 5, 3 in source master table 3) |
 
-**Total: 48** records with three sets of published interval cells, **8** paired Metrosan direction rows without repeated figures, **11** corregimental fixed-departure records, **10** trunk-corridor records with no standalone times, and **9** entries with a published service window but no extracted interval (2 troncal and 7 veredal). These categories are not mutually identical to route counts.
+**Total: 50** records with three day-type interval triples, **8** paired Metrosan return-direction rows with unrepeated figures, **11** corregimental fixed-departure records, **10** trunk-corridor records without standalone numeric timetables, and **7** veredal daily-service-count records. Together these account for all **86 ASTREA records**; the two extra Circular 313 direction records are indexed separately in the 88-record consolidated register.
 
 ## Specific recovered source evidence
 
@@ -43,7 +43,7 @@ An example from the official Salud-Hotelera timetable: `308-1` operates **04:15�
 
 ## What is closed vs open
 
-**Closed at source-structure level:** all 84 rows categorized; the missed three Palmitas fixed schedules recovered; six Salud-Hotelera identity candidates reconciled; paired Metrosan returns, trunk corridors, rural fixed departures and source zero-values preserved as distinct semantics.
+**Closed at source-structure level:** all 86 ASTREA rows categorized; the missed three Palmitas fixed schedules recovered; six Salud-Hotelera identity candidates reconciled; paired Metrosan returns, trunk corridors, rural fixed departures and source zero-values preserved as distinct semantics.
 
 **Still open:** source page-level numeric acceptance across all acts, actual applicability of later modifying resolutions (post-September 2025 through 2026), precise peak/midday period boundaries, shape/stop/agency mapping, and whether the 9 window-only entries have other legally defined timetable annexes. Do not treat the 48 three-day entries as 48 fully validated present-day GTFS routes.
 
@@ -61,3 +61,7 @@ The next TRSC task is a **crosswalk** between official 2025 `GTPC + user_route_c
 ## Correction: two additional 2025 Castilla trunk corridors (18 November 2026)
 
 An improved full-GTPC table-row extractor uncovered two previously omitted route codes, `TRONCAL-5` (GTPC `23611`) and `TRONCAL-6` (GTPC `23612`), in the same original 2025 Castilla resolution. Both have corridor identities but no standalone numeric timetable in the extracted source. This raises the candidate count **84 → 86**, Castilla **28 → 30**, and no-schedule trunk-corridor category **8 → 10**. The research workflow [#44273498768](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44273498768) completed successfully and published the corrected register. The 48 records with interval triples, 11 fixed-departure routes, and 8 Metrosan paired blank-direction rows are unchanged. No GTFS production update.
+
+## Original Gaceta 5671 source correction (18 November 2026)
+
+The original 62-page official [Gaceta 5671](https://www.medellin.gov.co/statements/innovaciondigital/gacetas/historico-mercurio/descargar/202000087077), SHA-256 `97558ef103d1f71fc03f641dacfb618c4d223342105426cb50901bc8af8f9607`, was verified in [run #44288771768](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44288771768). Visual comparison of pp25–26 proves the old blank-interval classification wrong for `TRONCAL 65` (GTPC23607, weekday 8/15/10, Saturday 10/18/12, Sunday/holidays 13/16/20 min) and `TRONCAL 73` (GTPC23609, weekday 4/8/6, Saturday 5/10/8, Sunday/holidays 6/10/13 min). The source normalization script now asserts these six interval triples; action [#44289880493](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44289880493) passed. Seven Rápido San Cristóbal veredal routes print service **counts/day** (not headways) on original p54. These 7 are no longer reported as `missing_or_partial_numeric_source`. No GTFS generator update.
