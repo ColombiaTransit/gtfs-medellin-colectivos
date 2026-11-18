@@ -1,8 +1,8 @@
 operator_name_arcgis,arcgis_unique_id_ruta,gaceta_4325_system,indexed_official_act_refs_to_verify,2025_acts_to_review,research_status
-Autobuses Poblado Laureles,8,8A,1154/2015;1155/2015 (system-wide fichas),202550076168/2025 (Circular 313),2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
+Autobuses Poblado Laureles,8,8A,1154/2015;1155/2015 (system-wide fichas),202550076168/2025 (Circular 313 original verified),joint_circular313_original_2025_intervals_legal_verified_one_service_2_directions_shared_with_three_other_operators
 Autocol,3,6C,1041/2015;1044/2015;1042/2015;1043/2015 (system),,2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
-Coinvetrans,4,,,202550076150/2025 (Salud-Hotelera);202550076168/2025 (Circular 313),official_act_indexed_not_extracted
-Combuses,2,6B,1161/2015;1160/2015;1162/2015 (system),202550076168/2025 (Circular 313),2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
+Coinvetrans,4,,,202550076150/2025 (Salud-Hotelera official);202550076168/2025 (Circular 313 original verified),salud_hotelera_original_and_joint_circular313_verified_do_not_duplicate_shared_313_service
+Combuses,2,6B,1161/2015;1160/2015;1162/2015 (system),202550076168/2025 (Circular 313 original verified),original_5667_circular313_service_windows_legal_max_headways_and_joint_operation_verified_2_gtpc_directions
 Conducciones América,16,8A,1170/2015;1154/2015;1155/2015 (system-wide fichas);201850015842/2018;201950052919/2019;202150006316/2021;202150044996/2021;202350001335/2023,,2018_2023_act_scope_mapped_all_16_arcgis_ids_original_operating_tables_missing
 Coonatra,17,8A,1154/2015;1155/2015 (system-wide fichas);389/2017,202550076174/2025 (Circular 301),2015_unique_4325_fichas_visually_verified_later_acts_and_mapping_pending
 Coopcerquin,2,,1046/2015,,2015_system_fichas_visually_verified_later_acts_and_mapping_pending
