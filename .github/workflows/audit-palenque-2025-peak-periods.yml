@@ -1,0 +1,28 @@
+name: Audit Palenque 2025 legal peak period clocks
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/audit_palenque_2025_peak_clock_definitions.py'
+      - '.github/workflows/audit-palenque-2025-peak-periods.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect official Palenque full text for explicit clock ranges
+        run: python scripts/audit_palenque_2025_peak_clock_definitions.py
+      - name: Publish traceable source snippets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: palenque-2025-pp-pvm-source-audit
+          path: artifacts/palenque-pico-period-evidence/
+          retention-days: 7
+          if-no-files-found: warn
