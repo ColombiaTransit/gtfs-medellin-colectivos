@@ -43,3 +43,9 @@
 - **Production gate:** until current legal and spatial QA are complete, keep `automatic_gtfs_import=no` and do not change GTFS generation.
 
 This file is a snapshot of current research coverage and queue priorities. It is **not a statement that a particular bus route is currently authorized or active**.
+
+## P0 geometric and interval QA advanced (18 November 2026)
+
+A repeatable [projected ArcGIS source audit](2025_p0_arcgis_direction_geometry_audit.csv) ran successfully on existing EPSG:9377 linework [workflow #44318812668](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44318812668). **Circular 313** old 90004 direction shapes measure **13.180/14.536 km** while the 2025 original legal fiche prints **20.650 km each**, a **-36.18% / -29.61%** difference. Their coordinate order starts at one common location despite opposing direction labels. Old Circular 301 90006 shapes have **21.443/10.346 km** and nearly identical coordinate starts and ends; Circular 315 90015 shapes have **8.722/11.196 km** with reciprocal endpoint pattern. Castilla **289** remains a legal-title conflict: 2025 **Picacho** vs ArcGIS **Pilarica Calle 96**. These are *source shape* measurements, not government-annex confirmation. Legal-source geometry comparison is tracked as [issue #20](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/issues/20); detailed assessment: [P0 geometry and period report](2025_p0_shape_and_period_qa_2026-11-18.md).
+
+Original Circular 313 Gaceta Article 8 defines PVE (extreme valley) before **04:30** and after **20:30**. Intersecting with legally published daily service spans gives five bounded PVE segments in [`2025_circular313_verified_extreme_valley_windows.csv`](2025_circular313_verified_extreme_valley_windows.csv). **Other PP/PVM clock period boundaries remain unknown**. This is research timing evidence only, not enough to generate complete GTFS frequencies.
