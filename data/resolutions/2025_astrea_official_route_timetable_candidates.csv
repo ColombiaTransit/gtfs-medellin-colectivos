@@ -1,0 +1,85 @@
+act_number,gtpc,user_route_code,route_type,route_name,route_table_number,hours_table_2,hours_table_4,hours_table_5,interval_weekday,interval_saturday,interval_sunday_holiday,source_QA,gtfs_import
+202550076150,20301,308-1,Urbana,Ruta de la Salud Horario,1,4:15|20:00|4:15|19:00|5:55|17:55,,,8|15|8,10|18|10,13|24|13,official_astrea_html_extracted_not_visually_accepted,no
+202550076150,20302,308-2,Urbana,Ruta de la Salud Horario Directa,1,16:00|19:00|No opera|No opera|No opera|No opera,,,15|No opera|No opera,No opera|No opera|No opera,No opera|No opera|No opera,official_astrea_html_extracted_not_visually_accepted,no
+202550076150,20303,309-1,Urbana,Ruta de la Salud Antihorario,1,4:15|20:00|4:20|19:05|6:00|18:00,,,8|15|8,10|18|10,13|24|13,official_astrea_html_extracted_not_visually_accepted,no
+202550076150,20304,309-2,Urbana,Ruta de la Salud Antihorario Directa,1,16:00|19:00|No opera|No opera|No opera|No opera,,,15|No opera|No opera,N/A|N/A|N/A,N/A|N/A|N/A,official_astrea_html_extracted_not_visually_accepted,no
+202550076150,82801,304,Urbana,Ruta Comercial Hotelera Horario,1,4:25|20:00|4:25|19:00|6:00|18:00,,,10|20|15,12|20|18,16|30|24,official_astrea_html_extracted_not_visually_accepted,no
+202550076150,82801,305,Urbana,Ruta Comercial Hotelera Izquierda,1,4:30|20:00|4:30|19:00|6:00|18:00,,,10|20|15,12|20|18,16|30|24,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23601,254,Urbana,Picacho,1,,03:40|21:25|03:40|21:25|04:10|20:30,,6|10|8,7|12|10,10|16|13,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,236010,254-1i,Integrada urbana,Estación Hospital Integrada,2,,04:30|22:30|04:30|22:20|04:45|22:10,,10|15|12,12|18|14,15|20|20,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23602,261-2,Urbana,Viejo terminal,2,,05:00|20:30|05:00|20:30|05:40|19:30,,15|20|15,15|20|15,20|20|20,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,236020,254-2i,Integrada urbana,Estación Hospital Integrada,2,,04:30|22:20|04:40|22:30|04:50|22:10,,10|20|15,12|18|14,15|20|20,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23603,262,Urbana,La María,2,,04:00|21:30|04:00|21:30|04:00|20:00,,6|10|8,7|12|10,10|16|13,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,236030,261-3i,Integrada urbana,Kennedy Integrada,2,,04:00|22:50|04:10|23:00|04:30|22:10,,10|15|12,13|18|14,18|20|20,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23604,263,Urbana,12 de octubre,2,,04:00|21:30|04:00|21:30|04:00|20:00,,6|10|8,7|12|10,12|16|14,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,236040,261-4i,Integrada urbana,Belalcázar Integrada,2,,04:05|23:20|04:05|23:20|06:00|22:10,,20|20|20,20|20|20,20|20|20,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23605,281,Urbana,Florencia,2,,04:00|21:30|04:00|21:30|04:30|20:00,,6|10|8,7|12|10,10|16|13,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,236050,263-1i,Integrada urbana,Estación Tricentenario,2,,04:00|22:50|04:00|22:50|04:30|22:20,,5|10|7,7|10|16,10|14|12,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23606,289,Urbana,Picacho,2,,04:00|22:00|04:00|22:00|04:35|21:00,,6|10|8,7|12|10,10|16|13,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,236060,270-i,Integrada urbana,Gratamira Integrada,2,,04:00|23:00|04:00|23:00|04:30|22:20,,12|20|15,15|20|15,15|20|20,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23607,TRONCAL 65,Urbana,Troncal 65,2,,04:40|20:00|04:40|20:00|05:00|19:00,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,236070,283-i,Integrada urbana,Estación Acevedo Integrada,2,,04:00|23:00|04:00|23:00|04:30|22:20,,8|15|10,10|18|12,13|15|20,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,236080,306-1i,Integrada urbana,Circular Noroccidental Horario,2,,03:30|23:15|03:30|23:15|03:40|22:30,,10|12|8,7|12|10,16|16|20,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23609,TRONCAL 73,Urbana,Troncal 73,2,,03:25|21:30|03:25|21:30|04:00|20:00,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,236090,306-2i,Integrada urbana,Circular Noroccidental Antihorario,2,,03:30|22:50|03:30|22:50|03:40|22:30,,8|10|15,7|14|10,13|15|20,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23610,TRONCAL-4,Corredor troncal,Carrera 65- Carabobo-Av. Greiff,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23613,TRONCAL-7,Corredor troncal,Carrera 65- Alpujarra-Oriental Sentido Horario,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23614,TRONCAL-8,Corredor troncal,Carrera 65- Alpujarra-Oriental Sentido Antihorario,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23615,TRONCAL-9,Corredor troncal,Carrera 73- Alpujarra-Oriental Sentido Horario,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23616,TRONCAL- 10,Corredor troncal,Carrera 73- Alpujarra-Oriental Sentido Antihorario,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23617,TRONCAL- 11,Corredor troncal,Carrera 65-Av. Greiff-Puente Horacio Toro,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23618,TRONCAL- 12,Corredor troncal,Carrera 73-Av. Greiff-Puente Horacio Toro,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,23619,TRONCAL- 13,Corredor troncal,Carrera 65- Parque Los Periodistas,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,29901,261-1,Urbana,López calle 94,2,,04:00|21:30|04:00|21:30|04:00|20:00,,6|12|8,7|14|10,10|19|13,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,299010,261-1i,Integrada urbana,San Judas Integrada,2,,04:05|22:50|05:00|22:55|04:40|22:20,,10|15|12,13|18|14,15|20|20,official_astrea_html_extracted_not_visually_accepted,no
+202550076162,299020,261-2i,Integrada urbana,López Integrada,2,,04:00|22:50|04:35|23:00|04:40|22:15,,10|15|12,13|18|14,18|20|20,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829010,225-i,Integrada,20 DE JULIO / BARRIO ESTACIÓN,1,4:15|23:25|4:16|23:28|4:45|22:30,,,5|10|8,6|12|10,8|16|13,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829020,225-i,Integrada,20 DE JULIO / ESTACIÓN BARRIO,1,||,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829030,226-1i,Integrada,EL SALADO / BARRIO ESTACIÓN,1,4:07|23:25|4:13|23:28|4:39|22:30,,,5|10|8,6|12|10,8|16|13,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829040,226-1i,Integrada,EL SALADO / ESTACIÓN BARRIO,1,||,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829050,226-2i,Integrada,EL DEPÓSITO / BARRIO ESTACIÓN,1,4:46|23:00|4:46|20:00|5:15|20:00,,,13|15|15,16|18|18,21|24|24,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829060,226-2i,Integrada,EL DEPÓSITO / ESTACIÓN BARRIO,1,||,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829070,227-1i,Integrada,LAS PEÑITAS / BARRIO ESTACIÓN,1,4:07|23:25|4:10|23:28|4:39|22:30,,,6|10|8,7|12|10,10|16|13,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829080,227-1i,Integrada,LAS PEÑITAS / ESTACIÓN BARRIO,1,||,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829090,227-2i,Integrada,LA GABRIELA / BARRIO ESTACIÓN,1,4:30|23:25|4:31|23:28|5:30|22:30,,,11|15|15,13|18|18,18|24|24,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829100,227-2i,Integrada,LA GABRIELA / ESTACIÓN BARRIO,1,||,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829110,227-3i,Integrada,LA CASETA / BARRIO ESTACIÓN,1,4:10|23:25|4:10|23:28|4:39|22:30,,,5|10|8,6|12|10,8|16|13,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829120,227-3i,Integrada,LA CASETA / ESTACIÓN BARRIO,1,||,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829130,227-4i,Integrada,QUINTAS / BARRIO ESTACIÓN,1,4:07|23:25|4:13|23:28|4:39|22:30,,,5|10|8,6|12|10,8|16|13,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829140,227-4i,Integrada,QUINTAS / ESTACIÓN BARRIO,1,||,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829150,228-i,Integrada,CONQUISTADORES / BARRIO ESTACIÓN,1,4:15|23:25|4:16|23:28|4:39|22:30,,,5|10|8,6|12|10,8|16|13,official_astrea_html_extracted_not_visually_accepted,no
+202550079848,829160,228-i,Integrada,CONQUISTADORES / ESTACIÓN BARRIO,1,||,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23701,255-1,Urbana,San Cristóbal / Doña María,1,,8:00|19:40|8:00|19:40|-|-,,0|12|12,0|16|16,0|20|20,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,237010,255-1i,Integrada,Cárcel / La Aurora Integrada,1,,5:30|21:00|5:30|21:00|6:00|20:30,,20|25|0,25|25|0,30|30|0,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23702,255-2,Urbana,San Cristóbal / Roblemar,1,,3:30|8:45|3:30|8:45|-|-,,12|15|15,16|20|20,20|25|25,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,237020,255-2i,Integrada,Pajarito / La Aurora Integrada,1,,8:00|15:00|8:00|15:00|8:00|15:00,,0|0|30,0|0|25,0|0|30,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23703,255-3,Urbana,San Cristóbal / Doña María Combinado,1,,19:00|23:00|19:00|23:00|4:00|22:30,,0|20|0,0|25|25,0|30|30,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,237030,255-3i,Integrada,Regina / La Aurora Integrada,1,,8:00|23:15|8:00|23:15|8:00|23:15,,0|0|15,0|0|20,0|0|25,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23704,255-4,Urbana,Nuevo Occidente / Pajarito,1,,3:45|19:00|3:45|19:00|4:15|18:30,,18|15|15,25|20|20,25|25|25,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,237040,255-4i,Integrada,Regina / Roblemar / La Aurora Integrada,1,,4:00|8:30|4:00|8:30|4:00|8:30,,18|25|25,25|25|25,30|30|30,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23705,255-5,Urbana,Paraíso / Tiroles,1,,5:00|19:40|5:00|19:40|-|-,,20|60|60,25|25|25,30|30|30,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,237050,255-5i,Integrada,San Cristóbal / Viaducto / Estadio Integrada,2,,4:15|20:00|4:15|20:00|4:15|20:00,,25|30|30,25|25|25,30|30|30,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23706,255-6,Urbana,Lusitania / Flores,1,,3:30|19:40|3:30|19:40|4:00|19:10,,12|15|15,16|20|20,20|25|25,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,237060,255-6i,Integrada,Nuevo Occidente /Estadio Integrada,2,,4:20|19:45|4:20|19:45|4:20|19:45,,18|25|25,25|25|25,30|30|30,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23707,255-7,Urbana,Nuevo Occidente / Moravia,1,,4:15|19:00|4:15|19:00|4:45|18:30,,25|30|30,25|25|25,30|30|30,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23708,255-8,Urbana,Paraíso - San Cristóbal / Moravia,1,,4:15|19:00|4:15|19:00|4:45|18:30,,25|30|30,25|25|25,30|30|30,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23709,255-9,Urbana,San Cristóbal / Viaducto,1,,3:50|21:20|3:50|21:20|4:20|20:50,,6|15|15,8|20|20,10|25|25,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23710,255-1v,Urbana,Vereda El Llano / Centralidad,1,,5:45|19:20|5:45|19:20|5:45|19:20,,20|25|25,25|25|25,30|30|30,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23711,255-2v,Urbana,Vereda El Llano Parte Alta,1,,8:30|19:30|8:30|19:30|8:30|19:30,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23712,255-3v,Urbana,Vereda Naranjal,1,,6:00|19:30|6:00|19:30|6:00|19:30,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23713,255-4v,Urbana,Vereda Travesías / Cumbre,1,,13:00|20:00|13:00|20:00|13:00|20:00,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23714,255-5v,Urbana,Vereda El Llano / Centro,1,,4:20|18:30|4:20|18:30|4:20|18:30,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23715,255-6v,Urbana,Vereda Yolombo,1,,7:00|19:30|7:00|19:30|7:00|19:30,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23716,255-7v,Urbana,Vereda Boquerón,1,,5:00|19:30|5:00|19:30|5:00|19:30,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23717,255-8v,Urbana,Veredas La Cuchilla - El Uvito,1,,7:00|20:00|7:00|20:00|7:00|20:00,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23718,256-1,Corregimental,Palmitas - Partidas Ebéjico - Viaducto - Centro Directa,1,,,Palmitas - Partidas Ebéjico - Viaducto - Centro Directa|Lunes a Viernes|5:00 - 8:30 - 15:00 - 17:15,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23719,256-2,Corregimental,Centro - Viaducto - Partidas Ebéjico - Palmitas Directa,1,,,Centro - Viaducto - Partidas Ebéjico - Palmitas Directa|Lunes a Viernes|6:00 - 8:30 - 17:15 - 19:20,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23720,256-3,Corregimental,Palmitas - Aldea - Viaducto - Centro Directa,1,,,Palmitas - Aldea - Viaducto - Centro Directa|Lunes a Viernes|6:00 - 7:15 - 16:20 - 18:00,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23721,256-4,Corregimental,Centro - Viaducto - Palmitas Directa,1,,,Centro - Viaducto - Palmitas Directa|Lunes a Viernes|5:00 - 7:15 - 16:20 - 18:00,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23722,256-5,Corregimental,Palmitas - Partidas Ebéjico - Tejar - San Cristóbal,1,,,Palmitas - Partidas Ebéjico - Tejar - San Cristóbal|Lunes a Domingo|11:30,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23723,256-6,Corregimental,San Cristóbal - Tejar - Partidas Ebéjico - Palmitas,1,,,San Cristóbal - Tejar - Partidas Ebéjico - Palmitas|Lunes a Domingo|12:15 - 15:30,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23724,256-7,Corregimental,Palmitas - Aldea - Tejar - San Cristóbal,1,,,Palmitas - Aldea - Tejar - San Cristóbal|Lunes a Domingo|9:45 - 13:15,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23725,256-8,Corregimental,San Cristóbal - Tejar - Palmitas,1,,,San Cristóbal - Tejar - Palmitas|Lunes a Domingo|10:30 -14:00,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23726,256-9,Corregimental,La Sucia - Suiza - Tejar - San Cristóbal,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23727,256-10,Corregimental,San Cristóbal - Tejar - Suiza - La Sucia,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
+202550079865,23728,256-1v,Circular Corregimental,Interveredal Palmitas,3,,,,,,,official_astrea_html_extracted_not_visually_accepted,no
