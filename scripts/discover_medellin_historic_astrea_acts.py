@@ -35,7 +35,7 @@ for act in act_rows:
    if response.status_code!=200:continue
    html=response.text
    body=" ".join(BeautifulSoup(html,"html.parser").stripped_strings)
-   if not re.search(r"(?<!\\d)"+re.escape(no)+r"(?!\\d)",body):
+   if not re.search(r"(?<!\d)"+re.escape(no)+r"(?!\d)",body):
     continue
    # The number might be mentioned incidentally in another resolution:
    # require official resolution type and number in beginning of body too.
