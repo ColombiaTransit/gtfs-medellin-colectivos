@@ -1,0 +1,28 @@
+name: Audit indexed 2026 Medellín bus amendments
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/check_medellin_2026_operator_amendments.py'
+      - '.github/workflows/audit-medellin-2026-operator-amendments.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Scan official indexed acts for relevant operators
+        run: python scripts/check_medellin_2026_operator_amendments.py
+      - name: Publish audit summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: medellin-2026-operator-amendment-audit
+          path: artifacts/medellin-2026-targeted-supersession/
+          retention-days: 7
+          if-no-files-found: warn
