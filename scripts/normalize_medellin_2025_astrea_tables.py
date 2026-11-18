@@ -44,7 +44,15 @@ for act,S in spec.items():
    key=(act,cells[0].strip(),cells[1].strip())
    r=D.setdefault(key,{"act_number":act,"gtpc":key[1],"user_route_code":key[2]})
    r["interval_"+("weekday","saturday","sunday_holiday")[i]]="|".join(cells[3:])
-fields=["act_number","gtpc","user_route_code","route_type","route_name","route_table_number","hours_table_2","hours_table_4","hours_table_5","interval_weekday","interval_saturday","interval_sunday_holiday","source_QA","gtfs_import"]
+# Some Palmitas corregimental services publish fixed departures in master table 3,
+# not in the separate table 5 or periodic interval tables.
+for cells in T["202550079865"][3]:
+ if len(cells) >= 8 and cells[0].strip() in {"23726", "23727", "23728"}:
+  key=("202550079865",cells[0].strip(),cells[1].strip())
+  if key not in D:
+   raise RuntimeError("Original Palmitas route missing from master register: "+str(key))
+  D[key]["fixed_departures_master_table"]="|".join(cells[6:8])
+fields=["act_number","gtpc","user_route_code","route_type","route_name","route_table_number","hours_table_2","hours_table_4","hours_table_5","interval_weekday","interval_saturday","interval_sunday_holiday","source_QA","gtfs_import","fixed_departures_master_table"]
 for r in D.values():
  r.update(source_QA="official_astrea_html_extracted_not_visually_accepted",gtfs_import="no")
 out.parent.mkdir(parents=True,exist_ok=True)
