@@ -1,0 +1,28 @@
+name: Discover historic Medellín Gaceta search interface
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/discover_medellin_historico_gacetas_api.py'
+      - '.github/workflows/discover-medellin-historico-gacetas.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests beautifulsoup4
+      - name: Inspect public historical Gazette search page and JS
+        run: python scripts/discover_medellin_historico_gacetas_api.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: medellin-historical-gaceta-interface
+          path: artifacts/medellin-historical-gaceta-discovery/
+          if-no-files-found: warn
+          retention-days: 7
