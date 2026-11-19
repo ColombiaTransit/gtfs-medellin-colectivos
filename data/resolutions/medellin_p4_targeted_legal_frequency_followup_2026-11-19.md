@@ -124,3 +124,7 @@ Fresh targeted public-index searches did **not** return either full signed resol
 **Additional older Cootransmallat lead:** Resolución **005 of 5 January 2009** explicitly establishes dispatch frequencies and restructuring. It is a historical fallback only, not a substitute for the missing 2021/2023 operational annex. No verified PDF URL for that original found.
 
 All findings and verified URL classifications were recorded per relevant old route in the central 146-route register and P4 source audit/backlog. The 105/106 frequencies remain **unconfirmed** and the working-model total remains **118/252**; no Moovit and no generator changes.
+
+## GitHub-hosted recovery diagnosis (19 November 2026)
+
+The exact original-act GitHub Actions workflow has been [created](../../.github/workflows/recover-medellin-p4-missing-acts.yml), [run](https://github.com/ColombiaTransit/gtfs-medellin-colectivos/actions/runs/44558812016) and checked. See [detailed measured HTTP results](medellin_p4_github_runner_originals_probe_2026-11-19.md). Government original-act historic search and SIMM respond **HTTP 200** from GitHub; six ASTREA guessed patterns respond **404**; neither 105/106 full PDF was recovered and 175 only produced ambiguous number-only candidate links. This suggests specific index/navigation limitations rather than a proven blanket domain block. No change to 118/252 coverage or GTFS.
