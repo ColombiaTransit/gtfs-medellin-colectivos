@@ -32,3 +32,7 @@ P4 results:
 - [Central 146-route action register](medellin_146_remaining_routes_action_register_2026-11-19.csv).
 
 The P1/P2/P3 backlogs remain unchanged and Moovit is excluded from all current 2026 timetable modelling. The two parked old routes 90290 and 90370 stay untouched.
+
+## Targeted frequency follow-up (19 November 2026)
+
+The initial P4 closeout is superseded for source coverage by the [targeted original-act follow-up](medellin_p4_targeted_legal_frequency_followup_2026-11-19.md). This identified specific 2015/2019/2020/2021/2023 Cootransmallat acts affecting 105/106, though their original numeric dispatch annex remains unavailable; added [Coopetransa's 2024 original operator reproduction of the 2023 069 act](medellin_p4_069_resolution_2023_original_daytypes_2026-11-19.csv) giving **03:00–23:00** and original DÍA/HMD cells, *not interpretable yet as minute headways*; and found original act IDs for 246C/D, 096, 287, 6C/037/039 and 286. The 49-route audit, P4 backlog, and 252-route model now carry these links. **No new complete route count**: 118/252.
