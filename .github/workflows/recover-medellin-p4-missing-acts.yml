@@ -1,0 +1,39 @@
+name: Recover Medellín P4 missing legal annexes (GitHub runner)
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/recover_medellin_p4_missing_acts.py"
+      - ".github/workflows/recover-medellin-p4-missing-acts.yml"
+permissions:
+  contents: read
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install minimal dependencies
+        run: python -m pip install requests
+      - name: Validate source code
+        run: python -m py_compile scripts/recover_medellin_p4_missing_acts.py
+      - name: Probe official original documents from GitHub runner
+        run: python scripts/recover_medellin_p4_missing_acts.py --archive-pages 8
+      - name: Upload diagnostic report and validated originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: medellin-p4-105-106-246-resolutions
+          path: artifacts/medellin-p4-official-acts/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Summarize actual HTTP results
+        if: always()
+        shell: bash
+        run: |
+          if test -f artifacts/medellin-p4-official-acts/README.md; then
+            cat artifacts/medellin-p4-official-acts/README.md >> "$GITHUB_STEP_SUMMARY"
+          fi
