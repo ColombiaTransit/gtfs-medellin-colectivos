@@ -73,6 +73,25 @@ def load_archive_candidate(payload,expected):
         if len(match)==1:
             return z.read(match[0])
         raise ValueError("No expected GTFS ZIP found in Actions artifact, keys="+str(names[:12]))
+def rebuild_local_existing_generator(kind):
+    # Offline proof of actual output. Does not upload a public release.
+    builders={
+        "taxmaya":("scripts/build_gtfs_taxmaya.py","gtfs-taxmaya.zip"),
+        "transacoop":("scripts/build_gtfs_transacoop.py","gtfs-transacoop.zip"),
+        "trsc":("scripts/build_gtfs_trsc.py","gtfs-trsc.zip"),
+    }
+    if kind not in builders:
+        raise ValueError("No offline inputs bundled for "+kind)
+    script,out=builders[kind]
+    cmd=subprocess.run([sys.executable,script],text=True,capture_output=True,timeout=200)
+    (ROOT/(kind+"_build_log.txt")).write_text(
+        "returncode="+str(cmd.returncode)+"\nSTDOUT\n"+cmd.stdout[-12000:]+"\nSTDERR\n"+cmd.stderr[-12000:],
+        encoding="utf-8")
+    if cmd.returncode or not Path(out).is_file():
+        raise RuntimeError("Local existing generator failed code "+str(cmd.returncode)+": "+cmd.stderr[-350:])
+    return Path(out).read_bytes(),{"build_method":"fresh_offline_generator_from_checked_in_raw",
+                                    "builder":script}
+
 def load_mapping(path):
     txt=Path(path).read_text(encoding="utf-8")
     return re.findall(r'^\s*-\s*id_ruta:\s*["\']?(\d+)',txt,re.M)
@@ -124,7 +143,19 @@ def main():
             routes,info=inspect_feed(data)
             status="verified_actual_GTFS"
         except Exception as exc:
-            routes=[];info=dict(error=str(exc)[:700]);src={};status="no_accessible_GTFS"
+            original_error=str(exc)[:700]
+            if kind in ("taxmaya","transacoop","trsc"):
+                try:
+                    data,src=rebuild_local_existing_generator(kind)
+                    routes,info=inspect_feed(data)
+                    info["archive_download_note"]=original_error
+                    status="verified_fresh_local_GTFS_not_published_release"
+                except Exception as rebuild_exc:
+                    routes=[];info=dict(error=original_error,
+                                       rebuild_error=str(rebuild_exc)[:600])
+                    src={};status="no_accessible_GTFS"
+            else:
+                routes=[];info=dict(error=original_error);src={};status="no_accessible_GTFS"
         summary.append(dict(generator=kind,status=status,**src,**info))
         for r in routes:
             rid=r["route_id"]
@@ -171,6 +202,10 @@ def main():
             "|---|---|---:|---:|---:|"]
     for s in summary:
         report.append(f'| {s["generator"]} | {s["status"]} | {s.get("unique_route_ids","–")} | {s.get("routes_with_trips","–")} | {s.get("routes_without_trips","–")} |')
+    report += ["", "### Unavailable or expired generator outputs", ""]
+    for item in summary:
+        if item["status"]=="no_accessible_GTFS":
+            report.append("- "+item["generator"]+": "+item.get("error","unknown")[:200])
     report += ["",f'2026 research complete 3-daytype route IDs: **{len(legacy_valid)}/252**.',
                f'Confirmed exact ArcGIS IDs present with trips in inspected GTFS: **{len(actual_ids)}**.',
                f'Of the 118 ready IDs, found as actual trips: **{len(actual_ids & legacy_valid)}**.',
