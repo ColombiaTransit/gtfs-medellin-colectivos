@@ -33,3 +33,16 @@
 - [All 19 previously unmatched candidate and conflict decisions](medellin_p1_19_unmatched_legacy_routes_family_reconciliation_2026-11-19.csv)
 
 **Next working group after P1 research closeout:** P2, using the existing 146-route queue. P1's 44 follow-ups remain open but should not block progressing to P2.
+
+
+## Binding 2026 source-selection policy (updated 19 November 2026)
+
+**This decision overrides any older instructions in this report to split/dilute shared legal frequencies or use Moovit in the 2026 timetable.**
+
+1. **Resolution baseline.** The last reviewed official operating resolution provides the accepted 2026 working timetable. Do not rerun a generic validity audit.
+2. **Operator website precedence.** When the operator publishes applicable route/variant/family operating hours, headways or exact departures, use its published values **instead of conflicting resolution values** for those fields, preserving original legal source values for traceability. The route identity, source daytype and actual variant scope must be retained; unspecified daytypes are not invented.
+3. **Legal family frequency applies without division to EVERY member route.** For example, a resolution family headway of 4 minutes is recorded as 4 minutes for each member route, not 8 minutes for two routes or 20 for five. Retain legal family ID and source on each route. Different historical IDs that are duplicates of the *same physical trip* still require avoiding duplicate GTFS trip records, but that must never justify splitting the official family headway.
+4. **Moovit excluded.** Moovit frequencies, night-end times, or variants must not be used as 2026 schedule facts or GTFS generation input. Historical Moovit material remains in archival registers as evidence of earlier research, visibly labelled `moovit_usable=no` and `archive_only=yes`. Retire its P3 Saturday window count as a candidate for 2026 modelling.
+5. **Source scope:** Generic Coonatra operator-wide averages can be used only with their own published family scope and provenance. Do not describe them as legal-resolution values or fabricate weekdays/weekends from generic hours.
+
+All P1/P2/P3 route ledgers, P1 legal daytypes, P3 daytype candidate ledger, corresponding backlogs, central 146-route action register and the latest 252-route working model have been updated to reflect these flags. The current all-three-daytype coverage count remains **118/252** as no new official/operator timetable was discovered in this policy-only change. No GTFS generator edit was performed.
