@@ -107,3 +107,16 @@ A new **252-route / 756-daytype research overlay** now integrates the 2015 histo
 - Research-only all-three-daytype coverage including **34 additional** vetted historical 2015 fallback candidates: **83 routes**. This figure includes provisional historical data and does *not* certify legal current effectivity or complete GTFS readiness.
 - Of the original 65 source gaps, **28** now have source leads in the overlaid route/family evidence; **37** have none in those registers. Shared-family figures are clearly marked as one service and not counted as per-branch complete schedules.
 - Parked 195ii and 082 PILOTO excluded. GTFS untouched.
+
+## Adopted 2026 working assumption — 19 November 2026 (supersedes conservative planning count)
+
+Per project decision, previously inspected official resolutions (including verified 2015 fiches) are **accepted as 2026 working timetable values** until specific contradictory evidence is identified. Revalidation via operators' sites is optional, not a prerequisite for further modelling. This is a planning assumption; do not change archival legal-source dates or claim legal confirmation without proof.
+
+**New working-model coverage: 106/252 legacy route IDs with both frequency and operating windows across weekday, Saturday and Sunday/holiday**, consisting of 49 original three-daytype schedule candidates plus 57 additionally assumed historical source routes. The earlier conservative 83-count is retained only as an older research classification. The 57 additional include 13 cases with known later operating acts but no recovered numeric tables, identified for future correction if contradictory timings emerge; structurally shared 2015 fiches are not multiplied into additional services. Ten unresolved variant identities, the original zero HMD on route 110, and the two parked routes are not promoted.
+
+Authoritative new working-model artifacts:
+- [2026 timetable assumption and decisions](medellin_2026_resolution_working_assumption_2026-11-19.md)
+- [252 route status rows](medellin_252_schedule_2026_working_assumption.csv)
+- [756 daytype schedule rows](medellin_252_daytypes_2026_working_assumption.csv)
+
+The 2026 planning acceptance is **not** proof of independently current legal effectivity; the GTFS generator has not been modified.
