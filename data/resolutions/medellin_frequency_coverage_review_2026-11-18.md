@@ -120,3 +120,11 @@ Authoritative new working-model artifacts:
 - [756 daytype schedule rows](medellin_252_daytypes_2026_working_assumption.csv)
 
 The 2026 planning acceptance is **not** proof of independently current legal effectivity; the GTFS generator has not been modified.
+
+## P1 original-resolution crosswalk update — 19 November 2026
+
+The initial **49 P1 legacy ArcGIS IDs** have been assessed against existing 2025 official source tables (147 route/daytype evidence rows). See [P1 report](medellin_p1_49_reconciliation_report_2026-11-19.md), [route identity matrix](medellin_p1_49_route_legal_crosswalk_2026-11-19.csv), and [official daytype values](medellin_p1_49_legal_daytypes_2026-11-19.csv).
+
+**2026 working assumption coverage increases from 106 to 109** route IDs with per-daytype frequency+work window candidates: newly 90084 (255i), 90125 (306A), 90126 (306B). The revised 252-route working status CSV is [here](medellin_252_schedule_2026_working_assumption_p1_updated.csv). Two further weekday-only services (90012 308D and 90014 309D) have a **complete official operating/no-service daytype rule**, but cannot count as running on Saturday or Sunday; they are listed separately. The Sunday 255 row 90083 has internally conflicting legal source numeric/no-service metadata and remains unresolved. Rural counts are retained as counts, not converted to arbitrary headways, and source family values are not doubled.
+
+The previous 106-route file remains as immutable earlier research snapshot. GTFS generator unchanged.
