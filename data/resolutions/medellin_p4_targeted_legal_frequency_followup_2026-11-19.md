@@ -44,3 +44,24 @@ The central 146-route queue and 49-route P4 backlog now show these targeted offi
 ## Coverage and rules
 
 **118/252** remains the number of old route IDs with all three daytypes' complete interpreted frequency plus service window in the 2026 working model. We have new **documented operating windows** and direct **original numeric source cells**, but the latter aren't safely interpretable as headways. Operator website supersedes resolution where route-specific and applicable; otherwise the reviewed resolution is accepted as 2026 planning baseline; **official family frequency applies unchanged to each member route**; **Moovit excluded**. No GTFS generator changes, no addition of parked IDs.
+
+
+## Authoritative 069 DÍA/HMD interpretation and rounded working scenario — 19 November 2026
+
+The user confirmed: **DÍA = total daily trips**, **HMD = number of trips per hour during maximum-demand hour**, not an interval in minutes. This supersedes the earlier uncertainty expressed above. Resolución 202350107467 (as reproduced in Coopetransa's annual report) provides a **03:00–23:00** window, **228 trips/day and 24 peak trips/hour** on weekday/Saturday and **137 trips/day and 15 peak trips/hour** on Sunday/public holiday.
+
+The peak clock bands **06:00–08:30** and **16:30–19:30** are **adopted modelling assumptions**, not verified route-069 legal clock times. They total **5.5 peak hours**, leaving **14.5 valley hours**.
+
+The valley headway is derived from the total published daily departures under the additional assumption that all 5.5 peak hours operate at the HMD hourly rate:
+`valley_headway_minutes = 60 * 14.5 / (daily_trips - 5.5 * peak_trips_per_hour)`.
+
+| Day type | Original daily trips | Original peak trips/h | Exact peak interval | Exact calculated valley interval | User-requested whole-minute **ceiling** model |
+|---|---:|---:|---:|---:|---|
+| Weekday | 228 | 24 | 2.5 min | 9.0625 min | **3 min peak / 10 min valley** |
+| Saturday | 228 | 24 | 2.5 min | 9.0625 min | **3 min peak / 10 min valley** |
+| Sunday | 137 | 15 | 4 min | 15.9633 min | **4 min peak / 16 min valley** |
+| Public holiday | 137 | 15 | 4 min | 15.9633 min | **4 min peak / 16 min valley** |
+
+The original **228 and 137 total daily trips** remain authoritative source counts. Whole-minute rounding **does not reproduce exactly** those totals and, for weekday/Saturday, 3-minute peaks amount to **20 departures/hour, not the 24/hour** published as HMD. Therefore the integer headways are an **explicit modelling approximation**, not a faithful restatement of the legal maximum-hour requirement. If the eventual generator must honor exact peak throughput, it will need shorter intervals, alternating 2- and 3-minute departures, or a timetable-based adjustment.
+
+This policy is written in the [069 route/daytype source register](medellin_p4_069_resolution_2023_original_daytypes_2026-11-19.csv), [P4 audit](medellin_p4_49_source_reconciliation_2026-11-19.csv), [49-route backlog](medellin_p4_followup_backlog_2026-11-19.csv), [central worklist](medellin_146_remaining_routes_action_register_2026-11-19.csv) and [252-route working-model table](medellin_252_schedule_2026_working_assumption_p4_updated.csv). It does **not** advance the 118/252 strictly source-backed completion count, and no generator changes were made.
