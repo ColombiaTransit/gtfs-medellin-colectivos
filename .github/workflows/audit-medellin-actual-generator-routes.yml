@@ -1,0 +1,40 @@
+name: Audit published Medellín GTFS route IDs vs 252 urbanas
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/audit_medellin_actual_generator_route_ids.py'
+      - '.github/workflows/audit-medellin-actual-generator-routes.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify Python source
+        run: python -m py_compile scripts/audit_medellin_actual_generator_route_ids.py
+      - name: Compare actual released and archived GTFS
+        run: python scripts/audit_medellin_actual_generator_route_ids.py
+      - name: Upload exact route and trip inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: medellin-actual-gtfs-route-inventory
+          path: artifacts/medellin-generator-route-audit/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Publish audit summary
+        if: always()
+        shell: bash
+        run: |
+          if test -f artifacts/medellin-generator-route-audit/README.md; then
+            cat artifacts/medellin-generator-route-audit/README.md >> "$GITHUB_STEP_SUMMARY"
+          fi
