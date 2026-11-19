@@ -39,3 +39,11 @@ All **22/22** historical ArcGIS P3 route IDs assessed against existing Coonatra 
 All 22 P3 IDs remain in the detailed backlog because they require at least one of: exact branch-to-public-line mapping, missing non-suspicious weekday/Sunday closing time, branch daytype clarification or truly route-specific source. The separate 44 P1 and 15 P2 backlogs are unchanged.
 
 Next priority P4: the 49 original IDs with no linked usable frequency+work window. Do not reopen vetted legal regulations or the parked 195ii / 082 PILOTO routes. GTFS generator untouched.
+
+## Corrected binding user policy — 19 November 2026
+
+**Authoritative project rule:** When an **official operating resolution** gives a frequency to a route family, **that same frequency applies to every route within that family**. Never split or dilute the legally published family frequency across member routes (no 50/50 allocation, no N-way multiplication of the headway). The per-route application of the official value is the requested timetable assumption. Retain the original act and family key on each route.
+
+This supersedes any earlier wording in this report suggesting that official family frequency should be divided across branches, or kept only at family level instead of applying it to the member routes. Other evidence types must remain labelled accurately: Coonatra *operator-reported averages* and Moovit figures are **not** automatically the legally specified family frequency, and must not be falsely marked as such. Separate duplicate identity/direction records still need protection against inadvertently generating identical trips twice, but this does not justify dividing a valid official per-family headway.
+
+P3 source records have not been promoted to official-resolution status by this policy correction.
