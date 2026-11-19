@@ -1,0 +1,88 @@
+generator,gtfs_route_id,short_name,long_name,agency,trip_count,has_trips,arcgis_legacy_id,arcgis_id_mapping,in_252,schedule_ready_2026,model_operator
+main,C3-004P,004P,Belén - Perla,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-007,007,La Palma - Loma de Los Bernal,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-007A,007A,La Palma - Aliadas,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-004MD,004MD,Ext. Los Alpes - Mano de Dios,mdo,3,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-004B,004B,Los Alpes - Buga,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-005,005,UDM - Aguas Frías,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-006,006,UDM - Las Violetas - Villacafé,mdo,3,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-002,002,Aguacatala - Unicentro,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-001A,001A,Aguacatala - Los Cabos,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-003M,003M,Belén - Manzanillo,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-003RLC,003RLC,Belén - Los Cabos,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-003P,003P,Belén - Piscina,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-003RA,003RA,Belén - Rodeo Alto,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-003RV,003RV,Belén - Rodeo Verde,mdo,3,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C3-001,001,Aguacatala - Santa Gema,mdo,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-014,014,La Ladera - Estación Prado,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-016,016,Nuevo Horizonte - Estación Hospital,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-013,013,Popular 1 - Estación Tricentenario,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-015A,015A,UNVERIFIED - possibly 'Villa Hermosa - Estación Prado' (SAO6 site calls this C6-014A),sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-012A,012A,Andalucía - Estación Acevedo,sao6,3,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-018,018,Santa Cecilia - Estación Tricentenario,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-016A,016A,UNVERIFIED - possibly 'Villa de Guadalupe - Estación Hospital' (SAO6 site calls this C6-015),sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-012,012,La Francia - Aranjuez - Estación Acevedo,sao6,3,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-006,006,Villa Liliam - Estación Alejandro Echavarría,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-008,008,La Libertad - Estación Prado,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-009,009,Enciso - Estación Prado,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-010,010,Villatina - ITM - Estación Prado,sao6,9,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-001,001,Santa Rita - Estación Acevedo,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-003,003,Campo Valdés - Estación Hospital,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-004,004,Reservas del Seminario - Estación Exposiciones,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-002A,002A,Versalles - Estación Hospital,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-002,002,Versalles - Punto Cero - Estación Hospital,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-005,005,Vergel - Estación San Antonio,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-007,007,Cataluña - Estación Alpujarra,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-011,011,El Playón - Popular 2 - Estación Acevedo,sao6,3,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-004A,004A,Quinta Linda - Estación Exposiciones,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-021,021,Granizal - Estación Tricentenario,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-025B,025B,Bosque Verde - Estación Oriente,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-023,023,Santa Lucía - Estación Alejandro Echavarría,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-024,024,8 de Marzo - Estación Alejandro Echavarría,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-025,025,La Espadera - Estación Oriente,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-020,020,San José La Cima - Estación Universidad,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-019,019,El Raizal - Estación Universidad,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-019A,019A,El Jardín - Estación Gardel,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-022A,022A,Las Partidas - Estación Prado,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+main,C6-022,022,La Cruz - Estación Prado,sao6,6,yes,,not_proven,no_or_unmapped,no_or_unmapped,
+taxmaya,taxmaya_90288,195,Simón Bolívar-Unicentro-Centro,taxmaya,6,yes,90288,verified_config_prefix,yes,yes,Tax Maya
+taxmaya,taxmaya_90289,195i,Simón Bolívar-Unicentro-Estación Santa Lucía,taxmaya,6,yes,90289,verified_config_prefix,yes,yes,Tax Maya
+taxmaya,taxmaya_90290,195ii,Laureles Campestre-Estación Santa Lucía-Estación Floresta,taxmaya,6,yes,90290,verified_config_prefix,yes,no_or_unmapped,Tax Maya
+taxmaya,taxmaya_90328,C23i IZQUIERA,San Cristóbal-Estación San Javier (Izquierda),taxmaya,6,yes,90328,verified_config_prefix,yes,yes,Tax Maya
+taxmaya,taxmaya_90355,C23i DERECHA,San Cristóbal-Estación San Javier (Derecha),taxmaya,6,yes,90355,verified_config_prefix,yes,yes,Tax Maya
+taxmaya,taxmaya_90334,C23ii,San Cristóbal-Calle Negra-Estación Aurora,taxmaya,6,yes,90334,verified_config_prefix,yes,yes,Tax Maya
+taxmaya,taxmaya_90329,C23i,Asomadera Veredal,taxmaya,6,yes,90329,verified_config_prefix,yes,yes,Tax Maya
+taxmaya,taxmaya_90330,C23i,El Patio Veredal,taxmaya,6,yes,90330,verified_config_prefix,yes,yes,Tax Maya
+taxmaya,taxmaya_90332,C23i,Las Playas Veredal,taxmaya,6,yes,90332,verified_config_prefix,yes,yes,Tax Maya
+taxmaya,taxmaya_90333,C23i,Pedregal Veredal,taxmaya,6,yes,90333,verified_config_prefix,yes,no_or_unmapped,Tax Maya
+taxmaya,taxmaya_90331,C23i,La Palma Veredal,taxmaya,6,yes,90331,verified_config_prefix,yes,yes,Tax Maya
+transacoop,transacoop_90257,98 Directa 1,Santa Elena-Mazo-Las Brisas-Medellín,transacoop,4,yes,90257,verified_config_prefix,yes,yes,Transacoop
+transacoop,transacoop_90258,98 Directa 2,Santa Elena-Barro Blanco-Las Brisas-Medellín,transacoop,4,yes,90258,verified_config_prefix,yes,yes,Transacoop
+transacoop,transacoop_90259,98 Directa 3,Santa Elena-Las Brisas-Medellín,transacoop,4,yes,90259,verified_config_prefix,yes,yes,Transacoop
+transacoop,transacoop_90260,98 Directa 4,Santa Elena-Perico-Las Brisas-Medellín,transacoop,4,yes,90260,verified_config_prefix,yes,yes,Transacoop
+transacoop,transacoop_90261,98 Directa 5,Santa Elena-El Plan-Las Brisas-Medellín,transacoop,4,yes,90261,verified_config_prefix,yes,yes,Transacoop
+transacoop,transacoop_90262,98 Directa 6,Santa Elena-Piedras Blancas-Medellín,transacoop,4,yes,90262,verified_config_prefix,yes,yes,Transacoop
+transacoop,transacoop_90263,98 Directa 7,Santa Elena-Barro Blanco-Medellín,transacoop,4,yes,90263,verified_config_prefix,yes,yes,Transacoop
+transacoop,transacoop_90264,98 Directa 8,Santa Elena-El Cerro-Las Brisas-Medellín,transacoop,4,yes,90264,verified_config_prefix,yes,yes,Transacoop
+transacoop,transacoop_90265,98 Directa 9,Santa Elena-Piedras Blancas-Las Brisas-Medellín,transacoop,4,yes,90265,verified_config_prefix,yes,yes,Transacoop
+trsc,trsc_90081,255A,Nuevo Occidente-Las Flores,trsc,0,no,90081,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90082,255D,San Cristóbal -Conexión vial,trsc,178,yes,90082,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90083,255,San Cristóbal - Doña María,trsc,0,no,90083,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90084,255i,Metrocable Aurora-Cárcel,trsc,0,no,90084,verified_config_prefix,yes,yes,Rápido San Cristóbal
+trsc,trsc_90085,255iD,Metrocable La Aurora,trsc,108,yes,90085,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90086,255P,Palmitas-Centro,trsc,20,yes,90086,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90087,255V1,Vereda El Llano - Parque San Cristóbal,trsc,20,yes,90087,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90088,255V1D,Vereda El Llano - Centro,trsc,0,no,90088,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90089,255V2,Vereda Yolombó - Parque San Cristóbal,trsc,0,no,90089,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90090,255V3,Derecha Vereda Boquerón - Parque San Cristóbal,trsc,0,no,90090,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90091,255V3,Izquierda Vereda Boquerón - Parque San Cristóbal,trsc,0,no,90091,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90092,255A,Nuevo Occidente El Tirol,trsc,78,yes,90092,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90093,255A,Las Flores-Moravia-Centro,trsc,78,yes,90093,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90102,255V,Vereda La Suiza-La Frisola-La Guayabala-La Volcana,trsc,26,yes,90102,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90103,255V,Vereda La Aldea,trsc,26,yes,90103,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90347,255V4,Las Playas,trsc,0,no,90347,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90349,255V5,La Cuchilla,trsc,0,no,90349,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90351,255i,El Llano,trsc,20,yes,90351,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90353,255 V3 HOR ESP,Boqueron Centro Horario Especial,trsc,0,no,90353,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90372,255iD Estacion Estadio,Metrocable La Aurora Estacion Estadio,trsc,0,no,90372,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal
+trsc,trsc_90373,255i Estacion Estadio,Metrocable La Aurora Estacion Estadio,trsc,0,no,90373,verified_config_prefix,yes,no_or_unmapped,Rápido San Cristóbal

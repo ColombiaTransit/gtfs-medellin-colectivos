@@ -1,0 +1,70 @@
+{
+  "stats": {
+    "legacy_universe": 252,
+    "legacy_complete_2026_working_schedules": 118,
+    "actual_feeds_inspected": 1,
+    "actual_legacy_ids_with_trips_identified": 29,
+    "actual_ready_legacy_ids_with_trips": 18,
+    "ready_legacy_ids_not_in_verified_trip_feeds": 100,
+    "explicit_geometry_only_ids": 12,
+    "caution": "Unmapped Coonatra/El Poblado/Sotrames route_ids cannot be counted as new or existing until geometry/ID mapping. Missing expired artifact means unknown, not absent."
+  },
+  "generators": [
+    {
+      "generator": "main",
+      "status": "verified_actual_GTFS",
+      "url": "https://github.com/ColombiaTransit/gtfs-medellin-colectivos/releases/tag/latest",
+      "route_rows": 46,
+      "unique_route_ids": 46,
+      "routes_with_trips": 46,
+      "routes_without_trips": 0,
+      "trip_rows": 261
+    },
+    {
+      "generator": "elpoblado",
+      "status": "no_accessible_GTFS",
+      "error": "No accessible valid GTFS artifact from latest successful runs. []"
+    },
+    {
+      "generator": "sotrames",
+      "status": "no_accessible_GTFS",
+      "error": "No accessible valid GTFS artifact from latest successful runs. []"
+    },
+    {
+      "generator": "taxmaya",
+      "status": "verified_fresh_local_GTFS_not_published_release",
+      "build_method": "fresh_offline_generator_from_checked_in_raw",
+      "builder": "scripts/build_gtfs_taxmaya.py",
+      "route_rows": 11,
+      "unique_route_ids": 11,
+      "routes_with_trips": 11,
+      "routes_without_trips": 0,
+      "trip_rows": 66,
+      "archive_download_note": "No accessible valid GTFS artifact from latest successful runs. []"
+    },
+    {
+      "generator": "transacoop",
+      "status": "verified_fresh_local_GTFS_not_published_release",
+      "build_method": "fresh_offline_generator_from_checked_in_raw",
+      "builder": "scripts/build_gtfs_transacoop.py",
+      "route_rows": 9,
+      "unique_route_ids": 9,
+      "routes_with_trips": 9,
+      "routes_without_trips": 0,
+      "trip_rows": 36,
+      "archive_download_note": "No accessible valid GTFS artifact from latest successful runs. []"
+    },
+    {
+      "generator": "trsc",
+      "status": "verified_fresh_local_GTFS_not_published_release",
+      "build_method": "fresh_offline_generator_from_checked_in_raw",
+      "builder": "scripts/build_gtfs_trsc.py",
+      "route_rows": 21,
+      "unique_route_ids": 21,
+      "routes_with_trips": 9,
+      "routes_without_trips": 12,
+      "trip_rows": 554,
+      "archive_download_note": "No accessible valid GTFS artifact from latest successful runs. []"
+    }
+  ]
+}

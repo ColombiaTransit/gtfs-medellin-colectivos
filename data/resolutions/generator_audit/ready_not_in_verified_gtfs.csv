@@ -1,0 +1,101 @@
+arcgis_id,code,operator,route_name
+90004,313,Combuses,Terminal del Norte-Terminal del Sur
+90009,304,Invetrans,Comercial Hotelera derecha
+90010,305,Invetrans,Comercial Hotelera izquierda
+90011,308,Coinvetrans,Ruta de la Salud derecha
+90013,309,Coinvetrans,Ruta de la Salud izquierda
+90057,246,Cootransblan,Blanquizal
+90063,246i,Cootransblan,Blanquizal integrada
+90064,246ii,Cootransblan,Blanquizal integrada
+90067,250R,Palenque Robledal,Robledales
+90068,250iVF,Palenque Robledal,Villa Flora integrada
+90069,250iR,Palenque Robledal,Robledal integrada
+90070,250VF,Palenque Robledal,Robledo Villa Flora
+90071,250AH,Palenque Robledal,La Huerta
+90072,250M,Palenque Robledal,Moravia
+90073,250AP,Palenque Robledal,Pajarito
+90074,251,Palenque Robledal,Margaritas
+90075,252,Palenque Robledal,Kennedy
+90078,253iA,Palenque Robledal,Robledo Aures integrada
+90080,254,Transporte Medellín Castilla,Picacho
+90084,255i,Rápido San Cristóbal,Metrocable Aurora-Cárcel
+90094,260CL,Palenque Robledal,Clínica
+90095,260C,Palenque Robledal,Córdoba
+90096,260i,Palenque Robledal,Seminario integrada
+90097,260BR,Palenque Robledal,Brisas
+90098,260T,Palenque Robledal,Torres
+90099,267,Palenque Robledal,Éxito
+90104,261A,Transporte Medellín Castilla,Alfonso López - Viejo Terminal
+90107,261,Transporte Medellín Castilla,Alfonso López Calle 94
+90111,263,Transporte Medellín Castilla,12 de Octubre - Calle 90
+90116,270i,Transporte Medellín Castilla,Gratamira-Estación Acevedo
+90119,281,Transporte Medellín Castilla,Florencia
+90122,283i,Transporte Medellín Castilla,Florencia-estación Acevedo
+90125,306A,Transporte Medellín Castilla,Izquierda - Circular Noroccidental
+90126,306B,Transporte Medellín Castilla,Derecha - Circular Noroccidental
+90175,97,Flota la V,Cauces-Quintalinda
+90176,97,Flota la V,Cauces-Quintalinda
+90179,97,Flota la V,Quintalinda-El Vergel
+90180,99,Coopcerquin,Cerros de Quintalinda
+90183,102,Cootranscataluña,Ávila-Iglesia Cataluña
+90187,102A,Cootranscataluña,Pablo Escobar-Cataluña
+90191,111,Flota la Milagrosa,El Salvador derecho
+90193,111,Flota la Milagrosa,El Salvador
+90195,112,Copatra,Las Palmas
+90197,113B,Flota la Milagrosa,Ávila
+90198,113M,Flota la Milagrosa,Pablo E.
+90199,113,Flota la Milagrosa,Ávila - Cataluña
+90202,6,Transconor,La Francia
+90203,22,Transporte Aranjuez Santa Cruz,Santa Cruz - Terminal
+90205,23,Transporte Aranjuez Santa Cruz,Popular N° 1
+90206,24,Transporte Aranjuez Santa Cruz,Playón de los Comuneros
+90207,24,Transporte Aranjuez Santa Cruz,Playón de los Comuneros - Oriental
+90209,041D,Transporte Aranjuez Santa Cruz,Aranjuez anillo derecha
+90210,041I,Transporte Aranjuez Santa Cruz,Aranjuez anillo izquierda
+90211,42,Transporte Aranjuez Santa Cruz,Aranjuez intermedia
+90212,031 P-C,Expreso Campo Valdés,Popular Centro
+90214,031 P-F,Expreso Campo Valdés,Popular Ferrocarril
+90220,51-52 CV-C,Expreso Campo Valdés,Campo Valdés Centro
+90222,51-52 CV-F,Expreso Campo Valdés,Campo Valdés Ferrocarril
+90223,51-52 CV-O,Expreso Campo Valdés,Campo Valdés Oriental
+90226,080 V-33,Flota Nueva Villa,Villa Hermosa - La Mansión-Directa La 33
+90227,080 V-M,Flota Nueva Villa,Villa Hermosa - La Mansión
+90228,080 V-O,Flota Nueva Villa,Villa Hermosa - La Mansión-Directa Oriental
+90229,81,Flota Nueva Villa,Villa Hermosa - Derecho
+90230,082 V-LA,Flota Nueva Villa,Villa Hermosa - Los Ángeles
+90231,082 V-LAD,Flota Nueva Villa,Villa Hermosa - Los Ángeles - Directa
+90232,085,Cootracovi,La Honda
+90282,190,Autobuses Poblado Laureles,Laureles Parque
+90283,191,Autobuses Poblado Laureles,Laureles Éxito
+90284,192,Autobuses Poblado Laureles,Laureles Nogal # 1
+90285,193,Autobuses Poblado Laureles,Laureles Nogal # 2
+90286,193i,Autobuses Poblado Laureles,Estadio-Bolivariana-Laureles
+90287,193ii,Autobuses Poblado Laureles,Estadio-Laureles Santa Teresita
+90292,201,Conducciones América,Éxito Corazón
+90293,201,Conducciones América,Éxito Corazón
+90296,201i,Conducciones América,Los Tanques-El Volcán-El Corazón-San Javier
+90297,202,Conducciones América,Santa Mónica-Oriental
+90298,202i,Conducciones América,El Morro-Travesías-Corazón-Santa Lucía
+90301,220,Conducciones América,San Javier-Eduardo Santos-Oriental
+90302,221A,Conducciones América,San Javier Derecho-La Caseta-Oriental
+90304,221i,Conducciones América,Villa Laura-San Javier
+90305,222,Conducciones América,San Javier Niza - Oriental
+90307,225i-1,Metrosan,20 de Julio
+90309,226i,Metrosan,Salado
+90310,226i-D,Metrosan,Depósito
+90311,227i-1,Metrosan,Quintas
+90312,227i-A,Metrosan,Peñitas
+90313,227i-B,Metrosan,Gabriela
+90315,227i-C,Metrosan,Caseta
+90316,228i,Metrosan,Conquistadores
+90318,242,Coonatra,La Divisa
+90319,242,Coonatra,La Quiebra
+90322,243i,Coonatra,Floresta
+90323,243iD,Coonatra,Floresta Directa
+90324,311i,Coonatra,Santa Lucia
+90325,311ii,Coonatra,Santa Lucia Directa
+90337,085 L H MINO,Cootracovi,La Honda Minorista
+90343,111,Flota la Milagrosa,El Salvador Barrio Nacional
+90374,172-178 FUSION,Cootrabel,Belen la Gloria
+90375,024 Barrial,,Playon de los Comuneros_Barrial
+90377,229i,Metrosan,Barrio Nuevo
