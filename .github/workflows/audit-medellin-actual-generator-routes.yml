@@ -6,7 +6,7 @@ on:
       - 'scripts/audit_medellin_actual_generator_route_ids.py'
       - '.github/workflows/audit-medellin-actual-generator-routes.yml'
 permissions:
-  contents: read
+  contents: write
   actions: read
 jobs:
   audit:
@@ -25,6 +25,22 @@ jobs:
         run: python -m py_compile scripts/audit_medellin_actual_generator_route_ids.py
       - name: Compare actual released and archived GTFS
         run: python scripts/audit_medellin_actual_generator_route_ids.py
+      - name: Keep audit CSV and summary in repository
+        if: success()
+        shell: bash
+        run: |
+          mkdir -p data/resolutions/generator_audit
+          cp artifacts/medellin-generator-route-audit/inventory.json data/resolutions/generator_audit/inventory.json
+          cp artifacts/medellin-generator-route-audit/README.md data/resolutions/generator_audit/README.md
+          cp artifacts/medellin-generator-route-audit/actual_gtfs_routes.csv data/resolutions/generator_audit/actual_gtfs_routes.csv
+          cp artifacts/medellin-generator-route-audit/ready_not_in_verified_gtfs.csv data/resolutions/generator_audit/ready_not_in_verified_gtfs.csv
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add data/resolutions/generator_audit/
+          if ! git diff --staged --quiet; then
+            git commit -m "Record exact generated GTFS route overlap with Medellín 252-route model"
+            git push
+          fi
       - name: Upload exact route and trip inventory
         if: always()
         uses: actions/upload-artifact@v4
