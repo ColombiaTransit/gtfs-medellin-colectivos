@@ -1,0 +1,7 @@
+arcgis_id,old_code,official_code,shared_family_service_key,day_type,start,end,max_peak_minutes,max_extreme_valley_minutes,max_midday_valley_minutes,source_url,legacy_route_branch_verified,independent_frequency_per_legacy_variant,complete_legacy_route
+90079,253iAR,253-i,202550088689:253-i,weekday,04:00,23:20,7,15,8,https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_88689_2025.htm,no,no,no
+90079,253iAR,253-i,202550088689:253-i,saturday,04:00,23:20,8,18,10,https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_88689_2025.htm,no,no,no
+90079,253iAR,253-i,202550088689:253-i,sunday_holiday,04:40,22:00,11,24,13,https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_88689_2025.htm,no,no,no
+90110,261ii,263-1i,202550076162:263-1i,weekday,04:00,22:50,5,10,7,https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_76162_2025.htm,no,no,no
+90110,261ii,263-1i,202550076162:263-1i,saturday,04:00,22:50,7,10,16,https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_76162_2025.htm,no,no,no
+90110,261ii,263-1i,202550076162:263-1i,sunday_holiday,04:30,22:20,10,14,12,https://www.medellin.gov.co/normograma/docs/astrea/docs/r_smmed_76162_2025.htm,no,no,no
