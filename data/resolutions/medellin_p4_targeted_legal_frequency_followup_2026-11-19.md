@@ -105,3 +105,22 @@ The [official Medellín mobility administration's decision inventory](https://ww
 2. **Cootransblan:** complete **Resolución 175 (03 Mar 2017)** including the **246C and 246D** branch-specific timetable annex. Retain **Resolución 2981/2015 246 DIRECTA** as older *candidate* source, not established as the 2017 246D replacement and definitely not copied to 246C.
 
 Fresh targeted public-index searches did **not** return either full signed resolution or numeric annex. Thus no new legally-sourced numeric frequency was acquired in this pass. The source-backed 3-daytype completeness metric remains **118 of 252**, 069 source data and rounded frequency scenario unchanged, no Moovit, no generator modifications. The 49-row P4 backlog and central 146-route work register now explicitly flag the **incorrect portal exclusion**, correct authority and exact annex needed; do not repeat broad unscoped web search.
+
+
+## Verified PDF link inventory for 105/106 and next archive (19 November 2026)
+
+**Answer to "Do we have URLs of the 105/106 PDFs?":** We do have **three verified Cootransmallat operator-hosted PDF URLs**, but **these are annual management reports, not the 105/106 frequency resolutions**:
+- https://www.cootransmallat.com/documentos/rte/2019/02-informe-de-gestion.pdf (2019 operator report, PDF)
+- https://www.cootransmallat.com/documentos/rte/2023/02-informe-de-gestion.pdf (2023-issued report covering **2022**, 16 pages, PDF; annual operator trips, not daily 105/106 headways)
+- https://www.cootransmallat.com/documentos/rte/2024/02-informe-de-gestion.pdf (2024-issued report covering **2023**, 13 pages, PDF; no confirmed technical timetable annex)
+- Direct documents listing: https://www.cootransmallat.com/transparencia.html
+
+**We still have no verified direct PDF download URL for** Resolución **202350086596 (24 October 2023)** or Resolución **202150041167 (23 April 2021)**, nor for the timetable annex. The official document *index only*, listing those numbers, is https://www.medellin.gov.co/es/wp-content/uploads/2023/08/AIG-Mateo-Gonzalez-Benitez-Sec-Movilidad.pdf.
+
+**New institutional download entry point found:** https://www.medellin.gov.co/SIMM/component/jdownloads/ (Secretary of Mobility), category **Resoluciones transporte**, **276 files**. Category URL https://www.medellin.gov.co/SIMM/component/jdownloads/category/42-resoluciones-transporte?Itemid=0 returned timeout at time of review. **Do not claim either desired PDF was verified there.** Target this category before requesting the originals from the Secretariat.
+
+**New 6C later-act finding (P4 Expreso Campo Valdés 051/052 and Cooptransnor 031 P-SD):** The authority's acts index lists **202050058821 of 6 October 2020**, modifying **201750007548 (13 Sep 2017)** specifically for 031 and 051/052. This is a more relevant source to seek than assuming 392/2017 alone controls numeric windows. Original 2020 frequency annex not recovered.
+
+**Additional older Cootransmallat lead:** Resolución **005 of 5 January 2009** explicitly establishes dispatch frequencies and restructuring. It is a historical fallback only, not a substitute for the missing 2021/2023 operational annex. No verified PDF URL for that original found.
+
+All findings and verified URL classifications were recorded per relevant old route in the central 146-route register and P4 source audit/backlog. The 105/106 frequencies remain **unconfirmed** and the working-model total remains **118/252**; no Moovit and no generator changes.
