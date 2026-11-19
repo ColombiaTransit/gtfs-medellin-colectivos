@@ -117,7 +117,7 @@ def run(targets, archive_pages):
             text=hist_content.decode("utf-8",errors="replace")
             hist_report["number_in_body"]=number in text
             hist_report["document_identifiers"]=list(dict.fromkeys(
-                re.findall(r'historico-mercurio/(?:visualizar|descargar)/(\\d+)',text,re.I)))[:15]
+                re.findall(r'historico-mercurio/(?:visualizar|descargar)/(\d+)',text,re.I)))[:15]
         entry["probes"].append(hist_report)
         # Test only the two established ASTREA source patterns; never equate HTTP 200 to an act match.
         for name in [f'r_smmed_{t["short"]}_{t["year"]}.htm',
@@ -185,6 +185,18 @@ def run(targets, archive_pages):
         aa=probes[1:]
         status=lambda x:str(x.get("http_status",x.get("error","unknown"))).replace("|","/")
         summary.append(f'| {e["number"]} | {status(hh)} | '+", ".join(status(a) for a in aa)+" |")
+    summary += ["", "### Per-source diagnostics", "",
+                "| Probe | HTTP / error | Bytes | Exact-number candidate links |",
+                "|---|---|---:|---:|"]
+    for e in report["diagnostic"][:len(targets)]:
+        for p in e["probes"]:
+            matches = len(p.get("matched_links", [])) if "matched_links" in p else int(bool(p.get("number_in_body")))
+            state = str(p.get("http_status",p.get("error","unknown"))).replace("|","/")[:80]
+            summary.append(f'| {e["number"]}: {p["probe"]} | {state} | {p.get("byte_count",0)} | {matches} |')
+    for p in report["diagnostic"][len(targets):]:
+        matches=sum(len(v) for v in p.get("matched_target_links",{}).values())
+        state=str(p.get("http_status",p.get("error","unknown"))).replace("|","/")[:80]
+        summary.append(f'| SIMM | {state} | {p.get("byte_count",0)} | {matches} |')
     summary += ["",f'SIMM pages probed: **{len(visited)}/{archive_pages} maximum**, not the complete 276-file archive.',
                 f'Confirmed downloaded PDFs: **{len(report["verified_pdfs"])}**.',
                 "", "Review diagnostics.json and recovered HTML/PDF artifacts before changing any timetable."]
